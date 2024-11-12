@@ -11,12 +11,12 @@ tasks:
     cmds:
       - GOFLAGS=-mod=mod go run main.go
 
-  swagger.validate.v4:
+  swagger.validate.v4_1:
     desc: Validate swagger
     cmds:
-      - swagger validate pkg/swagger/TMF641-ServiceOrdering-v4.1.0.yaml
+      - swagger validate pkg/swagger/tmf641v4_1/TMF641-ServiceOrdering-v4.1.0.yaml
 
-  swagger.doc.v4:
+  swagger.doc.v4_1:
     desc: "Documentation for swagger"
     cmds:
-      - docker run -i yousan/swagger-yaml-to-html < pkg/swagger/TMF641-ServiceOrdering-v4.1.0.yaml > doc/v4/index.html
+      - docker run -i yousan/swagger-yaml-to-html < pkg/swagger/tmf641v4_1/TMF641-ServiceOrdering-v4.1.0.yaml > doc/v4_1/index.html
