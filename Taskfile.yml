@@ -1,0 +1,22 @@
+version: 3
+
+tasks:
+  build:
+    desc: Build the app
+    cmds:
+      - GOFLAGS=-mod=mod go build -o bin/tmf-service-go main.go
+
+  run:
+    desc: Run the app
+    cmds:
+      - GOFLAGS=-mod=mod go run main.go
+
+  swagger.validate:
+    desc: Validate swagger
+    cmds:
+      - swagger validate pkg/swagger/TMF641-ServiceOrdering-v4.1.0.yaml
+
+  swagger.doc:
+    desc: "Documentation for swagger"
+    cmds:
+      - docker run -i yousan/swagger-yaml-to-html < pkg/swagger/TMF641-ServiceOrdering-v4.1.0.yaml > doc/index.html
