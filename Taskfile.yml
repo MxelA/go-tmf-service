@@ -20,3 +20,23 @@ tasks:
     desc: "Documentation for swagger"
     cmds:
       - docker run -i yousan/swagger-yaml-to-html < pkg/swagger/tmf641v4_1/TMF641-ServiceOrdering-v4.1.0.yaml > doc/v4_1/index.html
+
+  swagger.gen.v4_1:
+    desc: Generate Go code
+    cmds:
+      - GOFLAGS=-mod=mod go generate github.com/MxelA/tmf-service-go github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_1
+
+  swagger.validate.v4_2:
+    desc: Validate swagger
+    cmds:
+      - swagger validate pkg/swagger/tmf641v4_2/TMF641-ServiceOrdering-v4.2.0.json
+
+  swagger.doc.v4_2:
+    desc: "Documentation for swagger"
+    cmds:
+      - docker run -i yousan/swagger-yaml-to-html < pkg/swagger/tmf641v4_2/TMF641-ServiceOrdering-v4.2.0.json > doc/v4_2/index.html
+
+  swagger.gen.v4_2:
+    desc: Generate Go code
+    cmds:
+      - GOFLAGS=-mod=mod go generate github.com/MxelA/tmf-service-go github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2

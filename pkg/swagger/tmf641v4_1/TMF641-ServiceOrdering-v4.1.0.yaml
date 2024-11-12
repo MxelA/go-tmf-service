@@ -406,1099 +406,1099 @@
         }
       }
     },
-    "/cancelServiceOrder": {
-      "get": {
-        "operationId": "listCancelServiceOrder",
-        "summary": "List or find CancelServiceOrder objects",
-        "description": "This operation list or find CancelServiceOrder entities",
-        "tags": [
-          "cancelServiceOrder"
-        ],
-        "parameters": [
-          {
-            "name": "fields",
-            "description": "Comma-separated properties to be provided in response",
-            "required": false,
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "offset",
-            "description": "Requested index for start of resources to be provided in response",
-            "required": false,
-            "in": "query",
-            "type": "integer"
-          },
-          {
-            "name": "limit",
-            "description": "Requested number of resources to be provided in response",
-            "required": false,
-            "in": "query",
-            "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "headers": {
-              "X-Result-Count": {
-                "description": "Actual number of items returned in the response body",
-                "type": "integer"
-              },
-              "X-Total-Count": {
-                "description": "Total number of items matching criteria",
-                "type": "integer"
-              }
-            },
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/CancelServiceOrder"
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      },
-      "post": {
-        "operationId": "createCancelServiceOrder",
-        "summary": "Creates a CancelServiceOrder",
-        "description": "This operation creates a CancelServiceOrder entity.",
-        "tags": [
-          "cancelServiceOrder"
-        ],
-        "parameters": [
-          {
-            "name": "cancelServiceOrder",
-            "description": "The CancelServiceOrder to be created",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/CancelServiceOrder_Create"
-            },
-            "in": "body"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created",
-            "schema": {
-              "$ref": "#/definitions/CancelServiceOrder"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/cancelServiceOrder/{id}": {
-      "get": {
-        "operationId": "retrieveCancelServiceOrder",
-        "summary": "Retrieves a CancelServiceOrder by ID",
-        "description": "This operation retrieves a CancelServiceOrder entity. Attribute selection is enabled for all first level attributes.",
-        "tags": [
-          "cancelServiceOrder"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "description": "Identifier of the CancelServiceOrder",
-            "required": true,
-            "type": "string",
-            "in": "path"
-          },
-          {
-            "name": "fields",
-            "description": "Comma-separated properties to provide in response",
-            "required": false,
-            "type": "string",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/CancelServiceOrder"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/hub": {
-      "post": {
-        "operationId": "registerListener",
-        "summary": "Register a listener",
-        "description": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
-        "tags": [
-          "events subscription"
-        ],
-        "parameters": [
-          {
-            "name": "data",
-            "schema": {
-              "$ref": "#/definitions/EventSubscriptionInput"
-            },
-            "required": true,
-            "in": "body",
-            "description": "Data containing the callback endpoint to deliver the information"
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Subscribed",
-            "schema": {
-              "$ref": "#/definitions/EventSubscription"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/hub/{id}": {
-      "delete": {
-        "operationId": "unregisterListener",
-        "summary": "Unregister a listener",
-        "description": "Resets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
-        "tags": [
-          "events subscription"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "type": "string",
-            "required": true,
-            "in": "path",
-            "description": "The id of the registered listener"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Deleted"
-          },
-          "400": {
-            "description": "Bad request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/listener/serviceOrderCreateEvent": {
-      "post": {
-        "operationId": "listenToServiceOrderCreateEvent",
-        "summary": "Client listener for entity ServiceOrderCreateEvent",
-        "description": "Example of a client listener for receiving the notification ServiceOrderCreateEvent",
-        "tags": [
-          "notification listeners (client side)"
-        ],
-        "parameters": [
-          {
-            "name": "data",
-            "required": true,
-            "in": "body",
-            "description": "The event data",
-            "schema": {
-              "$ref": "#/definitions/ServiceOrderCreateEvent"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Notified",
-            "schema": {
-              "$ref": "#/definitions/EventSubscription"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/listener/serviceOrderAttributeValueChangeEvent": {
-      "post": {
-        "operationId": "listenToServiceOrderAttributeValueChangeEvent",
-        "summary": "Client listener for entity ServiceOrderAttributeValueChangeEvent",
-        "description": "Example of a client listener for receiving the notification ServiceOrderAttributeValueChangeEvent",
-        "tags": [
-          "notification listeners (client side)"
-        ],
-        "parameters": [
-          {
-            "name": "data",
-            "required": true,
-            "in": "body",
-            "description": "The event data",
-            "schema": {
-              "$ref": "#/definitions/ServiceOrderAttributeValueChangeEvent"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Notified",
-            "schema": {
-              "$ref": "#/definitions/EventSubscription"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/listener/serviceOrderStateChangeEvent": {
-      "post": {
-        "operationId": "listenToServiceOrderStateChangeEvent",
-        "summary": "Client listener for entity ServiceOrderStateChangeEvent",
-        "description": "Example of a client listener for receiving the notification ServiceOrderStateChangeEvent",
-        "tags": [
-          "notification listeners (client side)"
-        ],
-        "parameters": [
-          {
-            "name": "data",
-            "required": true,
-            "in": "body",
-            "description": "The event data",
-            "schema": {
-              "$ref": "#/definitions/ServiceOrderStateChangeEvent"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Notified",
-            "schema": {
-              "$ref": "#/definitions/EventSubscription"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/listener/serviceOrderDeleteEvent": {
-      "post": {
-        "operationId": "listenToServiceOrderDeleteEvent",
-        "summary": "Client listener for entity ServiceOrderDeleteEvent",
-        "description": "Example of a client listener for receiving the notification ServiceOrderDeleteEvent",
-        "tags": [
-          "notification listeners (client side)"
-        ],
-        "parameters": [
-          {
-            "name": "data",
-            "required": true,
-            "in": "body",
-            "description": "The event data",
-            "schema": {
-              "$ref": "#/definitions/ServiceOrderDeleteEvent"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Notified",
-            "schema": {
-              "$ref": "#/definitions/EventSubscription"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/listener/serviceOrderInformationRequiredEvent": {
-      "post": {
-        "operationId": "listenToServiceOrderInformationRequiredEvent",
-        "summary": "Client listener for entity ServiceOrderInformationRequiredEvent",
-        "description": "Example of a client listener for receiving the notification ServiceOrderInformationRequiredEvent",
-        "tags": [
-          "notification listeners (client side)"
-        ],
-        "parameters": [
-          {
-            "name": "data",
-            "required": true,
-            "in": "body",
-            "description": "The event data",
-            "schema": {
-              "$ref": "#/definitions/ServiceOrderInformationRequiredEvent"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Notified",
-            "schema": {
-              "$ref": "#/definitions/EventSubscription"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/listener/serviceOrderMilestoneEvent": {
-      "post": {
-        "operationId": "listenToServiceOrderMilestoneEvent",
-        "summary": "Client listener for entity ServiceOrderMilestoneEvent",
-        "description": "Example of a client listener for receiving the notification ServiceOrderMilestoneEvent",
-        "tags": [
-          "notification listeners (client side)"
-        ],
-        "parameters": [
-          {
-            "name": "data",
-            "required": true,
-            "in": "body",
-            "description": "The event data",
-            "schema": {
-              "$ref": "#/definitions/ServiceOrderMilestoneEvent"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Notified",
-            "schema": {
-              "$ref": "#/definitions/EventSubscription"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/listener/serviceOrderJeopardyEvent": {
-      "post": {
-        "operationId": "listenToServiceOrderJeopardyEvent",
-        "summary": "Client listener for entity ServiceOrderJeopardyEvent",
-        "description": "Example of a client listener for receiving the notification ServiceOrderJeopardyEvent",
-        "tags": [
-          "notification listeners (client side)"
-        ],
-        "parameters": [
-          {
-            "name": "data",
-            "required": true,
-            "in": "body",
-            "description": "The event data",
-            "schema": {
-              "$ref": "#/definitions/ServiceOrderJeopardyEvent"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Notified",
-            "schema": {
-              "$ref": "#/definitions/EventSubscription"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/listener/cancelServiceOrderCreateEvent": {
-      "post": {
-        "operationId": "listenToCancelServiceOrderCreateEvent",
-        "summary": "Client listener for entity CancelServiceOrderCreateEvent",
-        "description": "Example of a client listener for receiving the notification CancelServiceOrderCreateEvent",
-        "tags": [
-          "notification listeners (client side)"
-        ],
-        "parameters": [
-          {
-            "name": "data",
-            "required": true,
-            "in": "body",
-            "description": "The event data",
-            "schema": {
-              "$ref": "#/definitions/CancelServiceOrderCreateEvent"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Notified",
-            "schema": {
-              "$ref": "#/definitions/EventSubscription"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/listener/cancelServiceOrderStateChangeEvent": {
-      "post": {
-        "operationId": "listenToCancelServiceOrderStateChangeEvent",
-        "summary": "Client listener for entity CancelServiceOrderStateChangeEvent",
-        "description": "Example of a client listener for receiving the notification CancelServiceOrderStateChangeEvent",
-        "tags": [
-          "notification listeners (client side)"
-        ],
-        "parameters": [
-          {
-            "name": "data",
-            "required": true,
-            "in": "body",
-            "description": "The event data",
-            "schema": {
-              "$ref": "#/definitions/CancelServiceOrderStateChangeEvent"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Notified",
-            "schema": {
-              "$ref": "#/definitions/EventSubscription"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/listener/cancelServiceOrderInformationRequiredEvent": {
-      "post": {
-        "operationId": "listenToCancelServiceOrderInformationRequiredEvent",
-        "summary": "Client listener for entity CancelServiceOrderInformationRequiredEvent",
-        "description": "Example of a client listener for receiving the notification CancelServiceOrderInformationRequiredEvent",
-        "tags": [
-          "notification listeners (client side)"
-        ],
-        "parameters": [
-          {
-            "name": "data",
-            "required": true,
-            "in": "body",
-            "description": "The event data",
-            "schema": {
-              "$ref": "#/definitions/CancelServiceOrderInformationRequiredEvent"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Notified",
-            "schema": {
-              "$ref": "#/definitions/EventSubscription"
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "405": {
-            "description": "Method Not allowed",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    }
+#    "/cancelServiceOrder": {
+#      "get": {
+#        "operationId": "listCancelServiceOrder",
+#        "summary": "List or find CancelServiceOrder objects",
+#        "description": "This operation list or find CancelServiceOrder entities",
+#        "tags": [
+#          "cancelServiceOrder"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "fields",
+#            "description": "Comma-separated properties to be provided in response",
+#            "required": false,
+#            "in": "query",
+#            "type": "string"
+#          },
+#          {
+#            "name": "offset",
+#            "description": "Requested index for start of resources to be provided in response",
+#            "required": false,
+#            "in": "query",
+#            "type": "integer"
+#          },
+#          {
+#            "name": "limit",
+#            "description": "Requested number of resources to be provided in response",
+#            "required": false,
+#            "in": "query",
+#            "type": "integer"
+#          }
+#        ],
+#        "responses": {
+#          "200": {
+#            "description": "Success",
+#            "headers": {
+#              "X-Result-Count": {
+#                "description": "Actual number of items returned in the response body",
+#                "type": "integer"
+#              },
+#              "X-Total-Count": {
+#                "description": "Total number of items matching criteria",
+#                "type": "integer"
+#              }
+#            },
+#            "schema": {
+#              "type": "array",
+#              "items": {
+#                "$ref": "#/definitions/CancelServiceOrder"
+#              }
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      },
+#      "post": {
+#        "operationId": "createCancelServiceOrder",
+#        "summary": "Creates a CancelServiceOrder",
+#        "description": "This operation creates a CancelServiceOrder entity.",
+#        "tags": [
+#          "cancelServiceOrder"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "cancelServiceOrder",
+#            "description": "The CancelServiceOrder to be created",
+#            "required": true,
+#            "schema": {
+#              "$ref": "#/definitions/CancelServiceOrder_Create"
+#            },
+#            "in": "body"
+#          }
+#        ],
+#        "responses": {
+#          "201": {
+#            "description": "Created",
+#            "schema": {
+#              "$ref": "#/definitions/CancelServiceOrder"
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    },
+#    "/cancelServiceOrder/{id}": {
+#      "get": {
+#        "operationId": "retrieveCancelServiceOrder",
+#        "summary": "Retrieves a CancelServiceOrder by ID",
+#        "description": "This operation retrieves a CancelServiceOrder entity. Attribute selection is enabled for all first level attributes.",
+#        "tags": [
+#          "cancelServiceOrder"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "id",
+#            "description": "Identifier of the CancelServiceOrder",
+#            "required": true,
+#            "type": "string",
+#            "in": "path"
+#          },
+#          {
+#            "name": "fields",
+#            "description": "Comma-separated properties to provide in response",
+#            "required": false,
+#            "type": "string",
+#            "in": "query"
+#          }
+#        ],
+#        "responses": {
+#          "200": {
+#            "description": "Success",
+#            "schema": {
+#              "$ref": "#/definitions/CancelServiceOrder"
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    },
+#    "/hub": {
+#      "post": {
+#        "operationId": "registerListener",
+#        "summary": "Register a listener",
+#        "description": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
+#        "tags": [
+#          "events subscription"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "data",
+#            "schema": {
+#              "$ref": "#/definitions/EventSubscriptionInput"
+#            },
+#            "required": true,
+#            "in": "body",
+#            "description": "Data containing the callback endpoint to deliver the information"
+#          }
+#        ],
+#        "responses": {
+#          "201": {
+#            "description": "Subscribed",
+#            "schema": {
+#              "$ref": "#/definitions/EventSubscription"
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    },
+#    "/hub/{id}": {
+#      "delete": {
+#        "operationId": "unregisterListener",
+#        "summary": "Unregister a listener",
+#        "description": "Resets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
+#        "tags": [
+#          "events subscription"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "id",
+#            "type": "string",
+#            "required": true,
+#            "in": "path",
+#            "description": "The id of the registered listener"
+#          }
+#        ],
+#        "responses": {
+#          "204": {
+#            "description": "Deleted"
+#          },
+#          "400": {
+#            "description": "Bad request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    },
+#    "/listener/serviceOrderCreateEvent": {
+#      "post": {
+#        "operationId": "listenToServiceOrderCreateEvent",
+#        "summary": "Client listener for entity ServiceOrderCreateEvent",
+#        "description": "Example of a client listener for receiving the notification ServiceOrderCreateEvent",
+#        "tags": [
+#          "notification listeners (client side)"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "data",
+#            "required": true,
+#            "in": "body",
+#            "description": "The event data",
+#            "schema": {
+#              "$ref": "#/definitions/ServiceOrderCreateEvent"
+#            }
+#          }
+#        ],
+#        "responses": {
+#          "201": {
+#            "description": "Notified",
+#            "schema": {
+#              "$ref": "#/definitions/EventSubscription"
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    },
+#    "/listener/serviceOrderAttributeValueChangeEvent": {
+#      "post": {
+#        "operationId": "listenToServiceOrderAttributeValueChangeEvent",
+#        "summary": "Client listener for entity ServiceOrderAttributeValueChangeEvent",
+#        "description": "Example of a client listener for receiving the notification ServiceOrderAttributeValueChangeEvent",
+#        "tags": [
+#          "notification listeners (client side)"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "data",
+#            "required": true,
+#            "in": "body",
+#            "description": "The event data",
+#            "schema": {
+#              "$ref": "#/definitions/ServiceOrderAttributeValueChangeEvent"
+#            }
+#          }
+#        ],
+#        "responses": {
+#          "201": {
+#            "description": "Notified",
+#            "schema": {
+#              "$ref": "#/definitions/EventSubscription"
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    },
+#    "/listener/serviceOrderStateChangeEvent": {
+#      "post": {
+#        "operationId": "listenToServiceOrderStateChangeEvent",
+#        "summary": "Client listener for entity ServiceOrderStateChangeEvent",
+#        "description": "Example of a client listener for receiving the notification ServiceOrderStateChangeEvent",
+#        "tags": [
+#          "notification listeners (client side)"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "data",
+#            "required": true,
+#            "in": "body",
+#            "description": "The event data",
+#            "schema": {
+#              "$ref": "#/definitions/ServiceOrderStateChangeEvent"
+#            }
+#          }
+#        ],
+#        "responses": {
+#          "201": {
+#            "description": "Notified",
+#            "schema": {
+#              "$ref": "#/definitions/EventSubscription"
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    },
+#    "/listener/serviceOrderDeleteEvent": {
+#      "post": {
+#        "operationId": "listenToServiceOrderDeleteEvent",
+#        "summary": "Client listener for entity ServiceOrderDeleteEvent",
+#        "description": "Example of a client listener for receiving the notification ServiceOrderDeleteEvent",
+#        "tags": [
+#          "notification listeners (client side)"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "data",
+#            "required": true,
+#            "in": "body",
+#            "description": "The event data",
+#            "schema": {
+#              "$ref": "#/definitions/ServiceOrderDeleteEvent"
+#            }
+#          }
+#        ],
+#        "responses": {
+#          "201": {
+#            "description": "Notified",
+#            "schema": {
+#              "$ref": "#/definitions/EventSubscription"
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    },
+#    "/listener/serviceOrderInformationRequiredEvent": {
+#      "post": {
+#        "operationId": "listenToServiceOrderInformationRequiredEvent",
+#        "summary": "Client listener for entity ServiceOrderInformationRequiredEvent",
+#        "description": "Example of a client listener for receiving the notification ServiceOrderInformationRequiredEvent",
+#        "tags": [
+#          "notification listeners (client side)"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "data",
+#            "required": true,
+#            "in": "body",
+#            "description": "The event data",
+#            "schema": {
+#              "$ref": "#/definitions/ServiceOrderInformationRequiredEvent"
+#            }
+#          }
+#        ],
+#        "responses": {
+#          "201": {
+#            "description": "Notified",
+#            "schema": {
+#              "$ref": "#/definitions/EventSubscription"
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    },
+#    "/listener/serviceOrderMilestoneEvent": {
+#      "post": {
+#        "operationId": "listenToServiceOrderMilestoneEvent",
+#        "summary": "Client listener for entity ServiceOrderMilestoneEvent",
+#        "description": "Example of a client listener for receiving the notification ServiceOrderMilestoneEvent",
+#        "tags": [
+#          "notification listeners (client side)"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "data",
+#            "required": true,
+#            "in": "body",
+#            "description": "The event data",
+#            "schema": {
+#              "$ref": "#/definitions/ServiceOrderMilestoneEvent"
+#            }
+#          }
+#        ],
+#        "responses": {
+#          "201": {
+#            "description": "Notified",
+#            "schema": {
+#              "$ref": "#/definitions/EventSubscription"
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    },
+#    "/listener/serviceOrderJeopardyEvent": {
+#      "post": {
+#        "operationId": "listenToServiceOrderJeopardyEvent",
+#        "summary": "Client listener for entity ServiceOrderJeopardyEvent",
+#        "description": "Example of a client listener for receiving the notification ServiceOrderJeopardyEvent",
+#        "tags": [
+#          "notification listeners (client side)"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "data",
+#            "required": true,
+#            "in": "body",
+#            "description": "The event data",
+#            "schema": {
+#              "$ref": "#/definitions/ServiceOrderJeopardyEvent"
+#            }
+#          }
+#        ],
+#        "responses": {
+#          "201": {
+#            "description": "Notified",
+#            "schema": {
+#              "$ref": "#/definitions/EventSubscription"
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    },
+#    "/listener/cancelServiceOrderCreateEvent": {
+#      "post": {
+#        "operationId": "listenToCancelServiceOrderCreateEvent",
+#        "summary": "Client listener for entity CancelServiceOrderCreateEvent",
+#        "description": "Example of a client listener for receiving the notification CancelServiceOrderCreateEvent",
+#        "tags": [
+#          "notification listeners (client side)"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "data",
+#            "required": true,
+#            "in": "body",
+#            "description": "The event data",
+#            "schema": {
+#              "$ref": "#/definitions/CancelServiceOrderCreateEvent"
+#            }
+#          }
+#        ],
+#        "responses": {
+#          "201": {
+#            "description": "Notified",
+#            "schema": {
+#              "$ref": "#/definitions/EventSubscription"
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    },
+#    "/listener/cancelServiceOrderStateChangeEvent": {
+#      "post": {
+#        "operationId": "listenToCancelServiceOrderStateChangeEvent",
+#        "summary": "Client listener for entity CancelServiceOrderStateChangeEvent",
+#        "description": "Example of a client listener for receiving the notification CancelServiceOrderStateChangeEvent",
+#        "tags": [
+#          "notification listeners (client side)"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "data",
+#            "required": true,
+#            "in": "body",
+#            "description": "The event data",
+#            "schema": {
+#              "$ref": "#/definitions/CancelServiceOrderStateChangeEvent"
+#            }
+#          }
+#        ],
+#        "responses": {
+#          "201": {
+#            "description": "Notified",
+#            "schema": {
+#              "$ref": "#/definitions/EventSubscription"
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    },
+#    "/listener/cancelServiceOrderInformationRequiredEvent": {
+#      "post": {
+#        "operationId": "listenToCancelServiceOrderInformationRequiredEvent",
+#        "summary": "Client listener for entity CancelServiceOrderInformationRequiredEvent",
+#        "description": "Example of a client listener for receiving the notification CancelServiceOrderInformationRequiredEvent",
+#        "tags": [
+#          "notification listeners (client side)"
+#        ],
+#        "parameters": [
+#          {
+#            "name": "data",
+#            "required": true,
+#            "in": "body",
+#            "description": "The event data",
+#            "schema": {
+#              "$ref": "#/definitions/CancelServiceOrderInformationRequiredEvent"
+#            }
+#          }
+#        ],
+#        "responses": {
+#          "201": {
+#            "description": "Notified",
+#            "schema": {
+#              "$ref": "#/definitions/EventSubscription"
+#            }
+#          },
+#          "400": {
+#            "description": "Bad Request",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "401": {
+#            "description": "Unauthorized",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "403": {
+#            "description": "Forbidden",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "404": {
+#            "description": "Not Found",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "405": {
+#            "description": "Method Not allowed",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "409": {
+#            "description": "Conflict",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          },
+#          "500": {
+#            "description": "Internal Server Error",
+#            "schema": {
+#              "$ref": "#/definitions/Error"
+#            }
+#          }
+#        }
+#      }
+#    }
   },
   "definitions": {
-    "Addressable": {
-      "type": "object",
-      "description": "Base schema for adressable entities",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "unique identifier"
-        },
-        "href": {
-          "type": "string",
-          "format": "uri",
-          "description": "Hyperlink reference"
-        }
-      }
-    },
+#    "Addressable": {
+#      "type": "object",
+#      "description": "Base schema for adressable entities",
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "unique identifier"
+#        },
+#        "href": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "Hyperlink reference"
+#        }
+#      }
+#    },
     "Any": {},
     "AppointmentRef": {
       "type": "object",
@@ -1538,142 +1538,142 @@
         "id"
       ]
     },
-    "CancelOrder": {
-      "type": "object",
-      "description": "A Order cancel is a type of task which  can  be used to place a request to cancel an order",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "id of the cancellation request (this is not an order id)"
-        },
-        "href": {
-          "type": "string",
-          "description": "Hyperlink to access the cancellation request"
-        },
-        "cancellationReason": {
-          "type": "string",
-          "description": "Reason why the order is cancelled."
-        },
-        "effectiveCancellationDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date when the order is cancelled."
-        },
-        "requestedCancellationDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date when the submitter wants the order to be cancelled"
-        },
-        "state": {
-          "$ref": "#/definitions/TaskStateType",
-          "description": "Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on."
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        }
-      }
-    },
-    "CancelServiceOrder": {
-      "type": "object",
-      "description": "Request for cancellation an existing Service order",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "unique identifier"
-        },
-        "href": {
-          "type": "string",
-          "format": "uri",
-          "description": "Hyperlink reference"
-        },
-        "cancellationReason": {
-          "type": "string",
-          "description": "Reason why the order is cancelled."
-        },
-        "completionMessage": {
-          "type": "string",
-          "description": "an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR)."
-        },
-        "effectiveCancellationDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date when the order is cancelled."
-        },
-        "requestedCancellationDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date when the submitter wants the order to be cancelled"
-        },
-        "errorMessage": {
-          "$ref": "#/definitions/ErrorMessage",
-          "description": "the error(s) cause the termination of cancelServiceOrder (in TerminatedWithError state)"
-        },
-        "serviceOrder": {
-          "$ref": "#/definitions/ServiceOrderRef"
-        },
-        "state": {
-          "$ref": "#/definitions/TaskStateType",
-          "description": "Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on."
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        }
-      }
-    },
-    "CancelServiceOrder_Create": {
-      "type": "object",
-      "description": "Request for cancellation an existing Service order\nSkipped properties: id,href,state,effectiveCancellationDate,completionMessage,errorMessage",
-      "required": [
-        "serviceOrder"
-      ],
-      "properties": {
-        "cancellationReason": {
-          "type": "string",
-          "description": "Reason why the order is cancelled."
-        },
-        "requestedCancellationDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date when the submitter wants the order to be cancelled"
-        },
-        "serviceOrder": {
-          "$ref": "#/definitions/ServiceOrderRef"
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        }
-      }
-    },
+#    "CancelOrder": {
+#      "type": "object",
+#      "description": "A Order cancel is a type of task which  can  be used to place a request to cancel an order",
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "id of the cancellation request (this is not an order id)"
+#        },
+#        "href": {
+#          "type": "string",
+#          "description": "Hyperlink to access the cancellation request"
+#        },
+#        "cancellationReason": {
+#          "type": "string",
+#          "description": "Reason why the order is cancelled."
+#        },
+#        "effectiveCancellationDate": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Date when the order is cancelled."
+#        },
+#        "requestedCancellationDate": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Date when the submitter wants the order to be cancelled"
+#        },
+#        "state": {
+#          "$ref": "#/definitions/TaskStateType",
+#          "description": "Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on."
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        }
+#      }
+#    },
+#    "CancelServiceOrder": {
+#      "type": "object",
+#      "description": "Request for cancellation an existing Service order",
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "unique identifier"
+#        },
+#        "href": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "Hyperlink reference"
+#        },
+#        "cancellationReason": {
+#          "type": "string",
+#          "description": "Reason why the order is cancelled."
+#        },
+#        "completionMessage": {
+#          "type": "string",
+#          "description": "an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR)."
+#        },
+#        "effectiveCancellationDate": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Date when the order is cancelled."
+#        },
+#        "requestedCancellationDate": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Date when the submitter wants the order to be cancelled"
+#        },
+#        "errorMessage": {
+#          "$ref": "#/definitions/ErrorMessage",
+#          "description": "the error(s) cause the termination of cancelServiceOrder (in TerminatedWithError state)"
+#        },
+#        "serviceOrder": {
+#          "$ref": "#/definitions/ServiceOrderRef"
+#        },
+#        "state": {
+#          "$ref": "#/definitions/TaskStateType",
+#          "description": "Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on."
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        }
+#      }
+#    },
+#    "CancelServiceOrder_Create": {
+#      "type": "object",
+#      "description": "Request for cancellation an existing Service order\nSkipped properties: id,href,state,effectiveCancellationDate,completionMessage,errorMessage",
+#      "required": [
+#        "serviceOrder"
+#      ],
+#      "properties": {
+#        "cancellationReason": {
+#          "type": "string",
+#          "description": "Reason why the order is cancelled."
+#        },
+#        "requestedCancellationDate": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Date when the submitter wants the order to be cancelled"
+#        },
+#        "serviceOrder": {
+#          "$ref": "#/definitions/ServiceOrderRef"
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        }
+#      }
+#    },
     "Characteristic": {
       "type": "object",
       "description": "Describes a given characteristic of an object or entity through a name/value pair.",
@@ -1794,159 +1794,159 @@
         "id"
       ]
     },
-    "Entity": {
-      "type": "object",
-      "description": "Base entity schema for use in TMForum Open-APIs",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "unique identifier"
-        },
-        "href": {
-          "type": "string",
-          "format": "uri",
-          "description": "Hyperlink reference"
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        }
-      }
-    },
-    "EntityRef": {
-      "type": "object",
-      "description": "Entity reference schema to be use for all entityRef class.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "unique identifier"
-        },
-        "href": {
-          "type": "string",
-          "format": "uri",
-          "description": "Hyperlink reference"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the related entity."
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        },
-        "@referredType": {
-          "type": "string",
-          "description": "The actual type of the target instance when needed for disambiguation."
-        }
-      },
-      "required": [
-        "id"
-      ]
-    },
-    "EntityValue": {
-      "type": "object",
-      "description": "Base entity value  schema for use in TMForum Open-APIs",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier of a related entity."
-        },
-        "href": {
-          "type": "string",
-          "description": "Reference of the related entity."
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        }
-      }
-    },
-    "ErrorMessage": {
-      "type": "object",
-      "description": "represents an Error",
-      "properties": {
-        "code": {
-          "type": "string",
-          "description": "error code"
-        },
-        "message": {
-          "type": "string",
-          "description": "More details and corrective actions related to the error"
-        },
-        "reason": {
-          "type": "string",
-          "description": "Explanation of the reason for the error"
-        },
-        "referenceError": {
-          "type": "string",
-          "format": "uri",
-          "description": "URI of documentation describing the error"
-        },
-        "status": {
-          "type": "string",
-          "description": "error code extension like sys-ABC-2001"
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        }
-      }
-    },
-    "Extensible": {
-      "type": "object",
-      "description": "Base Extensible schema for use in TMForum Open-APIs",
-      "properties": {
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        }
-      }
-    },
+#    "Entity": {
+#      "type": "object",
+#      "description": "Base entity schema for use in TMForum Open-APIs",
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "unique identifier"
+#        },
+#        "href": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "Hyperlink reference"
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        }
+#      }
+#    },
+#    "EntityRef": {
+#      "type": "object",
+#      "description": "Entity reference schema to be use for all entityRef class.",
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "unique identifier"
+#        },
+#        "href": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "Hyperlink reference"
+#        },
+#        "name": {
+#          "type": "string",
+#          "description": "Name of the related entity."
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        },
+#        "@referredType": {
+#          "type": "string",
+#          "description": "The actual type of the target instance when needed for disambiguation."
+#        }
+#      },
+#      "required": [
+#        "id"
+#      ]
+#    },
+#    "EntityValue": {
+#      "type": "object",
+#      "description": "Base entity value  schema for use in TMForum Open-APIs",
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "Unique identifier of a related entity."
+#        },
+#        "href": {
+#          "type": "string",
+#          "description": "Reference of the related entity."
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        }
+#      }
+#    },
+#    "ErrorMessage": {
+#      "type": "object",
+#      "description": "represents an Error",
+#      "properties": {
+#        "code": {
+#          "type": "string",
+#          "description": "error code"
+#        },
+#        "message": {
+#          "type": "string",
+#          "description": "More details and corrective actions related to the error"
+#        },
+#        "reason": {
+#          "type": "string",
+#          "description": "Explanation of the reason for the error"
+#        },
+#        "referenceError": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "URI of documentation describing the error"
+#        },
+#        "status": {
+#          "type": "string",
+#          "description": "error code extension like sys-ABC-2001"
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        }
+#      }
+#    },
+#    "Extensible": {
+#      "type": "object",
+#      "description": "Base Extensible schema for use in TMForum Open-APIs",
+#      "properties": {
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        }
+#      }
+#    },
     "ExternalReference": {
       "type": "object",
       "description": "External reference of the individual or reference in other system",
@@ -2059,94 +2059,94 @@
         }
       }
     },
-    "JeopardyAlert": {
-      "type": "object",
-      "description": "A JeopardyAlert represents a predicted exception during a process that may cause a risk to complete successfully the process.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "identifier of the JeopardyAlert"
-        },
-        "alertDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "A date time( DateTime). The date that the alert issued"
-        },
-        "exception": {
-          "type": "string",
-          "description": " The exception associated with this jeopardy alert"
-        },
-        "jeopardyType": {
-          "type": "string",
-          "description": "A string represents the type of jeopardy/risk like Normal, Hazard, Critical, ..."
-        },
-        "message": {
-          "type": "string",
-          "description": "A string represents the message of the alert"
-        },
-        "name": {
-          "type": "string",
-          "description": "A string used to give a name to the jeopardy alert"
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        }
-      }
-    },
-    "Milestone": {
-      "type": "object",
-      "description": "Milestone represents an action or event marking a significant change or stage in a process like an order process.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "identifier of the Milestone"
-        },
-        "description": {
-          "type": "string",
-          "description": "free-text description of the Milestone"
-        },
-        "message": {
-          "type": "string",
-          "description": "A string represents the message of the milestone"
-        },
-        "milestoneDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "A date time( DateTime). The date that the milestone happens"
-        },
-        "name": {
-          "type": "string",
-          "description": "A string used to give a name to the milestone"
-        },
-        "status": {
-          "type": "string",
-          "description": "The milestone status"
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        }
-      }
-    },
+#    "JeopardyAlert": {
+#      "type": "object",
+#      "description": "A JeopardyAlert represents a predicted exception during a process that may cause a risk to complete successfully the process.",
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "identifier of the JeopardyAlert"
+#        },
+#        "alertDate": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "A date time( DateTime). The date that the alert issued"
+#        },
+#        "exception": {
+#          "type": "string",
+#          "description": " The exception associated with this jeopardy alert"
+#        },
+#        "jeopardyType": {
+#          "type": "string",
+#          "description": "A string represents the type of jeopardy/risk like Normal, Hazard, Critical, ..."
+#        },
+#        "message": {
+#          "type": "string",
+#          "description": "A string represents the message of the alert"
+#        },
+#        "name": {
+#          "type": "string",
+#          "description": "A string used to give a name to the jeopardy alert"
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        }
+#      }
+#    },
+#    "Milestone": {
+#      "type": "object",
+#      "description": "Milestone represents an action or event marking a significant change or stage in a process like an order process.",
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "identifier of the Milestone"
+#        },
+#        "description": {
+#          "type": "string",
+#          "description": "free-text description of the Milestone"
+#        },
+#        "message": {
+#          "type": "string",
+#          "description": "A string represents the message of the milestone"
+#        },
+#        "milestoneDate": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "A date time( DateTime). The date that the milestone happens"
+#        },
+#        "name": {
+#          "type": "string",
+#          "description": "A string used to give a name to the milestone"
+#        },
+#        "status": {
+#          "type": "string",
+#          "description": "The milestone status"
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        }
+#      }
+#    },
     "Note": {
       "type": "object",
       "description": "Extra information about a given entity",
@@ -2177,9 +2177,7 @@
           "description": "Date of the note"
         },
         "text": {
-          "example": [
-            "This is important"
-          ],
+          "example": "This is important",
           "type": "string",
           "description": "Text of the note"
         },
@@ -2208,76 +2206,76 @@
         "noChange"
       ]
     },
-    "Place": {
-      "type": "object",
-      "description": "Place reference. Place defines the places where the products are sold or delivered.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier of the place"
-        },
-        "href": {
-          "type": "string",
-          "description": "Unique reference of the place"
-        },
-        "name": {
-          "type": "string",
-          "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]"
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        }
-      }
-    },
-    "PlaceRef": {
-      "type": "object",
-      "description": "Place reference. PlaceRef defines the placeRefs where the products are sold or delivered.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "unique identifier"
-        },
-        "href": {
-          "type": "string",
-          "format": "uri",
-          "description": "Hyperlink reference"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the related entity."
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        },
-        "@referredType": {
-          "type": "string",
-          "description": "The actual type of the target instance when needed for disambiguation."
-        }
-      },
-      "required": [
-        "id"
-      ]
-    },
+#    "Place": {
+#      "type": "object",
+#      "description": "Place reference. Place defines the places where the products are sold or delivered.",
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "Unique identifier of the place"
+#        },
+#        "href": {
+#          "type": "string",
+#          "description": "Unique reference of the place"
+#        },
+#        "name": {
+#          "type": "string",
+#          "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]"
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        }
+#      }
+#    },
+#    "PlaceRef": {
+#      "type": "object",
+#      "description": "Place reference. PlaceRef defines the placeRefs where the products are sold or delivered.",
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "unique identifier"
+#        },
+#        "href": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "Hyperlink reference"
+#        },
+#        "name": {
+#          "type": "string",
+#          "description": "Name of the related entity."
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        },
+#        "@referredType": {
+#          "type": "string",
+#          "description": "The actual type of the target instance when needed for disambiguation."
+#        }
+#      },
+#      "required": [
+#        "id"
+#      ]
+#    },
     "RelatedEntityRefOrValue": {
       "type": "object",
       "description": "A reference to an entity, where the type of the entity is not known in advance. A related entity defines a entity described by reference or by value linked to a specific entity. The polymorphic attributes @type, @schemaLocation & @referredType are related to the Entity and not the RelatedEntityRefOrValue class itself",
@@ -2495,161 +2493,161 @@
         "id"
       ]
     },
-    "Service": {
-      "type": "object",
-      "description": "Service is a base class for defining the Service hierarchy. All Services are characterized as either being possibly visible and usable by a Customer or not. This gives rise to the two subclasses of Service: CustomerFacingService and ResourceFacingService.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier of the service"
-        },
-        "href": {
-          "type": "string",
-          "description": "Reference of the service"
-        },
-        "category": {
-          "type": "string",
-          "description": "Is it a customer facing or resource facing service"
-        },
-        "description": {
-          "type": "string",
-          "description": "Free-text description of the service"
-        },
-        "endDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date when the service ends"
-        },
-        "hasStarted": {
-          "type": "boolean",
-          "description": "If TRUE, this Service has already been started"
-        },
-        "isBundle": {
-          "type": "boolean",
-          "description": "If true, the service is a ServiceBundle which regroup a service hierachy. If false, the service is a 'atomic' service (hierachy leaf)."
-        },
-        "isServiceEnabled": {
-          "type": "boolean",
-          "description": "If FALSE and hasStarted is FALSE, this particular Service has NOT been enabled for use - if FALSE and hasStarted is TRUE then the service has failed "
-        },
-        "isStateful": {
-          "type": "boolean",
-          "description": "If TRUE, this Service can be changed without affecting any other services"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the service"
-        },
-        "serviceDate": {
-          "type": "string",
-          "description": "Date when the service was created (whatever its status)."
-        },
-        "serviceType": {
-          "type": "string",
-          "description": "Business type of the service"
-        },
-        "startDate": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date when the service starts"
-        },
-        "startMode": {
-          "type": "string",
-          "description": "This attribute is an enumerated integer that indicates how the Service is started, such as: 0: Unknown; 1: Automatically by the managed environment; 2: Automatically by the owning device; 3: Manually by the Provider of the Service; 4: Manually by a Customer of the Provider; 5: Any of the above"
-        },
-        "feature": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Feature"
-          },
-          "description": "A list of feature associated with this service "
-        },
-        "note": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Note"
-          },
-          "description": "A list of notes made on this service"
-        },
-        "place": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RelatedPlaceRefOrValue"
-          },
-          "description": "A list of places (Place [*]). Used to define a place useful for the service (for example a geographical place whre the service is installed)"
-        },
-        "relatedEntity": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RelatedEntityRefOrValue"
-          },
-          "description": "A list of related  entity in relationship with this service "
-        },
-        "relatedParty": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RelatedParty"
-          },
-          "description": "A list of related party references (RelatedParty [*]). A related party defines party or party role linked to a specific entity"
-        },
-        "serviceCharacteristic": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Characteristic"
-          },
-          "description": "A list of characteristics that characterize this service (ServiceCharacteristic [*]) "
-        },
-        "serviceOrderItem": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RelatedServiceOrderItem"
-          },
-          "description": "A list of service order items related to this service"
-        },
-        "serviceRelationship": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ServiceRelationship"
-          },
-          "description": "A list of service relationships (ServiceRelationship [*]). Describes links with other service(s) in the inventory."
-        },
-        "serviceSpecification": {
-          "$ref": "#/definitions/ServiceSpecificationRef",
-          "description": "The specification from which this service was instantiated"
-        },
-        "state": {
-          "$ref": "#/definitions/ServiceStateType",
-          "description": "The life cycle state of the service, such as designed, reserved, active, etc..."
-        },
-        "supportingResource": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ResourceRef"
-          },
-          "description": "A list of supporting resources (SupportingResource [*]).Note: only Service of type RFS can be associated with Resources"
-        },
-        "supportingService": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ServiceRefOrValue"
-          },
-          "description": "A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)"
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        }
-      }
-    },
+#    "Service": {
+#      "type": "object",
+#      "description": "Service is a base class for defining the Service hierarchy. All Services are characterized as either being possibly visible and usable by a Customer or not. This gives rise to the two subclasses of Service: CustomerFacingService and ResourceFacingService.",
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "Unique identifier of the service"
+#        },
+#        "href": {
+#          "type": "string",
+#          "description": "Reference of the service"
+#        },
+#        "category": {
+#          "type": "string",
+#          "description": "Is it a customer facing or resource facing service"
+#        },
+#        "description": {
+#          "type": "string",
+#          "description": "Free-text description of the service"
+#        },
+#        "endDate": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Date when the service ends"
+#        },
+#        "hasStarted": {
+#          "type": "boolean",
+#          "description": "If TRUE, this Service has already been started"
+#        },
+#        "isBundle": {
+#          "type": "boolean",
+#          "description": "If true, the service is a ServiceBundle which regroup a service hierachy. If false, the service is a 'atomic' service (hierachy leaf)."
+#        },
+#        "isServiceEnabled": {
+#          "type": "boolean",
+#          "description": "If FALSE and hasStarted is FALSE, this particular Service has NOT been enabled for use - if FALSE and hasStarted is TRUE then the service has failed "
+#        },
+#        "isStateful": {
+#          "type": "boolean",
+#          "description": "If TRUE, this Service can be changed without affecting any other services"
+#        },
+#        "name": {
+#          "type": "string",
+#          "description": "Name of the service"
+#        },
+#        "serviceDate": {
+#          "type": "string",
+#          "description": "Date when the service was created (whatever its status)."
+#        },
+#        "serviceType": {
+#          "type": "string",
+#          "description": "Business type of the service"
+#        },
+#        "startDate": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Date when the service starts"
+#        },
+#        "startMode": {
+#          "type": "string",
+#          "description": "This attribute is an enumerated integer that indicates how the Service is started, such as: 0: Unknown; 1: Automatically by the managed environment; 2: Automatically by the owning device; 3: Manually by the Provider of the Service; 4: Manually by a Customer of the Provider; 5: Any of the above"
+#        },
+#        "feature": {
+#          "type": "array",
+#          "items": {
+#            "$ref": "#/definitions/Feature"
+#          },
+#          "description": "A list of feature associated with this service "
+#        },
+#        "note": {
+#          "type": "array",
+#          "items": {
+#            "$ref": "#/definitions/Note"
+#          },
+#          "description": "A list of notes made on this service"
+#        },
+#        "place": {
+#          "type": "array",
+#          "items": {
+#            "$ref": "#/definitions/RelatedPlaceRefOrValue"
+#          },
+#          "description": "A list of places (Place [*]). Used to define a place useful for the service (for example a geographical place whre the service is installed)"
+#        },
+#        "relatedEntity": {
+#          "type": "array",
+#          "items": {
+#            "$ref": "#/definitions/RelatedEntityRefOrValue"
+#          },
+#          "description": "A list of related  entity in relationship with this service "
+#        },
+#        "relatedParty": {
+#          "type": "array",
+#          "items": {
+#            "$ref": "#/definitions/RelatedParty"
+#          },
+#          "description": "A list of related party references (RelatedParty [*]). A related party defines party or party role linked to a specific entity"
+#        },
+#        "serviceCharacteristic": {
+#          "type": "array",
+#          "items": {
+#            "$ref": "#/definitions/Characteristic"
+#          },
+#          "description": "A list of characteristics that characterize this service (ServiceCharacteristic [*]) "
+#        },
+#        "serviceOrderItem": {
+#          "type": "array",
+#          "items": {
+#            "$ref": "#/definitions/RelatedServiceOrderItem"
+#          },
+#          "description": "A list of service order items related to this service"
+#        },
+#        "serviceRelationship": {
+#          "type": "array",
+#          "items": {
+#            "$ref": "#/definitions/ServiceRelationship"
+#          },
+#          "description": "A list of service relationships (ServiceRelationship [*]). Describes links with other service(s) in the inventory."
+#        },
+#        "serviceSpecification": {
+#          "$ref": "#/definitions/ServiceSpecificationRef",
+#          "description": "The specification from which this service was instantiated"
+#        },
+#        "state": {
+#          "$ref": "#/definitions/ServiceStateType",
+#          "description": "The life cycle state of the service, such as designed, reserved, active, etc..."
+#        },
+#        "supportingResource": {
+#          "type": "array",
+#          "items": {
+#            "$ref": "#/definitions/ResourceRef"
+#          },
+#          "description": "A list of supporting resources (SupportingResource [*]).Note: only Service of type RFS can be associated with Resources"
+#        },
+#        "supportingService": {
+#          "type": "array",
+#          "items": {
+#            "$ref": "#/definitions/ServiceRefOrValue"
+#          },
+#          "description": "A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)"
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        }
+#      }
+#    },
     "ServiceOrder": {
       "type": "object",
       "properties": {
@@ -2719,13 +2717,13 @@
           "format": "date-time",
           "description": "Date when the order was started for processing"
         },
-        "errorMessage": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ServiceOrderErrorMessage"
-          },
-          "description": "the error(s) cause an order status change"
-        },
+#        "errorMessage": {
+#          "type": "array",
+#          "items": {
+#            "$ref": "#/definitions/ServiceOrderErrorMessage"
+#          },
+#          "description": "the error(s) cause an order status change"
+#        },
         "externalReference": {
           "type": "array",
           "items": {
@@ -2964,58 +2962,58 @@
         }
       }
     },
-    "ServiceOrderErrorMessage": {
-      "type": "object",
-      "description": "A ServiceOrderErrorMessage represents an error that causes a status change in a service order.",
-      "properties": {
-        "code": {
-          "type": "string",
-          "description": "error code"
-        },
-        "message": {
-          "type": "string",
-          "description": "More details and corrective actions related to the error"
-        },
-        "reason": {
-          "type": "string",
-          "description": "Explanation of the reason for the error"
-        },
-        "referenceError": {
-          "type": "string",
-          "format": "uri",
-          "description": "URI of documentation describing the error"
-        },
-        "status": {
-          "type": "string",
-          "description": "error code extension like sys-ABC-2001"
-        },
-        "timestamp": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date when the error happened"
-        },
-        "serviceOrderItem": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ServiceOrderItemRef"
-          },
-          "description": "A list of order item references corresponded to this error"
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        }
-      }
-    },
+#    "ServiceOrderErrorMessage": {
+#      "type": "object",
+#      "description": "A ServiceOrderErrorMessage represents an error that causes a status change in a service order.",
+#      "properties": {
+#        "code": {
+#          "type": "string",
+#          "description": "error code"
+#        },
+#        "message": {
+#          "type": "string",
+#          "description": "More details and corrective actions related to the error"
+#        },
+#        "reason": {
+#          "type": "string",
+#          "description": "Explanation of the reason for the error"
+#        },
+#        "referenceError": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "URI of documentation describing the error"
+#        },
+#        "status": {
+#          "type": "string",
+#          "description": "error code extension like sys-ABC-2001"
+#        },
+#        "timestamp": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Date when the error happened"
+#        },
+#        "serviceOrderItem": {
+#          "type": "array",
+#          "items": {
+#            "$ref": "#/definitions/ServiceOrderItemRef"
+#          },
+#          "description": "A list of order item references corresponded to this error"
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        }
+#      }
+#    },
     "ServiceOrderItem": {
       "type": "object",
       "required": [
@@ -3317,45 +3315,45 @@
         }
       }
     },
-    "ServiceOrderRef": {
-      "type": "object",
-      "description": "Service Order reference. Useful to understand the which was the Service order through which the service was instantiated in the service inventory",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "unique identifier"
-        },
-        "href": {
-          "type": "string",
-          "format": "uri",
-          "description": "Hyperlink reference"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the related service order"
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        },
-        "@referredType": {
-          "type": "string",
-          "description": "The actual type of the target instance when needed for disambiguation."
-        }
-      },
-      "required": [
-        "id"
-      ]
-    },
+#    "ServiceOrderRef": {
+#      "type": "object",
+#      "description": "Service Order reference. Useful to understand the which was the Service order through which the service was instantiated in the service inventory",
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "unique identifier"
+#        },
+#        "href": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "Hyperlink reference"
+#        },
+#        "name": {
+#          "type": "string",
+#          "description": "Name of the related service order"
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        },
+#        "@referredType": {
+#          "type": "string",
+#          "description": "The actual type of the target instance when needed for disambiguation."
+#        }
+#      },
+#      "required": [
+#        "id"
+#      ]
+#    },
     "ServiceOrderRelationship": {
       "type": "object",
       "description": "Linked service order to the one containing this attribute",
@@ -3412,45 +3410,45 @@
         "pendingCancellation"
       ]
     },
-    "ServiceRef": {
-      "type": "object",
-      "description": "Service reference, for when Service is used by other entities",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "unique identifier"
-        },
-        "href": {
-          "type": "string",
-          "format": "uri",
-          "description": "Hyperlink reference"
-        },
-        "name": {
-          "type": "string",
-          "description": "Name of the related entity."
-        },
-        "@baseType": {
-          "type": "string",
-          "description": "When sub-classing, this defines the super-class"
-        },
-        "@schemaLocation": {
-          "type": "string",
-          "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
-        },
-        "@type": {
-          "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
-        },
-        "@referredType": {
-          "type": "string",
-          "description": "The actual type of the target instance when needed for disambiguation."
-        }
-      },
-      "required": [
-        "id"
-      ]
-    },
+#    "ServiceRef": {
+#      "type": "object",
+#      "description": "Service reference, for when Service is used by other entities",
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "unique identifier"
+#        },
+#        "href": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "Hyperlink reference"
+#        },
+#        "name": {
+#          "type": "string",
+#          "description": "Name of the related entity."
+#        },
+#        "@baseType": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the super-class"
+#        },
+#        "@schemaLocation": {
+#          "type": "string",
+#          "format": "uri",
+#          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+#        },
+#        "@type": {
+#          "type": "string",
+#          "description": "When sub-classing, this defines the sub-class Extensible name"
+#        },
+#        "@referredType": {
+#          "type": "string",
+#          "description": "The actual type of the target instance when needed for disambiguation."
+#        }
+#      },
+#      "required": [
+#        "id"
+#      ]
+#    },
     "ServiceRefOrValue": {
       "type": "object",
       "description": "A Service to be created defined by value or existing defined by reference. The polymorphic attributes @type, @schemaLocation & @referredType are related to the Service entity and not the RelatedServiceRefOrValue class itself",
@@ -3707,16 +3705,16 @@
         "terminated"
       ]
     },
-    "TaskStateType": {
-      "type": "string",
-      "description": "Possible values for the state of a task",
-      "enum": [
-        "accepted",
-        "terminatedWithError",
-        "inProgress",
-        "done"
-      ]
-    },
+#    "TaskStateType": {
+#      "type": "string",
+#      "description": "Possible values for the state of a task",
+#      "enum": [
+#        "accepted",
+#        "terminatedWithError",
+#        "inProgress",
+#        "done"
+#      ]
+#    },
     "TimePeriod": {
       "type": "object",
       "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
@@ -3735,637 +3733,637 @@
         }
       }
     },
-    "EventSubscription": {
-      "type": "object",
-      "description": "Sets the communication endpoint address the service instance must use to deliver notification information",
-      "required": [
-        "id",
-        "callback"
-      ],
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Id of the listener"
-        },
-        "callback": {
-          "type": "string",
-          "description": "The callback being registered."
-        },
-        "query": {
-          "type": "string",
-          "description": "additional data to be passed"
-        }
-      }
-    },
-    "EventSubscriptionInput": {
-      "type": "object",
-      "description": "Sets the communication endpoint address the service instance must use to deliver notification information",
-      "required": [
-        "callback"
-      ],
-      "properties": {
-        "callback": {
-          "type": "string",
-          "description": "The callback being registered."
-        },
-        "query": {
-          "type": "string",
-          "description": "additional data to be passed"
-        }
-      }
-    },
-    "ServiceOrderCreateEvent": {
-      "type": "object",
-      "description": "The notification data structure",
-      "properties": {
-        "event": {
-          "description": "The event payload linked to the involved resource object",
-          "$ref": "#/definitions/ServiceOrderCreateEventPayload"
-        },
-        "eventId": {
-          "type": "string",
-          "description": "The identifier of the notification."
-        },
-        "eventTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time of the event occurrence."
-        },
-        "eventType": {
-          "type": "string",
-          "description": "The type of the notification."
-        },
-        "correlationId": {
-          "type": "string",
-          "description": "The correlation id for this event."
-        },
-        "domain": {
-          "type": "string",
-          "description": "The domain of the event."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the event."
-        },
-        "description": {
-          "type": "string",
-          "description": "An explnatory of the event."
-        },
-        "priority": {
-          "type": "string",
-          "description": "A priority."
-        },
-        "timeOcurred": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The time the event occured."
-        }
-      }
-    },
-    "ServiceOrderCreateEventPayload": {
-      "type": "object",
-      "description": "The event data structure",
-      "properties": {
-        "serviceOrder": {
-          "description": "The involved resource data for the event",
-          "$ref": "#/definitions/ServiceOrder"
-        }
-      }
-    },
-    "ServiceOrderAttributeValueChangeEvent": {
-      "type": "object",
-      "description": "The notification data structure",
-      "properties": {
-        "eventId": {
-          "type": "string",
-          "description": "The identifier of the notification."
-        },
-        "eventTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time of the event occurrence."
-        },
-        "eventType": {
-          "type": "string",
-          "description": "The type of the notification."
-        },
-        "correlationId": {
-          "type": "string",
-          "description": "The correlation id for this event."
-        },
-        "domain": {
-          "type": "string",
-          "description": "The domain of the event."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the event."
-        },
-        "description": {
-          "type": "string",
-          "description": "An explnatory of the event."
-        },
-        "priority": {
-          "type": "string",
-          "description": "A priority."
-        },
-        "timeOcurred": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The time the event occured."
-        },
-        "fieldPath": {
-          "type": "string",
-          "description": "The path identifying the object field concerned by this notification."
-        },
-        "event": {
-          "description": "The event payload linked to the involved resource object",
-          "$ref": "#/definitions/ServiceOrderAttributeValueChangeEventPayload"
-        }
-      }
-    },
-    "ServiceOrderAttributeValueChangeEventPayload": {
-      "type": "object",
-      "description": "The event data structure",
-      "properties": {
-        "serviceOrder": {
-          "description": "The involved resource data for the event",
-          "$ref": "#/definitions/ServiceOrder"
-        }
-      }
-    },
-    "ServiceOrderStateChangeEvent": {
-      "type": "object",
-      "description": "The notification data structure",
-      "properties": {
-        "event": {
-          "description": "The event payload linked to the involved resource object",
-          "$ref": "#/definitions/ServiceOrderStateChangeEventPayload"
-        },
-        "eventId": {
-          "type": "string",
-          "description": "The identifier of the notification."
-        },
-        "eventTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time of the event occurrence."
-        },
-        "eventType": {
-          "type": "string",
-          "description": "The type of the notification."
-        },
-        "correlationId": {
-          "type": "string",
-          "description": "The correlation id for this event."
-        },
-        "domain": {
-          "type": "string",
-          "description": "The domain of the event."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the event."
-        },
-        "description": {
-          "type": "string",
-          "description": "An explnatory of the event."
-        },
-        "priority": {
-          "type": "string",
-          "description": "A priority."
-        },
-        "timeOcurred": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The time the event occured."
-        }
-      }
-    },
-    "ServiceOrderStateChangeEventPayload": {
-      "type": "object",
-      "description": "The event data structure",
-      "properties": {
-        "serviceOrder": {
-          "description": "The involved resource data for the event",
-          "$ref": "#/definitions/ServiceOrder"
-        }
-      }
-    },
-    "ServiceOrderDeleteEvent": {
-      "type": "object",
-      "description": "The notification data structure",
-      "properties": {
-        "event": {
-          "description": "The event payload linked to the involved resource object",
-          "$ref": "#/definitions/ServiceOrderDeleteEventPayload"
-        },
-        "eventId": {
-          "type": "string",
-          "description": "The identifier of the notification."
-        },
-        "eventTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time of the event occurrence."
-        },
-        "eventType": {
-          "type": "string",
-          "description": "The type of the notification."
-        },
-        "correlationId": {
-          "type": "string",
-          "description": "The correlation id for this event."
-        },
-        "domain": {
-          "type": "string",
-          "description": "The domain of the event."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the event."
-        },
-        "description": {
-          "type": "string",
-          "description": "An explnatory of the event."
-        },
-        "priority": {
-          "type": "string",
-          "description": "A priority."
-        },
-        "timeOcurred": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The time the event occured."
-        }
-      }
-    },
-    "ServiceOrderDeleteEventPayload": {
-      "type": "object",
-      "description": "The event data structure",
-      "properties": {
-        "serviceOrder": {
-          "description": "The involved resource data for the event",
-          "$ref": "#/definitions/ServiceOrder"
-        }
-      }
-    },
-    "ServiceOrderInformationRequiredEvent": {
-      "type": "object",
-      "description": "The notification data structure",
-      "properties": {
-        "eventId": {
-          "type": "string",
-          "description": "The identifier of the notification."
-        },
-        "eventTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time of the event occurrence."
-        },
-        "eventType": {
-          "type": "string",
-          "description": "The type of the notification."
-        },
-        "correlationId": {
-          "type": "string",
-          "description": "The correlation id for this event."
-        },
-        "domain": {
-          "type": "string",
-          "description": "The domain of the event."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the event."
-        },
-        "description": {
-          "type": "string",
-          "description": "An explnatory of the event."
-        },
-        "priority": {
-          "type": "string",
-          "description": "A priority."
-        },
-        "timeOcurred": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The time the event occured."
-        },
-        "fieldPath": {
-          "type": "string",
-          "description": "The path identifying the object field concerned by this notification."
-        },
-        "event": {
-          "description": "The event payload linked to the involved resource object",
-          "$ref": "#/definitions/ServiceOrderInformationRequiredEventPayload"
-        }
-      }
-    },
-    "ServiceOrderInformationRequiredEventPayload": {
-      "type": "object",
-      "description": "The event data structure",
-      "properties": {
-        "serviceOrder": {
-          "description": "The involved resource data for the event",
-          "$ref": "#/definitions/ServiceOrder"
-        }
-      }
-    },
-    "ServiceOrderMilestoneEvent": {
-      "type": "object",
-      "description": "The notification data structure",
-      "properties": {
-        "event": {
-          "description": "The event payload linked to the involved resource object",
-          "$ref": "#/definitions/ServiceOrderMilestoneEventPayload"
-        },
-        "eventId": {
-          "type": "string",
-          "description": "The identifier of the notification."
-        },
-        "eventTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time of the event occurrence."
-        },
-        "eventType": {
-          "type": "string",
-          "description": "The type of the notification."
-        },
-        "correlationId": {
-          "type": "string",
-          "description": "The correlation id for this event."
-        },
-        "domain": {
-          "type": "string",
-          "description": "The domain of the event."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the event."
-        },
-        "description": {
-          "type": "string",
-          "description": "An explnatory of the event."
-        },
-        "priority": {
-          "type": "string",
-          "description": "A priority."
-        },
-        "timeOcurred": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The time the event occured."
-        }
-      }
-    },
-    "ServiceOrderMilestoneEventPayload": {
-      "type": "object",
-      "description": "The event data structure",
-      "properties": {
-        "serviceOrder": {
-          "description": "The involved resource data for the event",
-          "$ref": "#/definitions/ServiceOrder"
-        }
-      }
-    },
-    "ServiceOrderJeopardyEvent": {
-      "type": "object",
-      "description": "The notification data structure",
-      "properties": {
-        "event": {
-          "description": "The event payload linked to the involved resource object",
-          "$ref": "#/definitions/ServiceOrderJeopardyEventPayload"
-        },
-        "eventId": {
-          "type": "string",
-          "description": "The identifier of the notification."
-        },
-        "eventTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time of the event occurrence."
-        },
-        "eventType": {
-          "type": "string",
-          "description": "The type of the notification."
-        },
-        "correlationId": {
-          "type": "string",
-          "description": "The correlation id for this event."
-        },
-        "domain": {
-          "type": "string",
-          "description": "The domain of the event."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the event."
-        },
-        "description": {
-          "type": "string",
-          "description": "An explnatory of the event."
-        },
-        "priority": {
-          "type": "string",
-          "description": "A priority."
-        },
-        "timeOcurred": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The time the event occured."
-        }
-      }
-    },
-    "ServiceOrderJeopardyEventPayload": {
-      "type": "object",
-      "description": "The event data structure",
-      "properties": {
-        "serviceOrder": {
-          "description": "The involved resource data for the event",
-          "$ref": "#/definitions/ServiceOrder"
-        }
-      }
-    },
-    "CancelServiceOrderCreateEvent": {
-      "type": "object",
-      "description": "The notification data structure",
-      "properties": {
-        "event": {
-          "description": "The event payload linked to the involved resource object",
-          "$ref": "#/definitions/CancelServiceOrderCreateEventPayload"
-        },
-        "eventId": {
-          "type": "string",
-          "description": "The identifier of the notification."
-        },
-        "eventTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time of the event occurrence."
-        },
-        "eventType": {
-          "type": "string",
-          "description": "The type of the notification."
-        },
-        "correlationId": {
-          "type": "string",
-          "description": "The correlation id for this event."
-        },
-        "domain": {
-          "type": "string",
-          "description": "The domain of the event."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the event."
-        },
-        "description": {
-          "type": "string",
-          "description": "An explnatory of the event."
-        },
-        "priority": {
-          "type": "string",
-          "description": "A priority."
-        },
-        "timeOcurred": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The time the event occured."
-        }
-      }
-    },
-    "CancelServiceOrderCreateEventPayload": {
-      "type": "object",
-      "description": "The event data structure",
-      "properties": {
-        "cancelServiceOrder": {
-          "description": "The involved resource data for the event",
-          "$ref": "#/definitions/CancelServiceOrder"
-        }
-      }
-    },
-    "CancelServiceOrderStateChangeEvent": {
-      "type": "object",
-      "description": "The notification data structure",
-      "properties": {
-        "event": {
-          "description": "The event payload linked to the involved resource object",
-          "$ref": "#/definitions/CancelServiceOrderStateChangeEventPayload"
-        },
-        "eventId": {
-          "type": "string",
-          "description": "The identifier of the notification."
-        },
-        "eventTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time of the event occurrence."
-        },
-        "eventType": {
-          "type": "string",
-          "description": "The type of the notification."
-        },
-        "correlationId": {
-          "type": "string",
-          "description": "The correlation id for this event."
-        },
-        "domain": {
-          "type": "string",
-          "description": "The domain of the event."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the event."
-        },
-        "description": {
-          "type": "string",
-          "description": "An explnatory of the event."
-        },
-        "priority": {
-          "type": "string",
-          "description": "A priority."
-        },
-        "timeOcurred": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The time the event occured."
-        }
-      }
-    },
-    "CancelServiceOrderStateChangeEventPayload": {
-      "type": "object",
-      "description": "The event data structure",
-      "properties": {
-        "cancelServiceOrder": {
-          "description": "The involved resource data for the event",
-          "$ref": "#/definitions/CancelServiceOrder"
-        }
-      }
-    },
-    "CancelServiceOrderInformationRequiredEvent": {
-      "type": "object",
-      "description": "The notification data structure",
-      "properties": {
-        "eventId": {
-          "type": "string",
-          "description": "The identifier of the notification."
-        },
-        "eventTime": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Time of the event occurrence."
-        },
-        "eventType": {
-          "type": "string",
-          "description": "The type of the notification."
-        },
-        "correlationId": {
-          "type": "string",
-          "description": "The correlation id for this event."
-        },
-        "domain": {
-          "type": "string",
-          "description": "The domain of the event."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the event."
-        },
-        "description": {
-          "type": "string",
-          "description": "An explnatory of the event."
-        },
-        "priority": {
-          "type": "string",
-          "description": "A priority."
-        },
-        "timeOcurred": {
-          "type": "string",
-          "format": "date-time",
-          "description": "The time the event occured."
-        },
-        "fieldPath": {
-          "type": "string",
-          "description": "The path identifying the object field concerned by this notification."
-        },
-        "event": {
-          "description": "The event payload linked to the involved resource object",
-          "$ref": "#/definitions/CancelServiceOrderInformationRequiredEventPayload"
-        }
-      }
-    },
-    "CancelServiceOrderInformationRequiredEventPayload": {
-      "type": "object",
-      "description": "The event data structure",
-      "properties": {
-        "cancelServiceOrder": {
-          "description": "The involved resource data for the event",
-          "$ref": "#/definitions/CancelServiceOrder"
-        }
-      }
-    },
+#    "EventSubscription": {
+#      "type": "object",
+#      "description": "Sets the communication endpoint address the service instance must use to deliver notification information",
+#      "required": [
+#        "id",
+#        "callback"
+#      ],
+#      "properties": {
+#        "id": {
+#          "type": "string",
+#          "description": "Id of the listener"
+#        },
+#        "callback": {
+#          "type": "string",
+#          "description": "The callback being registered."
+#        },
+#        "query": {
+#          "type": "string",
+#          "description": "additional data to be passed"
+#        }
+#      }
+#    },
+#    "EventSubscriptionInput": {
+#      "type": "object",
+#      "description": "Sets the communication endpoint address the service instance must use to deliver notification information",
+#      "required": [
+#        "callback"
+#      ],
+#      "properties": {
+#        "callback": {
+#          "type": "string",
+#          "description": "The callback being registered."
+#        },
+#        "query": {
+#          "type": "string",
+#          "description": "additional data to be passed"
+#        }
+#      }
+#    },
+#    "ServiceOrderCreateEvent": {
+#      "type": "object",
+#      "description": "The notification data structure",
+#      "properties": {
+#        "event": {
+#          "description": "The event payload linked to the involved resource object",
+#          "$ref": "#/definitions/ServiceOrderCreateEventPayload"
+#        },
+#        "eventId": {
+#          "type": "string",
+#          "description": "The identifier of the notification."
+#        },
+#        "eventTime": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Time of the event occurrence."
+#        },
+#        "eventType": {
+#          "type": "string",
+#          "description": "The type of the notification."
+#        },
+#        "correlationId": {
+#          "type": "string",
+#          "description": "The correlation id for this event."
+#        },
+#        "domain": {
+#          "type": "string",
+#          "description": "The domain of the event."
+#        },
+#        "title": {
+#          "type": "string",
+#          "description": "The title of the event."
+#        },
+#        "description": {
+#          "type": "string",
+#          "description": "An explnatory of the event."
+#        },
+#        "priority": {
+#          "type": "string",
+#          "description": "A priority."
+#        },
+#        "timeOcurred": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "The time the event occured."
+#        }
+#      }
+#    },
+#    "ServiceOrderCreateEventPayload": {
+#      "type": "object",
+#      "description": "The event data structure",
+#      "properties": {
+#        "serviceOrder": {
+#          "description": "The involved resource data for the event",
+#          "$ref": "#/definitions/ServiceOrder"
+#        }
+#      }
+#    },
+#    "ServiceOrderAttributeValueChangeEvent": {
+#      "type": "object",
+#      "description": "The notification data structure",
+#      "properties": {
+#        "eventId": {
+#          "type": "string",
+#          "description": "The identifier of the notification."
+#        },
+#        "eventTime": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Time of the event occurrence."
+#        },
+#        "eventType": {
+#          "type": "string",
+#          "description": "The type of the notification."
+#        },
+#        "correlationId": {
+#          "type": "string",
+#          "description": "The correlation id for this event."
+#        },
+#        "domain": {
+#          "type": "string",
+#          "description": "The domain of the event."
+#        },
+#        "title": {
+#          "type": "string",
+#          "description": "The title of the event."
+#        },
+#        "description": {
+#          "type": "string",
+#          "description": "An explnatory of the event."
+#        },
+#        "priority": {
+#          "type": "string",
+#          "description": "A priority."
+#        },
+#        "timeOcurred": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "The time the event occured."
+#        },
+#        "fieldPath": {
+#          "type": "string",
+#          "description": "The path identifying the object field concerned by this notification."
+#        },
+#        "event": {
+#          "description": "The event payload linked to the involved resource object",
+#          "$ref": "#/definitions/ServiceOrderAttributeValueChangeEventPayload"
+#        }
+#      }
+#    },
+#    "ServiceOrderAttributeValueChangeEventPayload": {
+#      "type": "object",
+#      "description": "The event data structure",
+#      "properties": {
+#        "serviceOrder": {
+#          "description": "The involved resource data for the event",
+#          "$ref": "#/definitions/ServiceOrder"
+#        }
+#      }
+#    },
+#    "ServiceOrderStateChangeEvent": {
+#      "type": "object",
+#      "description": "The notification data structure",
+#      "properties": {
+#        "event": {
+#          "description": "The event payload linked to the involved resource object",
+#          "$ref": "#/definitions/ServiceOrderStateChangeEventPayload"
+#        },
+#        "eventId": {
+#          "type": "string",
+#          "description": "The identifier of the notification."
+#        },
+#        "eventTime": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Time of the event occurrence."
+#        },
+#        "eventType": {
+#          "type": "string",
+#          "description": "The type of the notification."
+#        },
+#        "correlationId": {
+#          "type": "string",
+#          "description": "The correlation id for this event."
+#        },
+#        "domain": {
+#          "type": "string",
+#          "description": "The domain of the event."
+#        },
+#        "title": {
+#          "type": "string",
+#          "description": "The title of the event."
+#        },
+#        "description": {
+#          "type": "string",
+#          "description": "An explnatory of the event."
+#        },
+#        "priority": {
+#          "type": "string",
+#          "description": "A priority."
+#        },
+#        "timeOcurred": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "The time the event occured."
+#        }
+#      }
+#    },
+#    "ServiceOrderStateChangeEventPayload": {
+#      "type": "object",
+#      "description": "The event data structure",
+#      "properties": {
+#        "serviceOrder": {
+#          "description": "The involved resource data for the event",
+#          "$ref": "#/definitions/ServiceOrder"
+#        }
+#      }
+#    },
+#    "ServiceOrderDeleteEvent": {
+#      "type": "object",
+#      "description": "The notification data structure",
+#      "properties": {
+#        "event": {
+#          "description": "The event payload linked to the involved resource object",
+#          "$ref": "#/definitions/ServiceOrderDeleteEventPayload"
+#        },
+#        "eventId": {
+#          "type": "string",
+#          "description": "The identifier of the notification."
+#        },
+#        "eventTime": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Time of the event occurrence."
+#        },
+#        "eventType": {
+#          "type": "string",
+#          "description": "The type of the notification."
+#        },
+#        "correlationId": {
+#          "type": "string",
+#          "description": "The correlation id for this event."
+#        },
+#        "domain": {
+#          "type": "string",
+#          "description": "The domain of the event."
+#        },
+#        "title": {
+#          "type": "string",
+#          "description": "The title of the event."
+#        },
+#        "description": {
+#          "type": "string",
+#          "description": "An explnatory of the event."
+#        },
+#        "priority": {
+#          "type": "string",
+#          "description": "A priority."
+#        },
+#        "timeOcurred": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "The time the event occured."
+#        }
+#      }
+#    },
+#    "ServiceOrderDeleteEventPayload": {
+#      "type": "object",
+#      "description": "The event data structure",
+#      "properties": {
+#        "serviceOrder": {
+#          "description": "The involved resource data for the event",
+#          "$ref": "#/definitions/ServiceOrder"
+#        }
+#      }
+#    },
+#    "ServiceOrderInformationRequiredEvent": {
+#      "type": "object",
+#      "description": "The notification data structure",
+#      "properties": {
+#        "eventId": {
+#          "type": "string",
+#          "description": "The identifier of the notification."
+#        },
+#        "eventTime": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Time of the event occurrence."
+#        },
+#        "eventType": {
+#          "type": "string",
+#          "description": "The type of the notification."
+#        },
+#        "correlationId": {
+#          "type": "string",
+#          "description": "The correlation id for this event."
+#        },
+#        "domain": {
+#          "type": "string",
+#          "description": "The domain of the event."
+#        },
+#        "title": {
+#          "type": "string",
+#          "description": "The title of the event."
+#        },
+#        "description": {
+#          "type": "string",
+#          "description": "An explnatory of the event."
+#        },
+#        "priority": {
+#          "type": "string",
+#          "description": "A priority."
+#        },
+#        "timeOcurred": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "The time the event occured."
+#        },
+#        "fieldPath": {
+#          "type": "string",
+#          "description": "The path identifying the object field concerned by this notification."
+#        },
+#        "event": {
+#          "description": "The event payload linked to the involved resource object",
+#          "$ref": "#/definitions/ServiceOrderInformationRequiredEventPayload"
+#        }
+#      }
+#    },
+#    "ServiceOrderInformationRequiredEventPayload": {
+#      "type": "object",
+#      "description": "The event data structure",
+#      "properties": {
+#        "serviceOrder": {
+#          "description": "The involved resource data for the event",
+#          "$ref": "#/definitions/ServiceOrder"
+#        }
+#      }
+#    },
+#    "ServiceOrderMilestoneEvent": {
+#      "type": "object",
+#      "description": "The notification data structure",
+#      "properties": {
+#        "event": {
+#          "description": "The event payload linked to the involved resource object",
+#          "$ref": "#/definitions/ServiceOrderMilestoneEventPayload"
+#        },
+#        "eventId": {
+#          "type": "string",
+#          "description": "The identifier of the notification."
+#        },
+#        "eventTime": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Time of the event occurrence."
+#        },
+#        "eventType": {
+#          "type": "string",
+#          "description": "The type of the notification."
+#        },
+#        "correlationId": {
+#          "type": "string",
+#          "description": "The correlation id for this event."
+#        },
+#        "domain": {
+#          "type": "string",
+#          "description": "The domain of the event."
+#        },
+#        "title": {
+#          "type": "string",
+#          "description": "The title of the event."
+#        },
+#        "description": {
+#          "type": "string",
+#          "description": "An explnatory of the event."
+#        },
+#        "priority": {
+#          "type": "string",
+#          "description": "A priority."
+#        },
+#        "timeOcurred": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "The time the event occured."
+#        }
+#      }
+#    },
+#    "ServiceOrderMilestoneEventPayload": {
+#      "type": "object",
+#      "description": "The event data structure",
+#      "properties": {
+#        "serviceOrder": {
+#          "description": "The involved resource data for the event",
+#          "$ref": "#/definitions/ServiceOrder"
+#        }
+#      }
+#    },
+#    "ServiceOrderJeopardyEvent": {
+#      "type": "object",
+#      "description": "The notification data structure",
+#      "properties": {
+#        "event": {
+#          "description": "The event payload linked to the involved resource object",
+#          "$ref": "#/definitions/ServiceOrderJeopardyEventPayload"
+#        },
+#        "eventId": {
+#          "type": "string",
+#          "description": "The identifier of the notification."
+#        },
+#        "eventTime": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Time of the event occurrence."
+#        },
+#        "eventType": {
+#          "type": "string",
+#          "description": "The type of the notification."
+#        },
+#        "correlationId": {
+#          "type": "string",
+#          "description": "The correlation id for this event."
+#        },
+#        "domain": {
+#          "type": "string",
+#          "description": "The domain of the event."
+#        },
+#        "title": {
+#          "type": "string",
+#          "description": "The title of the event."
+#        },
+#        "description": {
+#          "type": "string",
+#          "description": "An explnatory of the event."
+#        },
+#        "priority": {
+#          "type": "string",
+#          "description": "A priority."
+#        },
+#        "timeOcurred": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "The time the event occured."
+#        }
+#      }
+#    },
+#    "ServiceOrderJeopardyEventPayload": {
+#      "type": "object",
+#      "description": "The event data structure",
+#      "properties": {
+#        "serviceOrder": {
+#          "description": "The involved resource data for the event",
+#          "$ref": "#/definitions/ServiceOrder"
+#        }
+#      }
+#    },
+#    "CancelServiceOrderCreateEvent": {
+#      "type": "object",
+#      "description": "The notification data structure",
+#      "properties": {
+#        "event": {
+#          "description": "The event payload linked to the involved resource object",
+#          "$ref": "#/definitions/CancelServiceOrderCreateEventPayload"
+#        },
+#        "eventId": {
+#          "type": "string",
+#          "description": "The identifier of the notification."
+#        },
+#        "eventTime": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Time of the event occurrence."
+#        },
+#        "eventType": {
+#          "type": "string",
+#          "description": "The type of the notification."
+#        },
+#        "correlationId": {
+#          "type": "string",
+#          "description": "The correlation id for this event."
+#        },
+#        "domain": {
+#          "type": "string",
+#          "description": "The domain of the event."
+#        },
+#        "title": {
+#          "type": "string",
+#          "description": "The title of the event."
+#        },
+#        "description": {
+#          "type": "string",
+#          "description": "An explnatory of the event."
+#        },
+#        "priority": {
+#          "type": "string",
+#          "description": "A priority."
+#        },
+#        "timeOcurred": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "The time the event occured."
+#        }
+#      }
+#    },
+#    "CancelServiceOrderCreateEventPayload": {
+#      "type": "object",
+#      "description": "The event data structure",
+#      "properties": {
+#        "cancelServiceOrder": {
+#          "description": "The involved resource data for the event",
+#          "$ref": "#/definitions/CancelServiceOrder"
+#        }
+#      }
+#    },
+#    "CancelServiceOrderStateChangeEvent": {
+#      "type": "object",
+#      "description": "The notification data structure",
+#      "properties": {
+#        "event": {
+#          "description": "The event payload linked to the involved resource object",
+#          "$ref": "#/definitions/CancelServiceOrderStateChangeEventPayload"
+#        },
+#        "eventId": {
+#          "type": "string",
+#          "description": "The identifier of the notification."
+#        },
+#        "eventTime": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Time of the event occurrence."
+#        },
+#        "eventType": {
+#          "type": "string",
+#          "description": "The type of the notification."
+#        },
+#        "correlationId": {
+#          "type": "string",
+#          "description": "The correlation id for this event."
+#        },
+#        "domain": {
+#          "type": "string",
+#          "description": "The domain of the event."
+#        },
+#        "title": {
+#          "type": "string",
+#          "description": "The title of the event."
+#        },
+#        "description": {
+#          "type": "string",
+#          "description": "An explnatory of the event."
+#        },
+#        "priority": {
+#          "type": "string",
+#          "description": "A priority."
+#        },
+#        "timeOcurred": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "The time the event occured."
+#        }
+#      }
+#    },
+#    "CancelServiceOrderStateChangeEventPayload": {
+#      "type": "object",
+#      "description": "The event data structure",
+#      "properties": {
+#        "cancelServiceOrder": {
+#          "description": "The involved resource data for the event",
+#          "$ref": "#/definitions/CancelServiceOrder"
+#        }
+#      }
+#    },
+#    "CancelServiceOrderInformationRequiredEvent": {
+#      "type": "object",
+#      "description": "The notification data structure",
+#      "properties": {
+#        "eventId": {
+#          "type": "string",
+#          "description": "The identifier of the notification."
+#        },
+#        "eventTime": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "Time of the event occurrence."
+#        },
+#        "eventType": {
+#          "type": "string",
+#          "description": "The type of the notification."
+#        },
+#        "correlationId": {
+#          "type": "string",
+#          "description": "The correlation id for this event."
+#        },
+#        "domain": {
+#          "type": "string",
+#          "description": "The domain of the event."
+#        },
+#        "title": {
+#          "type": "string",
+#          "description": "The title of the event."
+#        },
+#        "description": {
+#          "type": "string",
+#          "description": "An explnatory of the event."
+#        },
+#        "priority": {
+#          "type": "string",
+#          "description": "A priority."
+#        },
+#        "timeOcurred": {
+#          "type": "string",
+#          "format": "date-time",
+#          "description": "The time the event occured."
+#        },
+#        "fieldPath": {
+#          "type": "string",
+#          "description": "The path identifying the object field concerned by this notification."
+#        },
+#        "event": {
+#          "description": "The event payload linked to the involved resource object",
+#          "$ref": "#/definitions/CancelServiceOrderInformationRequiredEventPayload"
+#        }
+#      }
+#    },
+#    "CancelServiceOrderInformationRequiredEventPayload": {
+#      "type": "object",
+#      "description": "The event data structure",
+#      "properties": {
+#        "cancelServiceOrder": {
+#          "description": "The involved resource data for the event",
+#          "$ref": "#/definitions/CancelServiceOrder"
+#        }
+#      }
+#    },
     "Error": {
       "description": "Used when an API throws an Error, typically with a HTTP error response-code (3xx, 4xx, 5xx)",
       "type": "object",
