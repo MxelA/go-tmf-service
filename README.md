@@ -1,4 +1,5 @@
 # Go TMF Service application
+- Application is in developing stage
 
 ### TMF API Reference : TMF 641 - Service Ordering Management
 Version 4.2.0
