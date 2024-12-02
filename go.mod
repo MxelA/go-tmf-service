@@ -23,6 +23,7 @@ require (
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect
 	github.com/go-openapi/jsonreference v0.19.5 // indirect
 	github.com/go-stack/stack v1.8.0 // indirect
+	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/mailru/easyjson v0.7.6 // indirect
 	github.com/mitchellh/mapstructure v1.4.1 // indirect
@@ -30,20 +31,6 @@ require (
 	golang.org/x/sys v0.0.0-20210320140829-1e4c9ba3b0c4 // indirect
 	golang.org/x/text v0.3.5 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-		github.com/PuerkitoBio/purell v1.1.1 // indirect
-    	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
-    	github.com/asaskevich/govalidator v0.0.0-20200907205600-7a23bdc65eef // indirect
-    	github.com/docker/go-units v0.4.0 // indirect
-    	github.com/go-openapi/analysis v0.19.16 // indirect
-    	github.com/go-openapi/jsonpointer v0.19.5 // indirect
-    	github.com/go-openapi/jsonreference v0.19.5 // indirect
-    	github.com/go-stack/stack v1.8.0 // indirect
-    	github.com/josharian/intern v1.0.0 // indirect
-    	github.com/mailru/easyjson v0.7.6 // indirect
-    	github.com/mitchellh/mapstructure v1.4.1 // indirect
-    	go.mongodb.org/mongo-driver v1.4.6 // indirect
-    	golang.org/x/sys v0.0.0-20210320140829-1e4c9ba3b0c4 // indirect
-    	golang.org/x/text v0.3.5 // indirect
 )
 
 //require (

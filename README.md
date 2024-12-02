@@ -45,3 +45,26 @@ $ task swagger.validate.v4
 ```aiignore
 $ task swagger.doc.v4
 ```
+
+### Generate a self-signed TLS for local development
+- Install OpenSSL
+```aiignore
+sudo apt install openssl
+```
+- Generate a Private Key
+
+- - A private key is a cryptographic key used to encrypt and decrypt data. It's essential for establishing secure communication in TLS/SSL.
+```aiignore
+openssl genrsa -out tls.key 2048
+```
+- Create a Certificate Signing Request (CSR)
+- - A CSR is a file that contains your public key and organization details. It’s used when requesting a certificate from a Certificate Authority (CA). For a self-signed certificate, it’s still a necessary step as it includes key metadata and helps create the certificate.
+
+```aiignore
+openssl req -new -key tls.key -out tls.csr
+```
+- Generate a Self-Signed Certificate
+- - A self-signed certificate is a certificate you sign yourself (instead of relying on a CA). It’s suitable for local development or testing but not recommended for production.
+```aiignore
+openssl x509 -req -in tls.csr -signkey tls.key -out tls.crt -days 365
+```
