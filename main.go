@@ -1,24 +1,17 @@
 package main
 
 import (
-	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
+	"github.com/MxelA/tmf-service-go/pkg/routes"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/restapi"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/restapi/operations"
-	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/restapi/operations/service_order"
 	"github.com/go-openapi/loads"
-	"github.com/go-openapi/runtime/middleware"
 	flags "github.com/jessevdk/go-flags"
 	"log"
 )
 
-type Server struct {
-	TLSCertificate flags.Filename `long:"tls-certificate" description:"The certificate file to use for secure connections" env:"TLS_CERTIFICATE" required:"true"`
-	TLSKey         flags.Filename `long:"tls-key" description:"The private key to use for secure connections" env:"TLS_PRIVATE_KEY" required:"true"`
-}
-
 func main() {
 
-	var serverConfig Server
+	var serverConfig restapi.Server
 
 	// Parse flags
 	parser := flags.NewParser(&serverConfig, flags.Default)
@@ -42,11 +35,11 @@ func main() {
 		}
 	}()
 
-	server.Port = 8080
 	server.TLSCertificate = serverConfig.TLSCertificate
-	server.TLSCertificateKey = serverConfig.TLSKey
+	server.TLSCertificateKey = serverConfig.TLSCertificateKey
+	server.TLSPort = serverConfig.TLSPort
 
-	api.ServiceOrderCreateServiceOrderHandler = service_order.CreateServiceOrderHandlerFunc(CreateServiceOrderHandler)
+	route_tmf641_v4_2.RegisterTmfServiceV4_2Routes(api)
 
 	// Start server which listening
 	if err := server.Serve(); err != nil {
@@ -63,7 +56,7 @@ func main() {
 }
 
 //Health route returns OK
-func CreateServiceOrderHandler(service_order.CreateServiceOrderParams) middleware.Responder {
-	var r models.ServiceOrder
-	return service_order.NewCreateServiceOrderCreated().WithPayload(&r)
-}
+//func CreateServiceOrderHandler(service_order.CreateServiceOrderParams) middleware.Responder {
+//	var r models.ServiceOrder
+//	return service_order.NewCreateServiceOrderCreated().WithPayload(&r)
+//}
