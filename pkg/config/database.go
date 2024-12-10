@@ -15,7 +15,7 @@ type MongoInstance struct {
 }
 
 var (
-	mg *MongoInstance
+	mg MongoInstance
 )
 
 const dbName = "service-order"
@@ -34,12 +34,14 @@ func DbConnect() error {
 		return err
 	}
 
-	mg.Client = client
-	mg.Db = db
+	mg = MongoInstance{
+		Client: client,
+		Db:     db,
+	}
 
 	return nil
 }
 
-func GetMongoInstance() *MongoInstance {
+func GetMongoInstance() MongoInstance {
 	return mg
 }

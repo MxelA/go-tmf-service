@@ -1,6 +1,7 @@
 package main
 
 import (
+	database "github.com/MxelA/tmf-service-go/pkg/config"
 	"github.com/MxelA/tmf-service-go/pkg/routes"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/restapi"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/restapi/operations"
@@ -20,6 +21,9 @@ func main() {
 	}
 
 	//Connect to Mongo
+	if err := database.DbConnect(); err != nil {
+		log.Fatalf("Error connecting to database: %v\n", err)
+	}
 
 	// Initialize Swagger
 	swaggerSpec, err := loads.Analyzed(restapi.SwaggerJSON, "")
