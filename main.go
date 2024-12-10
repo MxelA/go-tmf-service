@@ -19,6 +19,8 @@ func main() {
 		log.Fatalf("Error parsing flags: %v\n", err)
 	}
 
+	//Connect to Mongo
+
 	// Initialize Swagger
 	swaggerSpec, err := loads.Analyzed(restapi.SwaggerJSON, "")
 	if err != nil {
