@@ -45,24 +45,11 @@ func main() {
 	server.TLSCertificateKey = serverConfig.TLSCertificateKey
 	server.TLSPort = serverConfig.TLSPort
 
+	// Register routes
 	route_tmf641_v4_2.RegisterTmfServiceV4_2Routes(api)
 
 	// Start server which listening
 	if err := server.Serve(); err != nil {
 		log.Fatalln(err)
 	}
-
-	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-	//	fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
-	//})
-	//
-	//log.Println("Listening on localhost:8080")
-	//
-	//log.Fatal(http.ListenAndServe(":8080", nil))
 }
-
-//Health route returns OK
-//func CreateServiceOrderHandler(service_order.CreateServiceOrderParams) middleware.Responder {
-//	var r models.ServiceOrder
-//	return service_order.NewCreateServiceOrderCreated().WithPayload(&r)
-//}
