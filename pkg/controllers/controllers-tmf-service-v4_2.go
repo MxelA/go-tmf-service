@@ -34,7 +34,6 @@ func CreateServiceOrderControllerHandler(req service_order.CreateServiceOrderPar
 	mg := database.GetMongoInstance()
 	collection := mg.Db.Collection("serviceOrder")
 
-	//res.ID = "test123"
 	insertResult, err := collection.InsertOne(req.HTTPRequest.Context(), res)
 	if err != nil {
 		errCode := "500"
