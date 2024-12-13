@@ -6,10 +6,31 @@ tasks:
     cmds:
       - GOFLAGS=-mod=mod go build -o bin/tmf-service-go main.go
 
+  build.win32:
+    desc: Build the app for Win 32 bits
+    cmds:
+      - GOOS=windows GOARCH=386 go build -o bin/go-rest-api-win-386 main.go
+
+  build.win64:
+    desc: Build the app for Win 64 bits
+    cmds:
+      - GOOS=windows GOARCH=amd64 go build -o bin/go-rest-api-win-64 main.go
+
+  build.linux64:
+    desc: Build the app for Linux 64 bits
+    cmds:
+      - GOOS=linux GOARCH=amd64 go build -o bin/go-rest-api-linux-64 main.go
+
+  build.linux32:
+    desc: Build the app for Linux 32 bits
+    cmds:
+      - GOOS=linux GOARCH=386 go build -o bin/go-rest-api-linux-386 main.go
+
   run:
     desc: Run the app
     cmds:
-      - GOFLAGS=-mod=mod go run main.go
+      - GOFLAGS=-mod=mod go build -o bin/tmf-service-go main.go
+      - GOFLAGS=-mod=mod go run main.go --tls-certificate=tls.crt --tls-key=tls.key  --tls-port=34191
 
   swagger.validate.v4_1:
     desc: Validate swagger

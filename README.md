@@ -1,11 +1,13 @@
 # Go TMF Service application
 - Application is in developing stage
 
-### TMF API Reference : TMF 641 - Service Ordering Management
-Version 4.2.0
+## Application contains:
+
+### TMF 641 v4.2 - Service Ordering Management
+- Version 4.2.0
 The Service Order API provides a standardized mechanism for managing Service Order, a type of order which can be used to place an order between internal Customer Order management system to service order management system or between a service provider and a partner and vice versa.
 #### Service Order resource
-A service order will describe a list of service order items.  A service order item references an action on an existing  or  future  service.  By  service  we  designed  Customer Facing  Service  (CFS)  as  well  as  Resource Facing Service (RFS).
+- A service order will describe a list of service order items.  A service order item references an action on an existing  or  future  service.  By  service  we  designed  Customer Facing  Service  (CFS)  as  well  as  Resource Facing Service (RFS).
 From a component perspective, a service order should be available
 - from a Service Orchestration Component (and it could mix CFS and RFS)
 - from an Infrastructure Control & Management component (and it would have only RFS)
