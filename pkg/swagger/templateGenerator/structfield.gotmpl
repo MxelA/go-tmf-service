@@ -1,0 +1,47 @@
+{{ define "structfield" }}
+  {{- if not $.IsBaseType -}}
+    // {{ template "docstring" . }}
+    {{- template "propertyValidationDocString" .}}
+  {{- end}}
+{{ if not $.IsAnonymous }}
+{{ pascalize .Name}} {{ template "schemaType" . }} {{ .PrintTags }}
+{{ else }}
+  {{- if and (not .IsMap) .IsNullable (not .IsSuperAlias) }}*{{ end }}
+  {{- if .IsSuperAlias }} = {{ end }}
+  {{- .GoType }} {{ .PrintTags }}
+{{ end }}
+{{ end }}
+
+{{- define "tuplefield" }}
+  {{- if not $.IsBaseType -}}
+    // {{ template "docstring" . }}
+    {{- template "propertyValidationDocString" .}}
+{{ end }}
+{{- pascalize .Name}} {{ template "schemaType" . }} `json:"-"
+{{- if .CustomTag }} {{ .CustomTag }}{{ end }}` // custom serializer
+{{ end }}
+
+{{- define "structfieldIface" }}
+  {{- if not $.IsBaseType -}}
+    // {{ template "docstring" . }}
+    {{- template "propertyValidationDocString" .}}
+  {{- end }}
+{{ pascalize .Name}}() {{ template "schemaType" . }}
+Set{{ pascalize .Name}}({{ template "schemaType" . }})
+{{ end }}
+{{ define "tuplefieldIface" }}
+  {{- if not $.IsBaseType -}}
+    // {{ template "docstring" . }}
+    {{- template "propertyValidationDocString" . }}
+{{ end }}
+{{- pascalize .Name}}() {{ template "schemaType" . }}
+Set{{ pascalize .Name}}({{ template "schemaType" . }})
+{{ end }}
+
+{{- define "privstructfield" }}
+  {{- camelize .Name}}Field {{ template "schemaType" . }}
+{{ end }}
+
+{{- define "privtuplefield" }}
+  {{- camelize .Name}}Field {{ template "schemaType" . }}
+{{ end }}
