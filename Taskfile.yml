@@ -45,7 +45,7 @@ tasks:
   swagger.gen.v4_1:
     desc: Generate Go code
     cmds:
-      - GOFLAGS=-mod=mod go generate github.com/MxelA/tmf-service-go github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_1
+      - GOFLAGS=-mod=mod go generate github.com/MxelA/tmf-service-go github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_1 -t github.com/MxelA/tmf-service-go github.com/MxelA/tmf-service-go/pkg/swagger/templateGenerator
 
   swagger.validate.v4_2:
     desc: Validate swagger
