@@ -1490,12 +1490,14 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "unique identifier"
+          "description": "unique identifier",
+          "x-go-custom-tag": "bson:\"addressable,omitempty\""
         },
         "href": {
           "type": "string",
           "format": "uri",
-          "description": "Hyperlink reference"
+          "description": "Hyperlink reference",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         }
       }
     },
@@ -1506,32 +1508,39 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "The identifier of the referred appointment"
+          "description": "The identifier of the referred appointment",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "href": {
           "type": "string",
-          "description": "The reference of the appointment"
+          "description": "The reference of the appointment",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "description": {
           "type": "string",
-          "description": "An explanatory text regarding the appointment made with a party"
+          "description": "An explanatory text regarding the appointment made with a party",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "@baseType": {
           "type": "string",
-          "description": "When sub-classing, this defines the super-class"
+          "description": "When sub-classing, this defines the super-class",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "type": "string",
           "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "@referredType": {
           "type": "string",
-          "description": "The actual type of the target instance when needed for disambiguation"
+          "description": "The actual type of the target instance when needed for disambiguation",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         }
       },
       "required": [
@@ -1544,42 +1553,51 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "id of the cancellation request (this is not an order id)"
+          "description": "id of the cancellation request (this is not an order id)",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "href": {
           "type": "string",
-          "description": "Hyperlink to access the cancellation request"
+          "description": "Hyperlink to access the cancellation request",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "cancellationReason": {
           "type": "string",
-          "description": "Reason why the order is cancelled."
+          "description": "Reason why the order is cancelled.",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "effectiveCancellationDate": {
           "type": "string",
           "format": "date-time",
-          "description": "Date when the order is cancelled."
+          "description": "Date when the order is cancelled.",
+          "x-go-custom-tag": "bson:\"effectiveCancellationDate,omitempty\""
         },
         "requestedCancellationDate": {
           "type": "string",
           "format": "date-time",
-          "description": "Date when the submitter wants the order to be cancelled"
+          "description": "Date when the submitter wants the order to be cancelled",
+          "x-go-custom-tag": "bson:\"requestedCancellationDate,omitempty\""
         },
         "state": {
           "$ref": "#/definitions/TaskStateType",
-          "description": "Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on."
+          "description": "Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on.",
+          "x-go-custom-tag": "bson:\"state\""
         },
         "@baseType": {
           "type": "string",
-          "description": "When sub-classing, this defines the super-class"
+          "description": "When sub-classing, this defines the super-class",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "type": "string",
           "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         }
       }
     },
@@ -1589,53 +1607,65 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "unique identifier"
+          "description": "unique identifier",
+          "x-go-custom-tag": "bson:\"_id,omitempty\""
         },
         "href": {
           "type": "string",
           "format": "uri",
-          "description": "Hyperlink reference"
+          "description": "Hyperlink reference",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "cancellationReason": {
           "type": "string",
-          "description": "Reason why the order is cancelled."
+          "description": "Reason why the order is cancelled.",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "completionMessage": {
           "type": "string",
-          "description": "an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR)."
+          "description": "an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR).",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "effectiveCancellationDate": {
           "type": "string",
           "format": "date-time",
-          "description": "Date when the order is cancelled."
+          "description": "Date when the order is cancelled.",
+          "x-go-custom-tag": "bson:\"effectiveCancellationDate,omitempty\""
         },
         "requestedCancellationDate": {
           "type": "string",
           "format": "date-time",
-          "description": "Date when the submitter wants the order to be cancelled"
+          "description": "Date when the submitter wants the order to be cancelled",
+          "x-go-custom-tag": "bson:\"requestedCancellationDate,omitempty\""
         },
         "errorMessage": {
-          "$ref": "#/definitions/Error"
+          "$ref": "#/definitions/Error",
+          "x-go-custom-tag": "bson:\"errorMessage\""
         },
         "serviceOrder": {
-          "$ref": "#/definitions/ServiceOrderRef"
+          "$ref": "#/definitions/ServiceOrderRef",
+          "x-go-custom-tag": "bson:\"serviceOrder\""
         },
         "state": {
           "$ref": "#/definitions/TaskStateType",
-          "description": "Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on."
+          "description": "Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on.",
+          "x-go-custom-tag": "bson:\"state\""
         },
         "@baseType": {
           "type": "string",
-          "description": "When sub-classing, this defines the super-class"
+          "description": "When sub-classing, this defines the super-class",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "type": "string",
           "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         }
       }
     },
@@ -1648,35 +1678,43 @@
       "properties": {
         "cancellationReason": {
           "type": "string",
-          "description": "Reason why the order is cancelled."
+          "description": "Reason why the order is cancelled.",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "completionMessage": {
           "type": "string",
-          "description": "an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR)."
+          "description": "an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR).",
+          "x-go-custom-tag": "bson:\"completionMessage,omitempty\""
         },
         "requestedCancellationDate": {
           "type": "string",
           "format": "date-time",
-          "description": "Date when the submitter wants the order to be cancelled"
+          "description": "Date when the submitter wants the order to be cancelled",
+          "x-go-custom-tag": "bson:\"requestedCancellationDate,omitempty\""
         },
         "errorMessage": {
-          "$ref": "#/definitions/Error"
+          "$ref": "#/definitions/Error",
+          "x-go-custom-tag": "bson:\"errorMessage\""
         },
         "serviceOrder": {
-          "$ref": "#/definitions/ServiceOrderRef"
+          "$ref": "#/definitions/ServiceOrderRef",
+          "x-go-custom-tag": "bson:\"serviceOrder\""
         },
         "@baseType": {
           "type": "string",
-          "description": "When sub-classing, this defines the super-class"
+          "description": "When sub-classing, this defines the super-class",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "type": "string",
           "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         }
       }
     },
@@ -1690,38 +1728,47 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "Unique identifier of the characteristic"
+          "description": "Unique identifier of the characteristic",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "name": {
           "type": "string",
-          "description": "Name of the characteristic"
+          "description": "Name of the characteristic",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "valueType": {
           "type": "string",
-          "description": "Data type of the value of the characteristic"
+          "description": "Data type of the value of the characteristic",
+          "x-go-custom-tag": "bson:\"valueType,omitempty\""
         },
         "characteristicRelationship": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CharacteristicRelationship"
-          }
+          },
+          "x-go-custom-tag": "bson:\"characteristicRelationship\""
         },
         "value": {
           "$ref": "#/definitions/Any",
-          "description": "The value of the characteristic"
+          "description": "The value of the characteristic",
+          "x-go-custom-tag": "bson:\"value\""
+
         },
         "@baseType": {
           "type": "string",
-          "description": "When sub-classing, this defines the super-class"
+          "description": "When sub-classing, this defines the super-class",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "type": "string",
           "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         }
       }
     },
@@ -1731,24 +1778,29 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "Unique identifier of the characteristic"
+          "description": "Unique identifier of the characteristic",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "relationshipType": {
           "type": "string",
-          "description": "The type of relationship"
+          "description": "The type of relationship",
+          "x-go-custom-tag": "bson:\"relationshipType,omitempty\""
         },
         "@baseType": {
           "type": "string",
-          "description": "When sub-classing, this defines the super-class"
+          "description": "When sub-classing, this defines the super-class",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "type": "string",
           "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         }
       }
     },
@@ -1758,37 +1810,45 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "unique identifier"
+          "description": "unique identifier",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "href": {
           "type": "string",
           "format": "uri",
-          "description": "Hyperlink reference"
+          "description": "Hyperlink reference",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "name": {
           "type": "string",
-          "description": "Name of the related entity."
+          "description": "Name of the related entity.",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "version": {
           "type": "string",
-          "description": "constraint version"
+          "description": "constraint version",
+          "x-go-custom-tag": "bson:\"version,omitempty\""
         },
         "@baseType": {
           "type": "string",
-          "description": "When sub-classing, this defines the super-class"
+          "description": "When sub-classing, this defines the super-class",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "type": "string",
           "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "@referredType": {
           "type": "string",
-          "description": "The actual type of the target instance when needed for disambiguation."
+          "description": "The actual type of the target instance when needed for disambiguation.",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         }
       },
       "required": [
@@ -1801,43 +1861,51 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "Identifier of the context update"
+          "description": "Identifier of the context update",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "lastUpdate": {
           "type": "string",
           "format": "date-time",
-          "description": "The date and time the status/state last changed."
+          "description": "The date and time the status/state last changed.",
+          "x-go-custom-tag": "bson:\"lastUpdate,omitempty\""
         },
         "reason": {
           "type": "string",
-          "description": "The reason/context for the current value of the status/state."
+          "description": "The reason/context for the current value of the status/state.",
+          "x-go-custom-tag": "bson:\"reason,omitempty\""
         },
         "relatedEntity": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/EntityRef"
           },
-          "description": "A list of entities that represent observations, anomalies or managing entities etc associated to the current status/state value."
+          "description": "A list of entities that represent observations, anomalies or managing entities etc associated to the current status/state value.",
+          "x-go-custom-tag": "bson:\"relatedEntity\""
         },
         "relatedParty": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedParty"
           },
-          "description": "List of parties associated to the current status/state value."
+          "description": "List of parties associated to the current status/state value.",
+          "x-go-custom-tag": "bson:\"relatedParty\""
         },
         "@baseType": {
           "type": "string",
-          "description": "When sub-classing, this defines the super-class"
+          "description": "When sub-classing, this defines the super-class",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "type": "string",
           "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         }
       }
     },
@@ -1847,25 +1915,30 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "unique identifier"
+          "description": "unique identifier",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "href": {
           "type": "string",
           "format": "uri",
-          "description": "Hyperlink reference"
+          "description": "Hyperlink reference",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "@baseType": {
           "type": "string",
-          "description": "When sub-classing, this defines the super-class"
+          "description": "When sub-classing, this defines the super-class",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "type": "string",
           "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         }
       }
     },
@@ -1875,33 +1948,40 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "unique identifier"
+          "description": "unique identifier",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "href": {
           "type": "string",
           "format": "uri",
-          "description": "Hyperlink reference"
+          "description": "Hyperlink reference",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "name": {
           "type": "string",
-          "description": "Name of the related entity."
+          "description": "Name of the related entity.",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "@baseType": {
           "type": "string",
-          "description": "When sub-classing, this defines the super-class"
+          "description": "When sub-classing, this defines the super-class",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "type": "string",
           "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "@referredType": {
           "type": "string",
-          "description": "The actual type of the target instance when needed for disambiguation."
+          "description": "The actual type of the target instance when needed for disambiguation.",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         }
       },
       "required": [
@@ -1914,24 +1994,29 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "Unique identifier of a related entity."
+          "description": "Unique identifier of a related entity.",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "href": {
           "type": "string",
-          "description": "Reference of the related entity."
+          "description": "Reference of the related entity.",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "@baseType": {
           "type": "string",
-          "description": "When sub-classing, this defines the super-class"
+          "description": "When sub-classing, this defines the super-class",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "type": "string",
           "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         }
       }
     },
@@ -2044,35 +2129,42 @@
         "id": {
           "example": "MC2255771199555",
           "type": "string",
-          "description": "identification of the entity within the external system."
+          "description": "identification of the entity within the external system.",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "href": {
           "type": "string",
           "format": "uri",
-          "description": "Hyperlink reference"
+          "description": "Hyperlink reference",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "externalIdentifierType": {
           "example": "ProductOrder",
           "type": "string",
-          "description": "Type of the identification, typically would be the type of the entity within the external system"
+          "description": "Type of the identification, typically would be the type of the entity within the external system",
+          "x-go-custom-tag": "bson:\"externalIdentifierType,omitempty\""
         },
         "owner": {
           "example": "MagentoCommerce",
           "type": "string",
-          "description": "Name of the external system that owns the entity."
+          "description": "Name of the external system that owns the entity.",
+          "x-go-custom-tag": "bson:\"owner,omitempty\""
         },
         "@baseType": {
           "type": "string",
-          "description": "When sub-classing, this defines the super-class"
+          "description": "When sub-classing, this defines the super-class",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "type": "string",
           "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         }
       }
     },
@@ -2085,33 +2177,40 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "unique identifier"
+          "description": "unique identifier",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "href": {
           "type": "string",
           "format": "uri",
-          "description": "Hyperlink reference"
+          "description": "Hyperlink reference",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "externalReferenceType": {
           "type": "string",
-          "description": "Type of the external reference"
+          "description": "Type of the external reference",
+          "x-go-custom-tag": "bson:\"externalReferenceType,omitempty\""
         },
         "name": {
           "type": "string",
-          "description": "External reference name"
+          "description": "External reference name",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "@baseType": {
           "type": "string",
-          "description": "When sub-classing, this defines the super-class"
+          "description": "When sub-classing, this defines the super-class",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "type": "string",
           "format": "uri",
-          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "type": "string",
-          "description": "When sub-classing, this defines the sub-class Extensible name"
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         }
       }
     },
