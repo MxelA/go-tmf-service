@@ -12,7 +12,6 @@ import (
 )
 
 func CreateServiceOrderControllerHandler(req service_order.CreateServiceOrderParams) middleware.Responder {
-
 	doc := &models.ServiceOrder{}
 
 	// Copy data from create service order model to response service model
@@ -35,7 +34,6 @@ func CreateServiceOrderControllerHandler(req service_order.CreateServiceOrderPar
 	mg := database.GetMongoInstance()
 	collection := mg.Db.Collection("serviceOrder")
 
-	doc.ID = ""
 	insertResult, err := collection.InsertOne(req.HTTPRequest.Context(), doc)
 	if err != nil {
 		errCode := "500"
@@ -58,8 +56,22 @@ func CreateServiceOrderControllerHandler(req service_order.CreateServiceOrderPar
 	filter := bson.D{{Key: "_id", Value: insertResult.InsertedID}}
 	record := collection.FindOne(req.HTTPRequest.Context(), filter)
 
-	createdServiceOrder := &models.ServiceOrder{}
-	err = record.Decode(createdServiceOrder)
+	var raw bson.Raw
+	err = record.Decode(&raw)
+	if err != nil {
+		errCode := "500"
+		reason := err.Error()
+		var errModel = models.Error{
+			Reason:  &reason,
+			Code:    &errCode,
+			Message: "Internal server error",
+		}
+		return service_order.NewCreateServiceOrderInternalServerError().WithPayload(&errModel)
+	}
+	log.Println("Raw data from MongoDB:", raw)
+
+	createdServiceOrder := models.ServiceOrder{}
+	err = record.Decode(&createdServiceOrder)
 	utils.PrettyPrint(createdServiceOrder)
 	//var res models.ServiceOrder
 	//err = copier.Copy(&res, &doc)
@@ -77,5 +89,5 @@ func CreateServiceOrderControllerHandler(req service_order.CreateServiceOrderPar
 	//	return service_order.NewCreateServiceOrderInternalServerError().WithPayload(&errModel)
 	//}
 
-	return service_order.NewCreateServiceOrderCreated().WithPayload(createdServiceOrder)
+	return service_order.NewCreateServiceOrderCreated().WithPayload(&createdServiceOrder)
 }
