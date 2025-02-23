@@ -21,90 +21,90 @@ import (
 type ServiceOrder struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// Date when the order is cancelled. This is used when order is cancelled.
 	// Format: date-time
-	CancellationDate strfmt.DateTime `json:"cancellationDate,omitempty"`
+	CancellationDate strfmt.DateTime `json:"cancellationDate,omitempty" bson:"cancellationDate,omitempty"`
 
 	// Reason why the order is cancelled. This is used when order is cancelled.
-	CancellationReason string `json:"cancellationReason,omitempty"`
+	CancellationReason string `json:"cancellationReason,omitempty" bson:"cancellationReason,omitempty"`
 
 	// Used to categorize the order, useful for the OM system, such as: Broadband, TVOption
-	Category string `json:"category,omitempty"`
+	Category string `json:"category,omitempty" bson:"category,omitempty"`
 
 	// Effective delivery date amended by the provider
 	// Format: date-time
-	CompletionDate strfmt.DateTime `json:"completionDate,omitempty"`
+	CompletionDate strfmt.DateTime `json:"completionDate,omitempty" bson:"completionDate,omitempty"`
 
 	// A free-text description of the service order
-	Description string `json:"description,omitempty"`
+	Description string `json:"description,omitempty" bson:"description,omitempty"`
 
 	// the error message if the order closed by an error
 	ErrorMessage *ServiceOrderErrorMessage `json:"errorMessage,omitempty"`
 
 	// Expected delivery date amended by the provider
 	// Format: date-time
-	ExpectedCompletionDate strfmt.DateTime `json:"expectedCompletionDate,omitempty"`
+	ExpectedCompletionDate strfmt.DateTime `json:"expectedCompletionDate,omitempty" bson:"expectedCompletionDate,omitempty"`
 
 	// ID given by the consumer to facilitate searches
-	ExternalID string `json:"externalId,omitempty"`
+	ExternalID string `json:"externalId,omitempty" bson:"externalId,omitempty"`
 
 	// external reference
-	ExternalReference []*ExternalReference `json:"externalReference"`
+	ExternalReference []*ExternalReference `json:"externalReference" bson:"externalReference"`
 
 	// Hyperlink to access the order
-	Href string `json:"href,omitempty"`
+	Href string `json:"href,omitempty" bson:"href,omitempty"`
 
 	// ID created on repository side
-	ID string `json:"id,omitempty"`
+	ID string `json:"id,omitempty" bson:"_id,omitempty"`
 
 	// A list of jeopardy alerts related to this order
-	JeopardyAlert []*ServiceOrderJeopardyAlert `json:"jeopardyAlert"`
+	JeopardyAlert []*ServiceOrderJeopardyAlert `json:"jeopardyAlert" bson:"jeopardyAlert"`
 
 	// A list of milestones related to this order
-	Milestone []*ServiceOrderMilestone `json:"milestone"`
+	Milestone []*ServiceOrderMilestone `json:"milestone" bson:"milestone"`
 
 	// Extra-information about the order; e.g. useful to add extra delivery information that could be useful for a human process
-	Note []*Note `json:"note"`
+	Note []*Note `json:"note" bson:"note"`
 
 	// Contact attached to the order to send back information regarding this order
-	NotificationContact string `json:"notificationContact,omitempty"`
+	NotificationContact string `json:"notificationContact,omitempty" bson:"notificationContact,omitempty"`
 
 	// order date
 	// Format: date-time
-	OrderDate strfmt.DateTime `json:"orderDate,omitempty"`
+	OrderDate strfmt.DateTime `json:"orderDate,omitempty" bson:"orderDate,omitempty"`
 
 	// A list of service orders related to this order (e.g. prerequisite, dependent on)
-	OrderRelationship []*ServiceOrderRelationship `json:"orderRelationship"`
+	OrderRelationship []*ServiceOrderRelationship `json:"orderRelationship" bson:"orderRelationship"`
 
 	// Can be used by consumers to prioritize orders in a Service Order Management system
-	Priority string `json:"priority,omitempty"`
+	Priority string `json:"priority,omitempty" bson:"priority,omitempty"`
 
 	// A list of parties which are involved in this order and the role they are playing
-	RelatedParty []*RelatedParty `json:"relatedParty"`
+	RelatedParty []*RelatedParty `json:"relatedParty" bson:"relatedParty"`
 
 	// Requested delivery date from the requestors perspective
 	// Format: date-time
-	RequestedCompletionDate strfmt.DateTime `json:"requestedCompletionDate,omitempty"`
+	RequestedCompletionDate strfmt.DateTime `json:"requestedCompletionDate,omitempty" bson:"requestedCompletionDate,omitempty"`
 
 	// Order start date wished by the requestor
 	// Format: date-time
-	RequestedStartDate strfmt.DateTime `json:"requestedStartDate,omitempty"`
+	RequestedStartDate strfmt.DateTime `json:"requestedStartDate,omitempty" bson:"requestedStartDate,omitempty"`
 
 	// A list of service order items to be processed by this order
-	ServiceOrderItem []*ServiceOrderItem `json:"serviceOrderItem"`
+	ServiceOrderItem []*ServiceOrderItem `json:"serviceOrderItem" bson:"serviceOrderItem"`
 
 	// Date when the order was started for processing
 	// Format: date-time
-	StartDate strfmt.DateTime `json:"startDate,omitempty"`
+	StartDate strfmt.DateTime `json:"startDate,omitempty" bson:"startDate,omitempty"`
 
 	// State of the order: described in the state-machine diagram
 	State ServiceOrderStateType `json:"state,omitempty"`
@@ -233,6 +233,8 @@ func (m *ServiceOrder) validateErrorMessage(formats strfmt.Registry) error {
 		if err := m.ErrorMessage.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("errorMessage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorMessage")
 			}
 			return err
 		}
@@ -267,6 +269,8 @@ func (m *ServiceOrder) validateExternalReference(formats strfmt.Registry) error 
 			if err := m.ExternalReference[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("externalReference" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("externalReference" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -291,6 +295,8 @@ func (m *ServiceOrder) validateJeopardyAlert(formats strfmt.Registry) error {
 			if err := m.JeopardyAlert[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("jeopardyAlert" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("jeopardyAlert" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -315,6 +321,8 @@ func (m *ServiceOrder) validateMilestone(formats strfmt.Registry) error {
 			if err := m.Milestone[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("milestone" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("milestone" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -339,6 +347,8 @@ func (m *ServiceOrder) validateNote(formats strfmt.Registry) error {
 			if err := m.Note[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("note" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("note" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -375,6 +385,8 @@ func (m *ServiceOrder) validateOrderRelationship(formats strfmt.Registry) error 
 			if err := m.OrderRelationship[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("orderRelationship" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("orderRelationship" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -399,6 +411,8 @@ func (m *ServiceOrder) validateRelatedParty(formats strfmt.Registry) error {
 			if err := m.RelatedParty[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relatedParty" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("relatedParty" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -447,6 +461,8 @@ func (m *ServiceOrder) validateServiceOrderItem(formats strfmt.Registry) error {
 			if err := m.ServiceOrderItem[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -477,6 +493,8 @@ func (m *ServiceOrder) validateState(formats strfmt.Registry) error {
 	if err := m.State.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("state")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("state")
 		}
 		return err
 	}
@@ -541,6 +559,8 @@ func (m *ServiceOrder) contextValidateErrorMessage(ctx context.Context, formats 
 		if err := m.ErrorMessage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("errorMessage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorMessage")
 			}
 			return err
 		}
@@ -562,6 +582,8 @@ func (m *ServiceOrder) contextValidateExternalReference(ctx context.Context, for
 			if err := m.ExternalReference[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("externalReference" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("externalReference" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -585,6 +607,8 @@ func (m *ServiceOrder) contextValidateJeopardyAlert(ctx context.Context, formats
 			if err := m.JeopardyAlert[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("jeopardyAlert" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("jeopardyAlert" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -608,6 +632,8 @@ func (m *ServiceOrder) contextValidateMilestone(ctx context.Context, formats str
 			if err := m.Milestone[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("milestone" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("milestone" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -631,6 +657,8 @@ func (m *ServiceOrder) contextValidateNote(ctx context.Context, formats strfmt.R
 			if err := m.Note[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("note" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("note" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -654,6 +682,8 @@ func (m *ServiceOrder) contextValidateOrderRelationship(ctx context.Context, for
 			if err := m.OrderRelationship[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("orderRelationship" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("orderRelationship" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -677,6 +707,8 @@ func (m *ServiceOrder) contextValidateRelatedParty(ctx context.Context, formats 
 			if err := m.RelatedParty[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relatedParty" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("relatedParty" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -700,6 +732,8 @@ func (m *ServiceOrder) contextValidateServiceOrderItem(ctx context.Context, form
 			if err := m.ServiceOrderItem[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -719,6 +753,8 @@ func (m *ServiceOrder) contextValidateState(ctx context.Context, formats strfmt.
 	if err := m.State.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("state")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("state")
 		}
 		return err
 	}

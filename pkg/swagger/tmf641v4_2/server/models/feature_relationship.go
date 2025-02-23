@@ -20,25 +20,25 @@ import (
 type FeatureRelationship struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// Unique identifier of the target feature.
-	ID string `json:"id,omitempty"`
+	ID string `json:"id,omitempty" bson:"id,omitempty"`
 
 	// This is the name of the target feature.
 	// Required: true
-	Name *string `json:"name"`
+	Name *string `json:"name" bson:"name"`
 
 	// This is the type of the feature relationship.
 	// Required: true
-	RelationshipType *string `json:"relationshipType"`
+	RelationshipType *string `json:"relationshipType" bson:"relationshipType"`
 
 	// The period for which this feature relationship is valid.
 	ValidFor *TimePeriod `json:"validFor,omitempty"`
@@ -109,6 +109,8 @@ func (m *FeatureRelationship) validateValidFor(formats strfmt.Registry) error {
 		if err := m.ValidFor.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("validFor")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("validFor")
 			}
 			return err
 		}
@@ -142,6 +144,8 @@ func (m *FeatureRelationship) contextValidateValidFor(ctx context.Context, forma
 		if err := m.ValidFor.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("validFor")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("validFor")
 			}
 			return err
 		}

@@ -21,36 +21,36 @@ import (
 type ServiceOrderMilestone struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// free-text description of the Milestone
-	Description string `json:"description,omitempty"`
+	Description string `json:"description,omitempty" bson:"description,omitempty"`
 
 	// identifier of the Milestone
-	ID string `json:"id,omitempty"`
+	ID string `json:"id,omitempty" bson:"id,omitempty"`
 
 	// A string represents the message of the milestone
-	Message string `json:"message,omitempty"`
+	Message string `json:"message,omitempty" bson:"message,omitempty"`
 
 	// A date time( DateTime). The date that the milestone happens
 	// Format: date-time
-	MilestoneDate strfmt.DateTime `json:"milestoneDate,omitempty"`
+	MilestoneDate strfmt.DateTime `json:"milestoneDate,omitempty" bson:"milestoneDate,omitempty"`
 
 	// A string used to give a name to the milestone
-	Name string `json:"name,omitempty"`
+	Name string `json:"name,omitempty" bson:"name,omitempty"`
 
 	// A list of order items corresponded to this milestone
-	ServiceOrderItem []*ServiceOrderItemRef `json:"serviceOrderItem"`
+	ServiceOrderItem []*ServiceOrderItemRef `json:"serviceOrderItem" bson:"serviceOrderItem"`
 
 	// The milestone status
-	Status string `json:"status,omitempty"`
+	Status string `json:"status,omitempty" bson:"status,omitempty"`
 }
 
 // Validate validates this service order milestone
@@ -113,6 +113,8 @@ func (m *ServiceOrderMilestone) validateServiceOrderItem(formats strfmt.Registry
 			if err := m.ServiceOrderItem[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -150,6 +152,8 @@ func (m *ServiceOrderMilestone) contextValidateServiceOrderItem(ctx context.Cont
 			if err := m.ServiceOrderItem[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

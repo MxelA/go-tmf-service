@@ -20,28 +20,28 @@ import (
 type ResourceRef struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// The actual type of the target instance when needed for disambiguation.
-	AtReferredType string `json:"@referredType,omitempty"`
+	AtReferredType string `json:"@referredType,omitempty" bson:"atReferredType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// Hyperlink reference
 	// Format: uri
-	Href strfmt.URI `json:"href,omitempty"`
+	Href strfmt.URI `json:"href,omitempty" bson:"href,omitempty"`
 
 	// unique identifier
 	// Required: true
-	ID *string `json:"id"`
+	ID *string `json:"id" bson:"id"`
 
 	// Name of the related entity.
-	Name string `json:"name,omitempty"`
+	Name string `json:"name,omitempty" bson:"name,omitempty"`
 }
 
 // Validate validates this resource ref

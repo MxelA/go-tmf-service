@@ -21,24 +21,24 @@ import (
 type ServiceRelationship struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// relationship type
 	// Required: true
-	RelationshipType *string `json:"relationshipType"`
+	RelationshipType *string `json:"relationshipType" bson:"relationshipType"`
 
 	// service
 	Service *ServiceRefOrValue `json:"service,omitempty"`
 
 	// service relationship characteristic
-	ServiceRelationshipCharacteristic []*Characteristic `json:"serviceRelationshipCharacteristic"`
+	ServiceRelationshipCharacteristic []*Characteristic `json:"serviceRelationshipCharacteristic" bson:"serviceRelationshipCharacteristic"`
 }
 
 // Validate validates this service relationship
@@ -97,6 +97,8 @@ func (m *ServiceRelationship) validateService(formats strfmt.Registry) error {
 		if err := m.Service.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("service")
 			}
 			return err
 		}
@@ -119,6 +121,8 @@ func (m *ServiceRelationship) validateServiceRelationshipCharacteristic(formats 
 			if err := m.ServiceRelationshipCharacteristic[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceRelationshipCharacteristic" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceRelationshipCharacteristic" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -158,6 +162,8 @@ func (m *ServiceRelationship) contextValidateService(ctx context.Context, format
 		if err := m.Service.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("service")
 			}
 			return err
 		}
@@ -179,6 +185,8 @@ func (m *ServiceRelationship) contextValidateServiceRelationshipCharacteristic(c
 			if err := m.ServiceRelationshipCharacteristic[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceRelationshipCharacteristic" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceRelationshipCharacteristic" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -20,31 +20,31 @@ import (
 type CancelOrder struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// Reason why the order is cancelled.
-	CancellationReason string `json:"cancellationReason,omitempty"`
+	CancellationReason string `json:"cancellationReason,omitempty" bson:"cancellationReason,omitempty"`
 
 	// Date when the order is cancelled.
 	// Format: date-time
-	EffectiveCancellationDate strfmt.DateTime `json:"effectiveCancellationDate,omitempty"`
+	EffectiveCancellationDate strfmt.DateTime `json:"effectiveCancellationDate,omitempty" bson:"effectiveCancellationDate,omitempty"`
 
 	// Hyperlink to access the cancellation request
-	Href string `json:"href,omitempty"`
+	Href string `json:"href,omitempty" bson:"href,omitempty"`
 
 	// id of the cancellation request (this is not an order id)
-	ID string `json:"id,omitempty"`
+	ID string `json:"id,omitempty" bson:"id,omitempty"`
 
 	// Date when the submitter wants the order to be cancelled
 	// Format: date-time
-	RequestedCancellationDate strfmt.DateTime `json:"requestedCancellationDate,omitempty"`
+	RequestedCancellationDate strfmt.DateTime `json:"requestedCancellationDate,omitempty" bson:"requestedCancellationDate,omitempty"`
 
 	// Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on.
 	State TaskStateType `json:"state,omitempty"`
@@ -120,6 +120,8 @@ func (m *CancelOrder) validateState(formats strfmt.Registry) error {
 	if err := m.State.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("state")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("state")
 		}
 		return err
 	}
@@ -150,6 +152,8 @@ func (m *CancelOrder) contextValidateState(ctx context.Context, formats strfmt.R
 	if err := m.State.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("state")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("state")
 		}
 		return err
 	}

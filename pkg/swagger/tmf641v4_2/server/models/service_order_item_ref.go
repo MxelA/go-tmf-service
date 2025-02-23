@@ -20,27 +20,27 @@ import (
 type ServiceOrderItemRef struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// The actual type of the target instance when needed for disambiguation.
-	AtReferredType string `json:"@referredType,omitempty"`
+	AtReferredType string `json:"@referredType,omitempty" bson:"atReferredType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// Identifier of the line item
-	ItemID string `json:"itemId,omitempty"`
+	ItemID string `json:"itemId,omitempty" bson:"itemId"`
 
 	// Link to the order to which this item belongs to
 	// Format: uri
-	ServiceOrderHref strfmt.URI `json:"serviceOrderHref,omitempty"`
+	ServiceOrderHref strfmt.URI `json:"serviceOrderHref,omitempty" bson:"serviceOrderHref,omitempty"`
 
 	// Identifier of the order that this item belongs to
-	ServiceOrderID string `json:"serviceOrderId,omitempty"`
+	ServiceOrderID string `json:"serviceOrderId,omitempty" bson:"serviceOrderId,omitempty"`
 }
 
 // Validate validates this service order item ref

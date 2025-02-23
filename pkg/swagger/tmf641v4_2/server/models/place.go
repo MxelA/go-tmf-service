@@ -20,23 +20,23 @@ import (
 type Place struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// Unique reference of the place
-	Href string `json:"href,omitempty"`
+	Href string `json:"href,omitempty" bson:"href,omitempty"`
 
 	// Unique identifier of the place
-	ID string `json:"id,omitempty"`
+	ID string `json:"id,omitempty" bson:"id,omitempty"`
 
 	// A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]
-	Name string `json:"name,omitempty"`
+	Name string `json:"name,omitempty" bson:"name,omitempty"`
 }
 
 // Validate validates this place

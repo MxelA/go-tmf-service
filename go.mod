@@ -3,7 +3,7 @@ module github.com/MxelA/tmf-service-go
 go 1.18
 
 require (
-	github.com/go-openapi/errors v0.20.0
+	github.com/go-openapi/errors v0.20.1
 	github.com/go-openapi/loads v0.20.2
 	github.com/go-openapi/runtime v0.19.29
 	github.com/go-openapi/spec v0.20.1

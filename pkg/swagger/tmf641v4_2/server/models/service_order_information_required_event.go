@@ -20,39 +20,39 @@ import (
 type ServiceOrderInformationRequiredEvent struct {
 
 	// The correlation id for this event.
-	CorrelationID string `json:"correlationId,omitempty"`
+	CorrelationID string `json:"correlationId,omitempty" bson:"correlationId,omitempty"`
 
 	// An explnatory of the event.
-	Description string `json:"description,omitempty"`
+	Description string `json:"description,omitempty" bson:"description,omitempty"`
 
 	// The domain of the event.
-	Domain string `json:"domain,omitempty"`
+	Domain string `json:"domain,omitempty" bson:"domain,omitempty"`
 
 	// The event payload linked to the involved resource object
 	Event *ServiceOrderInformationRequiredEventPayload `json:"event,omitempty"`
 
 	// The identifier of the notification.
-	EventID string `json:"eventId,omitempty"`
+	EventID string `json:"eventId,omitempty" bson:"eventId,omitempty"`
 
 	// Time of the event occurrence.
 	// Format: date-time
-	EventTime strfmt.DateTime `json:"eventTime,omitempty"`
+	EventTime strfmt.DateTime `json:"eventTime,omitempty" bson:"eventTime,omitempty"`
 
 	// The type of the notification.
-	EventType string `json:"eventType,omitempty"`
+	EventType string `json:"eventType,omitempty" bson:"eventType,omitempty"`
 
 	// The path identifying the object field concerned by this notification.
-	FieldPath string `json:"fieldPath,omitempty"`
+	FieldPath string `json:"fieldPath,omitempty" bson:"filePath,omitempty"`
 
 	// A priority.
-	Priority string `json:"priority,omitempty"`
+	Priority string `json:"priority,omitempty" bson:"priority,omitempty"`
 
 	// The time the event occured.
 	// Format: date-time
-	TimeOcurred strfmt.DateTime `json:"timeOcurred,omitempty"`
+	TimeOcurred strfmt.DateTime `json:"timeOcurred,omitempty" bson:"timeOcurred,omitempty"`
 
 	// The title of the event.
-	Title string `json:"title,omitempty"`
+	Title string `json:"title,omitempty" bson:"title,omitempty"`
 }
 
 // Validate validates this service order information required event
@@ -86,6 +86,8 @@ func (m *ServiceOrderInformationRequiredEvent) validateEvent(formats strfmt.Regi
 		if err := m.Event.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("event")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("event")
 			}
 			return err
 		}
@@ -143,6 +145,8 @@ func (m *ServiceOrderInformationRequiredEvent) contextValidateEvent(ctx context.
 		if err := m.Event.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("event")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("event")
 			}
 			return err
 		}

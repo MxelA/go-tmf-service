@@ -45,6 +45,8 @@ func (m *CancelServiceOrderStateChangeEventPayload) validateCancelServiceOrder(f
 		if err := m.CancelServiceOrder.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("cancelServiceOrder")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("cancelServiceOrder")
 			}
 			return err
 		}
@@ -78,6 +80,8 @@ func (m *CancelServiceOrderStateChangeEventPayload) contextValidateCancelService
 		if err := m.CancelServiceOrder.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("cancelServiceOrder")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("cancelServiceOrder")
 			}
 			return err
 		}

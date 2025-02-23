@@ -20,32 +20,32 @@ import (
 type Note struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// Author of the note
 	// Example: ["Mr. N. Bene"]
-	Author string `json:"author,omitempty"`
+	Author string `json:"author,omitempty" bson:"author,omitempty"`
 
 	// Date of the note
 	// Example: ["2020-11-20T08:00:00Z"]
 	// Format: date-time
-	Date strfmt.DateTime `json:"date,omitempty"`
+	Date strfmt.DateTime `json:"date,omitempty" bson:"date,omitempty"`
 
 	// Identifier of the note within its containing entity
 	// Example: ["afa9-3d90aaa8da0f"]
-	ID string `json:"id,omitempty"`
+	ID string `json:"id,omitempty" bson:"id,omitempty"`
 
 	// Text of the note
 	// Example: ["This is important"]
 	// Required: true
-	Text *string `json:"text"`
+	Text *string `json:"text" bson:"text"`
 }
 
 // Validate validates this note

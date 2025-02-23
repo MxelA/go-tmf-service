@@ -3007,10 +3007,11 @@
         "serviceOrderItem": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RelatedServiceOrderItem"
+            "$ref": "#/definitions/RelatedServiceOrderItem",
+            "x-go-custom-tag": "bson:\"serviceOrderItem\""
           },
-          "description": "A list of service order items related to this service",
-          "x-go-custom-tag": "bson:\"serviceOrderItem\""
+          "description": "A list of service order items related to this service"
+
         },
         "serviceRelationship": {
           "type": "array",

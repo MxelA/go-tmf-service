@@ -21,31 +21,31 @@ import (
 type Characteristic struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// characteristic relationship
-	CharacteristicRelationship []*CharacteristicRelationship `json:"characteristicRelationship"`
+	CharacteristicRelationship []*CharacteristicRelationship `json:"characteristicRelationship" bson:"characteristicRelationship"`
 
 	// Unique identifier of the characteristic
-	ID string `json:"id,omitempty"`
+	ID string `json:"id,omitempty" bson:"id,omitempty"`
 
 	// Name of the characteristic
 	// Required: true
-	Name *string `json:"name"`
+	Name *string `json:"name" bson:"name,omitempty"`
 
 	// The value of the characteristic
 	// Required: true
-	Value Any `json:"value"`
+	Value interface{} `json:"value" bson:"value"`
 
 	// Data type of the value of the characteristic
-	ValueType string `json:"valueType,omitempty"`
+	ValueType string `json:"valueType,omitempty" bson:"valueType,omitempty"`
 }
 
 // Validate validates this characteristic
@@ -100,6 +100,8 @@ func (m *Characteristic) validateCharacteristicRelationship(formats strfmt.Regis
 			if err := m.CharacteristicRelationship[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("characteristicRelationship" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("characteristicRelationship" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -155,6 +157,8 @@ func (m *Characteristic) contextValidateCharacteristicRelationship(ctx context.C
 			if err := m.CharacteristicRelationship[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("characteristicRelationship" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("characteristicRelationship" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

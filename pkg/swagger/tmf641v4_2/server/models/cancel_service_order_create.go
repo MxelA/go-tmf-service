@@ -21,27 +21,27 @@ import (
 type CancelServiceOrderCreate struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// Reason why the order is cancelled.
-	CancellationReason string `json:"cancellationReason,omitempty"`
+	CancellationReason string `json:"cancellationReason,omitempty" bson:"cancellationReason,omitempty"`
 
 	// an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR).
-	CompletionMessage string `json:"completionMessage,omitempty"`
+	CompletionMessage string `json:"completionMessage,omitempty" bson:"completionMessage,omitempty"`
 
 	// error message
 	ErrorMessage *Error `json:"errorMessage,omitempty"`
 
 	// Date when the submitter wants the order to be cancelled
 	// Format: date-time
-	RequestedCancellationDate strfmt.DateTime `json:"requestedCancellationDate,omitempty"`
+	RequestedCancellationDate strfmt.DateTime `json:"requestedCancellationDate,omitempty" bson:"requestedCancellationDate,omitempty"`
 
 	// service order
 	// Required: true
@@ -95,6 +95,8 @@ func (m *CancelServiceOrderCreate) validateErrorMessage(formats strfmt.Registry)
 		if err := m.ErrorMessage.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("errorMessage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorMessage")
 			}
 			return err
 		}
@@ -125,6 +127,8 @@ func (m *CancelServiceOrderCreate) validateServiceOrder(formats strfmt.Registry)
 		if err := m.ServiceOrder.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("serviceOrder")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("serviceOrder")
 			}
 			return err
 		}
@@ -162,6 +166,8 @@ func (m *CancelServiceOrderCreate) contextValidateErrorMessage(ctx context.Conte
 		if err := m.ErrorMessage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("errorMessage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorMessage")
 			}
 			return err
 		}
@@ -177,6 +183,8 @@ func (m *CancelServiceOrderCreate) contextValidateServiceOrder(ctx context.Conte
 		if err := m.ServiceOrder.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("serviceOrder")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("serviceOrder")
 			}
 			return err
 		}

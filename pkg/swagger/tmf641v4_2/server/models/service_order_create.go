@@ -163,6 +163,8 @@ func (m *ServiceOrderCreate) validateExternalReference(formats strfmt.Registry) 
 			if err := m.ExternalReference[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("externalReference" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("externalReference" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -187,6 +189,8 @@ func (m *ServiceOrderCreate) validateNote(formats strfmt.Registry) error {
 			if err := m.Note[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("note" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("note" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -211,6 +215,8 @@ func (m *ServiceOrderCreate) validateOrderRelationship(formats strfmt.Registry) 
 			if err := m.OrderRelationship[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("orderRelationship" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("orderRelationship" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -235,6 +241,8 @@ func (m *ServiceOrderCreate) validateRelatedParty(formats strfmt.Registry) error
 			if err := m.RelatedParty[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relatedParty" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("relatedParty" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -290,6 +298,8 @@ func (m *ServiceOrderCreate) validateServiceOrderItem(formats strfmt.Registry) e
 			if err := m.ServiceOrderItem[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -343,6 +353,8 @@ func (m *ServiceOrderCreate) contextValidateExternalReference(ctx context.Contex
 			if err := m.ExternalReference[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("externalReference" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("externalReference" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -366,6 +378,8 @@ func (m *ServiceOrderCreate) contextValidateNote(ctx context.Context, formats st
 			if err := m.Note[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("note" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("note" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -389,6 +403,8 @@ func (m *ServiceOrderCreate) contextValidateOrderRelationship(ctx context.Contex
 			if err := m.OrderRelationship[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("orderRelationship" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("orderRelationship" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -412,6 +428,8 @@ func (m *ServiceOrderCreate) contextValidateRelatedParty(ctx context.Context, fo
 			if err := m.RelatedParty[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relatedParty" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("relatedParty" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -435,6 +453,8 @@ func (m *ServiceOrderCreate) contextValidateServiceOrderItem(ctx context.Context
 			if err := m.ServiceOrderItem[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

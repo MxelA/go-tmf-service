@@ -20,14 +20,14 @@ import (
 type ServiceOrderItemRelationship struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// A service order item in relationship with this order item
 	OrderItem *ServiceOrderItemRef `json:"orderItem,omitempty"`
@@ -75,6 +75,8 @@ func (m *ServiceOrderItemRelationship) validateOrderItem(formats strfmt.Registry
 		if err := m.OrderItem.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("orderItem")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("orderItem")
 			}
 			return err
 		}
@@ -108,6 +110,8 @@ func (m *ServiceOrderItemRelationship) contextValidateOrderItem(ctx context.Cont
 		if err := m.OrderItem.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("orderItem")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("orderItem")
 			}
 			return err
 		}

@@ -21,14 +21,14 @@ type EventSubscription struct {
 
 	// The callback being registered.
 	// Required: true
-	Callback *string `json:"callback"`
+	Callback *string `json:"callback" bson:"callback"`
 
 	// Id of the listener
 	// Required: true
-	ID *string `json:"id"`
+	ID *string `json:"id" bson:"id,omitempty"`
 
 	// additional data to be passed
-	Query string `json:"query,omitempty"`
+	Query string `json:"query,omitempty" bson:"query,omitempty"`
 }
 
 // Validate validates this event subscription

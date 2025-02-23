@@ -21,36 +21,36 @@ import (
 type ServiceOrderJeopardyAlert struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// A date time( DateTime). The date that the alert issued
 	// Format: date-time
-	AlertDate strfmt.DateTime `json:"alertDate,omitempty"`
+	AlertDate strfmt.DateTime `json:"alertDate,omitempty" bson:"alertDate,omitempty"`
 
 	//  The exception associated with this jeopardy alert
-	Exception string `json:"exception,omitempty"`
+	Exception string `json:"exception,omitempty" bson:"exception,omitempty"`
 
 	// identifier of the JeopardyAlert
-	ID string `json:"id,omitempty"`
+	ID string `json:"id,omitempty" bson:"id,omitempty"`
 
 	// A string represents the type of jeopardy/risk like Normal, Hazard, Critical, ...
-	JeopardyType string `json:"jeopardyType,omitempty"`
+	JeopardyType string `json:"jeopardyType,omitempty" bson:"jeopardyType,omitempty"`
 
 	// A string represents the message of the alert
-	Message string `json:"message,omitempty"`
+	Message string `json:"message,omitempty" bson:"message,omitempty"`
 
 	// A string used to give a name to the jeopardy alert
-	Name string `json:"name,omitempty"`
+	Name string `json:"name,omitempty" bson:"name,omitempty"`
 
 	// A list of order items corresponded to this alert
-	ServiceOrderItem []*ServiceOrderItemRef `json:"serviceOrderItem"`
+	ServiceOrderItem []*ServiceOrderItemRef `json:"serviceOrderItem" bson:"serviceOrderItem"`
 }
 
 // Validate validates this service order jeopardy alert
@@ -113,6 +113,8 @@ func (m *ServiceOrderJeopardyAlert) validateServiceOrderItem(formats strfmt.Regi
 			if err := m.ServiceOrderItem[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -150,6 +152,8 @@ func (m *ServiceOrderJeopardyAlert) contextValidateServiceOrderItem(ctx context.
 			if err := m.ServiceOrderItem[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

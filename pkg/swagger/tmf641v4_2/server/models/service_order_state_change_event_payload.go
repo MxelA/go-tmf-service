@@ -45,6 +45,8 @@ func (m *ServiceOrderStateChangeEventPayload) validateServiceOrder(formats strfm
 		if err := m.ServiceOrder.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("serviceOrder")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("serviceOrder")
 			}
 			return err
 		}
@@ -78,6 +80,8 @@ func (m *ServiceOrderStateChangeEventPayload) contextValidateServiceOrder(ctx co
 		if err := m.ServiceOrder.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("serviceOrder")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("serviceOrder")
 			}
 			return err
 		}

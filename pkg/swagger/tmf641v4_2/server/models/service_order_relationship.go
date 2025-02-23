@@ -20,28 +20,28 @@ import (
 type ServiceOrderRelationship struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// The entity type of the related order
-	AtReferredType string `json:"@referredType,omitempty"`
+	AtReferredType string `json:"@referredType,omitempty" bson:"atReferredType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// A hyperlink to the related order
-	Href string `json:"href,omitempty"`
+	Href string `json:"href,omitempty" bson:"href,omitempty"`
 
 	// The id of the related order
 	// Required: true
-	ID *string `json:"id"`
+	ID *string `json:"id" bson:"id"`
 
 	// The type of related order, such as: [dependency] if the order needs to be [not started] until another order item is complete (a service order in this case) or [cross-ref] to keep track of the source order (a productOrder)
 	// Required: true
-	RelationshipType *string `json:"relationshipType"`
+	RelationshipType *string `json:"relationshipType" bson:"relationshipType"`
 }
 
 // Validate validates this service order relationship

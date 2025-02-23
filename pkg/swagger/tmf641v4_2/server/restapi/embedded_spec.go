@@ -1488,11 +1488,13 @@ func init() {
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"addressable,omitempty\""
         }
       }
     },
@@ -1506,32 +1508,39 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "description": {
           "description": "An explanatory text regarding the appointment made with a party",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "href": {
           "description": "The reference of the appointment",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "The identifier of the referred appointment",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         }
       }
     },
@@ -1541,41 +1550,50 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "cancellationReason": {
           "description": "Reason why the order is cancelled.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "effectiveCancellationDate": {
           "description": "Date when the order is cancelled.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"effectiveCancellationDate,omitempty\""
         },
         "href": {
           "description": "Hyperlink to access the cancellation request",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "id of the cancellation request (this is not an order id)",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "requestedCancellationDate": {
           "description": "Date when the submitter wants the order to be cancelled",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"requestedCancellationDate,omitempty\""
         },
         "state": {
           "description": "Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on.",
+          "x-go-custom-tag": "bson:\"state\"",
           "$ref": "#/definitions/TaskStateType"
         }
       }
@@ -1586,52 +1604,64 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "cancellationReason": {
           "description": "Reason why the order is cancelled.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "completionMessage": {
           "description": "an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR).",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "effectiveCancellationDate": {
           "description": "Date when the order is cancelled.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"effectiveCancellationDate,omitempty\""
         },
         "errorMessage": {
+          "x-go-custom-tag": "bson:\"errorMessage\"",
           "$ref": "#/definitions/Error"
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"_id,omitempty\""
         },
         "requestedCancellationDate": {
           "description": "Date when the submitter wants the order to be cancelled",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"requestedCancellationDate,omitempty\""
         },
         "serviceOrder": {
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrderRef"
         },
         "state": {
           "description": "Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on.",
+          "x-go-custom-tag": "bson:\"state\"",
           "$ref": "#/definitions/TaskStateType"
         }
       }
@@ -1642,45 +1672,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/CancelServiceOrderCreateEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -1690,6 +1730,7 @@ func init() {
       "properties": {
         "cancelServiceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"cancelServiceOrder\"",
           "$ref": "#/definitions/CancelServiceOrder"
         }
       }
@@ -1700,49 +1741,60 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/CancelServiceOrderInformationRequiredEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "fieldPath": {
           "description": "The path identifying the object field concerned by this notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"filePath,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -1752,6 +1804,7 @@ func init() {
       "properties": {
         "cancelServiceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"cancelServiceOrder\"",
           "$ref": "#/definitions/CancelServiceOrder"
         }
       }
@@ -1762,45 +1815,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event,omitempty\"",
           "$ref": "#/definitions/CancelServiceOrderStateChangeEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -1810,6 +1873,7 @@ func init() {
       "properties": {
         "cancelServiceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"cancelServiceOrder\"",
           "$ref": "#/definitions/CancelServiceOrder"
         }
       }
@@ -1823,34 +1887,42 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "cancellationReason": {
           "description": "Reason why the order is cancelled.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "completionMessage": {
           "description": "an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR).",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"completionMessage,omitempty\""
         },
         "errorMessage": {
+          "x-go-custom-tag": "bson:\"errorMessage\"",
           "$ref": "#/definitions/Error"
         },
         "requestedCancellationDate": {
           "description": "Date when the submitter wants the order to be cancelled",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"requestedCancellationDate,omitempty\""
         },
         "serviceOrder": {
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrderRef"
         }
       }
@@ -1865,38 +1937,46 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "characteristicRelationship": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CharacteristicRelationship"
-          }
+          },
+          "x-go-custom-tag": "bson:\"characteristicRelationship\""
         },
         "id": {
           "description": "Unique identifier of the characteristic",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "name": {
           "description": "Name of the characteristic",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "value": {
           "description": "The value of the characteristic",
+          "x-go-custom-tag": "bson:\"value\"",
           "$ref": "#/definitions/Any"
         },
         "valueType": {
           "description": "Data type of the value of the characteristic",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"valueType,omitempty\""
         }
       }
     },
@@ -1906,24 +1986,29 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the characteristic",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "relationshipType": {
           "description": "The type of relationship",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"relationshipType,omitempty\""
         }
       }
     },
@@ -1936,37 +2021,45 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "version": {
           "description": "constraint version",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"version,omitempty\""
         }
       }
     },
@@ -1976,43 +2069,51 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "id": {
           "description": "Identifier of the context update",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "lastUpdate": {
           "description": "The date and time the status/state last changed.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"lastUpdate,omitempty\""
         },
         "reason": {
           "description": "The reason/context for the current value of the status/state.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"reason,omitempty\""
         },
         "relatedEntity": {
           "description": "A list of entities that represent observations, anomalies or managing entities etc associated to the current status/state value.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/EntityRef"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedEntity\""
         },
         "relatedParty": {
           "description": "List of parties associated to the current status/state value.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedParty"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedParty\""
         }
       }
     },
@@ -2022,25 +2123,30 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         }
       }
     },
@@ -2053,33 +2159,40 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -2089,24 +2202,29 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Reference of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "Unique identifier of a related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         }
       }
     },
@@ -2200,15 +2318,18 @@ func init() {
       "properties": {
         "callback": {
           "description": "The callback being registered.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"callback\""
         },
         "id": {
           "description": "Id of the listener",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "query": {
           "description": "additional data to be passed",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"query,omitempty\""
         }
       }
     },
@@ -2221,11 +2342,13 @@ func init() {
       "properties": {
         "callback": {
           "description": "The callback being registered.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"callback,omitempty\""
         },
         "query": {
           "description": "additional data to be passed",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"query,omitempty\""
         }
       }
     },
@@ -2257,35 +2380,42 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "externalIdentifierType": {
           "description": "Type of the identification, typically would be the type of the entity within the external system",
           "type": "string",
+          "x-go-custom-tag": "bson:\"externalIdentifierType,omitempty\"",
           "example": "ProductOrder"
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "identification of the entity within the external system.",
           "type": "string",
+          "x-go-custom-tag": "bson:\"id\"",
           "example": "MC2255771199555"
         },
         "owner": {
           "description": "Name of the external system that owns the entity.",
           "type": "string",
+          "x-go-custom-tag": "bson:\"owner,omitempty\"",
           "example": "MagentoCommerce"
         }
       }
@@ -2299,33 +2429,40 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "externalReferenceType": {
           "description": "Type of the external reference",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"externalReferenceType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "name": {
           "description": "External reference name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -2338,52 +2475,62 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "constraint": {
           "description": "This is a list of feature constraints.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ConstraintRef"
-          }
+          },
+          "x-go-custom-tag": "bson:\"constraint\""
         },
         "featureCharacteristic": {
           "description": "This is a list of Characteristics for a particular feature.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Characteristic"
-          }
+          },
+          "x-go-custom-tag": "bson:\"featureCharacteristic\""
         },
         "featureRelationship": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/FeatureRelationship"
-          }
+          },
+          "x-go-custom-tag": "bson:\"featureRelationship,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the feature.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "isBundle": {
           "description": "True if this is a feature group. Default is false.",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isBundle,omitempty\""
         },
         "isEnabled": {
           "description": "True if this feature is enabled. Default is true.",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isEnabled\""
         },
         "name": {
           "description": "This is the name for the feature.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name\""
         }
       }
     },
@@ -2397,31 +2544,38 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the target feature.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "name": {
           "description": "This is the name of the target feature.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name\""
         },
         "relationshipType": {
           "description": "This is the type of the feature relationship.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"relationshipType\""
         },
         "validFor": {
           "description": "The period for which this feature relationship is valid.",
+          "x-go-custom-tag": "bson:\"validFor,omitempty\"",
           "$ref": "#/definitions/TimePeriod"
         }
       }
@@ -2432,41 +2586,50 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "alertDate": {
           "description": "A date time( DateTime). The date that the alert issued",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"alertDate,omitempty\""
         },
         "exception": {
           "description": " The exception associated with this jeopardy alert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"exception,omitempty\""
         },
         "id": {
           "description": "identifier of the JeopardyAlert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "jeopardyType": {
           "description": "A string represents the type of jeopardy/risk like Normal, Hazard, Critical, ...",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"jeopardyType,omitempty\""
         },
         "message": {
           "description": "A string represents the message of the alert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"message,omitempty\""
         },
         "name": {
           "description": "A string used to give a name to the jeopardy alert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -2502,41 +2665,50 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "description": {
           "description": "free-text description of the Milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "id": {
           "description": "identifier of the Milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "message": {
           "description": "A string represents the message of the milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"message,omitempty\""
         },
         "milestoneDate": {
           "description": "A date time( DateTime). The date that the milestone happens",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"milestoneDate,omitempty\""
         },
         "name": {
           "description": "A string used to give a name to the milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "status": {
           "description": "The milestone status",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"status,omitempty\""
         }
       }
     },
@@ -2549,20 +2721,24 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "author": {
           "description": "Author of the note",
           "type": "string",
+          "x-go-custom-tag": "bson:\"author,omitempty\"",
           "example": [
             "Mr. N. Bene"
           ]
@@ -2571,6 +2747,7 @@ func init() {
           "description": "Date of the note",
           "type": "string",
           "format": "date-time",
+          "x-go-custom-tag": "bson:\"date,omitempty\"",
           "example": [
             "2020-11-20T08:00:00Z"
           ]
@@ -2578,6 +2755,7 @@ func init() {
         "id": {
           "description": "Identifier of the note within its containing entity",
           "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\"",
           "example": [
             "afa9-3d90aaa8da0f"
           ]
@@ -2585,6 +2763,7 @@ func init() {
         "text": {
           "description": "Text of the note",
           "type": "string",
+          "x-go-custom-tag": "bson:\"text\"",
           "example": [
             "This is important"
           ]
@@ -2607,28 +2786,34 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Unique reference of the place",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the place",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "name": {
           "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -2641,33 +2826,40 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -2680,35 +2872,43 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Reference of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "Unique identifier of a related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "role": {
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"role\""
         }
       }
     },
@@ -2722,37 +2922,45 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "role": {
           "description": "Role played by the related party",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"role,omitempty\""
         }
       }
     },
@@ -2765,35 +2973,43 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocationType,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Unique reference of the place",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the place",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "name": {
           "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "role": {
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"role\""
         }
       }
     },
@@ -2806,40 +3022,49 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "itemAction": {
           "description": "Action of the order item for this service",
+          "x-go-custom-tag": "bson:\"itemAction\"",
           "$ref": "#/definitions/OrderItemActionType"
         },
         "itemId": {
           "description": "Identifier of the order item where the service was managed",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"itemId\""
         },
         "role": {
           "description": "role of the service order item for this service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"role,omitempty\""
         },
         "serviceOrderHref": {
           "description": "Reference of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceOrderHref,omitempty\""
         },
         "serviceOrderId": {
           "description": "Unique identifier of a related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceOrderId,omitempty\""
         }
       }
     },
@@ -2851,33 +3076,40 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -2887,85 +3119,103 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "category": {
           "description": "Is it a customer facing or resource facing service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"category,omitempty\""
         },
         "description": {
           "description": "Free-text description of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "endDate": {
           "description": "Date when the service ends",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"endDate,omitempty\""
         },
         "externalIdentifier": {
           "description": "A list of external identifiers assoicated with this service",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ExternalIdentifier"
-          }
+          },
+          "x-go-custom-tag": "bson:\"externalIdentifier\""
         },
         "feature": {
           "description": "A list of feature associated with this service ",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Feature"
-          }
+          },
+          "x-go-custom-tag": "bson:\"feature\""
         },
         "hasStarted": {
           "description": "If TRUE, this Service has already been started",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"hasStarted,omitempty\""
         },
         "href": {
           "description": "Reference of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"_id,omitempty\""
         },
         "isBundle": {
           "description": "If true, the service is a ServiceBundle which regroup a service hierachy. If false, the service is a 'atomic' service (hierachy leaf).",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isBundle,omitempty\""
         },
         "isServiceEnabled": {
           "description": "If FALSE and hasStarted is FALSE, this particular Service has NOT been enabled for use - if FALSE and hasStarted is TRUE then the service has failed ",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isServiceEnabled,omitempty\""
         },
         "isStateful": {
           "description": "If TRUE, this Service can be changed without affecting any other services",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isStatefull,omitempty\""
         },
         "name": {
           "description": "Name of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "note": {
           "description": "A list of notes made on this service",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Note"
-          }
+          },
+          "x-go-custom-tag": "bson:\"note\""
         },
         "operatingStatus": {
           "description": "Indicates how a service is currently performing or operating. It is a logical representation of the service operating behaviour and is determined/managed by the service provider.",
+          "x-go-custom-tag": "bson:\"operatingStatus\"",
           "$ref": "#/definitions/ServiceOperatingStatusType"
         },
         "operatingStatusContextUpdate": {
           "description": "Additional information describing the context of operatingStatus and is determined/managed by the service provider.",
+          "x-go-custom-tag": "bson:\"operatingStatusContextUpdate\"",
           "$ref": "#/definitions/ContextUpdate"
         },
         "place": {
@@ -2973,37 +3223,43 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedPlaceRefOrValue"
-          }
+          },
+          "x-go-custom-tag": "bson:\"plate\""
         },
         "relatedEntity": {
           "description": "A list of related  entity in relationship with this service ",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedEntityRefOrValue"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedEntity\""
         },
         "relatedParty": {
           "description": "A list of related party references (RelatedParty [*]). A related party defines party or party role linked to a specific entity",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedParty"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedParty\""
         },
         "serviceCharacteristic": {
           "description": "A list of characteristics that characterize this service (ServiceCharacteristic [*]) ",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Characteristic"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceCharacteristic\""
         },
         "serviceDate": {
           "description": "Date when the service was created (whatever its status).",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceDate,omitempty\""
         },
         "serviceOrderItem": {
           "description": "A list of service order items related to this service",
           "type": "array",
           "items": {
+            "x-go-custom-tag": "bson:\"serviceOrderItem\"",
             "$ref": "#/definitions/RelatedServiceOrderItem"
           }
         },
@@ -3012,27 +3268,33 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceRelationship"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceRelationship\""
         },
         "serviceSpecification": {
           "description": "The specification from which this service was instantiated",
+          "x-go-custom-tag": "bson:\"serviceSpecification,omitempty\"",
           "$ref": "#/definitions/ServiceSpecificationRef"
         },
         "serviceType": {
           "description": "Business type of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceType,omitempty\""
         },
         "startDate": {
           "description": "Date when the service starts",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"startDate,omitempty\""
         },
         "startMode": {
           "description": "This attribute is an enumerated integer that indicates how the Service is started, such as: 0: Unknown; 1: Automatically by the managed environment; 2: Automatically by the owning device; 3: Manually by the Provider of the Service; 4: Manually by a Customer of the Provider; 5: Any of the above",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"startMode,omitempty\""
         },
         "state": {
           "description": "The life cycle state of the service, such as designed, reserved, active, etc...",
+          "x-go-custom-tag": "bson:\"state\"",
           "$ref": "#/definitions/ServiceStateType"
         },
         "supportingResource": {
@@ -3040,14 +3302,16 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ResourceRef"
-          }
+          },
+          "x-go-custom-tag": "bson:\"supportingResource\""
         },
         "supportingService": {
           "description": "A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceRefOrValue"
-          }
+          },
+          "x-go-custom-tag": "bson:\"supportingService\""
         }
       }
     },
@@ -3072,137 +3336,164 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "cancellationDate": {
           "description": "Date when the order is cancelled. This is used when order is cancelled. ",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"cancellationDate,omitempty\""
         },
         "cancellationReason": {
           "description": "Reason why the order is cancelled. This is used when order is cancelled. ",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "category": {
           "description": "Used to categorize the order, useful for the OM system, such as: Broadband, TVOption",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"category,omitempty\""
         },
         "completionDate": {
           "description": "Effective delivery date amended by the provider",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"completionDate,omitempty\""
         },
         "description": {
           "description": "A free-text description of the service order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "errorMessage": {
           "description": "the error message if the order closed by an error",
+          "x-go-custom-tag": "bson:\"errorMessage\"",
           "$ref": "#/definitions/ServiceOrderErrorMessage"
         },
         "expectedCompletionDate": {
           "description": "Expected delivery date amended by the provider",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"expectedCompletionDate,omitempty\""
         },
         "externalId": {
           "description": "ID given by the consumer to facilitate searches",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"externalId,omitempty\""
         },
         "externalReference": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ExternalReference"
-          }
+          },
+          "x-go-custom-tag": "bson:\"externalReference\""
         },
         "href": {
           "description": "Hyperlink to access the order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "ID created on repository side",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"_id,omitempty\""
         },
         "jeopardyAlert": {
           "description": "A list of jeopardy alerts related to this order",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderJeopardyAlert"
-          }
+          },
+          "x-go-custom-tag": "bson:\"jeopardyAlert\""
         },
         "milestone": {
           "description": "A list of milestones related to this order",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderMilestone"
-          }
+          },
+          "x-go-custom-tag": "bson:\"milestone\""
         },
         "note": {
           "description": "Extra-information about the order; e.g. useful to add extra delivery information that could be useful for a human process",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Note"
-          }
+          },
+          "x-go-custom-tag": "bson:\"note\""
         },
         "notificationContact": {
           "description": "Contact attached to the order to send back information regarding this order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"notificationContact,omitempty\""
         },
         "orderDate": {
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"orderDate,omitempty\""
         },
         "orderRelationship": {
           "description": "A list of service orders related to this order (e.g. prerequisite, dependent on)",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderRelationship"
-          }
+          },
+          "x-go-custom-tag": "bson:\"orderRelationship\""
         },
         "priority": {
           "description": "Can be used by consumers to prioritize orders in a Service Order Management system",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "relatedParty": {
           "description": "A list of parties which are involved in this order and the role they are playing",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedParty"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedParty\""
         },
         "requestedCompletionDate": {
           "description": "Requested delivery date from the requestors perspective",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"requestedCompletionDate,omitempty\""
         },
         "requestedStartDate": {
           "description": "Order start date wished by the requestor",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"requestedStartDate,omitempty\""
         },
         "serviceOrderItem": {
           "description": "A list of service order items to be processed by this order",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderItem"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceOrderItem\""
         },
         "startDate": {
           "description": "Date when the order was started for processing",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"startDate,omitempty\""
         },
         "state": {
           "description": "State of the order: described in the state-machine diagram",
+          "x-go-custom-tag": "bson:\"state\"",
           "$ref": "#/definitions/ServiceOrderStateType"
         }
       }
@@ -3213,49 +3504,60 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderAttributeValueChangeEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "fieldPath": {
           "description": "The path identifying the object field concerned by this notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"fieldPath,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -3265,6 +3567,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -3275,45 +3578,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderCreateEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -3323,6 +3636,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -3333,45 +3647,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderDeleteEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -3381,6 +3705,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -3443,49 +3768,60 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderInformationRequiredEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "fieldPath": {
           "description": "The path identifying the object field concerned by this notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"filePath,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -3495,6 +3831,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -3509,23 +3846,28 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "action": {
           "description": "The action to be carried out on the Service. Can be: add, modify, delete, noChange",
+          "x-go-custom-tag": "bson:\"action,omitempty\"",
           "$ref": "#/definitions/OrderItemActionType"
         },
         "appointment": {
           "description": "An appointment that was set up with a related party for this order item",
+          "x-go-custom-tag": "bson:\"appointment\"",
           "$ref": "#/definitions/AppointmentRef"
         },
         "errorMessage": {
@@ -3533,11 +3875,13 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderItemErrorMessage"
-          }
+          },
+          "x-go-custom-tag": "bson:\"errorMessage\""
         },
         "id": {
           "description": "Identifier of the individual line item",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "modifyPath": {
           "description": "A list of modification items provided for the service update when serviceOrderItem action is modify",
@@ -3548,10 +3892,12 @@ func init() {
         },
         "quantity": {
           "description": "Quantity ordered",
-          "type": "integer"
+          "type": "integer",
+          "x-go-custom-tag": "bson:\"quantity,omitempty\""
         },
         "service": {
           "description": "The Service to be acted on by the order item",
+          "x-go-custom-tag": "bson:\"service\"",
           "$ref": "#/definitions/ServiceRefOrValue"
         },
         "serviceOrderItem": {
@@ -3559,17 +3905,20 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderItem"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceOrderItem\""
         },
         "serviceOrderItemRelationship": {
           "description": "A list of order items related to this order item",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderItemRelationship"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceOrderItemRelationship\""
         },
         "state": {
           "description": "State of the order item: described in the state machine diagram. This is the requested state.",
+          "x-go-custom-tag": "bson:\"state\"",
           "$ref": "#/definitions/ServiceOrderItemStateType"
         }
       }
@@ -3624,33 +3973,40 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "itemId": {
           "description": "Identifier of the line item",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"itemId\""
         },
         "serviceOrderHref": {
           "description": "Link to the order to which this item belongs to",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"serviceOrderHref,omitempty\""
         },
         "serviceOrderId": {
           "description": "Identifier of the order that this item belongs to",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceOrderId,omitempty\""
         }
       }
     },
@@ -3660,19 +4016,23 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "orderItem": {
           "description": "A service order item in relationship with this order item",
+          "x-go-custom-tag": "bson:\"orderItem\"",
           "$ref": "#/definitions/ServiceOrderItemRef"
         },
         "relationshipType": {
@@ -3704,48 +4064,58 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "alertDate": {
           "description": "A date time( DateTime). The date that the alert issued",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"alertDate,omitempty\""
         },
         "exception": {
           "description": " The exception associated with this jeopardy alert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"exception,omitempty\""
         },
         "id": {
           "description": "identifier of the JeopardyAlert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "jeopardyType": {
           "description": "A string represents the type of jeopardy/risk like Normal, Hazard, Critical, ...",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"jeopardyType,omitempty\""
         },
         "message": {
           "description": "A string represents the message of the alert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"message,omitempty\""
         },
         "name": {
           "description": "A string used to give a name to the jeopardy alert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "serviceOrderItem": {
           "description": "A list of order items corresponded to this alert",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderItemRef"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceOrderItem\""
         }
       }
     },
@@ -3755,45 +4125,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderJeopardyEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -3803,6 +4183,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -3813,48 +4194,58 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "description": {
           "description": "free-text description of the Milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "id": {
           "description": "identifier of the Milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "message": {
           "description": "A string represents the message of the milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"message,omitempty\""
         },
         "milestoneDate": {
           "description": "A date time( DateTime). The date that the milestone happens",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"milestoneDate,omitempty\""
         },
         "name": {
           "description": "A string used to give a name to the milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "serviceOrderItem": {
           "description": "A list of order items corresponded to this milestone",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderItemRef"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceOrderItem\""
         },
         "status": {
           "description": "The milestone status",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"status,omitempty\""
         }
       }
     },
@@ -3864,45 +4255,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderMilestoneEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -3912,6 +4313,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -3925,33 +4327,40 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related service order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -3965,32 +4374,39 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The entity type of the related order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "A hyperlink to the related order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "The id of the related order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "relationshipType": {
           "description": "The type of related order, such as: [dependency] if the order needs to be [not started] until another order item is complete (a service order in this case) or [cross-ref] to keep track of the source order (a productOrder)",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"relationshipType\""
         }
       }
     },
@@ -4000,45 +4416,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderStateChangeEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -4048,6 +4474,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -4249,20 +4676,24 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
@@ -4271,11 +4702,13 @@ func init() {
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -4285,89 +4718,108 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "category": {
           "description": "Is it a customer facing or resource facing service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"category,omitempty\""
         },
         "description": {
           "description": "Free-text description of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "endDate": {
           "description": "Date when the service ends",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"endDate,omitempty\""
         },
         "externalIdentifier": {
           "description": "A list of external identifiers assoicated with this service",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ExternalIdentifier"
-          }
+          },
+          "x-go-custom-tag": "bson:\"externalIdentifier\""
         },
         "feature": {
           "description": "A list of feature associated with this service ",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Feature"
-          }
+          },
+          "x-go-custom-tag": "bson:\"feature\""
         },
         "hasStarted": {
           "description": "If TRUE, this Service has already been started",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"hasStarted,omitempty\""
         },
         "href": {
           "description": "Reference of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "isBundle": {
           "description": "If true, the service is a ServiceBundle which regroup a service hierachy. If false, the service is a 'atomic' service (hierachy leaf).",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isBundle,omitempty\""
         },
         "isServiceEnabled": {
           "description": "If FALSE and hasStarted is FALSE, this particular Service has NOT been enabled for use - if FALSE and hasStarted is TRUE then the service has failed ",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isServiceEnabled,omitempty\""
         },
         "isStateful": {
           "description": "If TRUE, this Service can be changed without affecting any other services",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isStateful,omitempty\""
         },
         "name": {
           "description": "Name of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "note": {
           "description": "A list of notes made on this service",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Note"
-          }
+          },
+          "x-go-custom-tag": "bson:\"note\""
         },
         "operatingStatus": {
           "description": "Indicates how a service is currently performing or operating. It is a logical representation of the service operating behaviour and is determined/managed by the service provider.",
+          "x-go-custom-tag": "bson:\"operatingStatus\"",
           "$ref": "#/definitions/ServiceOperatingStatusType"
         },
         "operatingStatusContextUpdate": {
           "description": "Additional information describing the context of operatingStatus and is determined/managed by the service provider.",
+          "x-go-custom-tag": "bson:\"operatingStatusContextUpdate\"",
           "$ref": "#/definitions/ContextUpdate"
         },
         "place": {
@@ -4375,66 +4827,78 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedPlaceRefOrValue"
-          }
+          },
+          "x-go-custom-tag": "bson:\"place\""
         },
         "relatedEntity": {
           "description": "A list of related  entity in relationship with this service ",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedEntityRefOrValue"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedEntity\""
         },
         "relatedParty": {
           "description": "A list of related party references (RelatedParty [*]). A related party defines party or party role linked to a specific entity",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedParty"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedParty\""
         },
         "serviceCharacteristic": {
           "description": "A list of characteristics that characterize this service (ServiceCharacteristic [*]) ",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Characteristic"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceCharacteristic\""
         },
         "serviceDate": {
           "description": "Date when the service was created (whatever its status).",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceDate,omitempty\""
         },
         "serviceOrderItem": {
           "description": "A list of service order items related to this service",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedServiceOrderItem"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceOrderItem\""
         },
         "serviceRelationship": {
           "description": "A list of service relationships (ServiceRelationship [*]). Describes links with other service(s) in the inventory.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceRelationship"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceRelationship\""
         },
         "serviceSpecification": {
           "description": "The specification from which this service was instantiated",
+          "x-go-custom-tag": "bson:\"serviceSpecification\"",
           "$ref": "#/definitions/ServiceSpecificationRef"
         },
         "serviceType": {
           "description": "Business type of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceType,omitempty\""
         },
         "startDate": {
           "description": "Date when the service starts",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"startDate,omitempty\""
         },
         "startMode": {
           "description": "This attribute is an enumerated integer that indicates how the Service is started, such as: 0: Unknown; 1: Automatically by the managed environment; 2: Automatically by the owning device; 3: Manually by the Provider of the Service; 4: Manually by a Customer of the Provider; 5: Any of the above",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"startMode,omitempty\""
         },
         "state": {
           "description": "The life cycle state of the service, such as designed, reserved, active, etc...",
+          "x-go-custom-tag": "bson:\"state\"",
           "$ref": "#/definitions/ServiceStateType"
         },
         "supportingResource": {
@@ -4442,14 +4906,16 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ResourceRef"
-          }
+          },
+          "x-go-custom-tag": "bson:\"supportingResource\""
         },
         "supportingService": {
           "description": "A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceRefOrValue"
-          }
+          },
+          "x-go-custom-tag": "bson:\"supportingService\""
         }
       }
     },
@@ -4461,28 +4927,34 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "relationshipType": {
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"relationshipType\""
         },
         "service": {
+          "x-go-custom-tag": "bson:\"service\"",
           "$ref": "#/definitions/ServiceRefOrValue"
         },
         "serviceRelationshipCharacteristic": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Characteristic"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceRelationshipCharacteristic\""
         }
       }
     },
@@ -4495,37 +4967,45 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "version": {
           "description": "Service specification version",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"version,omitempty\""
         }
       }
     },
@@ -4560,12 +5040,14 @@ func init() {
           "description": "End of the time period, using IETC-RFC-3339 format",
           "type": "string",
           "format": "date-time",
+          "x-go-custom-tag": "bson:\"endDateTime,omitempty\"",
           "example": "1985-04-12T23:20:50.52Z"
         },
         "startDateTime": {
           "description": "Start of the time period, using IETC-RFC-3339 format",
           "type": "string",
           "format": "date-time",
+          "x-go-custom-tag": "bson:\"startDateTime,omitempty\"",
           "example": "1985-04-12T23:20:50.52Z"
         }
       }
@@ -6057,11 +6539,13 @@ func init() {
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"addressable,omitempty\""
         }
       }
     },
@@ -6075,32 +6559,39 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "description": {
           "description": "An explanatory text regarding the appointment made with a party",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "href": {
           "description": "The reference of the appointment",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "The identifier of the referred appointment",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         }
       }
     },
@@ -6110,41 +6601,50 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "cancellationReason": {
           "description": "Reason why the order is cancelled.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "effectiveCancellationDate": {
           "description": "Date when the order is cancelled.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"effectiveCancellationDate,omitempty\""
         },
         "href": {
           "description": "Hyperlink to access the cancellation request",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "id of the cancellation request (this is not an order id)",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "requestedCancellationDate": {
           "description": "Date when the submitter wants the order to be cancelled",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"requestedCancellationDate,omitempty\""
         },
         "state": {
           "description": "Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on.",
+          "x-go-custom-tag": "bson:\"state\"",
           "$ref": "#/definitions/TaskStateType"
         }
       }
@@ -6155,52 +6655,64 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "cancellationReason": {
           "description": "Reason why the order is cancelled.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "completionMessage": {
           "description": "an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR).",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "effectiveCancellationDate": {
           "description": "Date when the order is cancelled.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"effectiveCancellationDate,omitempty\""
         },
         "errorMessage": {
+          "x-go-custom-tag": "bson:\"errorMessage\"",
           "$ref": "#/definitions/Error"
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"_id,omitempty\""
         },
         "requestedCancellationDate": {
           "description": "Date when the submitter wants the order to be cancelled",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"requestedCancellationDate,omitempty\""
         },
         "serviceOrder": {
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrderRef"
         },
         "state": {
           "description": "Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on.",
+          "x-go-custom-tag": "bson:\"state\"",
           "$ref": "#/definitions/TaskStateType"
         }
       }
@@ -6211,45 +6723,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/CancelServiceOrderCreateEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -6259,6 +6781,7 @@ func init() {
       "properties": {
         "cancelServiceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"cancelServiceOrder\"",
           "$ref": "#/definitions/CancelServiceOrder"
         }
       }
@@ -6269,49 +6792,60 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/CancelServiceOrderInformationRequiredEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "fieldPath": {
           "description": "The path identifying the object field concerned by this notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"filePath,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -6321,6 +6855,7 @@ func init() {
       "properties": {
         "cancelServiceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"cancelServiceOrder\"",
           "$ref": "#/definitions/CancelServiceOrder"
         }
       }
@@ -6331,45 +6866,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event,omitempty\"",
           "$ref": "#/definitions/CancelServiceOrderStateChangeEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -6379,6 +6924,7 @@ func init() {
       "properties": {
         "cancelServiceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"cancelServiceOrder\"",
           "$ref": "#/definitions/CancelServiceOrder"
         }
       }
@@ -6392,34 +6938,42 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "cancellationReason": {
           "description": "Reason why the order is cancelled.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "completionMessage": {
           "description": "an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR).",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"completionMessage,omitempty\""
         },
         "errorMessage": {
+          "x-go-custom-tag": "bson:\"errorMessage\"",
           "$ref": "#/definitions/Error"
         },
         "requestedCancellationDate": {
           "description": "Date when the submitter wants the order to be cancelled",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"requestedCancellationDate,omitempty\""
         },
         "serviceOrder": {
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrderRef"
         }
       }
@@ -6434,38 +6988,46 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "characteristicRelationship": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CharacteristicRelationship"
-          }
+          },
+          "x-go-custom-tag": "bson:\"characteristicRelationship\""
         },
         "id": {
           "description": "Unique identifier of the characteristic",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "name": {
           "description": "Name of the characteristic",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "value": {
           "description": "The value of the characteristic",
+          "x-go-custom-tag": "bson:\"value\"",
           "$ref": "#/definitions/Any"
         },
         "valueType": {
           "description": "Data type of the value of the characteristic",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"valueType,omitempty\""
         }
       }
     },
@@ -6475,24 +7037,29 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the characteristic",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "relationshipType": {
           "description": "The type of relationship",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"relationshipType,omitempty\""
         }
       }
     },
@@ -6505,37 +7072,45 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "version": {
           "description": "constraint version",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"version,omitempty\""
         }
       }
     },
@@ -6545,43 +7120,51 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "id": {
           "description": "Identifier of the context update",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "lastUpdate": {
           "description": "The date and time the status/state last changed.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"lastUpdate,omitempty\""
         },
         "reason": {
           "description": "The reason/context for the current value of the status/state.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"reason,omitempty\""
         },
         "relatedEntity": {
           "description": "A list of entities that represent observations, anomalies or managing entities etc associated to the current status/state value.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/EntityRef"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedEntity\""
         },
         "relatedParty": {
           "description": "List of parties associated to the current status/state value.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedParty"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedParty\""
         }
       }
     },
@@ -6591,25 +7174,30 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         }
       }
     },
@@ -6622,33 +7210,40 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -6658,24 +7253,29 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Reference of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "Unique identifier of a related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         }
       }
     },
@@ -6769,15 +7369,18 @@ func init() {
       "properties": {
         "callback": {
           "description": "The callback being registered.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"callback\""
         },
         "id": {
           "description": "Id of the listener",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "query": {
           "description": "additional data to be passed",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"query,omitempty\""
         }
       }
     },
@@ -6790,11 +7393,13 @@ func init() {
       "properties": {
         "callback": {
           "description": "The callback being registered.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"callback,omitempty\""
         },
         "query": {
           "description": "additional data to be passed",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"query,omitempty\""
         }
       }
     },
@@ -6826,35 +7431,42 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "externalIdentifierType": {
           "description": "Type of the identification, typically would be the type of the entity within the external system",
           "type": "string",
+          "x-go-custom-tag": "bson:\"externalIdentifierType,omitempty\"",
           "example": "ProductOrder"
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "identification of the entity within the external system.",
           "type": "string",
+          "x-go-custom-tag": "bson:\"id\"",
           "example": "MC2255771199555"
         },
         "owner": {
           "description": "Name of the external system that owns the entity.",
           "type": "string",
+          "x-go-custom-tag": "bson:\"owner,omitempty\"",
           "example": "MagentoCommerce"
         }
       }
@@ -6868,33 +7480,40 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "externalReferenceType": {
           "description": "Type of the external reference",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"externalReferenceType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "name": {
           "description": "External reference name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -6907,52 +7526,62 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "constraint": {
           "description": "This is a list of feature constraints.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ConstraintRef"
-          }
+          },
+          "x-go-custom-tag": "bson:\"constraint\""
         },
         "featureCharacteristic": {
           "description": "This is a list of Characteristics for a particular feature.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Characteristic"
-          }
+          },
+          "x-go-custom-tag": "bson:\"featureCharacteristic\""
         },
         "featureRelationship": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/FeatureRelationship"
-          }
+          },
+          "x-go-custom-tag": "bson:\"featureRelationship,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the feature.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "isBundle": {
           "description": "True if this is a feature group. Default is false.",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isBundle,omitempty\""
         },
         "isEnabled": {
           "description": "True if this feature is enabled. Default is true.",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isEnabled\""
         },
         "name": {
           "description": "This is the name for the feature.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name\""
         }
       }
     },
@@ -6966,31 +7595,38 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the target feature.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "name": {
           "description": "This is the name of the target feature.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name\""
         },
         "relationshipType": {
           "description": "This is the type of the feature relationship.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"relationshipType\""
         },
         "validFor": {
           "description": "The period for which this feature relationship is valid.",
+          "x-go-custom-tag": "bson:\"validFor,omitempty\"",
           "$ref": "#/definitions/TimePeriod"
         }
       }
@@ -7001,41 +7637,50 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "alertDate": {
           "description": "A date time( DateTime). The date that the alert issued",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"alertDate,omitempty\""
         },
         "exception": {
           "description": " The exception associated with this jeopardy alert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"exception,omitempty\""
         },
         "id": {
           "description": "identifier of the JeopardyAlert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "jeopardyType": {
           "description": "A string represents the type of jeopardy/risk like Normal, Hazard, Critical, ...",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"jeopardyType,omitempty\""
         },
         "message": {
           "description": "A string represents the message of the alert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"message,omitempty\""
         },
         "name": {
           "description": "A string used to give a name to the jeopardy alert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -7071,41 +7716,50 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "description": {
           "description": "free-text description of the Milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "id": {
           "description": "identifier of the Milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "message": {
           "description": "A string represents the message of the milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"message,omitempty\""
         },
         "milestoneDate": {
           "description": "A date time( DateTime). The date that the milestone happens",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"milestoneDate,omitempty\""
         },
         "name": {
           "description": "A string used to give a name to the milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "status": {
           "description": "The milestone status",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"status,omitempty\""
         }
       }
     },
@@ -7118,20 +7772,24 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "author": {
           "description": "Author of the note",
           "type": "string",
+          "x-go-custom-tag": "bson:\"author,omitempty\"",
           "example": [
             "Mr. N. Bene"
           ]
@@ -7140,6 +7798,7 @@ func init() {
           "description": "Date of the note",
           "type": "string",
           "format": "date-time",
+          "x-go-custom-tag": "bson:\"date,omitempty\"",
           "example": [
             "2020-11-20T08:00:00Z"
           ]
@@ -7147,6 +7806,7 @@ func init() {
         "id": {
           "description": "Identifier of the note within its containing entity",
           "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\"",
           "example": [
             "afa9-3d90aaa8da0f"
           ]
@@ -7154,6 +7814,7 @@ func init() {
         "text": {
           "description": "Text of the note",
           "type": "string",
+          "x-go-custom-tag": "bson:\"text\"",
           "example": [
             "This is important"
           ]
@@ -7176,28 +7837,34 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Unique reference of the place",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the place",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "name": {
           "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -7210,33 +7877,40 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -7249,35 +7923,43 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Reference of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "Unique identifier of a related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "role": {
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"role\""
         }
       }
     },
@@ -7291,37 +7973,45 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "role": {
           "description": "Role played by the related party",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"role,omitempty\""
         }
       }
     },
@@ -7334,35 +8024,43 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocationType,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Unique reference of the place",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the place",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "name": {
           "description": "A user-friendly name for the place, such as [Paris Store], [London Store], [Main Home]",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "role": {
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"role\""
         }
       }
     },
@@ -7375,40 +8073,49 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "itemAction": {
           "description": "Action of the order item for this service",
+          "x-go-custom-tag": "bson:\"itemAction\"",
           "$ref": "#/definitions/OrderItemActionType"
         },
         "itemId": {
           "description": "Identifier of the order item where the service was managed",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"itemId\""
         },
         "role": {
           "description": "role of the service order item for this service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"role,omitempty\""
         },
         "serviceOrderHref": {
           "description": "Reference of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceOrderHref,omitempty\""
         },
         "serviceOrderId": {
           "description": "Unique identifier of a related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceOrderId,omitempty\""
         }
       }
     },
@@ -7420,33 +8127,40 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -7456,85 +8170,103 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "category": {
           "description": "Is it a customer facing or resource facing service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"category,omitempty\""
         },
         "description": {
           "description": "Free-text description of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "endDate": {
           "description": "Date when the service ends",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"endDate,omitempty\""
         },
         "externalIdentifier": {
           "description": "A list of external identifiers assoicated with this service",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ExternalIdentifier"
-          }
+          },
+          "x-go-custom-tag": "bson:\"externalIdentifier\""
         },
         "feature": {
           "description": "A list of feature associated with this service ",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Feature"
-          }
+          },
+          "x-go-custom-tag": "bson:\"feature\""
         },
         "hasStarted": {
           "description": "If TRUE, this Service has already been started",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"hasStarted,omitempty\""
         },
         "href": {
           "description": "Reference of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"_id,omitempty\""
         },
         "isBundle": {
           "description": "If true, the service is a ServiceBundle which regroup a service hierachy. If false, the service is a 'atomic' service (hierachy leaf).",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isBundle,omitempty\""
         },
         "isServiceEnabled": {
           "description": "If FALSE and hasStarted is FALSE, this particular Service has NOT been enabled for use - if FALSE and hasStarted is TRUE then the service has failed ",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isServiceEnabled,omitempty\""
         },
         "isStateful": {
           "description": "If TRUE, this Service can be changed without affecting any other services",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isStatefull,omitempty\""
         },
         "name": {
           "description": "Name of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "note": {
           "description": "A list of notes made on this service",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Note"
-          }
+          },
+          "x-go-custom-tag": "bson:\"note\""
         },
         "operatingStatus": {
           "description": "Indicates how a service is currently performing or operating. It is a logical representation of the service operating behaviour and is determined/managed by the service provider.",
+          "x-go-custom-tag": "bson:\"operatingStatus\"",
           "$ref": "#/definitions/ServiceOperatingStatusType"
         },
         "operatingStatusContextUpdate": {
           "description": "Additional information describing the context of operatingStatus and is determined/managed by the service provider.",
+          "x-go-custom-tag": "bson:\"operatingStatusContextUpdate\"",
           "$ref": "#/definitions/ContextUpdate"
         },
         "place": {
@@ -7542,37 +8274,43 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedPlaceRefOrValue"
-          }
+          },
+          "x-go-custom-tag": "bson:\"plate\""
         },
         "relatedEntity": {
           "description": "A list of related  entity in relationship with this service ",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedEntityRefOrValue"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedEntity\""
         },
         "relatedParty": {
           "description": "A list of related party references (RelatedParty [*]). A related party defines party or party role linked to a specific entity",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedParty"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedParty\""
         },
         "serviceCharacteristic": {
           "description": "A list of characteristics that characterize this service (ServiceCharacteristic [*]) ",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Characteristic"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceCharacteristic\""
         },
         "serviceDate": {
           "description": "Date when the service was created (whatever its status).",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceDate,omitempty\""
         },
         "serviceOrderItem": {
           "description": "A list of service order items related to this service",
           "type": "array",
           "items": {
+            "x-go-custom-tag": "bson:\"serviceOrderItem\"",
             "$ref": "#/definitions/RelatedServiceOrderItem"
           }
         },
@@ -7581,27 +8319,33 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceRelationship"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceRelationship\""
         },
         "serviceSpecification": {
           "description": "The specification from which this service was instantiated",
+          "x-go-custom-tag": "bson:\"serviceSpecification,omitempty\"",
           "$ref": "#/definitions/ServiceSpecificationRef"
         },
         "serviceType": {
           "description": "Business type of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceType,omitempty\""
         },
         "startDate": {
           "description": "Date when the service starts",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"startDate,omitempty\""
         },
         "startMode": {
           "description": "This attribute is an enumerated integer that indicates how the Service is started, such as: 0: Unknown; 1: Automatically by the managed environment; 2: Automatically by the owning device; 3: Manually by the Provider of the Service; 4: Manually by a Customer of the Provider; 5: Any of the above",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"startMode,omitempty\""
         },
         "state": {
           "description": "The life cycle state of the service, such as designed, reserved, active, etc...",
+          "x-go-custom-tag": "bson:\"state\"",
           "$ref": "#/definitions/ServiceStateType"
         },
         "supportingResource": {
@@ -7609,14 +8353,16 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ResourceRef"
-          }
+          },
+          "x-go-custom-tag": "bson:\"supportingResource\""
         },
         "supportingService": {
           "description": "A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceRefOrValue"
-          }
+          },
+          "x-go-custom-tag": "bson:\"supportingService\""
         }
       }
     },
@@ -7641,137 +8387,164 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "cancellationDate": {
           "description": "Date when the order is cancelled. This is used when order is cancelled. ",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"cancellationDate,omitempty\""
         },
         "cancellationReason": {
           "description": "Reason why the order is cancelled. This is used when order is cancelled. ",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"cancellationReason,omitempty\""
         },
         "category": {
           "description": "Used to categorize the order, useful for the OM system, such as: Broadband, TVOption",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"category,omitempty\""
         },
         "completionDate": {
           "description": "Effective delivery date amended by the provider",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"completionDate,omitempty\""
         },
         "description": {
           "description": "A free-text description of the service order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "errorMessage": {
           "description": "the error message if the order closed by an error",
+          "x-go-custom-tag": "bson:\"errorMessage\"",
           "$ref": "#/definitions/ServiceOrderErrorMessage"
         },
         "expectedCompletionDate": {
           "description": "Expected delivery date amended by the provider",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"expectedCompletionDate,omitempty\""
         },
         "externalId": {
           "description": "ID given by the consumer to facilitate searches",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"externalId,omitempty\""
         },
         "externalReference": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ExternalReference"
-          }
+          },
+          "x-go-custom-tag": "bson:\"externalReference\""
         },
         "href": {
           "description": "Hyperlink to access the order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "ID created on repository side",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"_id,omitempty\""
         },
         "jeopardyAlert": {
           "description": "A list of jeopardy alerts related to this order",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderJeopardyAlert"
-          }
+          },
+          "x-go-custom-tag": "bson:\"jeopardyAlert\""
         },
         "milestone": {
           "description": "A list of milestones related to this order",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderMilestone"
-          }
+          },
+          "x-go-custom-tag": "bson:\"milestone\""
         },
         "note": {
           "description": "Extra-information about the order; e.g. useful to add extra delivery information that could be useful for a human process",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Note"
-          }
+          },
+          "x-go-custom-tag": "bson:\"note\""
         },
         "notificationContact": {
           "description": "Contact attached to the order to send back information regarding this order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"notificationContact,omitempty\""
         },
         "orderDate": {
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"orderDate,omitempty\""
         },
         "orderRelationship": {
           "description": "A list of service orders related to this order (e.g. prerequisite, dependent on)",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderRelationship"
-          }
+          },
+          "x-go-custom-tag": "bson:\"orderRelationship\""
         },
         "priority": {
           "description": "Can be used by consumers to prioritize orders in a Service Order Management system",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "relatedParty": {
           "description": "A list of parties which are involved in this order and the role they are playing",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedParty"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedParty\""
         },
         "requestedCompletionDate": {
           "description": "Requested delivery date from the requestors perspective",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"requestedCompletionDate,omitempty\""
         },
         "requestedStartDate": {
           "description": "Order start date wished by the requestor",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"requestedStartDate,omitempty\""
         },
         "serviceOrderItem": {
           "description": "A list of service order items to be processed by this order",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderItem"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceOrderItem\""
         },
         "startDate": {
           "description": "Date when the order was started for processing",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"startDate,omitempty\""
         },
         "state": {
           "description": "State of the order: described in the state-machine diagram",
+          "x-go-custom-tag": "bson:\"state\"",
           "$ref": "#/definitions/ServiceOrderStateType"
         }
       }
@@ -7782,49 +8555,60 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderAttributeValueChangeEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "fieldPath": {
           "description": "The path identifying the object field concerned by this notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"fieldPath,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -7834,6 +8618,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -7844,45 +8629,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderCreateEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -7892,6 +8687,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -7902,45 +8698,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderDeleteEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -7950,6 +8756,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -8012,49 +8819,60 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderInformationRequiredEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "fieldPath": {
           "description": "The path identifying the object field concerned by this notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"filePath,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -8064,6 +8882,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -8078,23 +8897,28 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "action": {
           "description": "The action to be carried out on the Service. Can be: add, modify, delete, noChange",
+          "x-go-custom-tag": "bson:\"action,omitempty\"",
           "$ref": "#/definitions/OrderItemActionType"
         },
         "appointment": {
           "description": "An appointment that was set up with a related party for this order item",
+          "x-go-custom-tag": "bson:\"appointment\"",
           "$ref": "#/definitions/AppointmentRef"
         },
         "errorMessage": {
@@ -8102,11 +8926,13 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderItemErrorMessage"
-          }
+          },
+          "x-go-custom-tag": "bson:\"errorMessage\""
         },
         "id": {
           "description": "Identifier of the individual line item",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "modifyPath": {
           "description": "A list of modification items provided for the service update when serviceOrderItem action is modify",
@@ -8117,10 +8943,12 @@ func init() {
         },
         "quantity": {
           "description": "Quantity ordered",
-          "type": "integer"
+          "type": "integer",
+          "x-go-custom-tag": "bson:\"quantity,omitempty\""
         },
         "service": {
           "description": "The Service to be acted on by the order item",
+          "x-go-custom-tag": "bson:\"service\"",
           "$ref": "#/definitions/ServiceRefOrValue"
         },
         "serviceOrderItem": {
@@ -8128,17 +8956,20 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderItem"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceOrderItem\""
         },
         "serviceOrderItemRelationship": {
           "description": "A list of order items related to this order item",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderItemRelationship"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceOrderItemRelationship\""
         },
         "state": {
           "description": "State of the order item: described in the state machine diagram. This is the requested state.",
+          "x-go-custom-tag": "bson:\"state\"",
           "$ref": "#/definitions/ServiceOrderItemStateType"
         }
       }
@@ -8193,33 +9024,40 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "itemId": {
           "description": "Identifier of the line item",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"itemId\""
         },
         "serviceOrderHref": {
           "description": "Link to the order to which this item belongs to",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"serviceOrderHref,omitempty\""
         },
         "serviceOrderId": {
           "description": "Identifier of the order that this item belongs to",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceOrderId,omitempty\""
         }
       }
     },
@@ -8229,19 +9067,23 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "orderItem": {
           "description": "A service order item in relationship with this order item",
+          "x-go-custom-tag": "bson:\"orderItem\"",
           "$ref": "#/definitions/ServiceOrderItemRef"
         },
         "relationshipType": {
@@ -8273,48 +9115,58 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "alertDate": {
           "description": "A date time( DateTime). The date that the alert issued",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"alertDate,omitempty\""
         },
         "exception": {
           "description": " The exception associated with this jeopardy alert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"exception,omitempty\""
         },
         "id": {
           "description": "identifier of the JeopardyAlert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "jeopardyType": {
           "description": "A string represents the type of jeopardy/risk like Normal, Hazard, Critical, ...",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"jeopardyType,omitempty\""
         },
         "message": {
           "description": "A string represents the message of the alert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"message,omitempty\""
         },
         "name": {
           "description": "A string used to give a name to the jeopardy alert",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "serviceOrderItem": {
           "description": "A list of order items corresponded to this alert",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderItemRef"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceOrderItem\""
         }
       }
     },
@@ -8324,45 +9176,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderJeopardyEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -8372,6 +9234,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -8382,48 +9245,58 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "description": {
           "description": "free-text description of the Milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "id": {
           "description": "identifier of the Milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "message": {
           "description": "A string represents the message of the milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"message,omitempty\""
         },
         "milestoneDate": {
           "description": "A date time( DateTime). The date that the milestone happens",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"milestoneDate,omitempty\""
         },
         "name": {
           "description": "A string used to give a name to the milestone",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "serviceOrderItem": {
           "description": "A list of order items corresponded to this milestone",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceOrderItemRef"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceOrderItem\""
         },
         "status": {
           "description": "The milestone status",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"status,omitempty\""
         }
       }
     },
@@ -8433,45 +9306,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderMilestoneEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -8481,6 +9364,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -8494,33 +9378,40 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related service order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -8534,32 +9425,39 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The entity type of the related order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "A hyperlink to the related order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "The id of the related order",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "relationshipType": {
           "description": "The type of related order, such as: [dependency] if the order needs to be [not started] until another order item is complete (a service order in this case) or [cross-ref] to keep track of the source order (a productOrder)",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"relationshipType\""
         }
       }
     },
@@ -8569,45 +9467,55 @@ func init() {
       "properties": {
         "correlationId": {
           "description": "The correlation id for this event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"correlationId,omitempty\""
         },
         "description": {
           "description": "An explnatory of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "domain": {
           "description": "The domain of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"domain,omitempty\""
         },
         "event": {
           "description": "The event payload linked to the involved resource object",
+          "x-go-custom-tag": "bson:\"event\"",
           "$ref": "#/definitions/ServiceOrderStateChangeEventPayload"
         },
         "eventId": {
           "description": "The identifier of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventId,omitempty\""
         },
         "eventTime": {
           "description": "Time of the event occurrence.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"eventTime,omitempty\""
         },
         "eventType": {
           "description": "The type of the notification.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"eventType,omitempty\""
         },
         "priority": {
           "description": "A priority.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"priority,omitempty\""
         },
         "timeOcurred": {
           "description": "The time the event occured.",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"timeOcurred,omitempty\""
         },
         "title": {
           "description": "The title of the event.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"title,omitempty\""
         }
       }
     },
@@ -8617,6 +9525,7 @@ func init() {
       "properties": {
         "serviceOrder": {
           "description": "The involved resource data for the event",
+          "x-go-custom-tag": "bson:\"serviceOrder\"",
           "$ref": "#/definitions/ServiceOrder"
         }
       }
@@ -8818,20 +9727,24 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
@@ -8840,11 +9753,13 @@ func init() {
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         }
       }
     },
@@ -8854,89 +9769,108 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "category": {
           "description": "Is it a customer facing or resource facing service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"category,omitempty\""
         },
         "description": {
           "description": "Free-text description of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"description,omitempty\""
         },
         "endDate": {
           "description": "Date when the service ends",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"endDate,omitempty\""
         },
         "externalIdentifier": {
           "description": "A list of external identifiers assoicated with this service",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ExternalIdentifier"
-          }
+          },
+          "x-go-custom-tag": "bson:\"externalIdentifier\""
         },
         "feature": {
           "description": "A list of feature associated with this service ",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Feature"
-          }
+          },
+          "x-go-custom-tag": "bson:\"feature\""
         },
         "hasStarted": {
           "description": "If TRUE, this Service has already been started",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"hasStarted,omitempty\""
         },
         "href": {
           "description": "Reference of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "Unique identifier of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id,omitempty\""
         },
         "isBundle": {
           "description": "If true, the service is a ServiceBundle which regroup a service hierachy. If false, the service is a 'atomic' service (hierachy leaf).",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isBundle,omitempty\""
         },
         "isServiceEnabled": {
           "description": "If FALSE and hasStarted is FALSE, this particular Service has NOT been enabled for use - if FALSE and hasStarted is TRUE then the service has failed ",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isServiceEnabled,omitempty\""
         },
         "isStateful": {
           "description": "If TRUE, this Service can be changed without affecting any other services",
-          "type": "boolean"
+          "type": "boolean",
+          "x-go-custom-tag": "bson:\"isStateful,omitempty\""
         },
         "name": {
           "description": "Name of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "note": {
           "description": "A list of notes made on this service",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Note"
-          }
+          },
+          "x-go-custom-tag": "bson:\"note\""
         },
         "operatingStatus": {
           "description": "Indicates how a service is currently performing or operating. It is a logical representation of the service operating behaviour and is determined/managed by the service provider.",
+          "x-go-custom-tag": "bson:\"operatingStatus\"",
           "$ref": "#/definitions/ServiceOperatingStatusType"
         },
         "operatingStatusContextUpdate": {
           "description": "Additional information describing the context of operatingStatus and is determined/managed by the service provider.",
+          "x-go-custom-tag": "bson:\"operatingStatusContextUpdate\"",
           "$ref": "#/definitions/ContextUpdate"
         },
         "place": {
@@ -8944,66 +9878,78 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedPlaceRefOrValue"
-          }
+          },
+          "x-go-custom-tag": "bson:\"place\""
         },
         "relatedEntity": {
           "description": "A list of related  entity in relationship with this service ",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedEntityRefOrValue"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedEntity\""
         },
         "relatedParty": {
           "description": "A list of related party references (RelatedParty [*]). A related party defines party or party role linked to a specific entity",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedParty"
-          }
+          },
+          "x-go-custom-tag": "bson:\"relatedParty\""
         },
         "serviceCharacteristic": {
           "description": "A list of characteristics that characterize this service (ServiceCharacteristic [*]) ",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Characteristic"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceCharacteristic\""
         },
         "serviceDate": {
           "description": "Date when the service was created (whatever its status).",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceDate,omitempty\""
         },
         "serviceOrderItem": {
           "description": "A list of service order items related to this service",
           "type": "array",
           "items": {
             "$ref": "#/definitions/RelatedServiceOrderItem"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceOrderItem\""
         },
         "serviceRelationship": {
           "description": "A list of service relationships (ServiceRelationship [*]). Describes links with other service(s) in the inventory.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceRelationship"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceRelationship\""
         },
         "serviceSpecification": {
           "description": "The specification from which this service was instantiated",
+          "x-go-custom-tag": "bson:\"serviceSpecification\"",
           "$ref": "#/definitions/ServiceSpecificationRef"
         },
         "serviceType": {
           "description": "Business type of the service",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"serviceType,omitempty\""
         },
         "startDate": {
           "description": "Date when the service starts",
           "type": "string",
-          "format": "date-time"
+          "format": "date-time",
+          "x-go-custom-tag": "bson:\"startDate,omitempty\""
         },
         "startMode": {
           "description": "This attribute is an enumerated integer that indicates how the Service is started, such as: 0: Unknown; 1: Automatically by the managed environment; 2: Automatically by the owning device; 3: Manually by the Provider of the Service; 4: Manually by a Customer of the Provider; 5: Any of the above",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"startMode,omitempty\""
         },
         "state": {
           "description": "The life cycle state of the service, such as designed, reserved, active, etc...",
+          "x-go-custom-tag": "bson:\"state\"",
           "$ref": "#/definitions/ServiceStateType"
         },
         "supportingResource": {
@@ -9011,14 +9957,16 @@ func init() {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ResourceRef"
-          }
+          },
+          "x-go-custom-tag": "bson:\"supportingResource\""
         },
         "supportingService": {
           "description": "A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)",
           "type": "array",
           "items": {
             "$ref": "#/definitions/ServiceRefOrValue"
-          }
+          },
+          "x-go-custom-tag": "bson:\"supportingService\""
         }
       }
     },
@@ -9030,28 +9978,34 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "relationshipType": {
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"relationshipType\""
         },
         "service": {
+          "x-go-custom-tag": "bson:\"service\"",
           "$ref": "#/definitions/ServiceRefOrValue"
         },
         "serviceRelationshipCharacteristic": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Characteristic"
-          }
+          },
+          "x-go-custom-tag": "bson:\"serviceRelationshipCharacteristic\""
         }
       }
     },
@@ -9064,37 +10018,45 @@ func init() {
       "properties": {
         "@baseType": {
           "description": "When sub-classing, this defines the super-class",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atBaseType,omitempty\""
         },
         "@referredType": {
           "description": "The actual type of the target instance when needed for disambiguation.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atReferredType,omitempty\""
         },
         "@schemaLocation": {
           "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"atSchemaLocation,omitempty\""
         },
         "@type": {
           "description": "When sub-classing, this defines the sub-class Extensible name",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"atType,omitempty\""
         },
         "href": {
           "description": "Hyperlink reference",
           "type": "string",
-          "format": "uri"
+          "format": "uri",
+          "x-go-custom-tag": "bson:\"href,omitempty\""
         },
         "id": {
           "description": "unique identifier",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"id\""
         },
         "name": {
           "description": "Name of the related entity.",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"name,omitempty\""
         },
         "version": {
           "description": "Service specification version",
-          "type": "string"
+          "type": "string",
+          "x-go-custom-tag": "bson:\"version,omitempty\""
         }
       }
     },
@@ -9129,12 +10091,14 @@ func init() {
           "description": "End of the time period, using IETC-RFC-3339 format",
           "type": "string",
           "format": "date-time",
+          "x-go-custom-tag": "bson:\"endDateTime,omitempty\"",
           "example": "1985-04-12T23:20:50.52Z"
         },
         "startDateTime": {
           "description": "Start of the time period, using IETC-RFC-3339 format",
           "type": "string",
           "format": "date-time",
+          "x-go-custom-tag": "bson:\"startDateTime,omitempty\"",
           "example": "1985-04-12T23:20:50.52Z"
         }
       }

@@ -20,33 +20,33 @@ import (
 type RelatedServiceOrderItem struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// The actual type of the target instance when needed for disambiguation.
-	AtReferredType string `json:"@referredType,omitempty"`
+	AtReferredType string `json:"@referredType,omitempty" bson:"atReferredType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// Action of the order item for this service
 	ItemAction OrderItemActionType `json:"itemAction,omitempty"`
 
 	// Identifier of the order item where the service was managed
 	// Required: true
-	ItemID *string `json:"itemId"`
+	ItemID *string `json:"itemId" bson:"itemId"`
 
 	// role of the service order item for this service
-	Role string `json:"role,omitempty"`
+	Role string `json:"role,omitempty" bson:"role,omitempty"`
 
 	// Reference of the related entity.
-	ServiceOrderHref string `json:"serviceOrderHref,omitempty"`
+	ServiceOrderHref string `json:"serviceOrderHref,omitempty" bson:"serviceOrderHref,omitempty"`
 
 	// Unique identifier of a related entity.
-	ServiceOrderID string `json:"serviceOrderId,omitempty"`
+	ServiceOrderID string `json:"serviceOrderId,omitempty" bson:"serviceOrderId,omitempty"`
 }
 
 // Validate validates this related service order item
@@ -91,6 +91,8 @@ func (m *RelatedServiceOrderItem) validateItemAction(formats strfmt.Registry) er
 	if err := m.ItemAction.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("itemAction")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("itemAction")
 		}
 		return err
 	}
@@ -130,6 +132,8 @@ func (m *RelatedServiceOrderItem) contextValidateItemAction(ctx context.Context,
 	if err := m.ItemAction.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("itemAction")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("itemAction")
 		}
 		return err
 	}

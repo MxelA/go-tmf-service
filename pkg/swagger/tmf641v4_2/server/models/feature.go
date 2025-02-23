@@ -21,36 +21,36 @@ import (
 type Feature struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// This is a list of feature constraints.
-	Constraint []*ConstraintRef `json:"constraint"`
+	Constraint []*ConstraintRef `json:"constraint" bson:"constraint"`
 
 	// This is a list of Characteristics for a particular feature.
-	FeatureCharacteristic []*Characteristic `json:"featureCharacteristic"`
+	FeatureCharacteristic []*Characteristic `json:"featureCharacteristic" bson:"featureCharacteristic"`
 
 	// feature relationship
-	FeatureRelationship []*FeatureRelationship `json:"featureRelationship"`
+	FeatureRelationship []*FeatureRelationship `json:"featureRelationship" bson:"featureRelationship,omitempty"`
 
 	// Unique identifier of the feature.
-	ID string `json:"id,omitempty"`
+	ID string `json:"id,omitempty" bson:"id,omitempty"`
 
 	// True if this is a feature group. Default is false.
-	IsBundle bool `json:"isBundle,omitempty"`
+	IsBundle bool `json:"isBundle,omitempty" bson:"isBundle,omitempty"`
 
 	// True if this feature is enabled. Default is true.
-	IsEnabled bool `json:"isEnabled,omitempty"`
+	IsEnabled bool `json:"isEnabled,omitempty" bson:"isEnabled"`
 
 	// This is the name for the feature.
 	// Required: true
-	Name *string `json:"name"`
+	Name *string `json:"name" bson:"name"`
 }
 
 // Validate validates this feature
@@ -109,6 +109,8 @@ func (m *Feature) validateConstraint(formats strfmt.Registry) error {
 			if err := m.Constraint[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("constraint" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("constraint" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -133,6 +135,8 @@ func (m *Feature) validateFeatureCharacteristic(formats strfmt.Registry) error {
 			if err := m.FeatureCharacteristic[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("featureCharacteristic" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("featureCharacteristic" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -157,6 +161,8 @@ func (m *Feature) validateFeatureRelationship(formats strfmt.Registry) error {
 			if err := m.FeatureRelationship[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("featureRelationship" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("featureRelationship" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -211,6 +217,8 @@ func (m *Feature) contextValidateConstraint(ctx context.Context, formats strfmt.
 			if err := m.Constraint[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("constraint" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("constraint" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -234,6 +242,8 @@ func (m *Feature) contextValidateFeatureCharacteristic(ctx context.Context, form
 			if err := m.FeatureCharacteristic[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("featureCharacteristic" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("featureCharacteristic" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -257,6 +267,8 @@ func (m *Feature) contextValidateFeatureRelationship(ctx context.Context, format
 			if err := m.FeatureRelationship[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("featureRelationship" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("featureRelationship" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

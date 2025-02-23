@@ -21,30 +21,30 @@ import (
 type ContextUpdate struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// Identifier of the context update
-	ID string `json:"id,omitempty"`
+	ID string `json:"id,omitempty" bson:"id,omitempty"`
 
 	// The date and time the status/state last changed.
 	// Format: date-time
-	LastUpdate strfmt.DateTime `json:"lastUpdate,omitempty"`
+	LastUpdate strfmt.DateTime `json:"lastUpdate,omitempty" bson:"lastUpdate,omitempty"`
 
 	// The reason/context for the current value of the status/state.
-	Reason string `json:"reason,omitempty"`
+	Reason string `json:"reason,omitempty" bson:"reason,omitempty"`
 
 	// A list of entities that represent observations, anomalies or managing entities etc associated to the current status/state value.
-	RelatedEntity []*EntityRef `json:"relatedEntity"`
+	RelatedEntity []*EntityRef `json:"relatedEntity" bson:"relatedEntity"`
 
 	// List of parties associated to the current status/state value.
-	RelatedParty []*RelatedParty `json:"relatedParty"`
+	RelatedParty []*RelatedParty `json:"relatedParty" bson:"relatedParty"`
 }
 
 // Validate validates this context update
@@ -111,6 +111,8 @@ func (m *ContextUpdate) validateRelatedEntity(formats strfmt.Registry) error {
 			if err := m.RelatedEntity[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relatedEntity" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("relatedEntity" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -135,6 +137,8 @@ func (m *ContextUpdate) validateRelatedParty(formats strfmt.Registry) error {
 			if err := m.RelatedParty[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relatedParty" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("relatedParty" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -176,6 +180,8 @@ func (m *ContextUpdate) contextValidateRelatedEntity(ctx context.Context, format
 			if err := m.RelatedEntity[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relatedEntity" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("relatedEntity" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -199,6 +205,8 @@ func (m *ContextUpdate) contextValidateRelatedParty(ctx context.Context, formats
 			if err := m.RelatedParty[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relatedParty" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("relatedParty" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

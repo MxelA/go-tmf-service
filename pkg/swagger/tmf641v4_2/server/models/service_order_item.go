@@ -21,14 +21,14 @@ import (
 type ServiceOrderItem struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// The action to be carried out on the Service. Can be: add, modify, delete, noChange
 	// Required: true
@@ -38,27 +38,27 @@ type ServiceOrderItem struct {
 	Appointment *AppointmentRef `json:"appointment,omitempty"`
 
 	// the error(s) cause an order item status change
-	ErrorMessage []*ServiceOrderItemErrorMessage `json:"errorMessage"`
+	ErrorMessage []*ServiceOrderItemErrorMessage `json:"errorMessage" bson:"errorMessage"`
 
 	// Identifier of the individual line item
 	// Required: true
-	ID *string `json:"id"`
+	ID *string `json:"id" bson:"id"`
 
 	// A list of modification items provided for the service update when serviceOrderItem action is modify
 	ModifyPath []*JSONPatch `json:"modifyPath"`
 
 	// Quantity ordered
-	Quantity int64 `json:"quantity,omitempty"`
+	Quantity int64 `json:"quantity,omitempty" bson:"quantity,omitempty"`
 
 	// The Service to be acted on by the order item
 	// Required: true
 	Service *ServiceRefOrValue `json:"service"`
 
 	// A list of order items embedded to this order item
-	ServiceOrderItem []*ServiceOrderItem `json:"serviceOrderItem"`
+	ServiceOrderItem []*ServiceOrderItem `json:"serviceOrderItem" bson:"serviceOrderItem"`
 
 	// A list of order items related to this order item
-	ServiceOrderItemRelationship []*ServiceOrderItemRelationship `json:"serviceOrderItemRelationship"`
+	ServiceOrderItemRelationship []*ServiceOrderItemRelationship `json:"serviceOrderItemRelationship" bson:"serviceOrderItemRelationship"`
 
 	// State of the order item: described in the state machine diagram. This is the requested state.
 	State ServiceOrderItemStateType `json:"state,omitempty"`
@@ -140,6 +140,8 @@ func (m *ServiceOrderItem) validateAction(formats strfmt.Registry) error {
 		if err := m.Action.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("action")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("action")
 			}
 			return err
 		}
@@ -157,6 +159,8 @@ func (m *ServiceOrderItem) validateAppointment(formats strfmt.Registry) error {
 		if err := m.Appointment.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("appointment")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("appointment")
 			}
 			return err
 		}
@@ -179,6 +183,8 @@ func (m *ServiceOrderItem) validateErrorMessage(formats strfmt.Registry) error {
 			if err := m.ErrorMessage[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("errorMessage" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("errorMessage" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -212,6 +218,8 @@ func (m *ServiceOrderItem) validateModifyPath(formats strfmt.Registry) error {
 			if err := m.ModifyPath[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("modifyPath" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("modifyPath" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -232,6 +240,8 @@ func (m *ServiceOrderItem) validateService(formats strfmt.Registry) error {
 		if err := m.Service.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("service")
 			}
 			return err
 		}
@@ -254,6 +264,8 @@ func (m *ServiceOrderItem) validateServiceOrderItem(formats strfmt.Registry) err
 			if err := m.ServiceOrderItem[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -278,6 +290,8 @@ func (m *ServiceOrderItem) validateServiceOrderItemRelationship(formats strfmt.R
 			if err := m.ServiceOrderItemRelationship[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItemRelationship" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItemRelationship" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -296,6 +310,8 @@ func (m *ServiceOrderItem) validateState(formats strfmt.Registry) error {
 	if err := m.State.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("state")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("state")
 		}
 		return err
 	}
@@ -352,6 +368,8 @@ func (m *ServiceOrderItem) contextValidateAction(ctx context.Context, formats st
 		if err := m.Action.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("action")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("action")
 			}
 			return err
 		}
@@ -371,6 +389,8 @@ func (m *ServiceOrderItem) contextValidateAppointment(ctx context.Context, forma
 		if err := m.Appointment.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("appointment")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("appointment")
 			}
 			return err
 		}
@@ -392,6 +412,8 @@ func (m *ServiceOrderItem) contextValidateErrorMessage(ctx context.Context, form
 			if err := m.ErrorMessage[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("errorMessage" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("errorMessage" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -415,6 +437,8 @@ func (m *ServiceOrderItem) contextValidateModifyPath(ctx context.Context, format
 			if err := m.ModifyPath[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("modifyPath" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("modifyPath" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -432,6 +456,8 @@ func (m *ServiceOrderItem) contextValidateService(ctx context.Context, formats s
 		if err := m.Service.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("service")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("service")
 			}
 			return err
 		}
@@ -453,6 +479,8 @@ func (m *ServiceOrderItem) contextValidateServiceOrderItem(ctx context.Context, 
 			if err := m.ServiceOrderItem[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -476,6 +504,8 @@ func (m *ServiceOrderItem) contextValidateServiceOrderItemRelationship(ctx conte
 			if err := m.ServiceOrderItemRelationship[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItemRelationship" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItemRelationship" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -495,6 +525,8 @@ func (m *ServiceOrderItem) contextValidateState(ctx context.Context, formats str
 	if err := m.State.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("state")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("state")
 		}
 		return err
 	}

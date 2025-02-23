@@ -21,54 +21,54 @@ import (
 type Service struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// Is it a customer facing or resource facing service
-	Category string `json:"category,omitempty"`
+	Category string `json:"category,omitempty" bson:"category,omitempty"`
 
 	// Free-text description of the service
-	Description string `json:"description,omitempty"`
+	Description string `json:"description,omitempty" bson:"description,omitempty"`
 
 	// Date when the service ends
 	// Format: date-time
-	EndDate strfmt.DateTime `json:"endDate,omitempty"`
+	EndDate strfmt.DateTime `json:"endDate,omitempty" bson:"endDate,omitempty"`
 
 	// A list of external identifiers assoicated with this service
-	ExternalIdentifier []*ExternalIdentifier `json:"externalIdentifier"`
+	ExternalIdentifier []*ExternalIdentifier `json:"externalIdentifier" bson:"externalIdentifier"`
 
 	// A list of feature associated with this service
-	Feature []*Feature `json:"feature"`
+	Feature []*Feature `json:"feature" bson:"feature"`
 
 	// If TRUE, this Service has already been started
-	HasStarted bool `json:"hasStarted,omitempty"`
+	HasStarted bool `json:"hasStarted,omitempty" bson:"hasStarted,omitempty"`
 
 	// Reference of the service
-	Href string `json:"href,omitempty"`
+	Href string `json:"href,omitempty" bson:"href,omitempty"`
 
 	// Unique identifier of the service
-	ID string `json:"id,omitempty"`
+	ID string `json:"id,omitempty" bson:"_id,omitempty"`
 
 	// If true, the service is a ServiceBundle which regroup a service hierachy. If false, the service is a 'atomic' service (hierachy leaf).
-	IsBundle bool `json:"isBundle,omitempty"`
+	IsBundle bool `json:"isBundle,omitempty" bson:"isBundle,omitempty"`
 
 	// If FALSE and hasStarted is FALSE, this particular Service has NOT been enabled for use - if FALSE and hasStarted is TRUE then the service has failed
-	IsServiceEnabled bool `json:"isServiceEnabled,omitempty"`
+	IsServiceEnabled bool `json:"isServiceEnabled,omitempty" bson:"isServiceEnabled,omitempty"`
 
 	// If TRUE, this Service can be changed without affecting any other services
-	IsStateful bool `json:"isStateful,omitempty"`
+	IsStateful bool `json:"isStateful,omitempty" bson:"isStatefull,omitempty"`
 
 	// Name of the service
-	Name string `json:"name,omitempty"`
+	Name string `json:"name,omitempty" bson:"name,omitempty"`
 
 	// A list of notes made on this service
-	Note []*Note `json:"note"`
+	Note []*Note `json:"note" bson:"note"`
 
 	// Indicates how a service is currently performing or operating. It is a logical representation of the service operating behaviour and is determined/managed by the service provider.
 	OperatingStatus ServiceOperatingStatusType `json:"operatingStatus,omitempty"`
@@ -77,47 +77,47 @@ type Service struct {
 	OperatingStatusContextUpdate *ContextUpdate `json:"operatingStatusContextUpdate,omitempty"`
 
 	// A list of places (Place [*]). Used to define a place useful for the service (for example a geographical place whre the service is installed)
-	Place []*RelatedPlaceRefOrValue `json:"place"`
+	Place []*RelatedPlaceRefOrValue `json:"place" bson:"plate"`
 
 	// A list of related  entity in relationship with this service
-	RelatedEntity []*RelatedEntityRefOrValue `json:"relatedEntity"`
+	RelatedEntity []*RelatedEntityRefOrValue `json:"relatedEntity" bson:"relatedEntity"`
 
 	// A list of related party references (RelatedParty [*]). A related party defines party or party role linked to a specific entity
-	RelatedParty []*RelatedParty `json:"relatedParty"`
+	RelatedParty []*RelatedParty `json:"relatedParty" bson:"relatedParty"`
 
 	// A list of characteristics that characterize this service (ServiceCharacteristic [*])
-	ServiceCharacteristic []*Characteristic `json:"serviceCharacteristic"`
+	ServiceCharacteristic []*Characteristic `json:"serviceCharacteristic" bson:"serviceCharacteristic"`
 
 	// Date when the service was created (whatever its status).
-	ServiceDate string `json:"serviceDate,omitempty"`
+	ServiceDate string `json:"serviceDate,omitempty" bson:"serviceDate,omitempty"`
 
 	// A list of service order items related to this service
 	ServiceOrderItem []*RelatedServiceOrderItem `json:"serviceOrderItem"`
 
 	// A list of service relationships (ServiceRelationship [*]). Describes links with other service(s) in the inventory.
-	ServiceRelationship []*ServiceRelationship `json:"serviceRelationship"`
+	ServiceRelationship []*ServiceRelationship `json:"serviceRelationship" bson:"serviceRelationship"`
 
 	// The specification from which this service was instantiated
 	ServiceSpecification *ServiceSpecificationRef `json:"serviceSpecification,omitempty"`
 
 	// Business type of the service
-	ServiceType string `json:"serviceType,omitempty"`
+	ServiceType string `json:"serviceType,omitempty" bson:"serviceType,omitempty"`
 
 	// Date when the service starts
 	// Format: date-time
-	StartDate strfmt.DateTime `json:"startDate,omitempty"`
+	StartDate strfmt.DateTime `json:"startDate,omitempty" bson:"startDate,omitempty"`
 
 	// This attribute is an enumerated integer that indicates how the Service is started, such as: 0: Unknown; 1: Automatically by the managed environment; 2: Automatically by the owning device; 3: Manually by the Provider of the Service; 4: Manually by a Customer of the Provider; 5: Any of the above
-	StartMode string `json:"startMode,omitempty"`
+	StartMode string `json:"startMode,omitempty" bson:"startMode,omitempty"`
 
 	// The life cycle state of the service, such as designed, reserved, active, etc...
 	State ServiceStateType `json:"state,omitempty"`
 
 	// A list of supporting resources (SupportingResource [*]).Note: only Service of type RFS can be associated with Resources
-	SupportingResource []*ResourceRef `json:"supportingResource"`
+	SupportingResource []*ResourceRef `json:"supportingResource" bson:"supportingResource"`
 
 	// A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)
-	SupportingService []*ServiceRefOrValue `json:"supportingService"`
+	SupportingService []*ServiceRefOrValue `json:"supportingService" bson:"supportingService"`
 }
 
 // Validate validates this service
@@ -240,6 +240,8 @@ func (m *Service) validateExternalIdentifier(formats strfmt.Registry) error {
 			if err := m.ExternalIdentifier[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("externalIdentifier" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("externalIdentifier" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -264,6 +266,8 @@ func (m *Service) validateFeature(formats strfmt.Registry) error {
 			if err := m.Feature[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("feature" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("feature" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -288,6 +292,8 @@ func (m *Service) validateNote(formats strfmt.Registry) error {
 			if err := m.Note[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("note" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("note" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -306,6 +312,8 @@ func (m *Service) validateOperatingStatus(formats strfmt.Registry) error {
 	if err := m.OperatingStatus.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("operatingStatus")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("operatingStatus")
 		}
 		return err
 	}
@@ -322,6 +330,8 @@ func (m *Service) validateOperatingStatusContextUpdate(formats strfmt.Registry) 
 		if err := m.OperatingStatusContextUpdate.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("operatingStatusContextUpdate")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("operatingStatusContextUpdate")
 			}
 			return err
 		}
@@ -344,6 +354,8 @@ func (m *Service) validatePlace(formats strfmt.Registry) error {
 			if err := m.Place[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("place" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("place" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -368,6 +380,8 @@ func (m *Service) validateRelatedEntity(formats strfmt.Registry) error {
 			if err := m.RelatedEntity[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relatedEntity" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("relatedEntity" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -392,6 +406,8 @@ func (m *Service) validateRelatedParty(formats strfmt.Registry) error {
 			if err := m.RelatedParty[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relatedParty" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("relatedParty" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -416,6 +432,8 @@ func (m *Service) validateServiceCharacteristic(formats strfmt.Registry) error {
 			if err := m.ServiceCharacteristic[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceCharacteristic" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceCharacteristic" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -440,6 +458,8 @@ func (m *Service) validateServiceOrderItem(formats strfmt.Registry) error {
 			if err := m.ServiceOrderItem[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -464,6 +484,8 @@ func (m *Service) validateServiceRelationship(formats strfmt.Registry) error {
 			if err := m.ServiceRelationship[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceRelationship" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceRelationship" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -483,6 +505,8 @@ func (m *Service) validateServiceSpecification(formats strfmt.Registry) error {
 		if err := m.ServiceSpecification.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("serviceSpecification")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("serviceSpecification")
 			}
 			return err
 		}
@@ -511,6 +535,8 @@ func (m *Service) validateState(formats strfmt.Registry) error {
 	if err := m.State.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("state")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("state")
 		}
 		return err
 	}
@@ -532,6 +558,8 @@ func (m *Service) validateSupportingResource(formats strfmt.Registry) error {
 			if err := m.SupportingResource[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("supportingResource" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("supportingResource" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -556,6 +584,8 @@ func (m *Service) validateSupportingService(formats strfmt.Registry) error {
 			if err := m.SupportingService[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("supportingService" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("supportingService" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -649,6 +679,8 @@ func (m *Service) contextValidateExternalIdentifier(ctx context.Context, formats
 			if err := m.ExternalIdentifier[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("externalIdentifier" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("externalIdentifier" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -672,6 +704,8 @@ func (m *Service) contextValidateFeature(ctx context.Context, formats strfmt.Reg
 			if err := m.Feature[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("feature" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("feature" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -695,6 +729,8 @@ func (m *Service) contextValidateNote(ctx context.Context, formats strfmt.Regist
 			if err := m.Note[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("note" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("note" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -714,6 +750,8 @@ func (m *Service) contextValidateOperatingStatus(ctx context.Context, formats st
 	if err := m.OperatingStatus.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("operatingStatus")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("operatingStatus")
 		}
 		return err
 	}
@@ -732,6 +770,8 @@ func (m *Service) contextValidateOperatingStatusContextUpdate(ctx context.Contex
 		if err := m.OperatingStatusContextUpdate.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("operatingStatusContextUpdate")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("operatingStatusContextUpdate")
 			}
 			return err
 		}
@@ -753,6 +793,8 @@ func (m *Service) contextValidatePlace(ctx context.Context, formats strfmt.Regis
 			if err := m.Place[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("place" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("place" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -776,6 +818,8 @@ func (m *Service) contextValidateRelatedEntity(ctx context.Context, formats strf
 			if err := m.RelatedEntity[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relatedEntity" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("relatedEntity" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -799,6 +843,8 @@ func (m *Service) contextValidateRelatedParty(ctx context.Context, formats strfm
 			if err := m.RelatedParty[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("relatedParty" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("relatedParty" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -822,6 +868,8 @@ func (m *Service) contextValidateServiceCharacteristic(ctx context.Context, form
 			if err := m.ServiceCharacteristic[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceCharacteristic" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceCharacteristic" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -845,6 +893,8 @@ func (m *Service) contextValidateServiceOrderItem(ctx context.Context, formats s
 			if err := m.ServiceOrderItem[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceOrderItem" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -868,6 +918,8 @@ func (m *Service) contextValidateServiceRelationship(ctx context.Context, format
 			if err := m.ServiceRelationship[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("serviceRelationship" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("serviceRelationship" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -889,6 +941,8 @@ func (m *Service) contextValidateServiceSpecification(ctx context.Context, forma
 		if err := m.ServiceSpecification.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("serviceSpecification")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("serviceSpecification")
 			}
 			return err
 		}
@@ -906,6 +960,8 @@ func (m *Service) contextValidateState(ctx context.Context, formats strfmt.Regis
 	if err := m.State.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("state")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("state")
 		}
 		return err
 	}
@@ -926,6 +982,8 @@ func (m *Service) contextValidateSupportingResource(ctx context.Context, formats
 			if err := m.SupportingResource[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("supportingResource" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("supportingResource" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -949,6 +1007,8 @@ func (m *Service) contextValidateSupportingService(ctx context.Context, formats 
 			if err := m.SupportingService[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("supportingService" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("supportingService" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

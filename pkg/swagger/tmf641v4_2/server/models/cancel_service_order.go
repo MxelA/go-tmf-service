@@ -20,38 +20,38 @@ import (
 type CancelServiceOrder struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
 
 	// Reason why the order is cancelled.
-	CancellationReason string `json:"cancellationReason,omitempty"`
+	CancellationReason string `json:"cancellationReason,omitempty" bson:"cancellationReason,omitempty"`
 
 	// an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR).
-	CompletionMessage string `json:"completionMessage,omitempty"`
+	CompletionMessage string `json:"completionMessage,omitempty" bson:"cancellationReason,omitempty"`
 
 	// Date when the order is cancelled.
 	// Format: date-time
-	EffectiveCancellationDate strfmt.DateTime `json:"effectiveCancellationDate,omitempty"`
+	EffectiveCancellationDate strfmt.DateTime `json:"effectiveCancellationDate,omitempty" bson:"effectiveCancellationDate,omitempty"`
 
 	// error message
 	ErrorMessage *Error `json:"errorMessage,omitempty"`
 
 	// Hyperlink reference
 	// Format: uri
-	Href strfmt.URI `json:"href,omitempty"`
+	Href strfmt.URI `json:"href,omitempty" bson:"href,omitempty"`
 
 	// unique identifier
-	ID string `json:"id,omitempty"`
+	ID string `json:"id,omitempty" bson:"_id,omitempty"`
 
 	// Date when the submitter wants the order to be cancelled
 	// Format: date-time
-	RequestedCancellationDate strfmt.DateTime `json:"requestedCancellationDate,omitempty"`
+	RequestedCancellationDate strfmt.DateTime `json:"requestedCancellationDate,omitempty" bson:"requestedCancellationDate,omitempty"`
 
 	// service order
 	ServiceOrder *ServiceOrderRef `json:"serviceOrder,omitempty"`
@@ -131,6 +131,8 @@ func (m *CancelServiceOrder) validateErrorMessage(formats strfmt.Registry) error
 		if err := m.ErrorMessage.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("errorMessage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorMessage")
 			}
 			return err
 		}
@@ -172,6 +174,8 @@ func (m *CancelServiceOrder) validateServiceOrder(formats strfmt.Registry) error
 		if err := m.ServiceOrder.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("serviceOrder")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("serviceOrder")
 			}
 			return err
 		}
@@ -188,6 +192,8 @@ func (m *CancelServiceOrder) validateState(formats strfmt.Registry) error {
 	if err := m.State.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("state")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("state")
 		}
 		return err
 	}
@@ -228,6 +234,8 @@ func (m *CancelServiceOrder) contextValidateErrorMessage(ctx context.Context, fo
 		if err := m.ErrorMessage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("errorMessage")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("errorMessage")
 			}
 			return err
 		}
@@ -247,6 +255,8 @@ func (m *CancelServiceOrder) contextValidateServiceOrder(ctx context.Context, fo
 		if err := m.ServiceOrder.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("serviceOrder")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("serviceOrder")
 			}
 			return err
 		}
@@ -264,6 +274,8 @@ func (m *CancelServiceOrder) contextValidateState(ctx context.Context, formats s
 	if err := m.State.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("state")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("state")
 		}
 		return err
 	}
