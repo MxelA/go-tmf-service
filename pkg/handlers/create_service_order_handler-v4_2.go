@@ -71,6 +71,17 @@ func CreateServiceOrderHandler(req service_order.CreateServiceOrderParams) middl
 
 	createdServiceOrder := models.ServiceOrder{}
 	err = record.Decode(&createdServiceOrder)
+	if err != nil {
+		errCode := "500"
+		reason := err.Error()
+		var errModel = models.Error{
+			Reason:  &reason,
+			Code:    &errCode,
+			Message: "Internal server error",
+		}
+		log.Println(err)
+		return service_order.NewCreateServiceOrderInternalServerError().WithPayload(&errModel)
+	}
 	//utils.PrettyPrint(createdServiceOrder)
 
 	return service_order.NewCreateServiceOrderCreated().WithPayload(&createdServiceOrder)

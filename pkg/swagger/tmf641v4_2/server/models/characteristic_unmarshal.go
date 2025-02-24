@@ -74,7 +74,7 @@ func (c *Characteristic) UnmarshalBSON(data []byte) error {
 	}
 
 	// Debug: Print the final struct to verify all fields are populated
-	fmt.Printf("Final struct (c): %+v\n", c)
+	//fmt.Printf("Final struct (c): %+v\n", c)
 
 	return nil
 }
