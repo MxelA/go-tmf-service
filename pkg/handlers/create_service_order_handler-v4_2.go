@@ -1,4 +1,4 @@
-package controllers_tmf_service_v4_2
+package handler_v4_2
 
 import (
 	database "github.com/MxelA/tmf-service-go/pkg/config"
@@ -10,7 +10,7 @@ import (
 	"log"
 )
 
-func CreateServiceOrderControllerHandler(req service_order.CreateServiceOrderParams) middleware.Responder {
+func CreateServiceOrderHandler(req service_order.CreateServiceOrderParams) middleware.Responder {
 	doc := &models.ServiceOrder{}
 
 	// Copy data from create service order model to response service model
