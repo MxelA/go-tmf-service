@@ -7,7 +7,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
-	"log"
 	"strings"
 )
 
@@ -49,7 +48,6 @@ var GerFieldsProjection = func(fieldsParam *string) bson.M {
 		return nil // Return an empty map instead of nil
 	}
 
-	log.Println(*fieldsParam)
 	fields := strings.Split(*fieldsParam, ",")
 	projection := bson.M{"_id": 1} // Always include ID
 
@@ -57,6 +55,5 @@ var GerFieldsProjection = func(fieldsParam *string) bson.M {
 		projection[field] = 1
 	}
 
-	log.Println(projection)
 	return projection
 }

@@ -28,7 +28,7 @@ func CreateServiceOrderHandler(req service_order.CreateServiceOrderParams) middl
 	//	log.Println(err)
 	//	return service_order.NewCreateServiceOrderInternalServerError().WithPayload(&errModel)
 	//}
-	utils.PrettyPrint(req.ServiceOrder)
+
 	// Insert data to DB
 	mg := database.GetMongoInstance()
 	collection := mg.Db.Collection("serviceOrder")
