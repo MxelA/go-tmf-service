@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -21,93 +22,94 @@ import (
 type ServiceOrder struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
+	AtSchemaLocation *strfmt.URI `json:"@schemaLocation,omitempty" bson:"@schemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
+	AtType *string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// Date when the order is cancelled. This is used when order is cancelled.
 	// Format: date-time
-	CancellationDate strfmt.DateTime `json:"cancellationDate,omitempty" bson:"cancellationDate,omitempty"`
+	CancellationDate *strfmt.DateTime `json:"cancellationDate,omitempty" bson:"cancellationDate,omitempty"`
 
 	// Reason why the order is cancelled. This is used when order is cancelled.
-	CancellationReason string `json:"cancellationReason,omitempty" bson:"cancellationReason,omitempty"`
+	CancellationReason *string `json:"cancellationReason,omitempty" bson:"cancellationReason,omitempty"`
 
 	// Used to categorize the order, useful for the OM system, such as: Broadband, TVOption
-	Category string `json:"category,omitempty" bson:"category,omitempty"`
+	Category *string `json:"category,omitempty" bson:"category,omitempty"`
 
 	// Effective delivery date amended by the provider
 	// Format: date-time
-	CompletionDate strfmt.DateTime `json:"completionDate,omitempty" bson:"completionDate,omitempty"`
+	CompletionDate *strfmt.DateTime `json:"completionDate,omitempty" bson:"completionDate,omitempty"`
 
 	// A free-text description of the service order
-	Description string `json:"description,omitempty" bson:"description,omitempty"`
+	Description *string `json:"description,omitempty" bson:"description,omitempty"`
 
 	// the error message if the order closed by an error
 	ErrorMessage *ServiceOrderErrorMessage `json:"errorMessage,omitempty"`
 
 	// Expected delivery date amended by the provider
 	// Format: date-time
-	ExpectedCompletionDate strfmt.DateTime `json:"expectedCompletionDate,omitempty" bson:"expectedCompletionDate,omitempty"`
+	ExpectedCompletionDate *strfmt.DateTime `json:"expectedCompletionDate,omitempty" bson:"expectedCompletionDate,omitempty"`
 
 	// ID given by the consumer to facilitate searches
-	ExternalID string `json:"externalId,omitempty" bson:"externalId,omitempty"`
+	ExternalID *string `json:"externalId,omitempty" bson:"externalId,omitempty"`
 
 	// external reference
-	ExternalReference []*ExternalReference `json:"externalReference" bson:"externalReference"`
+	ExternalReference []*ExternalReference `json:"externalReference" bson:"externalReference,omitempty"`
 
 	// Hyperlink to access the order
-	Href string `json:"href,omitempty" bson:"href,omitempty"`
+	Href *string `json:"href,omitempty" bson:"href,omitempty"`
 
 	// ID created on repository side
 	ID string `json:"id,omitempty" bson:"_id,omitempty"`
 
 	// A list of jeopardy alerts related to this order
-	JeopardyAlert []*ServiceOrderJeopardyAlert `json:"jeopardyAlert" bson:"jeopardyAlert"`
+	JeopardyAlert []*ServiceOrderJeopardyAlert `json:"jeopardyAlert" bson:"jeopardyAlert,omitempty"`
 
 	// A list of milestones related to this order
-	Milestone []*ServiceOrderMilestone `json:"milestone" bson:"milestone"`
+	Milestone []*ServiceOrderMilestone `json:"milestone" bson:"milestone,omitempty"`
 
 	// Extra-information about the order; e.g. useful to add extra delivery information that could be useful for a human process
-	Note []*Note `json:"note" bson:"note"`
+	Note []*Note `json:"note" bson:"note,omitempty"`
 
 	// Contact attached to the order to send back information regarding this order
-	NotificationContact string `json:"notificationContact,omitempty" bson:"notificationContact,omitempty"`
+	NotificationContact *string `json:"notificationContact,omitempty" bson:"notificationContact,omitempty"`
 
 	// order date
 	// Format: date-time
-	OrderDate strfmt.DateTime `json:"orderDate,omitempty" bson:"orderDate,omitempty"`
+	OrderDate *strfmt.DateTime `json:"orderDate,omitempty" bson:"orderDate,omitempty"`
 
 	// A list of service orders related to this order (e.g. prerequisite, dependent on)
-	OrderRelationship []*ServiceOrderRelationship `json:"orderRelationship" bson:"orderRelationship"`
+	OrderRelationship []*ServiceOrderRelationship `json:"orderRelationship" bson:"orderRelationship,omitempty"`
 
 	// Can be used by consumers to prioritize orders in a Service Order Management system
-	Priority string `json:"priority,omitempty" bson:"priority,omitempty"`
+	Priority *string `json:"priority,omitempty" bson:"priority,omitempty"`
 
 	// A list of parties which are involved in this order and the role they are playing
-	RelatedParty []*RelatedParty `json:"relatedParty" bson:"relatedParty"`
+	RelatedParty []*RelatedParty `json:"relatedParty" bson:"relatedParty,omitempty"`
 
 	// Requested delivery date from the requestors perspective
 	// Format: date-time
-	RequestedCompletionDate strfmt.DateTime `json:"requestedCompletionDate,omitempty" bson:"requestedCompletionDate,omitempty"`
+	RequestedCompletionDate *strfmt.DateTime `json:"requestedCompletionDate,omitempty" bson:"requestedCompletionDate,omitempty"`
 
 	// Order start date wished by the requestor
 	// Format: date-time
-	RequestedStartDate strfmt.DateTime `json:"requestedStartDate,omitempty" bson:"requestedStartDate,omitempty"`
+	RequestedStartDate *strfmt.DateTime `json:"requestedStartDate,omitempty" bson:"requestedStartDate,omitempty"`
 
 	// A list of service order items to be processed by this order
 	ServiceOrderItem []*ServiceOrderItem `json:"serviceOrderItem" bson:"serviceOrderItem"`
 
 	// Date when the order was started for processing
 	// Format: date-time
-	StartDate strfmt.DateTime `json:"startDate,omitempty" bson:"startDate,omitempty"`
+	StartDate *strfmt.DateTime `json:"startDate,omitempty" bson:"startDate,omitempty"`
 
 	// State of the order: described in the state-machine diagram
-	State ServiceOrderStateType `json:"state,omitempty"`
+	// Enum: ["acknowledged","rejected","pending","held","inProgress","cancelled","completed","failed","partial","assessingCancellation","pendingCancellation"]
+	State *string `json:"state,omitempty" bson:"state,omitempty"`
 }
 
 // Validate validates this service order
@@ -485,17 +487,69 @@ func (m *ServiceOrder) validateStartDate(formats strfmt.Registry) error {
 	return nil
 }
 
+var serviceOrderTypeStatePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["acknowledged","rejected","pending","held","inProgress","cancelled","completed","failed","partial","assessingCancellation","pendingCancellation"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		serviceOrderTypeStatePropEnum = append(serviceOrderTypeStatePropEnum, v)
+	}
+}
+
+const (
+
+	// ServiceOrderStateAcknowledged captures enum value "acknowledged"
+	ServiceOrderStateAcknowledged string = "acknowledged"
+
+	// ServiceOrderStateRejected captures enum value "rejected"
+	ServiceOrderStateRejected string = "rejected"
+
+	// ServiceOrderStatePending captures enum value "pending"
+	ServiceOrderStatePending string = "pending"
+
+	// ServiceOrderStateHeld captures enum value "held"
+	ServiceOrderStateHeld string = "held"
+
+	// ServiceOrderStateInProgress captures enum value "inProgress"
+	ServiceOrderStateInProgress string = "inProgress"
+
+	// ServiceOrderStateCancelled captures enum value "cancelled"
+	ServiceOrderStateCancelled string = "cancelled"
+
+	// ServiceOrderStateCompleted captures enum value "completed"
+	ServiceOrderStateCompleted string = "completed"
+
+	// ServiceOrderStateFailed captures enum value "failed"
+	ServiceOrderStateFailed string = "failed"
+
+	// ServiceOrderStatePartial captures enum value "partial"
+	ServiceOrderStatePartial string = "partial"
+
+	// ServiceOrderStateAssessingCancellation captures enum value "assessingCancellation"
+	ServiceOrderStateAssessingCancellation string = "assessingCancellation"
+
+	// ServiceOrderStatePendingCancellation captures enum value "pendingCancellation"
+	ServiceOrderStatePendingCancellation string = "pendingCancellation"
+)
+
+// prop value enum
+func (m *ServiceOrder) validateStateEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, serviceOrderTypeStatePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *ServiceOrder) validateState(formats strfmt.Registry) error {
 	if swag.IsZero(m.State) { // not required
 		return nil
 	}
 
-	if err := m.State.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("state")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("state")
-		}
+	// value enum
+	if err := m.validateStateEnum("state", "body", *m.State); err != nil {
 		return err
 	}
 
@@ -535,10 +589,6 @@ func (m *ServiceOrder) ContextValidate(ctx context.Context, formats strfmt.Regis
 	}
 
 	if err := m.contextValidateServiceOrderItem(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateState(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -739,24 +789,6 @@ func (m *ServiceOrder) contextValidateServiceOrderItem(ctx context.Context, form
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ServiceOrder) contextValidateState(ctx context.Context, formats strfmt.Registry) error {
-
-	if swag.IsZero(m.State) { // not required
-		return nil
-	}
-
-	if err := m.State.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("state")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("state")
-		}
-		return err
 	}
 
 	return nil

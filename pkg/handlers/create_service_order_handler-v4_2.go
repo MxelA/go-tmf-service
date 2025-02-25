@@ -4,36 +4,36 @@ import (
 	database "github.com/MxelA/tmf-service-go/pkg/config"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/restapi/operations/service_order"
+	"github.com/MxelA/tmf-service-go/pkg/utils"
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/jinzhu/copier"
 	"go.mongodb.org/mongo-driver/bson"
 	"log"
 )
 
 func CreateServiceOrderHandler(req service_order.CreateServiceOrderParams) middleware.Responder {
-	doc := &models.ServiceOrder{}
-
-	// Copy data from create service order model to response service model
-	err := copier.Copy(&doc, &req.ServiceOrder)
-	if err != nil {
-
-		errCode := "500"
-		reason := "Error during Copy CreateServiceOrder type to ServiceOrder"
-
-		var errModel = models.Error{
-			Reason:  &reason,
-			Code:    &errCode,
-			Message: "Internal server error",
-		}
-		log.Println(err)
-		return service_order.NewCreateServiceOrderInternalServerError().WithPayload(&errModel)
-	}
-
+	//doc := &models.ServiceOrder{}
+	//
+	//// Copy data from create service order model to response service model
+	//err := copier.Copy(&doc, &req.ServiceOrder)
+	//if err != nil {
+	//
+	//	errCode := "500"
+	//	reason := "Error during Copy CreateServiceOrder type to ServiceOrder"
+	//
+	//	var errModel = models.Error{
+	//		Reason:  &reason,
+	//		Code:    &errCode,
+	//		Message: "Internal server error",
+	//	}
+	//	log.Println(err)
+	//	return service_order.NewCreateServiceOrderInternalServerError().WithPayload(&errModel)
+	//}
+	utils.PrettyPrint(req.ServiceOrder)
 	// Insert data to DB
 	mg := database.GetMongoInstance()
 	collection := mg.Db.Collection("serviceOrder")
 
-	insertResult, err := collection.InsertOne(req.HTTPRequest.Context(), doc)
+	insertResult, err := collection.InsertOne(req.HTTPRequest.Context(), req.ServiceOrder)
 	if err != nil {
 		errCode := "500"
 		reason := err.Error()
@@ -69,20 +69,34 @@ func CreateServiceOrderHandler(req service_order.CreateServiceOrderParams) middl
 	//}
 	//log.Println("Raw data from MongoDB:", raw)
 
-	createdServiceOrder := models.ServiceOrder{}
-	err = record.Decode(&createdServiceOrder)
+	//createdServiceOrder := models.ServiceOrder{}
+	//err = record.Decode(&createdServiceOrder)
+	//if err != nil {
+	//	errCode := "500"
+	//	reason := err.Error()
+	//	var errModel = models.Error{
+	//		Reason:  &reason,
+	//		Code:    &errCode,
+	//		Message: "Internal server error",
+	//	}
+	//	log.Println(err)
+	//	return service_order.NewCreateServiceOrderInternalServerError().WithPayload(&errModel)
+	//}
+
+	// Decode into bson.M first
+	response, err := utils.ConvertBsonMToMinimalJSONResponse(*record)
+
 	if err != nil {
 		errCode := "500"
 		reason := err.Error()
-		var errModel = models.Error{
+		errModel := models.Error{
 			Reason:  &reason,
 			Code:    &errCode,
 			Message: "Internal server error",
 		}
 		log.Println(err)
-		return service_order.NewCreateServiceOrderInternalServerError().WithPayload(&errModel)
+		return service_order.NewRetrieveServiceOrderInternalServerError().WithPayload(&errModel)
 	}
-	//utils.PrettyPrint(createdServiceOrder)
 
-	return service_order.NewCreateServiceOrderCreated().WithPayload(&createdServiceOrder)
+	return service_order.NewCreateServiceOrderCreatedRaw().WithPayload(&response)
 }

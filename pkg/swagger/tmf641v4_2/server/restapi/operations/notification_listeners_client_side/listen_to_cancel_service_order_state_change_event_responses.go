@@ -13,6 +13,7 @@ import (
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 )
 
+// Alex Server response
 // ListenToCancelServiceOrderStateChangeEventCreatedCode is the HTTP code returned for type ListenToCancelServiceOrderStateChangeEventCreated
 const ListenToCancelServiceOrderStateChangeEventCreatedCode int = 201
 
@@ -29,14 +30,34 @@ type ListenToCancelServiceOrderStateChangeEventCreated struct {
 	Payload *models.EventSubscription `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderStateChangeEventCreatedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderStateChangeEventCreated creates ListenToCancelServiceOrderStateChangeEventCreated with default headers values
 func NewListenToCancelServiceOrderStateChangeEventCreated() *ListenToCancelServiceOrderStateChangeEventCreated {
 
 	return &ListenToCancelServiceOrderStateChangeEventCreated{}
 }
 
+// NewListenToCancelServiceOrderStateChangeEventCreated creates ListenToCancelServiceOrderStateChangeEventCreatedRaw with default headers values
+func NewListenToCancelServiceOrderStateChangeEventCreatedRaw() *ListenToCancelServiceOrderStateChangeEventCreatedRaw {
+
+	return &ListenToCancelServiceOrderStateChangeEventCreatedRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order state change event created response
 func (o *ListenToCancelServiceOrderStateChangeEventCreated) WithPayload(payload *models.EventSubscription) *ListenToCancelServiceOrderStateChangeEventCreated {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order state change event created response
+func (o *ListenToCancelServiceOrderStateChangeEventCreatedRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderStateChangeEventCreatedRaw {
 	o.Payload = payload
 	return o
 }
@@ -58,6 +79,19 @@ func (o *ListenToCancelServiceOrderStateChangeEventCreated) WriteResponse(rw htt
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderStateChangeEventCreatedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(201)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderStateChangeEventBadRequestCode is the HTTP code returned for type ListenToCancelServiceOrderStateChangeEventBadRequest
 const ListenToCancelServiceOrderStateChangeEventBadRequestCode int = 400
 
@@ -74,14 +108,34 @@ type ListenToCancelServiceOrderStateChangeEventBadRequest struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderStateChangeEventBadRequestRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderStateChangeEventBadRequest creates ListenToCancelServiceOrderStateChangeEventBadRequest with default headers values
 func NewListenToCancelServiceOrderStateChangeEventBadRequest() *ListenToCancelServiceOrderStateChangeEventBadRequest {
 
 	return &ListenToCancelServiceOrderStateChangeEventBadRequest{}
 }
 
+// NewListenToCancelServiceOrderStateChangeEventBadRequest creates ListenToCancelServiceOrderStateChangeEventBadRequestRaw with default headers values
+func NewListenToCancelServiceOrderStateChangeEventBadRequestRaw() *ListenToCancelServiceOrderStateChangeEventBadRequestRaw {
+
+	return &ListenToCancelServiceOrderStateChangeEventBadRequestRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order state change event bad request response
 func (o *ListenToCancelServiceOrderStateChangeEventBadRequest) WithPayload(payload *models.Error) *ListenToCancelServiceOrderStateChangeEventBadRequest {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order state change event bad request response
+func (o *ListenToCancelServiceOrderStateChangeEventBadRequestRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderStateChangeEventBadRequestRaw {
 	o.Payload = payload
 	return o
 }
@@ -103,6 +157,19 @@ func (o *ListenToCancelServiceOrderStateChangeEventBadRequest) WriteResponse(rw 
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderStateChangeEventBadRequestRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(400)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderStateChangeEventUnauthorizedCode is the HTTP code returned for type ListenToCancelServiceOrderStateChangeEventUnauthorized
 const ListenToCancelServiceOrderStateChangeEventUnauthorizedCode int = 401
 
@@ -119,14 +186,34 @@ type ListenToCancelServiceOrderStateChangeEventUnauthorized struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderStateChangeEventUnauthorizedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderStateChangeEventUnauthorized creates ListenToCancelServiceOrderStateChangeEventUnauthorized with default headers values
 func NewListenToCancelServiceOrderStateChangeEventUnauthorized() *ListenToCancelServiceOrderStateChangeEventUnauthorized {
 
 	return &ListenToCancelServiceOrderStateChangeEventUnauthorized{}
 }
 
+// NewListenToCancelServiceOrderStateChangeEventUnauthorized creates ListenToCancelServiceOrderStateChangeEventUnauthorizedRaw with default headers values
+func NewListenToCancelServiceOrderStateChangeEventUnauthorizedRaw() *ListenToCancelServiceOrderStateChangeEventUnauthorizedRaw {
+
+	return &ListenToCancelServiceOrderStateChangeEventUnauthorizedRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order state change event unauthorized response
 func (o *ListenToCancelServiceOrderStateChangeEventUnauthorized) WithPayload(payload *models.Error) *ListenToCancelServiceOrderStateChangeEventUnauthorized {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order state change event unauthorized response
+func (o *ListenToCancelServiceOrderStateChangeEventUnauthorizedRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderStateChangeEventUnauthorizedRaw {
 	o.Payload = payload
 	return o
 }
@@ -148,6 +235,19 @@ func (o *ListenToCancelServiceOrderStateChangeEventUnauthorized) WriteResponse(r
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderStateChangeEventUnauthorizedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(401)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderStateChangeEventForbiddenCode is the HTTP code returned for type ListenToCancelServiceOrderStateChangeEventForbidden
 const ListenToCancelServiceOrderStateChangeEventForbiddenCode int = 403
 
@@ -164,14 +264,34 @@ type ListenToCancelServiceOrderStateChangeEventForbidden struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderStateChangeEventForbiddenRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderStateChangeEventForbidden creates ListenToCancelServiceOrderStateChangeEventForbidden with default headers values
 func NewListenToCancelServiceOrderStateChangeEventForbidden() *ListenToCancelServiceOrderStateChangeEventForbidden {
 
 	return &ListenToCancelServiceOrderStateChangeEventForbidden{}
 }
 
+// NewListenToCancelServiceOrderStateChangeEventForbidden creates ListenToCancelServiceOrderStateChangeEventForbiddenRaw with default headers values
+func NewListenToCancelServiceOrderStateChangeEventForbiddenRaw() *ListenToCancelServiceOrderStateChangeEventForbiddenRaw {
+
+	return &ListenToCancelServiceOrderStateChangeEventForbiddenRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order state change event forbidden response
 func (o *ListenToCancelServiceOrderStateChangeEventForbidden) WithPayload(payload *models.Error) *ListenToCancelServiceOrderStateChangeEventForbidden {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order state change event forbidden response
+func (o *ListenToCancelServiceOrderStateChangeEventForbiddenRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderStateChangeEventForbiddenRaw {
 	o.Payload = payload
 	return o
 }
@@ -193,6 +313,19 @@ func (o *ListenToCancelServiceOrderStateChangeEventForbidden) WriteResponse(rw h
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderStateChangeEventForbiddenRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(403)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderStateChangeEventNotFoundCode is the HTTP code returned for type ListenToCancelServiceOrderStateChangeEventNotFound
 const ListenToCancelServiceOrderStateChangeEventNotFoundCode int = 404
 
@@ -209,14 +342,34 @@ type ListenToCancelServiceOrderStateChangeEventNotFound struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderStateChangeEventNotFoundRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderStateChangeEventNotFound creates ListenToCancelServiceOrderStateChangeEventNotFound with default headers values
 func NewListenToCancelServiceOrderStateChangeEventNotFound() *ListenToCancelServiceOrderStateChangeEventNotFound {
 
 	return &ListenToCancelServiceOrderStateChangeEventNotFound{}
 }
 
+// NewListenToCancelServiceOrderStateChangeEventNotFound creates ListenToCancelServiceOrderStateChangeEventNotFoundRaw with default headers values
+func NewListenToCancelServiceOrderStateChangeEventNotFoundRaw() *ListenToCancelServiceOrderStateChangeEventNotFoundRaw {
+
+	return &ListenToCancelServiceOrderStateChangeEventNotFoundRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order state change event not found response
 func (o *ListenToCancelServiceOrderStateChangeEventNotFound) WithPayload(payload *models.Error) *ListenToCancelServiceOrderStateChangeEventNotFound {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order state change event not found response
+func (o *ListenToCancelServiceOrderStateChangeEventNotFoundRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderStateChangeEventNotFoundRaw {
 	o.Payload = payload
 	return o
 }
@@ -238,6 +391,19 @@ func (o *ListenToCancelServiceOrderStateChangeEventNotFound) WriteResponse(rw ht
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderStateChangeEventNotFoundRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(404)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderStateChangeEventMethodNotAllowedCode is the HTTP code returned for type ListenToCancelServiceOrderStateChangeEventMethodNotAllowed
 const ListenToCancelServiceOrderStateChangeEventMethodNotAllowedCode int = 405
 
@@ -254,14 +420,34 @@ type ListenToCancelServiceOrderStateChangeEventMethodNotAllowed struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderStateChangeEventMethodNotAllowedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderStateChangeEventMethodNotAllowed creates ListenToCancelServiceOrderStateChangeEventMethodNotAllowed with default headers values
 func NewListenToCancelServiceOrderStateChangeEventMethodNotAllowed() *ListenToCancelServiceOrderStateChangeEventMethodNotAllowed {
 
 	return &ListenToCancelServiceOrderStateChangeEventMethodNotAllowed{}
 }
 
+// NewListenToCancelServiceOrderStateChangeEventMethodNotAllowed creates ListenToCancelServiceOrderStateChangeEventMethodNotAllowedRaw with default headers values
+func NewListenToCancelServiceOrderStateChangeEventMethodNotAllowedRaw() *ListenToCancelServiceOrderStateChangeEventMethodNotAllowedRaw {
+
+	return &ListenToCancelServiceOrderStateChangeEventMethodNotAllowedRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order state change event method not allowed response
 func (o *ListenToCancelServiceOrderStateChangeEventMethodNotAllowed) WithPayload(payload *models.Error) *ListenToCancelServiceOrderStateChangeEventMethodNotAllowed {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order state change event method not allowed response
+func (o *ListenToCancelServiceOrderStateChangeEventMethodNotAllowedRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderStateChangeEventMethodNotAllowedRaw {
 	o.Payload = payload
 	return o
 }
@@ -283,6 +469,19 @@ func (o *ListenToCancelServiceOrderStateChangeEventMethodNotAllowed) WriteRespon
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderStateChangeEventMethodNotAllowedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(405)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderStateChangeEventConflictCode is the HTTP code returned for type ListenToCancelServiceOrderStateChangeEventConflict
 const ListenToCancelServiceOrderStateChangeEventConflictCode int = 409
 
@@ -299,14 +498,34 @@ type ListenToCancelServiceOrderStateChangeEventConflict struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderStateChangeEventConflictRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderStateChangeEventConflict creates ListenToCancelServiceOrderStateChangeEventConflict with default headers values
 func NewListenToCancelServiceOrderStateChangeEventConflict() *ListenToCancelServiceOrderStateChangeEventConflict {
 
 	return &ListenToCancelServiceOrderStateChangeEventConflict{}
 }
 
+// NewListenToCancelServiceOrderStateChangeEventConflict creates ListenToCancelServiceOrderStateChangeEventConflictRaw with default headers values
+func NewListenToCancelServiceOrderStateChangeEventConflictRaw() *ListenToCancelServiceOrderStateChangeEventConflictRaw {
+
+	return &ListenToCancelServiceOrderStateChangeEventConflictRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order state change event conflict response
 func (o *ListenToCancelServiceOrderStateChangeEventConflict) WithPayload(payload *models.Error) *ListenToCancelServiceOrderStateChangeEventConflict {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order state change event conflict response
+func (o *ListenToCancelServiceOrderStateChangeEventConflictRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderStateChangeEventConflictRaw {
 	o.Payload = payload
 	return o
 }
@@ -328,6 +547,19 @@ func (o *ListenToCancelServiceOrderStateChangeEventConflict) WriteResponse(rw ht
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderStateChangeEventConflictRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(409)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderStateChangeEventInternalServerErrorCode is the HTTP code returned for type ListenToCancelServiceOrderStateChangeEventInternalServerError
 const ListenToCancelServiceOrderStateChangeEventInternalServerErrorCode int = 500
 
@@ -344,14 +576,34 @@ type ListenToCancelServiceOrderStateChangeEventInternalServerError struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderStateChangeEventInternalServerErrorRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderStateChangeEventInternalServerError creates ListenToCancelServiceOrderStateChangeEventInternalServerError with default headers values
 func NewListenToCancelServiceOrderStateChangeEventInternalServerError() *ListenToCancelServiceOrderStateChangeEventInternalServerError {
 
 	return &ListenToCancelServiceOrderStateChangeEventInternalServerError{}
 }
 
+// NewListenToCancelServiceOrderStateChangeEventInternalServerError creates ListenToCancelServiceOrderStateChangeEventInternalServerErrorRaw with default headers values
+func NewListenToCancelServiceOrderStateChangeEventInternalServerErrorRaw() *ListenToCancelServiceOrderStateChangeEventInternalServerErrorRaw {
+
+	return &ListenToCancelServiceOrderStateChangeEventInternalServerErrorRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order state change event internal server error response
 func (o *ListenToCancelServiceOrderStateChangeEventInternalServerError) WithPayload(payload *models.Error) *ListenToCancelServiceOrderStateChangeEventInternalServerError {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order state change event internal server error response
+func (o *ListenToCancelServiceOrderStateChangeEventInternalServerErrorRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderStateChangeEventInternalServerErrorRaw {
 	o.Payload = payload
 	return o
 }
@@ -363,6 +615,18 @@ func (o *ListenToCancelServiceOrderStateChangeEventInternalServerError) SetPaylo
 
 // WriteResponse to the client
 func (o *ListenToCancelServiceOrderStateChangeEventInternalServerError) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(500)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderStateChangeEventInternalServerErrorRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
 
 	rw.WriteHeader(500)
 	if o.Payload != nil {

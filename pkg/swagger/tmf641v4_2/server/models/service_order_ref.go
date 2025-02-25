@@ -20,28 +20,28 @@ import (
 type ServiceOrderRef struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// The actual type of the target instance when needed for disambiguation.
-	AtReferredType string `json:"@referredType,omitempty" bson:"atReferredType,omitempty"`
+	AtReferredType *string `json:"@referredType,omitempty" bson:"@referredType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
+	AtSchemaLocation *strfmt.URI `json:"@schemaLocation,omitempty" bson:"@schemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
+	AtType *string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// Hyperlink reference
 	// Format: uri
-	Href strfmt.URI `json:"href,omitempty" bson:"href,omitempty"`
+	Href *strfmt.URI `json:"href,omitempty" bson:"href,omitempty"`
 
 	// unique identifier
 	// Required: true
 	ID *string `json:"id" bson:"id"`
 
 	// Name of the related service order
-	Name string `json:"name,omitempty" bson:"name,omitempty"`
+	Name *string `json:"name,omitempty" bson:"name,omitempty"`
 }
 
 // Validate validates this service order ref

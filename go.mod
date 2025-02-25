@@ -12,6 +12,7 @@ require (
 	github.com/go-openapi/validate v0.20.1
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/jinzhu/copier v0.4.0
+	github.com/mitchellh/mapstructure v1.4.1
 	go.mongodb.org/mongo-driver v1.4.6
 	golang.org/x/net v0.0.0-20210119194325-5f4716e94777
 )
@@ -32,7 +33,6 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/klauspost/compress v1.9.5 // indirect
 	github.com/mailru/easyjson v0.7.6 // indirect
-	github.com/mitchellh/mapstructure v1.4.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/xdg/scram v0.0.0-20180814205039-7eeb5667e42c // indirect
 	github.com/xdg/stringprep v0.0.0-20180714160509-73f8eece6fdc // indirect

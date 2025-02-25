@@ -10,10 +10,10 @@ import (
 func (c *Characteristic) UnmarshalBSON(data []byte) error {
 	// Define a temporary struct to hold all fields from the original struct
 	aux := &struct {
-		ID                         string                        `bson:"id,omitempty"`
-		Name                       *string                       `bson:"name,omitempty"`
+		ID                         *string                       `bson:"id,omitempty"`
+		Name                       string                        `bson:"name,omitempty"`
 		Value                      bson.RawValue                 `bson:"value"`
-		ValueType                  string                        `bson:"valueType,omitempty"`
+		ValueType                  *string                       `bson:"valueType,omitempty"`
 		CharacteristicRelationship []*CharacteristicRelationship `json:"characteristicRelationship" bson:"characteristicRelationship"`
 	}{}
 

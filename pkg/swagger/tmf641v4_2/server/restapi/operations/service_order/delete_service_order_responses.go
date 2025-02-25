@@ -13,6 +13,7 @@ import (
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 )
 
+// Alex Server response
 // DeleteServiceOrderNoContentCode is the HTTP code returned for type DeleteServiceOrderNoContent
 const DeleteServiceOrderNoContentCode int = 204
 
@@ -24,10 +25,19 @@ swagger:response deleteServiceOrderNoContent
 type DeleteServiceOrderNoContent struct {
 }
 
+type DeleteServiceOrderNoContentRaw struct {
+}
+
 // NewDeleteServiceOrderNoContent creates DeleteServiceOrderNoContent with default headers values
 func NewDeleteServiceOrderNoContent() *DeleteServiceOrderNoContent {
 
 	return &DeleteServiceOrderNoContent{}
+}
+
+// NewDeleteServiceOrderNoContent creates DeleteServiceOrderNoContentRaw with default headers values
+func NewDeleteServiceOrderNoContentRaw() *DeleteServiceOrderNoContentRaw {
+
+	return &DeleteServiceOrderNoContentRaw{}
 }
 
 // WriteResponse to the client
@@ -38,6 +48,15 @@ func (o *DeleteServiceOrderNoContent) WriteResponse(rw http.ResponseWriter, prod
 	rw.WriteHeader(204)
 }
 
+// WriteResponseRaw to the client
+func (o *DeleteServiceOrderNoContentRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.Header().Del(runtime.HeaderContentType) //Remove Content-Type on empty responses
+
+	rw.WriteHeader(204)
+}
+
+// Alex Server response
 // DeleteServiceOrderBadRequestCode is the HTTP code returned for type DeleteServiceOrderBadRequest
 const DeleteServiceOrderBadRequestCode int = 400
 
@@ -54,14 +73,34 @@ type DeleteServiceOrderBadRequest struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type DeleteServiceOrderBadRequestRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewDeleteServiceOrderBadRequest creates DeleteServiceOrderBadRequest with default headers values
 func NewDeleteServiceOrderBadRequest() *DeleteServiceOrderBadRequest {
 
 	return &DeleteServiceOrderBadRequest{}
 }
 
+// NewDeleteServiceOrderBadRequest creates DeleteServiceOrderBadRequestRaw with default headers values
+func NewDeleteServiceOrderBadRequestRaw() *DeleteServiceOrderBadRequestRaw {
+
+	return &DeleteServiceOrderBadRequestRaw{}
+}
+
 // WithPayload adds the payload to the delete service order bad request response
 func (o *DeleteServiceOrderBadRequest) WithPayload(payload *models.Error) *DeleteServiceOrderBadRequest {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the delete service order bad request response
+func (o *DeleteServiceOrderBadRequestRaw) WithPayload(payload interface{}) *DeleteServiceOrderBadRequestRaw {
 	o.Payload = payload
 	return o
 }
@@ -83,6 +122,19 @@ func (o *DeleteServiceOrderBadRequest) WriteResponse(rw http.ResponseWriter, pro
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *DeleteServiceOrderBadRequestRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(400)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // DeleteServiceOrderUnauthorizedCode is the HTTP code returned for type DeleteServiceOrderUnauthorized
 const DeleteServiceOrderUnauthorizedCode int = 401
 
@@ -99,14 +151,34 @@ type DeleteServiceOrderUnauthorized struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type DeleteServiceOrderUnauthorizedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewDeleteServiceOrderUnauthorized creates DeleteServiceOrderUnauthorized with default headers values
 func NewDeleteServiceOrderUnauthorized() *DeleteServiceOrderUnauthorized {
 
 	return &DeleteServiceOrderUnauthorized{}
 }
 
+// NewDeleteServiceOrderUnauthorized creates DeleteServiceOrderUnauthorizedRaw with default headers values
+func NewDeleteServiceOrderUnauthorizedRaw() *DeleteServiceOrderUnauthorizedRaw {
+
+	return &DeleteServiceOrderUnauthorizedRaw{}
+}
+
 // WithPayload adds the payload to the delete service order unauthorized response
 func (o *DeleteServiceOrderUnauthorized) WithPayload(payload *models.Error) *DeleteServiceOrderUnauthorized {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the delete service order unauthorized response
+func (o *DeleteServiceOrderUnauthorizedRaw) WithPayload(payload interface{}) *DeleteServiceOrderUnauthorizedRaw {
 	o.Payload = payload
 	return o
 }
@@ -128,6 +200,19 @@ func (o *DeleteServiceOrderUnauthorized) WriteResponse(rw http.ResponseWriter, p
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *DeleteServiceOrderUnauthorizedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(401)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // DeleteServiceOrderForbiddenCode is the HTTP code returned for type DeleteServiceOrderForbidden
 const DeleteServiceOrderForbiddenCode int = 403
 
@@ -144,14 +229,34 @@ type DeleteServiceOrderForbidden struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type DeleteServiceOrderForbiddenRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewDeleteServiceOrderForbidden creates DeleteServiceOrderForbidden with default headers values
 func NewDeleteServiceOrderForbidden() *DeleteServiceOrderForbidden {
 
 	return &DeleteServiceOrderForbidden{}
 }
 
+// NewDeleteServiceOrderForbidden creates DeleteServiceOrderForbiddenRaw with default headers values
+func NewDeleteServiceOrderForbiddenRaw() *DeleteServiceOrderForbiddenRaw {
+
+	return &DeleteServiceOrderForbiddenRaw{}
+}
+
 // WithPayload adds the payload to the delete service order forbidden response
 func (o *DeleteServiceOrderForbidden) WithPayload(payload *models.Error) *DeleteServiceOrderForbidden {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the delete service order forbidden response
+func (o *DeleteServiceOrderForbiddenRaw) WithPayload(payload interface{}) *DeleteServiceOrderForbiddenRaw {
 	o.Payload = payload
 	return o
 }
@@ -173,6 +278,19 @@ func (o *DeleteServiceOrderForbidden) WriteResponse(rw http.ResponseWriter, prod
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *DeleteServiceOrderForbiddenRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(403)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // DeleteServiceOrderNotFoundCode is the HTTP code returned for type DeleteServiceOrderNotFound
 const DeleteServiceOrderNotFoundCode int = 404
 
@@ -189,14 +307,34 @@ type DeleteServiceOrderNotFound struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type DeleteServiceOrderNotFoundRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewDeleteServiceOrderNotFound creates DeleteServiceOrderNotFound with default headers values
 func NewDeleteServiceOrderNotFound() *DeleteServiceOrderNotFound {
 
 	return &DeleteServiceOrderNotFound{}
 }
 
+// NewDeleteServiceOrderNotFound creates DeleteServiceOrderNotFoundRaw with default headers values
+func NewDeleteServiceOrderNotFoundRaw() *DeleteServiceOrderNotFoundRaw {
+
+	return &DeleteServiceOrderNotFoundRaw{}
+}
+
 // WithPayload adds the payload to the delete service order not found response
 func (o *DeleteServiceOrderNotFound) WithPayload(payload *models.Error) *DeleteServiceOrderNotFound {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the delete service order not found response
+func (o *DeleteServiceOrderNotFoundRaw) WithPayload(payload interface{}) *DeleteServiceOrderNotFoundRaw {
 	o.Payload = payload
 	return o
 }
@@ -218,6 +356,19 @@ func (o *DeleteServiceOrderNotFound) WriteResponse(rw http.ResponseWriter, produ
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *DeleteServiceOrderNotFoundRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(404)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // DeleteServiceOrderMethodNotAllowedCode is the HTTP code returned for type DeleteServiceOrderMethodNotAllowed
 const DeleteServiceOrderMethodNotAllowedCode int = 405
 
@@ -234,14 +385,34 @@ type DeleteServiceOrderMethodNotAllowed struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type DeleteServiceOrderMethodNotAllowedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewDeleteServiceOrderMethodNotAllowed creates DeleteServiceOrderMethodNotAllowed with default headers values
 func NewDeleteServiceOrderMethodNotAllowed() *DeleteServiceOrderMethodNotAllowed {
 
 	return &DeleteServiceOrderMethodNotAllowed{}
 }
 
+// NewDeleteServiceOrderMethodNotAllowed creates DeleteServiceOrderMethodNotAllowedRaw with default headers values
+func NewDeleteServiceOrderMethodNotAllowedRaw() *DeleteServiceOrderMethodNotAllowedRaw {
+
+	return &DeleteServiceOrderMethodNotAllowedRaw{}
+}
+
 // WithPayload adds the payload to the delete service order method not allowed response
 func (o *DeleteServiceOrderMethodNotAllowed) WithPayload(payload *models.Error) *DeleteServiceOrderMethodNotAllowed {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the delete service order method not allowed response
+func (o *DeleteServiceOrderMethodNotAllowedRaw) WithPayload(payload interface{}) *DeleteServiceOrderMethodNotAllowedRaw {
 	o.Payload = payload
 	return o
 }
@@ -263,6 +434,19 @@ func (o *DeleteServiceOrderMethodNotAllowed) WriteResponse(rw http.ResponseWrite
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *DeleteServiceOrderMethodNotAllowedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(405)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // DeleteServiceOrderConflictCode is the HTTP code returned for type DeleteServiceOrderConflict
 const DeleteServiceOrderConflictCode int = 409
 
@@ -279,14 +463,34 @@ type DeleteServiceOrderConflict struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type DeleteServiceOrderConflictRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewDeleteServiceOrderConflict creates DeleteServiceOrderConflict with default headers values
 func NewDeleteServiceOrderConflict() *DeleteServiceOrderConflict {
 
 	return &DeleteServiceOrderConflict{}
 }
 
+// NewDeleteServiceOrderConflict creates DeleteServiceOrderConflictRaw with default headers values
+func NewDeleteServiceOrderConflictRaw() *DeleteServiceOrderConflictRaw {
+
+	return &DeleteServiceOrderConflictRaw{}
+}
+
 // WithPayload adds the payload to the delete service order conflict response
 func (o *DeleteServiceOrderConflict) WithPayload(payload *models.Error) *DeleteServiceOrderConflict {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the delete service order conflict response
+func (o *DeleteServiceOrderConflictRaw) WithPayload(payload interface{}) *DeleteServiceOrderConflictRaw {
 	o.Payload = payload
 	return o
 }
@@ -308,6 +512,19 @@ func (o *DeleteServiceOrderConflict) WriteResponse(rw http.ResponseWriter, produ
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *DeleteServiceOrderConflictRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(409)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // DeleteServiceOrderInternalServerErrorCode is the HTTP code returned for type DeleteServiceOrderInternalServerError
 const DeleteServiceOrderInternalServerErrorCode int = 500
 
@@ -324,14 +541,34 @@ type DeleteServiceOrderInternalServerError struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type DeleteServiceOrderInternalServerErrorRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewDeleteServiceOrderInternalServerError creates DeleteServiceOrderInternalServerError with default headers values
 func NewDeleteServiceOrderInternalServerError() *DeleteServiceOrderInternalServerError {
 
 	return &DeleteServiceOrderInternalServerError{}
 }
 
+// NewDeleteServiceOrderInternalServerError creates DeleteServiceOrderInternalServerErrorRaw with default headers values
+func NewDeleteServiceOrderInternalServerErrorRaw() *DeleteServiceOrderInternalServerErrorRaw {
+
+	return &DeleteServiceOrderInternalServerErrorRaw{}
+}
+
 // WithPayload adds the payload to the delete service order internal server error response
 func (o *DeleteServiceOrderInternalServerError) WithPayload(payload *models.Error) *DeleteServiceOrderInternalServerError {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the delete service order internal server error response
+func (o *DeleteServiceOrderInternalServerErrorRaw) WithPayload(payload interface{}) *DeleteServiceOrderInternalServerErrorRaw {
 	o.Payload = payload
 	return o
 }
@@ -343,6 +580,18 @@ func (o *DeleteServiceOrderInternalServerError) SetPayload(payload *models.Error
 
 // WriteResponse to the client
 func (o *DeleteServiceOrderInternalServerError) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(500)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// WriteResponseRaw to the client
+func (o *DeleteServiceOrderInternalServerErrorRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
 
 	rw.WriteHeader(500)
 	if o.Payload != nil {

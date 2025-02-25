@@ -21,30 +21,30 @@ import (
 type ContextUpdate struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
+	AtSchemaLocation *strfmt.URI `json:"@schemaLocation,omitempty" bson:"@schemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
+	AtType *string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// Identifier of the context update
-	ID string `json:"id,omitempty" bson:"id,omitempty"`
+	ID *string `json:"id,omitempty" bson:"id,omitempty"`
 
 	// The date and time the status/state last changed.
 	// Format: date-time
-	LastUpdate strfmt.DateTime `json:"lastUpdate,omitempty" bson:"lastUpdate,omitempty"`
+	LastUpdate *strfmt.DateTime `json:"lastUpdate,omitempty" bson:"lastUpdate,omitempty"`
 
 	// The reason/context for the current value of the status/state.
-	Reason string `json:"reason,omitempty" bson:"reason,omitempty"`
+	Reason *string `json:"reason,omitempty" bson:"reason,omitempty"`
 
 	// A list of entities that represent observations, anomalies or managing entities etc associated to the current status/state value.
-	RelatedEntity []*EntityRef `json:"relatedEntity" bson:"relatedEntity"`
+	RelatedEntity []*EntityRef `json:"relatedEntity" bson:"relatedEntity,omitempty"`
 
 	// List of parties associated to the current status/state value.
-	RelatedParty []*RelatedParty `json:"relatedParty" bson:"relatedParty"`
+	RelatedParty []*RelatedParty `json:"relatedParty" bson:"relatedParty,omitempty"`
 }
 
 // Validate validates this context update

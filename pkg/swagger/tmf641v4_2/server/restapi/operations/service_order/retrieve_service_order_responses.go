@@ -13,6 +13,7 @@ import (
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 )
 
+// Alex Server response
 // RetrieveServiceOrderOKCode is the HTTP code returned for type RetrieveServiceOrderOK
 const RetrieveServiceOrderOKCode int = 200
 
@@ -29,14 +30,34 @@ type RetrieveServiceOrderOK struct {
 	Payload *models.ServiceOrder `json:"body,omitempty"`
 }
 
+type RetrieveServiceOrderOKRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRetrieveServiceOrderOK creates RetrieveServiceOrderOK with default headers values
 func NewRetrieveServiceOrderOK() *RetrieveServiceOrderOK {
 
 	return &RetrieveServiceOrderOK{}
 }
 
+// NewRetrieveServiceOrderOK creates RetrieveServiceOrderOKRaw with default headers values
+func NewRetrieveServiceOrderOKRaw() *RetrieveServiceOrderOKRaw {
+
+	return &RetrieveServiceOrderOKRaw{}
+}
+
 // WithPayload adds the payload to the retrieve service order o k response
 func (o *RetrieveServiceOrderOK) WithPayload(payload *models.ServiceOrder) *RetrieveServiceOrderOK {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the retrieve service order o k response
+func (o *RetrieveServiceOrderOKRaw) WithPayload(payload interface{}) *RetrieveServiceOrderOKRaw {
 	o.Payload = payload
 	return o
 }
@@ -58,6 +79,19 @@ func (o *RetrieveServiceOrderOK) WriteResponse(rw http.ResponseWriter, producer 
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RetrieveServiceOrderOKRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(200)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RetrieveServiceOrderBadRequestCode is the HTTP code returned for type RetrieveServiceOrderBadRequest
 const RetrieveServiceOrderBadRequestCode int = 400
 
@@ -74,14 +108,34 @@ type RetrieveServiceOrderBadRequest struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RetrieveServiceOrderBadRequestRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRetrieveServiceOrderBadRequest creates RetrieveServiceOrderBadRequest with default headers values
 func NewRetrieveServiceOrderBadRequest() *RetrieveServiceOrderBadRequest {
 
 	return &RetrieveServiceOrderBadRequest{}
 }
 
+// NewRetrieveServiceOrderBadRequest creates RetrieveServiceOrderBadRequestRaw with default headers values
+func NewRetrieveServiceOrderBadRequestRaw() *RetrieveServiceOrderBadRequestRaw {
+
+	return &RetrieveServiceOrderBadRequestRaw{}
+}
+
 // WithPayload adds the payload to the retrieve service order bad request response
 func (o *RetrieveServiceOrderBadRequest) WithPayload(payload *models.Error) *RetrieveServiceOrderBadRequest {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the retrieve service order bad request response
+func (o *RetrieveServiceOrderBadRequestRaw) WithPayload(payload interface{}) *RetrieveServiceOrderBadRequestRaw {
 	o.Payload = payload
 	return o
 }
@@ -103,6 +157,19 @@ func (o *RetrieveServiceOrderBadRequest) WriteResponse(rw http.ResponseWriter, p
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RetrieveServiceOrderBadRequestRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(400)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RetrieveServiceOrderUnauthorizedCode is the HTTP code returned for type RetrieveServiceOrderUnauthorized
 const RetrieveServiceOrderUnauthorizedCode int = 401
 
@@ -119,14 +186,34 @@ type RetrieveServiceOrderUnauthorized struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RetrieveServiceOrderUnauthorizedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRetrieveServiceOrderUnauthorized creates RetrieveServiceOrderUnauthorized with default headers values
 func NewRetrieveServiceOrderUnauthorized() *RetrieveServiceOrderUnauthorized {
 
 	return &RetrieveServiceOrderUnauthorized{}
 }
 
+// NewRetrieveServiceOrderUnauthorized creates RetrieveServiceOrderUnauthorizedRaw with default headers values
+func NewRetrieveServiceOrderUnauthorizedRaw() *RetrieveServiceOrderUnauthorizedRaw {
+
+	return &RetrieveServiceOrderUnauthorizedRaw{}
+}
+
 // WithPayload adds the payload to the retrieve service order unauthorized response
 func (o *RetrieveServiceOrderUnauthorized) WithPayload(payload *models.Error) *RetrieveServiceOrderUnauthorized {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the retrieve service order unauthorized response
+func (o *RetrieveServiceOrderUnauthorizedRaw) WithPayload(payload interface{}) *RetrieveServiceOrderUnauthorizedRaw {
 	o.Payload = payload
 	return o
 }
@@ -148,6 +235,19 @@ func (o *RetrieveServiceOrderUnauthorized) WriteResponse(rw http.ResponseWriter,
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RetrieveServiceOrderUnauthorizedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(401)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RetrieveServiceOrderForbiddenCode is the HTTP code returned for type RetrieveServiceOrderForbidden
 const RetrieveServiceOrderForbiddenCode int = 403
 
@@ -164,14 +264,34 @@ type RetrieveServiceOrderForbidden struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RetrieveServiceOrderForbiddenRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRetrieveServiceOrderForbidden creates RetrieveServiceOrderForbidden with default headers values
 func NewRetrieveServiceOrderForbidden() *RetrieveServiceOrderForbidden {
 
 	return &RetrieveServiceOrderForbidden{}
 }
 
+// NewRetrieveServiceOrderForbidden creates RetrieveServiceOrderForbiddenRaw with default headers values
+func NewRetrieveServiceOrderForbiddenRaw() *RetrieveServiceOrderForbiddenRaw {
+
+	return &RetrieveServiceOrderForbiddenRaw{}
+}
+
 // WithPayload adds the payload to the retrieve service order forbidden response
 func (o *RetrieveServiceOrderForbidden) WithPayload(payload *models.Error) *RetrieveServiceOrderForbidden {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the retrieve service order forbidden response
+func (o *RetrieveServiceOrderForbiddenRaw) WithPayload(payload interface{}) *RetrieveServiceOrderForbiddenRaw {
 	o.Payload = payload
 	return o
 }
@@ -193,6 +313,19 @@ func (o *RetrieveServiceOrderForbidden) WriteResponse(rw http.ResponseWriter, pr
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RetrieveServiceOrderForbiddenRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(403)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RetrieveServiceOrderNotFoundCode is the HTTP code returned for type RetrieveServiceOrderNotFound
 const RetrieveServiceOrderNotFoundCode int = 404
 
@@ -209,14 +342,34 @@ type RetrieveServiceOrderNotFound struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RetrieveServiceOrderNotFoundRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRetrieveServiceOrderNotFound creates RetrieveServiceOrderNotFound with default headers values
 func NewRetrieveServiceOrderNotFound() *RetrieveServiceOrderNotFound {
 
 	return &RetrieveServiceOrderNotFound{}
 }
 
+// NewRetrieveServiceOrderNotFound creates RetrieveServiceOrderNotFoundRaw with default headers values
+func NewRetrieveServiceOrderNotFoundRaw() *RetrieveServiceOrderNotFoundRaw {
+
+	return &RetrieveServiceOrderNotFoundRaw{}
+}
+
 // WithPayload adds the payload to the retrieve service order not found response
 func (o *RetrieveServiceOrderNotFound) WithPayload(payload *models.Error) *RetrieveServiceOrderNotFound {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the retrieve service order not found response
+func (o *RetrieveServiceOrderNotFoundRaw) WithPayload(payload interface{}) *RetrieveServiceOrderNotFoundRaw {
 	o.Payload = payload
 	return o
 }
@@ -238,6 +391,19 @@ func (o *RetrieveServiceOrderNotFound) WriteResponse(rw http.ResponseWriter, pro
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RetrieveServiceOrderNotFoundRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(404)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RetrieveServiceOrderMethodNotAllowedCode is the HTTP code returned for type RetrieveServiceOrderMethodNotAllowed
 const RetrieveServiceOrderMethodNotAllowedCode int = 405
 
@@ -254,14 +420,34 @@ type RetrieveServiceOrderMethodNotAllowed struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RetrieveServiceOrderMethodNotAllowedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRetrieveServiceOrderMethodNotAllowed creates RetrieveServiceOrderMethodNotAllowed with default headers values
 func NewRetrieveServiceOrderMethodNotAllowed() *RetrieveServiceOrderMethodNotAllowed {
 
 	return &RetrieveServiceOrderMethodNotAllowed{}
 }
 
+// NewRetrieveServiceOrderMethodNotAllowed creates RetrieveServiceOrderMethodNotAllowedRaw with default headers values
+func NewRetrieveServiceOrderMethodNotAllowedRaw() *RetrieveServiceOrderMethodNotAllowedRaw {
+
+	return &RetrieveServiceOrderMethodNotAllowedRaw{}
+}
+
 // WithPayload adds the payload to the retrieve service order method not allowed response
 func (o *RetrieveServiceOrderMethodNotAllowed) WithPayload(payload *models.Error) *RetrieveServiceOrderMethodNotAllowed {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the retrieve service order method not allowed response
+func (o *RetrieveServiceOrderMethodNotAllowedRaw) WithPayload(payload interface{}) *RetrieveServiceOrderMethodNotAllowedRaw {
 	o.Payload = payload
 	return o
 }
@@ -283,6 +469,19 @@ func (o *RetrieveServiceOrderMethodNotAllowed) WriteResponse(rw http.ResponseWri
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RetrieveServiceOrderMethodNotAllowedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(405)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RetrieveServiceOrderConflictCode is the HTTP code returned for type RetrieveServiceOrderConflict
 const RetrieveServiceOrderConflictCode int = 409
 
@@ -299,14 +498,34 @@ type RetrieveServiceOrderConflict struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RetrieveServiceOrderConflictRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRetrieveServiceOrderConflict creates RetrieveServiceOrderConflict with default headers values
 func NewRetrieveServiceOrderConflict() *RetrieveServiceOrderConflict {
 
 	return &RetrieveServiceOrderConflict{}
 }
 
+// NewRetrieveServiceOrderConflict creates RetrieveServiceOrderConflictRaw with default headers values
+func NewRetrieveServiceOrderConflictRaw() *RetrieveServiceOrderConflictRaw {
+
+	return &RetrieveServiceOrderConflictRaw{}
+}
+
 // WithPayload adds the payload to the retrieve service order conflict response
 func (o *RetrieveServiceOrderConflict) WithPayload(payload *models.Error) *RetrieveServiceOrderConflict {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the retrieve service order conflict response
+func (o *RetrieveServiceOrderConflictRaw) WithPayload(payload interface{}) *RetrieveServiceOrderConflictRaw {
 	o.Payload = payload
 	return o
 }
@@ -328,6 +547,19 @@ func (o *RetrieveServiceOrderConflict) WriteResponse(rw http.ResponseWriter, pro
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RetrieveServiceOrderConflictRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(409)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RetrieveServiceOrderInternalServerErrorCode is the HTTP code returned for type RetrieveServiceOrderInternalServerError
 const RetrieveServiceOrderInternalServerErrorCode int = 500
 
@@ -344,14 +576,34 @@ type RetrieveServiceOrderInternalServerError struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RetrieveServiceOrderInternalServerErrorRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRetrieveServiceOrderInternalServerError creates RetrieveServiceOrderInternalServerError with default headers values
 func NewRetrieveServiceOrderInternalServerError() *RetrieveServiceOrderInternalServerError {
 
 	return &RetrieveServiceOrderInternalServerError{}
 }
 
+// NewRetrieveServiceOrderInternalServerError creates RetrieveServiceOrderInternalServerErrorRaw with default headers values
+func NewRetrieveServiceOrderInternalServerErrorRaw() *RetrieveServiceOrderInternalServerErrorRaw {
+
+	return &RetrieveServiceOrderInternalServerErrorRaw{}
+}
+
 // WithPayload adds the payload to the retrieve service order internal server error response
 func (o *RetrieveServiceOrderInternalServerError) WithPayload(payload *models.Error) *RetrieveServiceOrderInternalServerError {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the retrieve service order internal server error response
+func (o *RetrieveServiceOrderInternalServerErrorRaw) WithPayload(payload interface{}) *RetrieveServiceOrderInternalServerErrorRaw {
 	o.Payload = payload
 	return o
 }
@@ -363,6 +615,18 @@ func (o *RetrieveServiceOrderInternalServerError) SetPayload(payload *models.Err
 
 // WriteResponse to the client
 func (o *RetrieveServiceOrderInternalServerError) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(500)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// WriteResponseRaw to the client
+func (o *RetrieveServiceOrderInternalServerErrorRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
 
 	rw.WriteHeader(500)
 	if o.Payload != nil {

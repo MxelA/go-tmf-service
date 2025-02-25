@@ -13,6 +13,7 @@ import (
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 )
 
+// Alex Server response
 // PatchServiceOrderOKCode is the HTTP code returned for type PatchServiceOrderOK
 const PatchServiceOrderOKCode int = 200
 
@@ -29,14 +30,34 @@ type PatchServiceOrderOK struct {
 	Payload *models.ServiceOrder `json:"body,omitempty"`
 }
 
+type PatchServiceOrderOKRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewPatchServiceOrderOK creates PatchServiceOrderOK with default headers values
 func NewPatchServiceOrderOK() *PatchServiceOrderOK {
 
 	return &PatchServiceOrderOK{}
 }
 
+// NewPatchServiceOrderOK creates PatchServiceOrderOKRaw with default headers values
+func NewPatchServiceOrderOKRaw() *PatchServiceOrderOKRaw {
+
+	return &PatchServiceOrderOKRaw{}
+}
+
 // WithPayload adds the payload to the patch service order o k response
 func (o *PatchServiceOrderOK) WithPayload(payload *models.ServiceOrder) *PatchServiceOrderOK {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the patch service order o k response
+func (o *PatchServiceOrderOKRaw) WithPayload(payload interface{}) *PatchServiceOrderOKRaw {
 	o.Payload = payload
 	return o
 }
@@ -58,6 +79,19 @@ func (o *PatchServiceOrderOK) WriteResponse(rw http.ResponseWriter, producer run
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *PatchServiceOrderOKRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(200)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // PatchServiceOrderBadRequestCode is the HTTP code returned for type PatchServiceOrderBadRequest
 const PatchServiceOrderBadRequestCode int = 400
 
@@ -74,14 +108,34 @@ type PatchServiceOrderBadRequest struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type PatchServiceOrderBadRequestRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewPatchServiceOrderBadRequest creates PatchServiceOrderBadRequest with default headers values
 func NewPatchServiceOrderBadRequest() *PatchServiceOrderBadRequest {
 
 	return &PatchServiceOrderBadRequest{}
 }
 
+// NewPatchServiceOrderBadRequest creates PatchServiceOrderBadRequestRaw with default headers values
+func NewPatchServiceOrderBadRequestRaw() *PatchServiceOrderBadRequestRaw {
+
+	return &PatchServiceOrderBadRequestRaw{}
+}
+
 // WithPayload adds the payload to the patch service order bad request response
 func (o *PatchServiceOrderBadRequest) WithPayload(payload *models.Error) *PatchServiceOrderBadRequest {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the patch service order bad request response
+func (o *PatchServiceOrderBadRequestRaw) WithPayload(payload interface{}) *PatchServiceOrderBadRequestRaw {
 	o.Payload = payload
 	return o
 }
@@ -103,6 +157,19 @@ func (o *PatchServiceOrderBadRequest) WriteResponse(rw http.ResponseWriter, prod
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *PatchServiceOrderBadRequestRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(400)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // PatchServiceOrderUnauthorizedCode is the HTTP code returned for type PatchServiceOrderUnauthorized
 const PatchServiceOrderUnauthorizedCode int = 401
 
@@ -119,14 +186,34 @@ type PatchServiceOrderUnauthorized struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type PatchServiceOrderUnauthorizedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewPatchServiceOrderUnauthorized creates PatchServiceOrderUnauthorized with default headers values
 func NewPatchServiceOrderUnauthorized() *PatchServiceOrderUnauthorized {
 
 	return &PatchServiceOrderUnauthorized{}
 }
 
+// NewPatchServiceOrderUnauthorized creates PatchServiceOrderUnauthorizedRaw with default headers values
+func NewPatchServiceOrderUnauthorizedRaw() *PatchServiceOrderUnauthorizedRaw {
+
+	return &PatchServiceOrderUnauthorizedRaw{}
+}
+
 // WithPayload adds the payload to the patch service order unauthorized response
 func (o *PatchServiceOrderUnauthorized) WithPayload(payload *models.Error) *PatchServiceOrderUnauthorized {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the patch service order unauthorized response
+func (o *PatchServiceOrderUnauthorizedRaw) WithPayload(payload interface{}) *PatchServiceOrderUnauthorizedRaw {
 	o.Payload = payload
 	return o
 }
@@ -148,6 +235,19 @@ func (o *PatchServiceOrderUnauthorized) WriteResponse(rw http.ResponseWriter, pr
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *PatchServiceOrderUnauthorizedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(401)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // PatchServiceOrderForbiddenCode is the HTTP code returned for type PatchServiceOrderForbidden
 const PatchServiceOrderForbiddenCode int = 403
 
@@ -164,14 +264,34 @@ type PatchServiceOrderForbidden struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type PatchServiceOrderForbiddenRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewPatchServiceOrderForbidden creates PatchServiceOrderForbidden with default headers values
 func NewPatchServiceOrderForbidden() *PatchServiceOrderForbidden {
 
 	return &PatchServiceOrderForbidden{}
 }
 
+// NewPatchServiceOrderForbidden creates PatchServiceOrderForbiddenRaw with default headers values
+func NewPatchServiceOrderForbiddenRaw() *PatchServiceOrderForbiddenRaw {
+
+	return &PatchServiceOrderForbiddenRaw{}
+}
+
 // WithPayload adds the payload to the patch service order forbidden response
 func (o *PatchServiceOrderForbidden) WithPayload(payload *models.Error) *PatchServiceOrderForbidden {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the patch service order forbidden response
+func (o *PatchServiceOrderForbiddenRaw) WithPayload(payload interface{}) *PatchServiceOrderForbiddenRaw {
 	o.Payload = payload
 	return o
 }
@@ -193,6 +313,19 @@ func (o *PatchServiceOrderForbidden) WriteResponse(rw http.ResponseWriter, produ
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *PatchServiceOrderForbiddenRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(403)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // PatchServiceOrderNotFoundCode is the HTTP code returned for type PatchServiceOrderNotFound
 const PatchServiceOrderNotFoundCode int = 404
 
@@ -209,14 +342,34 @@ type PatchServiceOrderNotFound struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type PatchServiceOrderNotFoundRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewPatchServiceOrderNotFound creates PatchServiceOrderNotFound with default headers values
 func NewPatchServiceOrderNotFound() *PatchServiceOrderNotFound {
 
 	return &PatchServiceOrderNotFound{}
 }
 
+// NewPatchServiceOrderNotFound creates PatchServiceOrderNotFoundRaw with default headers values
+func NewPatchServiceOrderNotFoundRaw() *PatchServiceOrderNotFoundRaw {
+
+	return &PatchServiceOrderNotFoundRaw{}
+}
+
 // WithPayload adds the payload to the patch service order not found response
 func (o *PatchServiceOrderNotFound) WithPayload(payload *models.Error) *PatchServiceOrderNotFound {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the patch service order not found response
+func (o *PatchServiceOrderNotFoundRaw) WithPayload(payload interface{}) *PatchServiceOrderNotFoundRaw {
 	o.Payload = payload
 	return o
 }
@@ -238,6 +391,19 @@ func (o *PatchServiceOrderNotFound) WriteResponse(rw http.ResponseWriter, produc
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *PatchServiceOrderNotFoundRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(404)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // PatchServiceOrderMethodNotAllowedCode is the HTTP code returned for type PatchServiceOrderMethodNotAllowed
 const PatchServiceOrderMethodNotAllowedCode int = 405
 
@@ -254,14 +420,34 @@ type PatchServiceOrderMethodNotAllowed struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type PatchServiceOrderMethodNotAllowedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewPatchServiceOrderMethodNotAllowed creates PatchServiceOrderMethodNotAllowed with default headers values
 func NewPatchServiceOrderMethodNotAllowed() *PatchServiceOrderMethodNotAllowed {
 
 	return &PatchServiceOrderMethodNotAllowed{}
 }
 
+// NewPatchServiceOrderMethodNotAllowed creates PatchServiceOrderMethodNotAllowedRaw with default headers values
+func NewPatchServiceOrderMethodNotAllowedRaw() *PatchServiceOrderMethodNotAllowedRaw {
+
+	return &PatchServiceOrderMethodNotAllowedRaw{}
+}
+
 // WithPayload adds the payload to the patch service order method not allowed response
 func (o *PatchServiceOrderMethodNotAllowed) WithPayload(payload *models.Error) *PatchServiceOrderMethodNotAllowed {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the patch service order method not allowed response
+func (o *PatchServiceOrderMethodNotAllowedRaw) WithPayload(payload interface{}) *PatchServiceOrderMethodNotAllowedRaw {
 	o.Payload = payload
 	return o
 }
@@ -283,6 +469,19 @@ func (o *PatchServiceOrderMethodNotAllowed) WriteResponse(rw http.ResponseWriter
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *PatchServiceOrderMethodNotAllowedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(405)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // PatchServiceOrderConflictCode is the HTTP code returned for type PatchServiceOrderConflict
 const PatchServiceOrderConflictCode int = 409
 
@@ -299,14 +498,34 @@ type PatchServiceOrderConflict struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type PatchServiceOrderConflictRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewPatchServiceOrderConflict creates PatchServiceOrderConflict with default headers values
 func NewPatchServiceOrderConflict() *PatchServiceOrderConflict {
 
 	return &PatchServiceOrderConflict{}
 }
 
+// NewPatchServiceOrderConflict creates PatchServiceOrderConflictRaw with default headers values
+func NewPatchServiceOrderConflictRaw() *PatchServiceOrderConflictRaw {
+
+	return &PatchServiceOrderConflictRaw{}
+}
+
 // WithPayload adds the payload to the patch service order conflict response
 func (o *PatchServiceOrderConflict) WithPayload(payload *models.Error) *PatchServiceOrderConflict {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the patch service order conflict response
+func (o *PatchServiceOrderConflictRaw) WithPayload(payload interface{}) *PatchServiceOrderConflictRaw {
 	o.Payload = payload
 	return o
 }
@@ -328,6 +547,19 @@ func (o *PatchServiceOrderConflict) WriteResponse(rw http.ResponseWriter, produc
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *PatchServiceOrderConflictRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(409)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // PatchServiceOrderInternalServerErrorCode is the HTTP code returned for type PatchServiceOrderInternalServerError
 const PatchServiceOrderInternalServerErrorCode int = 500
 
@@ -344,14 +576,34 @@ type PatchServiceOrderInternalServerError struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type PatchServiceOrderInternalServerErrorRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewPatchServiceOrderInternalServerError creates PatchServiceOrderInternalServerError with default headers values
 func NewPatchServiceOrderInternalServerError() *PatchServiceOrderInternalServerError {
 
 	return &PatchServiceOrderInternalServerError{}
 }
 
+// NewPatchServiceOrderInternalServerError creates PatchServiceOrderInternalServerErrorRaw with default headers values
+func NewPatchServiceOrderInternalServerErrorRaw() *PatchServiceOrderInternalServerErrorRaw {
+
+	return &PatchServiceOrderInternalServerErrorRaw{}
+}
+
 // WithPayload adds the payload to the patch service order internal server error response
 func (o *PatchServiceOrderInternalServerError) WithPayload(payload *models.Error) *PatchServiceOrderInternalServerError {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the patch service order internal server error response
+func (o *PatchServiceOrderInternalServerErrorRaw) WithPayload(payload interface{}) *PatchServiceOrderInternalServerErrorRaw {
 	o.Payload = payload
 	return o
 }
@@ -363,6 +615,18 @@ func (o *PatchServiceOrderInternalServerError) SetPayload(payload *models.Error)
 
 // WriteResponse to the client
 func (o *PatchServiceOrderInternalServerError) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(500)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// WriteResponseRaw to the client
+func (o *PatchServiceOrderInternalServerErrorRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
 
 	rw.WriteHeader(500)
 	if o.Payload != nil {

@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -22,46 +23,47 @@ import (
 type ServiceOrderUpdate struct {
 
 	// A free-text description of the service order
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" bson:"description,omitempty"`
 
 	// Expected delivery date amended by the provider
 	// Format: date-time
-	ExpectedCompletionDate strfmt.DateTime `json:"expectedCompletionDate,omitempty"`
+	ExpectedCompletionDate *strfmt.DateTime `json:"expectedCompletionDate,omitempty" bson:"expectedCompletionDate,omitempty"`
 
 	// ID given by the consumer to facilitate searches
-	ExternalID string `json:"externalId,omitempty"`
+	ExternalID *string `json:"externalId,omitempty" bson:"externalId,omitempty"`
 
 	// external reference
-	ExternalReference []*ExternalReference `json:"externalReference"`
+	ExternalReference []*ExternalReference `json:"externalReference" bson:"externalReference,omitempty"`
 
 	// Extra-information about the order; e.g. useful to add extra delivery information that could be useful for a human process
-	Note []*Note `json:"note"`
+	Note []*Note `json:"note" bson:"note,omitempty"`
 
 	// Contact attached to the order to send back information regarding this order
-	NotificationContact string `json:"notificationContact,omitempty"`
+	NotificationContact *string `json:"notificationContact,omitempty" bson:"notificationContact,omitempty"`
 
 	// A list of service orders related to this order (e.g. prerequisite, dependent on)
-	OrderRelationship []*ServiceOrderRelationship `json:"orderRelationship"`
+	OrderRelationship []*ServiceOrderRelationship `json:"orderRelationship" bson:"orderRelationship,omitempty"`
 
 	// Can be used by consumers to prioritize orders in a Service Order Management system
-	Priority string `json:"priority,omitempty"`
+	Priority *string `json:"priority,omitempty" bson:"priority,omitempty"`
 
 	// A list of parties which are involved in this order and the role they are playing
-	RelatedParty []*RelatedParty `json:"relatedParty"`
+	RelatedParty []*RelatedParty `json:"relatedParty" bson:"relatedParty,omitempty"`
 
 	// Requested delivery date from the requestors perspective
 	// Format: date-time
-	RequestedCompletionDate strfmt.DateTime `json:"requestedCompletionDate,omitempty"`
+	RequestedCompletionDate *strfmt.DateTime `json:"requestedCompletionDate,omitempty" bson:"requestedCompletionDate,omitempty"`
 
 	// Order start date wished by the requestor
 	// Format: date-time
-	RequestedStartDate strfmt.DateTime `json:"requestedStartDate,omitempty"`
+	RequestedStartDate *strfmt.DateTime `json:"requestedStartDate,omitempty" bson:"requestedStartDate,omitempty"`
 
 	// A list of service order items to be processed by this order
-	ServiceOrderItem []*ServiceOrderItem `json:"serviceOrderItem"`
+	ServiceOrderItem []*ServiceOrderItem `json:"serviceOrderItem" bson:"serviceOrderItem,omitempty"`
 
 	// State of the order: described in the state-machine diagram
-	State ServiceOrderStateType `json:"state,omitempty"`
+	// Enum: ["acknowledged","rejected","pending","held","inProgress","cancelled","completed","failed","partial","assessingCancellation","pendingCancellation"]
+	State *string `json:"state,omitempty" bson:"state,omitempty"`
 }
 
 // Validate validates this service order update
@@ -276,17 +278,69 @@ func (m *ServiceOrderUpdate) validateServiceOrderItem(formats strfmt.Registry) e
 	return nil
 }
 
+var serviceOrderUpdateTypeStatePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["acknowledged","rejected","pending","held","inProgress","cancelled","completed","failed","partial","assessingCancellation","pendingCancellation"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		serviceOrderUpdateTypeStatePropEnum = append(serviceOrderUpdateTypeStatePropEnum, v)
+	}
+}
+
+const (
+
+	// ServiceOrderUpdateStateAcknowledged captures enum value "acknowledged"
+	ServiceOrderUpdateStateAcknowledged string = "acknowledged"
+
+	// ServiceOrderUpdateStateRejected captures enum value "rejected"
+	ServiceOrderUpdateStateRejected string = "rejected"
+
+	// ServiceOrderUpdateStatePending captures enum value "pending"
+	ServiceOrderUpdateStatePending string = "pending"
+
+	// ServiceOrderUpdateStateHeld captures enum value "held"
+	ServiceOrderUpdateStateHeld string = "held"
+
+	// ServiceOrderUpdateStateInProgress captures enum value "inProgress"
+	ServiceOrderUpdateStateInProgress string = "inProgress"
+
+	// ServiceOrderUpdateStateCancelled captures enum value "cancelled"
+	ServiceOrderUpdateStateCancelled string = "cancelled"
+
+	// ServiceOrderUpdateStateCompleted captures enum value "completed"
+	ServiceOrderUpdateStateCompleted string = "completed"
+
+	// ServiceOrderUpdateStateFailed captures enum value "failed"
+	ServiceOrderUpdateStateFailed string = "failed"
+
+	// ServiceOrderUpdateStatePartial captures enum value "partial"
+	ServiceOrderUpdateStatePartial string = "partial"
+
+	// ServiceOrderUpdateStateAssessingCancellation captures enum value "assessingCancellation"
+	ServiceOrderUpdateStateAssessingCancellation string = "assessingCancellation"
+
+	// ServiceOrderUpdateStatePendingCancellation captures enum value "pendingCancellation"
+	ServiceOrderUpdateStatePendingCancellation string = "pendingCancellation"
+)
+
+// prop value enum
+func (m *ServiceOrderUpdate) validateStateEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, serviceOrderUpdateTypeStatePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *ServiceOrderUpdate) validateState(formats strfmt.Registry) error {
 	if swag.IsZero(m.State) { // not required
 		return nil
 	}
 
-	if err := m.State.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("state")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("state")
-		}
+	// value enum
+	if err := m.validateStateEnum("state", "body", *m.State); err != nil {
 		return err
 	}
 
@@ -314,10 +368,6 @@ func (m *ServiceOrderUpdate) ContextValidate(ctx context.Context, formats strfmt
 	}
 
 	if err := m.contextValidateServiceOrderItem(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateState(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -447,24 +497,6 @@ func (m *ServiceOrderUpdate) contextValidateServiceOrderItem(ctx context.Context
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ServiceOrderUpdate) contextValidateState(ctx context.Context, formats strfmt.Registry) error {
-
-	if swag.IsZero(m.State) { // not required
-		return nil
-	}
-
-	if err := m.State.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("state")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("state")
-		}
-		return err
 	}
 
 	return nil

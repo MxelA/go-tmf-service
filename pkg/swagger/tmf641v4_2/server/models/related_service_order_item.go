@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -20,33 +21,34 @@ import (
 type RelatedServiceOrderItem struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// The actual type of the target instance when needed for disambiguation.
-	AtReferredType string `json:"@referredType,omitempty" bson:"atReferredType,omitempty"`
+	AtReferredType *string `json:"@referredType,omitempty" bson:"@referredType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
+	AtSchemaLocation *strfmt.URI `json:"@schemaLocation,omitempty" bson:"@schemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
+	AtType *string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// Action of the order item for this service
-	ItemAction OrderItemActionType `json:"itemAction,omitempty"`
+	// Enum: ["add","modify","delete","noChange"]
+	ItemAction *string `json:"itemAction,omitempty" bson:"itemAction"`
 
 	// Identifier of the order item where the service was managed
 	// Required: true
 	ItemID *string `json:"itemId" bson:"itemId"`
 
 	// role of the service order item for this service
-	Role string `json:"role,omitempty" bson:"role,omitempty"`
+	Role *string `json:"role,omitempty" bson:"role,omitempty"`
 
 	// Reference of the related entity.
-	ServiceOrderHref string `json:"serviceOrderHref,omitempty" bson:"serviceOrderHref,omitempty"`
+	ServiceOrderHref *string `json:"serviceOrderHref,omitempty" bson:"serviceOrderHref,omitempty"`
 
 	// Unique identifier of a related entity.
-	ServiceOrderID string `json:"serviceOrderId,omitempty" bson:"serviceOrderId,omitempty"`
+	ServiceOrderID *string `json:"serviceOrderId,omitempty" bson:"serviceOrderId,omitempty"`
 }
 
 // Validate validates this related service order item
@@ -83,17 +85,48 @@ func (m *RelatedServiceOrderItem) validateAtSchemaLocation(formats strfmt.Regist
 	return nil
 }
 
+var relatedServiceOrderItemTypeItemActionPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["add","modify","delete","noChange"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		relatedServiceOrderItemTypeItemActionPropEnum = append(relatedServiceOrderItemTypeItemActionPropEnum, v)
+	}
+}
+
+const (
+
+	// RelatedServiceOrderItemItemActionAdd captures enum value "add"
+	RelatedServiceOrderItemItemActionAdd string = "add"
+
+	// RelatedServiceOrderItemItemActionModify captures enum value "modify"
+	RelatedServiceOrderItemItemActionModify string = "modify"
+
+	// RelatedServiceOrderItemItemActionDelete captures enum value "delete"
+	RelatedServiceOrderItemItemActionDelete string = "delete"
+
+	// RelatedServiceOrderItemItemActionNoChange captures enum value "noChange"
+	RelatedServiceOrderItemItemActionNoChange string = "noChange"
+)
+
+// prop value enum
+func (m *RelatedServiceOrderItem) validateItemActionEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, relatedServiceOrderItemTypeItemActionPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *RelatedServiceOrderItem) validateItemAction(formats strfmt.Registry) error {
 	if swag.IsZero(m.ItemAction) { // not required
 		return nil
 	}
 
-	if err := m.ItemAction.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("itemAction")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("itemAction")
-		}
+	// value enum
+	if err := m.validateItemActionEnum("itemAction", "body", *m.ItemAction); err != nil {
 		return err
 	}
 
@@ -109,35 +142,8 @@ func (m *RelatedServiceOrderItem) validateItemID(formats strfmt.Registry) error 
 	return nil
 }
 
-// ContextValidate validate this related service order item based on the context it is used
+// ContextValidate validates this related service order item based on context it is used
 func (m *RelatedServiceOrderItem) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateItemAction(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *RelatedServiceOrderItem) contextValidateItemAction(ctx context.Context, formats strfmt.Registry) error {
-
-	if swag.IsZero(m.ItemAction) { // not required
-		return nil
-	}
-
-	if err := m.ItemAction.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("itemAction")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("itemAction")
-		}
-		return err
-	}
-
 	return nil
 }
 

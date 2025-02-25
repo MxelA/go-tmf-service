@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -21,14 +22,14 @@ import (
 type ServiceOrderItem struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
+	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"@schemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
+	AtType string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// The action to be carried out on the Service. Can be: add, modify, delete, noChange
 	// Required: true
@@ -38,7 +39,7 @@ type ServiceOrderItem struct {
 	Appointment *AppointmentRef `json:"appointment,omitempty"`
 
 	// the error(s) cause an order item status change
-	ErrorMessage []*ServiceOrderItemErrorMessage `json:"errorMessage" bson:"errorMessage"`
+	ErrorMessage []*ServiceOrderItemErrorMessage `json:"errorMessage" bson:"errorMessage,omitempty"`
 
 	// Identifier of the individual line item
 	// Required: true
@@ -48,20 +49,21 @@ type ServiceOrderItem struct {
 	ModifyPath []*JSONPatch `json:"modifyPath"`
 
 	// Quantity ordered
-	Quantity int64 `json:"quantity,omitempty" bson:"quantity,omitempty"`
+	Quantity *int64 `json:"quantity,omitempty" bson:"quantity,omitempty"`
 
 	// The Service to be acted on by the order item
 	// Required: true
 	Service *ServiceRefOrValue `json:"service"`
 
 	// A list of order items embedded to this order item
-	ServiceOrderItem []*ServiceOrderItem `json:"serviceOrderItem" bson:"serviceOrderItem"`
+	ServiceOrderItem []*ServiceOrderItem `json:"serviceOrderItem" bson:"serviceOrderItem,omitempty"`
 
 	// A list of order items related to this order item
-	ServiceOrderItemRelationship []*ServiceOrderItemRelationship `json:"serviceOrderItemRelationship" bson:"serviceOrderItemRelationship"`
+	ServiceOrderItemRelationship []*ServiceOrderItemRelationship `json:"serviceOrderItemRelationship" bson:"serviceOrderItemRelationship,omitempty"`
 
 	// State of the order item: described in the state machine diagram. This is the requested state.
-	State ServiceOrderItemStateType `json:"state,omitempty"`
+	// Enum: ["acknowledged","rejected","pending","held","inProgress","cancelled","completed","failed","assessingCancellation","pendingCancellation","partial"]
+	State *string `json:"state,omitempty" bson:"state,omitempty"`
 }
 
 // Validate validates this service order item
@@ -302,17 +304,69 @@ func (m *ServiceOrderItem) validateServiceOrderItemRelationship(formats strfmt.R
 	return nil
 }
 
+var serviceOrderItemTypeStatePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["acknowledged","rejected","pending","held","inProgress","cancelled","completed","failed","assessingCancellation","pendingCancellation","partial"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		serviceOrderItemTypeStatePropEnum = append(serviceOrderItemTypeStatePropEnum, v)
+	}
+}
+
+const (
+
+	// ServiceOrderItemStateAcknowledged captures enum value "acknowledged"
+	ServiceOrderItemStateAcknowledged string = "acknowledged"
+
+	// ServiceOrderItemStateRejected captures enum value "rejected"
+	ServiceOrderItemStateRejected string = "rejected"
+
+	// ServiceOrderItemStatePending captures enum value "pending"
+	ServiceOrderItemStatePending string = "pending"
+
+	// ServiceOrderItemStateHeld captures enum value "held"
+	ServiceOrderItemStateHeld string = "held"
+
+	// ServiceOrderItemStateInProgress captures enum value "inProgress"
+	ServiceOrderItemStateInProgress string = "inProgress"
+
+	// ServiceOrderItemStateCancelled captures enum value "cancelled"
+	ServiceOrderItemStateCancelled string = "cancelled"
+
+	// ServiceOrderItemStateCompleted captures enum value "completed"
+	ServiceOrderItemStateCompleted string = "completed"
+
+	// ServiceOrderItemStateFailed captures enum value "failed"
+	ServiceOrderItemStateFailed string = "failed"
+
+	// ServiceOrderItemStateAssessingCancellation captures enum value "assessingCancellation"
+	ServiceOrderItemStateAssessingCancellation string = "assessingCancellation"
+
+	// ServiceOrderItemStatePendingCancellation captures enum value "pendingCancellation"
+	ServiceOrderItemStatePendingCancellation string = "pendingCancellation"
+
+	// ServiceOrderItemStatePartial captures enum value "partial"
+	ServiceOrderItemStatePartial string = "partial"
+)
+
+// prop value enum
+func (m *ServiceOrderItem) validateStateEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, serviceOrderItemTypeStatePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *ServiceOrderItem) validateState(formats strfmt.Registry) error {
 	if swag.IsZero(m.State) { // not required
 		return nil
 	}
 
-	if err := m.State.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("state")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("state")
-		}
+	// value enum
+	if err := m.validateStateEnum("state", "body", *m.State); err != nil {
 		return err
 	}
 
@@ -348,10 +402,6 @@ func (m *ServiceOrderItem) ContextValidate(ctx context.Context, formats strfmt.R
 	}
 
 	if err := m.contextValidateServiceOrderItemRelationship(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateState(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -511,24 +561,6 @@ func (m *ServiceOrderItem) contextValidateServiceOrderItemRelationship(ctx conte
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ServiceOrderItem) contextValidateState(ctx context.Context, formats strfmt.Registry) error {
-
-	if swag.IsZero(m.State) { // not required
-		return nil
-	}
-
-	if err := m.State.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("state")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("state")
-		}
-		return err
 	}
 
 	return nil

@@ -13,6 +13,7 @@ import (
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 )
 
+// Alex Server response
 // ListenToServiceOrderJeopardyEventCreatedCode is the HTTP code returned for type ListenToServiceOrderJeopardyEventCreated
 const ListenToServiceOrderJeopardyEventCreatedCode int = 201
 
@@ -29,14 +30,34 @@ type ListenToServiceOrderJeopardyEventCreated struct {
 	Payload *models.EventSubscription `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderJeopardyEventCreatedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderJeopardyEventCreated creates ListenToServiceOrderJeopardyEventCreated with default headers values
 func NewListenToServiceOrderJeopardyEventCreated() *ListenToServiceOrderJeopardyEventCreated {
 
 	return &ListenToServiceOrderJeopardyEventCreated{}
 }
 
+// NewListenToServiceOrderJeopardyEventCreated creates ListenToServiceOrderJeopardyEventCreatedRaw with default headers values
+func NewListenToServiceOrderJeopardyEventCreatedRaw() *ListenToServiceOrderJeopardyEventCreatedRaw {
+
+	return &ListenToServiceOrderJeopardyEventCreatedRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order jeopardy event created response
 func (o *ListenToServiceOrderJeopardyEventCreated) WithPayload(payload *models.EventSubscription) *ListenToServiceOrderJeopardyEventCreated {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order jeopardy event created response
+func (o *ListenToServiceOrderJeopardyEventCreatedRaw) WithPayload(payload interface{}) *ListenToServiceOrderJeopardyEventCreatedRaw {
 	o.Payload = payload
 	return o
 }
@@ -58,6 +79,19 @@ func (o *ListenToServiceOrderJeopardyEventCreated) WriteResponse(rw http.Respons
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderJeopardyEventCreatedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(201)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderJeopardyEventBadRequestCode is the HTTP code returned for type ListenToServiceOrderJeopardyEventBadRequest
 const ListenToServiceOrderJeopardyEventBadRequestCode int = 400
 
@@ -74,14 +108,34 @@ type ListenToServiceOrderJeopardyEventBadRequest struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderJeopardyEventBadRequestRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderJeopardyEventBadRequest creates ListenToServiceOrderJeopardyEventBadRequest with default headers values
 func NewListenToServiceOrderJeopardyEventBadRequest() *ListenToServiceOrderJeopardyEventBadRequest {
 
 	return &ListenToServiceOrderJeopardyEventBadRequest{}
 }
 
+// NewListenToServiceOrderJeopardyEventBadRequest creates ListenToServiceOrderJeopardyEventBadRequestRaw with default headers values
+func NewListenToServiceOrderJeopardyEventBadRequestRaw() *ListenToServiceOrderJeopardyEventBadRequestRaw {
+
+	return &ListenToServiceOrderJeopardyEventBadRequestRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order jeopardy event bad request response
 func (o *ListenToServiceOrderJeopardyEventBadRequest) WithPayload(payload *models.Error) *ListenToServiceOrderJeopardyEventBadRequest {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order jeopardy event bad request response
+func (o *ListenToServiceOrderJeopardyEventBadRequestRaw) WithPayload(payload interface{}) *ListenToServiceOrderJeopardyEventBadRequestRaw {
 	o.Payload = payload
 	return o
 }
@@ -103,6 +157,19 @@ func (o *ListenToServiceOrderJeopardyEventBadRequest) WriteResponse(rw http.Resp
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderJeopardyEventBadRequestRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(400)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderJeopardyEventUnauthorizedCode is the HTTP code returned for type ListenToServiceOrderJeopardyEventUnauthorized
 const ListenToServiceOrderJeopardyEventUnauthorizedCode int = 401
 
@@ -119,14 +186,34 @@ type ListenToServiceOrderJeopardyEventUnauthorized struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderJeopardyEventUnauthorizedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderJeopardyEventUnauthorized creates ListenToServiceOrderJeopardyEventUnauthorized with default headers values
 func NewListenToServiceOrderJeopardyEventUnauthorized() *ListenToServiceOrderJeopardyEventUnauthorized {
 
 	return &ListenToServiceOrderJeopardyEventUnauthorized{}
 }
 
+// NewListenToServiceOrderJeopardyEventUnauthorized creates ListenToServiceOrderJeopardyEventUnauthorizedRaw with default headers values
+func NewListenToServiceOrderJeopardyEventUnauthorizedRaw() *ListenToServiceOrderJeopardyEventUnauthorizedRaw {
+
+	return &ListenToServiceOrderJeopardyEventUnauthorizedRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order jeopardy event unauthorized response
 func (o *ListenToServiceOrderJeopardyEventUnauthorized) WithPayload(payload *models.Error) *ListenToServiceOrderJeopardyEventUnauthorized {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order jeopardy event unauthorized response
+func (o *ListenToServiceOrderJeopardyEventUnauthorizedRaw) WithPayload(payload interface{}) *ListenToServiceOrderJeopardyEventUnauthorizedRaw {
 	o.Payload = payload
 	return o
 }
@@ -148,6 +235,19 @@ func (o *ListenToServiceOrderJeopardyEventUnauthorized) WriteResponse(rw http.Re
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderJeopardyEventUnauthorizedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(401)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderJeopardyEventForbiddenCode is the HTTP code returned for type ListenToServiceOrderJeopardyEventForbidden
 const ListenToServiceOrderJeopardyEventForbiddenCode int = 403
 
@@ -164,14 +264,34 @@ type ListenToServiceOrderJeopardyEventForbidden struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderJeopardyEventForbiddenRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderJeopardyEventForbidden creates ListenToServiceOrderJeopardyEventForbidden with default headers values
 func NewListenToServiceOrderJeopardyEventForbidden() *ListenToServiceOrderJeopardyEventForbidden {
 
 	return &ListenToServiceOrderJeopardyEventForbidden{}
 }
 
+// NewListenToServiceOrderJeopardyEventForbidden creates ListenToServiceOrderJeopardyEventForbiddenRaw with default headers values
+func NewListenToServiceOrderJeopardyEventForbiddenRaw() *ListenToServiceOrderJeopardyEventForbiddenRaw {
+
+	return &ListenToServiceOrderJeopardyEventForbiddenRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order jeopardy event forbidden response
 func (o *ListenToServiceOrderJeopardyEventForbidden) WithPayload(payload *models.Error) *ListenToServiceOrderJeopardyEventForbidden {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order jeopardy event forbidden response
+func (o *ListenToServiceOrderJeopardyEventForbiddenRaw) WithPayload(payload interface{}) *ListenToServiceOrderJeopardyEventForbiddenRaw {
 	o.Payload = payload
 	return o
 }
@@ -193,6 +313,19 @@ func (o *ListenToServiceOrderJeopardyEventForbidden) WriteResponse(rw http.Respo
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderJeopardyEventForbiddenRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(403)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderJeopardyEventNotFoundCode is the HTTP code returned for type ListenToServiceOrderJeopardyEventNotFound
 const ListenToServiceOrderJeopardyEventNotFoundCode int = 404
 
@@ -209,14 +342,34 @@ type ListenToServiceOrderJeopardyEventNotFound struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderJeopardyEventNotFoundRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderJeopardyEventNotFound creates ListenToServiceOrderJeopardyEventNotFound with default headers values
 func NewListenToServiceOrderJeopardyEventNotFound() *ListenToServiceOrderJeopardyEventNotFound {
 
 	return &ListenToServiceOrderJeopardyEventNotFound{}
 }
 
+// NewListenToServiceOrderJeopardyEventNotFound creates ListenToServiceOrderJeopardyEventNotFoundRaw with default headers values
+func NewListenToServiceOrderJeopardyEventNotFoundRaw() *ListenToServiceOrderJeopardyEventNotFoundRaw {
+
+	return &ListenToServiceOrderJeopardyEventNotFoundRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order jeopardy event not found response
 func (o *ListenToServiceOrderJeopardyEventNotFound) WithPayload(payload *models.Error) *ListenToServiceOrderJeopardyEventNotFound {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order jeopardy event not found response
+func (o *ListenToServiceOrderJeopardyEventNotFoundRaw) WithPayload(payload interface{}) *ListenToServiceOrderJeopardyEventNotFoundRaw {
 	o.Payload = payload
 	return o
 }
@@ -238,6 +391,19 @@ func (o *ListenToServiceOrderJeopardyEventNotFound) WriteResponse(rw http.Respon
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderJeopardyEventNotFoundRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(404)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderJeopardyEventMethodNotAllowedCode is the HTTP code returned for type ListenToServiceOrderJeopardyEventMethodNotAllowed
 const ListenToServiceOrderJeopardyEventMethodNotAllowedCode int = 405
 
@@ -254,14 +420,34 @@ type ListenToServiceOrderJeopardyEventMethodNotAllowed struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderJeopardyEventMethodNotAllowedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderJeopardyEventMethodNotAllowed creates ListenToServiceOrderJeopardyEventMethodNotAllowed with default headers values
 func NewListenToServiceOrderJeopardyEventMethodNotAllowed() *ListenToServiceOrderJeopardyEventMethodNotAllowed {
 
 	return &ListenToServiceOrderJeopardyEventMethodNotAllowed{}
 }
 
+// NewListenToServiceOrderJeopardyEventMethodNotAllowed creates ListenToServiceOrderJeopardyEventMethodNotAllowedRaw with default headers values
+func NewListenToServiceOrderJeopardyEventMethodNotAllowedRaw() *ListenToServiceOrderJeopardyEventMethodNotAllowedRaw {
+
+	return &ListenToServiceOrderJeopardyEventMethodNotAllowedRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order jeopardy event method not allowed response
 func (o *ListenToServiceOrderJeopardyEventMethodNotAllowed) WithPayload(payload *models.Error) *ListenToServiceOrderJeopardyEventMethodNotAllowed {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order jeopardy event method not allowed response
+func (o *ListenToServiceOrderJeopardyEventMethodNotAllowedRaw) WithPayload(payload interface{}) *ListenToServiceOrderJeopardyEventMethodNotAllowedRaw {
 	o.Payload = payload
 	return o
 }
@@ -283,6 +469,19 @@ func (o *ListenToServiceOrderJeopardyEventMethodNotAllowed) WriteResponse(rw htt
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderJeopardyEventMethodNotAllowedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(405)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderJeopardyEventConflictCode is the HTTP code returned for type ListenToServiceOrderJeopardyEventConflict
 const ListenToServiceOrderJeopardyEventConflictCode int = 409
 
@@ -299,14 +498,34 @@ type ListenToServiceOrderJeopardyEventConflict struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderJeopardyEventConflictRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderJeopardyEventConflict creates ListenToServiceOrderJeopardyEventConflict with default headers values
 func NewListenToServiceOrderJeopardyEventConflict() *ListenToServiceOrderJeopardyEventConflict {
 
 	return &ListenToServiceOrderJeopardyEventConflict{}
 }
 
+// NewListenToServiceOrderJeopardyEventConflict creates ListenToServiceOrderJeopardyEventConflictRaw with default headers values
+func NewListenToServiceOrderJeopardyEventConflictRaw() *ListenToServiceOrderJeopardyEventConflictRaw {
+
+	return &ListenToServiceOrderJeopardyEventConflictRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order jeopardy event conflict response
 func (o *ListenToServiceOrderJeopardyEventConflict) WithPayload(payload *models.Error) *ListenToServiceOrderJeopardyEventConflict {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order jeopardy event conflict response
+func (o *ListenToServiceOrderJeopardyEventConflictRaw) WithPayload(payload interface{}) *ListenToServiceOrderJeopardyEventConflictRaw {
 	o.Payload = payload
 	return o
 }
@@ -328,6 +547,19 @@ func (o *ListenToServiceOrderJeopardyEventConflict) WriteResponse(rw http.Respon
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderJeopardyEventConflictRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(409)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderJeopardyEventInternalServerErrorCode is the HTTP code returned for type ListenToServiceOrderJeopardyEventInternalServerError
 const ListenToServiceOrderJeopardyEventInternalServerErrorCode int = 500
 
@@ -344,14 +576,34 @@ type ListenToServiceOrderJeopardyEventInternalServerError struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderJeopardyEventInternalServerErrorRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderJeopardyEventInternalServerError creates ListenToServiceOrderJeopardyEventInternalServerError with default headers values
 func NewListenToServiceOrderJeopardyEventInternalServerError() *ListenToServiceOrderJeopardyEventInternalServerError {
 
 	return &ListenToServiceOrderJeopardyEventInternalServerError{}
 }
 
+// NewListenToServiceOrderJeopardyEventInternalServerError creates ListenToServiceOrderJeopardyEventInternalServerErrorRaw with default headers values
+func NewListenToServiceOrderJeopardyEventInternalServerErrorRaw() *ListenToServiceOrderJeopardyEventInternalServerErrorRaw {
+
+	return &ListenToServiceOrderJeopardyEventInternalServerErrorRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order jeopardy event internal server error response
 func (o *ListenToServiceOrderJeopardyEventInternalServerError) WithPayload(payload *models.Error) *ListenToServiceOrderJeopardyEventInternalServerError {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order jeopardy event internal server error response
+func (o *ListenToServiceOrderJeopardyEventInternalServerErrorRaw) WithPayload(payload interface{}) *ListenToServiceOrderJeopardyEventInternalServerErrorRaw {
 	o.Payload = payload
 	return o
 }
@@ -363,6 +615,18 @@ func (o *ListenToServiceOrderJeopardyEventInternalServerError) SetPayload(payloa
 
 // WriteResponse to the client
 func (o *ListenToServiceOrderJeopardyEventInternalServerError) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(500)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderJeopardyEventInternalServerErrorRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
 
 	rw.WriteHeader(500)
 	if o.Payload != nil {

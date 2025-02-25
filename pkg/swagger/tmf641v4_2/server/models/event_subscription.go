@@ -25,10 +25,10 @@ type EventSubscription struct {
 
 	// Id of the listener
 	// Required: true
-	ID *string `json:"id" bson:"id,omitempty"`
+	ID *string `json:"id" bson:"id"`
 
 	// additional data to be passed
-	Query string `json:"query,omitempty" bson:"query,omitempty"`
+	Query *string `json:"query,omitempty" bson:"query,omitempty"`
 }
 
 // Validate validates this event subscription

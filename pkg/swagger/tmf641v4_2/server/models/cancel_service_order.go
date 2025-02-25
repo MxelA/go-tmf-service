@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -20,44 +21,45 @@ import (
 type CancelServiceOrder struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
+	AtSchemaLocation *strfmt.URI `json:"@schemaLocation,omitempty" bson:"@schemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
+	AtType *string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// Reason why the order is cancelled.
-	CancellationReason string `json:"cancellationReason,omitempty" bson:"cancellationReason,omitempty"`
+	CancellationReason *string `json:"cancellationReason,omitempty" bson:"cancellationReason,omitempty"`
 
 	// an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR).
-	CompletionMessage string `json:"completionMessage,omitempty" bson:"cancellationReason,omitempty"`
+	CompletionMessage *string `json:"completionMessage,omitempty" bson:"cancellationReason,omitempty"`
 
 	// Date when the order is cancelled.
 	// Format: date-time
-	EffectiveCancellationDate strfmt.DateTime `json:"effectiveCancellationDate,omitempty" bson:"effectiveCancellationDate,omitempty"`
+	EffectiveCancellationDate *strfmt.DateTime `json:"effectiveCancellationDate,omitempty" bson:"effectiveCancellationDate,omitempty"`
 
 	// error message
 	ErrorMessage *Error `json:"errorMessage,omitempty"`
 
 	// Hyperlink reference
 	// Format: uri
-	Href strfmt.URI `json:"href,omitempty" bson:"href,omitempty"`
+	Href *strfmt.URI `json:"href,omitempty" bson:"href,omitempty"`
 
 	// unique identifier
-	ID string `json:"id,omitempty" bson:"_id,omitempty"`
+	ID *string `json:"id,omitempty" bson:"_id,omitempty"`
 
 	// Date when the submitter wants the order to be cancelled
 	// Format: date-time
-	RequestedCancellationDate strfmt.DateTime `json:"requestedCancellationDate,omitempty" bson:"requestedCancellationDate,omitempty"`
+	RequestedCancellationDate *strfmt.DateTime `json:"requestedCancellationDate,omitempty" bson:"requestedCancellationDate,omitempty"`
 
 	// service order
 	ServiceOrder *ServiceOrderRef `json:"serviceOrder,omitempty"`
 
 	// Tracks the lifecycle status of the cancellation request, such as Acknowledged, Rejected, InProgress, Pending and so on.
-	State TaskStateType `json:"state,omitempty"`
+	// Enum: ["accepted","terminatedWithError","inProgress","done"]
+	State *string `json:"state,omitempty" bson:"state,omitempty"`
 }
 
 // Validate validates this cancel service order
@@ -184,17 +186,48 @@ func (m *CancelServiceOrder) validateServiceOrder(formats strfmt.Registry) error
 	return nil
 }
 
+var cancelServiceOrderTypeStatePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["accepted","terminatedWithError","inProgress","done"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		cancelServiceOrderTypeStatePropEnum = append(cancelServiceOrderTypeStatePropEnum, v)
+	}
+}
+
+const (
+
+	// CancelServiceOrderStateAccepted captures enum value "accepted"
+	CancelServiceOrderStateAccepted string = "accepted"
+
+	// CancelServiceOrderStateTerminatedWithError captures enum value "terminatedWithError"
+	CancelServiceOrderStateTerminatedWithError string = "terminatedWithError"
+
+	// CancelServiceOrderStateInProgress captures enum value "inProgress"
+	CancelServiceOrderStateInProgress string = "inProgress"
+
+	// CancelServiceOrderStateDone captures enum value "done"
+	CancelServiceOrderStateDone string = "done"
+)
+
+// prop value enum
+func (m *CancelServiceOrder) validateStateEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, cancelServiceOrderTypeStatePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *CancelServiceOrder) validateState(formats strfmt.Registry) error {
 	if swag.IsZero(m.State) { // not required
 		return nil
 	}
 
-	if err := m.State.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("state")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("state")
-		}
+	// value enum
+	if err := m.validateStateEnum("state", "body", *m.State); err != nil {
 		return err
 	}
 
@@ -210,10 +243,6 @@ func (m *CancelServiceOrder) ContextValidate(ctx context.Context, formats strfmt
 	}
 
 	if err := m.contextValidateServiceOrder(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateState(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -260,24 +289,6 @@ func (m *CancelServiceOrder) contextValidateServiceOrder(ctx context.Context, fo
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *CancelServiceOrder) contextValidateState(ctx context.Context, formats strfmt.Registry) error {
-
-	if swag.IsZero(m.State) { // not required
-		return nil
-	}
-
-	if err := m.State.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("state")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("state")
-		}
-		return err
 	}
 
 	return nil

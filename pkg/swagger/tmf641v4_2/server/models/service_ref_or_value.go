@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -21,106 +22,108 @@ import (
 type ServiceRefOrValue struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// The actual type of the target instance when needed for disambiguation.
-	AtReferredType string `json:"@referredType,omitempty" bson:"atReferredType,omitempty"`
+	AtReferredType *string `json:"@referredType,omitempty" bson:"@referredType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
+	AtSchemaLocation *strfmt.URI `json:"@schemaLocation,omitempty" bson:"@schemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
+	AtType *string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// Is it a customer facing or resource facing service
-	Category string `json:"category,omitempty" bson:"category,omitempty"`
+	Category *string `json:"category,omitempty" bson:"category,omitempty"`
 
 	// Free-text description of the service
-	Description string `json:"description,omitempty" bson:"description,omitempty"`
+	Description *string `json:"description,omitempty" bson:"description,omitempty"`
 
 	// Date when the service ends
 	// Format: date-time
-	EndDate strfmt.DateTime `json:"endDate,omitempty" bson:"endDate,omitempty"`
+	EndDate *strfmt.DateTime `json:"endDate,omitempty" bson:"endDate,omitempty"`
 
 	// A list of external identifiers assoicated with this service
-	ExternalIdentifier []*ExternalIdentifier `json:"externalIdentifier" bson:"externalIdentifier"`
+	ExternalIdentifier []*ExternalIdentifier `json:"externalIdentifier" bson:"externalIdentifier,omitempty"`
 
 	// A list of feature associated with this service
-	Feature []*Feature `json:"feature" bson:"feature"`
+	Feature []*Feature `json:"feature" bson:"feature,omitempty"`
 
 	// If TRUE, this Service has already been started
-	HasStarted bool `json:"hasStarted,omitempty" bson:"hasStarted,omitempty"`
+	HasStarted *bool `json:"hasStarted,omitempty" bson:"hasStarted,omitempty"`
 
 	// Reference of the service
-	Href string `json:"href,omitempty" bson:"href,omitempty"`
+	Href *string `json:"href,omitempty" bson:"href,omitempty"`
 
 	// Unique identifier of the service
-	ID string `json:"id,omitempty" bson:"id,omitempty"`
+	ID *string `json:"id,omitempty" bson:"id,omitempty"`
 
 	// If true, the service is a ServiceBundle which regroup a service hierachy. If false, the service is a 'atomic' service (hierachy leaf).
-	IsBundle bool `json:"isBundle,omitempty" bson:"isBundle,omitempty"`
+	IsBundle *bool `json:"isBundle,omitempty" bson:"isBundle,omitempty"`
 
 	// If FALSE and hasStarted is FALSE, this particular Service has NOT been enabled for use - if FALSE and hasStarted is TRUE then the service has failed
-	IsServiceEnabled bool `json:"isServiceEnabled,omitempty" bson:"isServiceEnabled,omitempty"`
+	IsServiceEnabled *bool `json:"isServiceEnabled,omitempty" bson:"isServiceEnabled,omitempty"`
 
 	// If TRUE, this Service can be changed without affecting any other services
-	IsStateful bool `json:"isStateful,omitempty" bson:"isStateful,omitempty"`
+	IsStateful *bool `json:"isStateful,omitempty" bson:"isStateful,omitempty"`
 
 	// Name of the service
-	Name string `json:"name,omitempty" bson:"name,omitempty"`
+	Name *string `json:"name,omitempty" bson:"name,omitempty"`
 
 	// A list of notes made on this service
-	Note []*Note `json:"note" bson:"note"`
+	Note []*Note `json:"note" bson:"note,omitempty"`
 
 	// Indicates how a service is currently performing or operating. It is a logical representation of the service operating behaviour and is determined/managed by the service provider.
-	OperatingStatus ServiceOperatingStatusType `json:"operatingStatus,omitempty"`
+	// Enum: ["pending","configured","starting","running","degraded","failed","limited","stopping","stopped","unknown"]
+	OperatingStatus *string `json:"operatingStatus,omitempty" bson:"operatingStatus,omitempty"`
 
 	// Additional information describing the context of operatingStatus and is determined/managed by the service provider.
 	OperatingStatusContextUpdate *ContextUpdate `json:"operatingStatusContextUpdate,omitempty"`
 
 	// A list of places (Place [*]). Used to define a place useful for the service (for example a geographical place whre the service is installed)
-	Place []*RelatedPlaceRefOrValue `json:"place" bson:"place"`
+	Place []*RelatedPlaceRefOrValue `json:"place" bson:"place,omitempty"`
 
 	// A list of related  entity in relationship with this service
-	RelatedEntity []*RelatedEntityRefOrValue `json:"relatedEntity" bson:"relatedEntity"`
+	RelatedEntity []*RelatedEntityRefOrValue `json:"relatedEntity" bson:"relatedEntity,omitempty"`
 
 	// A list of related party references (RelatedParty [*]). A related party defines party or party role linked to a specific entity
-	RelatedParty []*RelatedParty `json:"relatedParty" bson:"relatedParty"`
+	RelatedParty []*RelatedParty `json:"relatedParty" bson:"relatedParty,omitempty"`
 
 	// A list of characteristics that characterize this service (ServiceCharacteristic [*])
-	ServiceCharacteristic []*Characteristic `json:"serviceCharacteristic" bson:"serviceCharacteristic"`
+	ServiceCharacteristic []*Characteristic `json:"serviceCharacteristic" bson:"serviceCharacteristic,omitempty"`
 
 	// Date when the service was created (whatever its status).
-	ServiceDate string `json:"serviceDate,omitempty" bson:"serviceDate,omitempty"`
+	ServiceDate *string `json:"serviceDate,omitempty" bson:"serviceDate,omitempty"`
 
 	// A list of service order items related to this service
-	ServiceOrderItem []*RelatedServiceOrderItem `json:"serviceOrderItem" bson:"serviceOrderItem"`
+	ServiceOrderItem []*RelatedServiceOrderItem `json:"serviceOrderItem" bson:"serviceOrderItem,omitempty"`
 
 	// A list of service relationships (ServiceRelationship [*]). Describes links with other service(s) in the inventory.
-	ServiceRelationship []*ServiceRelationship `json:"serviceRelationship" bson:"serviceRelationship"`
+	ServiceRelationship []*ServiceRelationship `json:"serviceRelationship" bson:"serviceRelationship,omitempty"`
 
 	// The specification from which this service was instantiated
 	ServiceSpecification *ServiceSpecificationRef `json:"serviceSpecification,omitempty"`
 
 	// Business type of the service
-	ServiceType string `json:"serviceType,omitempty" bson:"serviceType,omitempty"`
+	ServiceType *string `json:"serviceType,omitempty" bson:"serviceType,omitempty"`
 
 	// Date when the service starts
 	// Format: date-time
-	StartDate strfmt.DateTime `json:"startDate,omitempty" bson:"startDate,omitempty"`
+	StartDate *strfmt.DateTime `json:"startDate,omitempty" bson:"startDate,omitempty"`
 
 	// This attribute is an enumerated integer that indicates how the Service is started, such as: 0: Unknown; 1: Automatically by the managed environment; 2: Automatically by the owning device; 3: Manually by the Provider of the Service; 4: Manually by a Customer of the Provider; 5: Any of the above
-	StartMode string `json:"startMode,omitempty" bson:"startMode,omitempty"`
+	StartMode *string `json:"startMode,omitempty" bson:"startMode,omitempty"`
 
 	// The life cycle state of the service, such as designed, reserved, active, etc...
-	State ServiceStateType `json:"state,omitempty"`
+	// Enum: ["feasibilityChecked","designed","reserved","inactive","active","suspended","terminated"]
+	State *string `json:"state,omitempty" bson:"state,omitempty"`
 
 	// A list of supporting resources (SupportingResource [*]).Note: only Service of type RFS can be associated with Resources
-	SupportingResource []*ResourceRef `json:"supportingResource" bson:"supportingResource"`
+	SupportingResource []*ResourceRef `json:"supportingResource" bson:"supportingResource,omitempty"`
 
 	// A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)
-	SupportingService []*ServiceRefOrValue `json:"supportingService" bson:"supportingService"`
+	SupportingService []*ServiceRefOrValue `json:"supportingService" bson:"supportingService,omitempty"`
 }
 
 // Validate validates this service ref or value
@@ -307,17 +310,66 @@ func (m *ServiceRefOrValue) validateNote(formats strfmt.Registry) error {
 	return nil
 }
 
+var serviceRefOrValueTypeOperatingStatusPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["pending","configured","starting","running","degraded","failed","limited","stopping","stopped","unknown"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		serviceRefOrValueTypeOperatingStatusPropEnum = append(serviceRefOrValueTypeOperatingStatusPropEnum, v)
+	}
+}
+
+const (
+
+	// ServiceRefOrValueOperatingStatusPending captures enum value "pending"
+	ServiceRefOrValueOperatingStatusPending string = "pending"
+
+	// ServiceRefOrValueOperatingStatusConfigured captures enum value "configured"
+	ServiceRefOrValueOperatingStatusConfigured string = "configured"
+
+	// ServiceRefOrValueOperatingStatusStarting captures enum value "starting"
+	ServiceRefOrValueOperatingStatusStarting string = "starting"
+
+	// ServiceRefOrValueOperatingStatusRunning captures enum value "running"
+	ServiceRefOrValueOperatingStatusRunning string = "running"
+
+	// ServiceRefOrValueOperatingStatusDegraded captures enum value "degraded"
+	ServiceRefOrValueOperatingStatusDegraded string = "degraded"
+
+	// ServiceRefOrValueOperatingStatusFailed captures enum value "failed"
+	ServiceRefOrValueOperatingStatusFailed string = "failed"
+
+	// ServiceRefOrValueOperatingStatusLimited captures enum value "limited"
+	ServiceRefOrValueOperatingStatusLimited string = "limited"
+
+	// ServiceRefOrValueOperatingStatusStopping captures enum value "stopping"
+	ServiceRefOrValueOperatingStatusStopping string = "stopping"
+
+	// ServiceRefOrValueOperatingStatusStopped captures enum value "stopped"
+	ServiceRefOrValueOperatingStatusStopped string = "stopped"
+
+	// ServiceRefOrValueOperatingStatusUnknown captures enum value "unknown"
+	ServiceRefOrValueOperatingStatusUnknown string = "unknown"
+)
+
+// prop value enum
+func (m *ServiceRefOrValue) validateOperatingStatusEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, serviceRefOrValueTypeOperatingStatusPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *ServiceRefOrValue) validateOperatingStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.OperatingStatus) { // not required
 		return nil
 	}
 
-	if err := m.OperatingStatus.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("operatingStatus")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("operatingStatus")
-		}
+	// value enum
+	if err := m.validateOperatingStatusEnum("operatingStatus", "body", *m.OperatingStatus); err != nil {
 		return err
 	}
 
@@ -530,17 +582,57 @@ func (m *ServiceRefOrValue) validateStartDate(formats strfmt.Registry) error {
 	return nil
 }
 
+var serviceRefOrValueTypeStatePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["feasibilityChecked","designed","reserved","inactive","active","suspended","terminated"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		serviceRefOrValueTypeStatePropEnum = append(serviceRefOrValueTypeStatePropEnum, v)
+	}
+}
+
+const (
+
+	// ServiceRefOrValueStateFeasibilityChecked captures enum value "feasibilityChecked"
+	ServiceRefOrValueStateFeasibilityChecked string = "feasibilityChecked"
+
+	// ServiceRefOrValueStateDesigned captures enum value "designed"
+	ServiceRefOrValueStateDesigned string = "designed"
+
+	// ServiceRefOrValueStateReserved captures enum value "reserved"
+	ServiceRefOrValueStateReserved string = "reserved"
+
+	// ServiceRefOrValueStateInactive captures enum value "inactive"
+	ServiceRefOrValueStateInactive string = "inactive"
+
+	// ServiceRefOrValueStateActive captures enum value "active"
+	ServiceRefOrValueStateActive string = "active"
+
+	// ServiceRefOrValueStateSuspended captures enum value "suspended"
+	ServiceRefOrValueStateSuspended string = "suspended"
+
+	// ServiceRefOrValueStateTerminated captures enum value "terminated"
+	ServiceRefOrValueStateTerminated string = "terminated"
+)
+
+// prop value enum
+func (m *ServiceRefOrValue) validateStateEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, serviceRefOrValueTypeStatePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *ServiceRefOrValue) validateState(formats strfmt.Registry) error {
 	if swag.IsZero(m.State) { // not required
 		return nil
 	}
 
-	if err := m.State.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("state")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("state")
-		}
+	// value enum
+	if err := m.validateStateEnum("state", "body", *m.State); err != nil {
 		return err
 	}
 
@@ -615,10 +707,6 @@ func (m *ServiceRefOrValue) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateOperatingStatus(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateOperatingStatusContextUpdate(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -648,10 +736,6 @@ func (m *ServiceRefOrValue) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateServiceSpecification(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateState(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -739,24 +823,6 @@ func (m *ServiceRefOrValue) contextValidateNote(ctx context.Context, formats str
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *ServiceRefOrValue) contextValidateOperatingStatus(ctx context.Context, formats strfmt.Registry) error {
-
-	if swag.IsZero(m.OperatingStatus) { // not required
-		return nil
-	}
-
-	if err := m.OperatingStatus.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("operatingStatus")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("operatingStatus")
-		}
-		return err
 	}
 
 	return nil
@@ -949,24 +1015,6 @@ func (m *ServiceRefOrValue) contextValidateServiceSpecification(ctx context.Cont
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *ServiceRefOrValue) contextValidateState(ctx context.Context, formats strfmt.Registry) error {
-
-	if swag.IsZero(m.State) { // not required
-		return nil
-	}
-
-	if err := m.State.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("state")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("state")
-		}
-		return err
 	}
 
 	return nil

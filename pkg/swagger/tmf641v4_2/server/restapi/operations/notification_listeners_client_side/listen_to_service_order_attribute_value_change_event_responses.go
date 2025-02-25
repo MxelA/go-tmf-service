@@ -13,6 +13,7 @@ import (
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 )
 
+// Alex Server response
 // ListenToServiceOrderAttributeValueChangeEventCreatedCode is the HTTP code returned for type ListenToServiceOrderAttributeValueChangeEventCreated
 const ListenToServiceOrderAttributeValueChangeEventCreatedCode int = 201
 
@@ -29,14 +30,34 @@ type ListenToServiceOrderAttributeValueChangeEventCreated struct {
 	Payload *models.EventSubscription `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderAttributeValueChangeEventCreatedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderAttributeValueChangeEventCreated creates ListenToServiceOrderAttributeValueChangeEventCreated with default headers values
 func NewListenToServiceOrderAttributeValueChangeEventCreated() *ListenToServiceOrderAttributeValueChangeEventCreated {
 
 	return &ListenToServiceOrderAttributeValueChangeEventCreated{}
 }
 
+// NewListenToServiceOrderAttributeValueChangeEventCreated creates ListenToServiceOrderAttributeValueChangeEventCreatedRaw with default headers values
+func NewListenToServiceOrderAttributeValueChangeEventCreatedRaw() *ListenToServiceOrderAttributeValueChangeEventCreatedRaw {
+
+	return &ListenToServiceOrderAttributeValueChangeEventCreatedRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order attribute value change event created response
 func (o *ListenToServiceOrderAttributeValueChangeEventCreated) WithPayload(payload *models.EventSubscription) *ListenToServiceOrderAttributeValueChangeEventCreated {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order attribute value change event created response
+func (o *ListenToServiceOrderAttributeValueChangeEventCreatedRaw) WithPayload(payload interface{}) *ListenToServiceOrderAttributeValueChangeEventCreatedRaw {
 	o.Payload = payload
 	return o
 }
@@ -58,6 +79,19 @@ func (o *ListenToServiceOrderAttributeValueChangeEventCreated) WriteResponse(rw 
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderAttributeValueChangeEventCreatedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(201)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderAttributeValueChangeEventBadRequestCode is the HTTP code returned for type ListenToServiceOrderAttributeValueChangeEventBadRequest
 const ListenToServiceOrderAttributeValueChangeEventBadRequestCode int = 400
 
@@ -74,14 +108,34 @@ type ListenToServiceOrderAttributeValueChangeEventBadRequest struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderAttributeValueChangeEventBadRequestRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderAttributeValueChangeEventBadRequest creates ListenToServiceOrderAttributeValueChangeEventBadRequest with default headers values
 func NewListenToServiceOrderAttributeValueChangeEventBadRequest() *ListenToServiceOrderAttributeValueChangeEventBadRequest {
 
 	return &ListenToServiceOrderAttributeValueChangeEventBadRequest{}
 }
 
+// NewListenToServiceOrderAttributeValueChangeEventBadRequest creates ListenToServiceOrderAttributeValueChangeEventBadRequestRaw with default headers values
+func NewListenToServiceOrderAttributeValueChangeEventBadRequestRaw() *ListenToServiceOrderAttributeValueChangeEventBadRequestRaw {
+
+	return &ListenToServiceOrderAttributeValueChangeEventBadRequestRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order attribute value change event bad request response
 func (o *ListenToServiceOrderAttributeValueChangeEventBadRequest) WithPayload(payload *models.Error) *ListenToServiceOrderAttributeValueChangeEventBadRequest {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order attribute value change event bad request response
+func (o *ListenToServiceOrderAttributeValueChangeEventBadRequestRaw) WithPayload(payload interface{}) *ListenToServiceOrderAttributeValueChangeEventBadRequestRaw {
 	o.Payload = payload
 	return o
 }
@@ -103,6 +157,19 @@ func (o *ListenToServiceOrderAttributeValueChangeEventBadRequest) WriteResponse(
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderAttributeValueChangeEventBadRequestRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(400)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderAttributeValueChangeEventUnauthorizedCode is the HTTP code returned for type ListenToServiceOrderAttributeValueChangeEventUnauthorized
 const ListenToServiceOrderAttributeValueChangeEventUnauthorizedCode int = 401
 
@@ -119,14 +186,34 @@ type ListenToServiceOrderAttributeValueChangeEventUnauthorized struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderAttributeValueChangeEventUnauthorizedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderAttributeValueChangeEventUnauthorized creates ListenToServiceOrderAttributeValueChangeEventUnauthorized with default headers values
 func NewListenToServiceOrderAttributeValueChangeEventUnauthorized() *ListenToServiceOrderAttributeValueChangeEventUnauthorized {
 
 	return &ListenToServiceOrderAttributeValueChangeEventUnauthorized{}
 }
 
+// NewListenToServiceOrderAttributeValueChangeEventUnauthorized creates ListenToServiceOrderAttributeValueChangeEventUnauthorizedRaw with default headers values
+func NewListenToServiceOrderAttributeValueChangeEventUnauthorizedRaw() *ListenToServiceOrderAttributeValueChangeEventUnauthorizedRaw {
+
+	return &ListenToServiceOrderAttributeValueChangeEventUnauthorizedRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order attribute value change event unauthorized response
 func (o *ListenToServiceOrderAttributeValueChangeEventUnauthorized) WithPayload(payload *models.Error) *ListenToServiceOrderAttributeValueChangeEventUnauthorized {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order attribute value change event unauthorized response
+func (o *ListenToServiceOrderAttributeValueChangeEventUnauthorizedRaw) WithPayload(payload interface{}) *ListenToServiceOrderAttributeValueChangeEventUnauthorizedRaw {
 	o.Payload = payload
 	return o
 }
@@ -148,6 +235,19 @@ func (o *ListenToServiceOrderAttributeValueChangeEventUnauthorized) WriteRespons
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderAttributeValueChangeEventUnauthorizedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(401)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderAttributeValueChangeEventForbiddenCode is the HTTP code returned for type ListenToServiceOrderAttributeValueChangeEventForbidden
 const ListenToServiceOrderAttributeValueChangeEventForbiddenCode int = 403
 
@@ -164,14 +264,34 @@ type ListenToServiceOrderAttributeValueChangeEventForbidden struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderAttributeValueChangeEventForbiddenRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderAttributeValueChangeEventForbidden creates ListenToServiceOrderAttributeValueChangeEventForbidden with default headers values
 func NewListenToServiceOrderAttributeValueChangeEventForbidden() *ListenToServiceOrderAttributeValueChangeEventForbidden {
 
 	return &ListenToServiceOrderAttributeValueChangeEventForbidden{}
 }
 
+// NewListenToServiceOrderAttributeValueChangeEventForbidden creates ListenToServiceOrderAttributeValueChangeEventForbiddenRaw with default headers values
+func NewListenToServiceOrderAttributeValueChangeEventForbiddenRaw() *ListenToServiceOrderAttributeValueChangeEventForbiddenRaw {
+
+	return &ListenToServiceOrderAttributeValueChangeEventForbiddenRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order attribute value change event forbidden response
 func (o *ListenToServiceOrderAttributeValueChangeEventForbidden) WithPayload(payload *models.Error) *ListenToServiceOrderAttributeValueChangeEventForbidden {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order attribute value change event forbidden response
+func (o *ListenToServiceOrderAttributeValueChangeEventForbiddenRaw) WithPayload(payload interface{}) *ListenToServiceOrderAttributeValueChangeEventForbiddenRaw {
 	o.Payload = payload
 	return o
 }
@@ -193,6 +313,19 @@ func (o *ListenToServiceOrderAttributeValueChangeEventForbidden) WriteResponse(r
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderAttributeValueChangeEventForbiddenRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(403)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderAttributeValueChangeEventNotFoundCode is the HTTP code returned for type ListenToServiceOrderAttributeValueChangeEventNotFound
 const ListenToServiceOrderAttributeValueChangeEventNotFoundCode int = 404
 
@@ -209,14 +342,34 @@ type ListenToServiceOrderAttributeValueChangeEventNotFound struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderAttributeValueChangeEventNotFoundRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderAttributeValueChangeEventNotFound creates ListenToServiceOrderAttributeValueChangeEventNotFound with default headers values
 func NewListenToServiceOrderAttributeValueChangeEventNotFound() *ListenToServiceOrderAttributeValueChangeEventNotFound {
 
 	return &ListenToServiceOrderAttributeValueChangeEventNotFound{}
 }
 
+// NewListenToServiceOrderAttributeValueChangeEventNotFound creates ListenToServiceOrderAttributeValueChangeEventNotFoundRaw with default headers values
+func NewListenToServiceOrderAttributeValueChangeEventNotFoundRaw() *ListenToServiceOrderAttributeValueChangeEventNotFoundRaw {
+
+	return &ListenToServiceOrderAttributeValueChangeEventNotFoundRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order attribute value change event not found response
 func (o *ListenToServiceOrderAttributeValueChangeEventNotFound) WithPayload(payload *models.Error) *ListenToServiceOrderAttributeValueChangeEventNotFound {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order attribute value change event not found response
+func (o *ListenToServiceOrderAttributeValueChangeEventNotFoundRaw) WithPayload(payload interface{}) *ListenToServiceOrderAttributeValueChangeEventNotFoundRaw {
 	o.Payload = payload
 	return o
 }
@@ -238,6 +391,19 @@ func (o *ListenToServiceOrderAttributeValueChangeEventNotFound) WriteResponse(rw
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderAttributeValueChangeEventNotFoundRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(404)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderAttributeValueChangeEventMethodNotAllowedCode is the HTTP code returned for type ListenToServiceOrderAttributeValueChangeEventMethodNotAllowed
 const ListenToServiceOrderAttributeValueChangeEventMethodNotAllowedCode int = 405
 
@@ -254,14 +420,34 @@ type ListenToServiceOrderAttributeValueChangeEventMethodNotAllowed struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderAttributeValueChangeEventMethodNotAllowedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderAttributeValueChangeEventMethodNotAllowed creates ListenToServiceOrderAttributeValueChangeEventMethodNotAllowed with default headers values
 func NewListenToServiceOrderAttributeValueChangeEventMethodNotAllowed() *ListenToServiceOrderAttributeValueChangeEventMethodNotAllowed {
 
 	return &ListenToServiceOrderAttributeValueChangeEventMethodNotAllowed{}
 }
 
+// NewListenToServiceOrderAttributeValueChangeEventMethodNotAllowed creates ListenToServiceOrderAttributeValueChangeEventMethodNotAllowedRaw with default headers values
+func NewListenToServiceOrderAttributeValueChangeEventMethodNotAllowedRaw() *ListenToServiceOrderAttributeValueChangeEventMethodNotAllowedRaw {
+
+	return &ListenToServiceOrderAttributeValueChangeEventMethodNotAllowedRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order attribute value change event method not allowed response
 func (o *ListenToServiceOrderAttributeValueChangeEventMethodNotAllowed) WithPayload(payload *models.Error) *ListenToServiceOrderAttributeValueChangeEventMethodNotAllowed {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order attribute value change event method not allowed response
+func (o *ListenToServiceOrderAttributeValueChangeEventMethodNotAllowedRaw) WithPayload(payload interface{}) *ListenToServiceOrderAttributeValueChangeEventMethodNotAllowedRaw {
 	o.Payload = payload
 	return o
 }
@@ -283,6 +469,19 @@ func (o *ListenToServiceOrderAttributeValueChangeEventMethodNotAllowed) WriteRes
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderAttributeValueChangeEventMethodNotAllowedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(405)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderAttributeValueChangeEventConflictCode is the HTTP code returned for type ListenToServiceOrderAttributeValueChangeEventConflict
 const ListenToServiceOrderAttributeValueChangeEventConflictCode int = 409
 
@@ -299,14 +498,34 @@ type ListenToServiceOrderAttributeValueChangeEventConflict struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderAttributeValueChangeEventConflictRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderAttributeValueChangeEventConflict creates ListenToServiceOrderAttributeValueChangeEventConflict with default headers values
 func NewListenToServiceOrderAttributeValueChangeEventConflict() *ListenToServiceOrderAttributeValueChangeEventConflict {
 
 	return &ListenToServiceOrderAttributeValueChangeEventConflict{}
 }
 
+// NewListenToServiceOrderAttributeValueChangeEventConflict creates ListenToServiceOrderAttributeValueChangeEventConflictRaw with default headers values
+func NewListenToServiceOrderAttributeValueChangeEventConflictRaw() *ListenToServiceOrderAttributeValueChangeEventConflictRaw {
+
+	return &ListenToServiceOrderAttributeValueChangeEventConflictRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order attribute value change event conflict response
 func (o *ListenToServiceOrderAttributeValueChangeEventConflict) WithPayload(payload *models.Error) *ListenToServiceOrderAttributeValueChangeEventConflict {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order attribute value change event conflict response
+func (o *ListenToServiceOrderAttributeValueChangeEventConflictRaw) WithPayload(payload interface{}) *ListenToServiceOrderAttributeValueChangeEventConflictRaw {
 	o.Payload = payload
 	return o
 }
@@ -328,6 +547,19 @@ func (o *ListenToServiceOrderAttributeValueChangeEventConflict) WriteResponse(rw
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderAttributeValueChangeEventConflictRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(409)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderAttributeValueChangeEventInternalServerErrorCode is the HTTP code returned for type ListenToServiceOrderAttributeValueChangeEventInternalServerError
 const ListenToServiceOrderAttributeValueChangeEventInternalServerErrorCode int = 500
 
@@ -344,14 +576,34 @@ type ListenToServiceOrderAttributeValueChangeEventInternalServerError struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderAttributeValueChangeEventInternalServerErrorRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderAttributeValueChangeEventInternalServerError creates ListenToServiceOrderAttributeValueChangeEventInternalServerError with default headers values
 func NewListenToServiceOrderAttributeValueChangeEventInternalServerError() *ListenToServiceOrderAttributeValueChangeEventInternalServerError {
 
 	return &ListenToServiceOrderAttributeValueChangeEventInternalServerError{}
 }
 
+// NewListenToServiceOrderAttributeValueChangeEventInternalServerError creates ListenToServiceOrderAttributeValueChangeEventInternalServerErrorRaw with default headers values
+func NewListenToServiceOrderAttributeValueChangeEventInternalServerErrorRaw() *ListenToServiceOrderAttributeValueChangeEventInternalServerErrorRaw {
+
+	return &ListenToServiceOrderAttributeValueChangeEventInternalServerErrorRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order attribute value change event internal server error response
 func (o *ListenToServiceOrderAttributeValueChangeEventInternalServerError) WithPayload(payload *models.Error) *ListenToServiceOrderAttributeValueChangeEventInternalServerError {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order attribute value change event internal server error response
+func (o *ListenToServiceOrderAttributeValueChangeEventInternalServerErrorRaw) WithPayload(payload interface{}) *ListenToServiceOrderAttributeValueChangeEventInternalServerErrorRaw {
 	o.Payload = payload
 	return o
 }
@@ -363,6 +615,18 @@ func (o *ListenToServiceOrderAttributeValueChangeEventInternalServerError) SetPa
 
 // WriteResponse to the client
 func (o *ListenToServiceOrderAttributeValueChangeEventInternalServerError) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(500)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderAttributeValueChangeEventInternalServerErrorRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
 
 	rw.WriteHeader(500)
 	if o.Payload != nil {

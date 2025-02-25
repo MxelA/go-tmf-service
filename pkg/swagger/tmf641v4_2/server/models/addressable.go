@@ -21,10 +21,10 @@ type Addressable struct {
 
 	// Hyperlink reference
 	// Format: uri
-	Href strfmt.URI `json:"href,omitempty" bson:"href,omitempty"`
+	Href *strfmt.URI `json:"href,omitempty" bson:"href,omitempty"`
 
 	// unique identifier
-	ID string `json:"id,omitempty" bson:"addressable,omitempty"`
+	ID *string `json:"id,omitempty" bson:"addressable,omitempty"`
 }
 
 // Validate validates this addressable

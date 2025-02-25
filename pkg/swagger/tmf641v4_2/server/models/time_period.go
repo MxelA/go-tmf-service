@@ -22,12 +22,12 @@ type TimePeriod struct {
 	// End of the time period, using IETC-RFC-3339 format
 	// Example: 1985-04-12T23:20:50.52Z
 	// Format: date-time
-	EndDateTime strfmt.DateTime `json:"endDateTime,omitempty" bson:"endDateTime,omitempty"`
+	EndDateTime *strfmt.DateTime `json:"endDateTime,omitempty" bson:"endDateTime,omitempty"`
 
 	// Start of the time period, using IETC-RFC-3339 format
 	// Example: 1985-04-12T23:20:50.52Z
 	// Format: date-time
-	StartDateTime strfmt.DateTime `json:"startDateTime,omitempty" bson:"startDateTime,omitempty"`
+	StartDateTime *strfmt.DateTime `json:"startDateTime,omitempty" bson:"startDateTime,omitempty"`
 }
 
 // Validate validates this time period

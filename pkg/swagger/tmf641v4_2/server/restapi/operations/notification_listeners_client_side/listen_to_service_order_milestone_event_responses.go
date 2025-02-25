@@ -13,6 +13,7 @@ import (
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 )
 
+// Alex Server response
 // ListenToServiceOrderMilestoneEventCreatedCode is the HTTP code returned for type ListenToServiceOrderMilestoneEventCreated
 const ListenToServiceOrderMilestoneEventCreatedCode int = 201
 
@@ -29,14 +30,34 @@ type ListenToServiceOrderMilestoneEventCreated struct {
 	Payload *models.EventSubscription `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderMilestoneEventCreatedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderMilestoneEventCreated creates ListenToServiceOrderMilestoneEventCreated with default headers values
 func NewListenToServiceOrderMilestoneEventCreated() *ListenToServiceOrderMilestoneEventCreated {
 
 	return &ListenToServiceOrderMilestoneEventCreated{}
 }
 
+// NewListenToServiceOrderMilestoneEventCreated creates ListenToServiceOrderMilestoneEventCreatedRaw with default headers values
+func NewListenToServiceOrderMilestoneEventCreatedRaw() *ListenToServiceOrderMilestoneEventCreatedRaw {
+
+	return &ListenToServiceOrderMilestoneEventCreatedRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order milestone event created response
 func (o *ListenToServiceOrderMilestoneEventCreated) WithPayload(payload *models.EventSubscription) *ListenToServiceOrderMilestoneEventCreated {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order milestone event created response
+func (o *ListenToServiceOrderMilestoneEventCreatedRaw) WithPayload(payload interface{}) *ListenToServiceOrderMilestoneEventCreatedRaw {
 	o.Payload = payload
 	return o
 }
@@ -58,6 +79,19 @@ func (o *ListenToServiceOrderMilestoneEventCreated) WriteResponse(rw http.Respon
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderMilestoneEventCreatedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(201)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderMilestoneEventBadRequestCode is the HTTP code returned for type ListenToServiceOrderMilestoneEventBadRequest
 const ListenToServiceOrderMilestoneEventBadRequestCode int = 400
 
@@ -74,14 +108,34 @@ type ListenToServiceOrderMilestoneEventBadRequest struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderMilestoneEventBadRequestRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderMilestoneEventBadRequest creates ListenToServiceOrderMilestoneEventBadRequest with default headers values
 func NewListenToServiceOrderMilestoneEventBadRequest() *ListenToServiceOrderMilestoneEventBadRequest {
 
 	return &ListenToServiceOrderMilestoneEventBadRequest{}
 }
 
+// NewListenToServiceOrderMilestoneEventBadRequest creates ListenToServiceOrderMilestoneEventBadRequestRaw with default headers values
+func NewListenToServiceOrderMilestoneEventBadRequestRaw() *ListenToServiceOrderMilestoneEventBadRequestRaw {
+
+	return &ListenToServiceOrderMilestoneEventBadRequestRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order milestone event bad request response
 func (o *ListenToServiceOrderMilestoneEventBadRequest) WithPayload(payload *models.Error) *ListenToServiceOrderMilestoneEventBadRequest {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order milestone event bad request response
+func (o *ListenToServiceOrderMilestoneEventBadRequestRaw) WithPayload(payload interface{}) *ListenToServiceOrderMilestoneEventBadRequestRaw {
 	o.Payload = payload
 	return o
 }
@@ -103,6 +157,19 @@ func (o *ListenToServiceOrderMilestoneEventBadRequest) WriteResponse(rw http.Res
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderMilestoneEventBadRequestRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(400)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderMilestoneEventUnauthorizedCode is the HTTP code returned for type ListenToServiceOrderMilestoneEventUnauthorized
 const ListenToServiceOrderMilestoneEventUnauthorizedCode int = 401
 
@@ -119,14 +186,34 @@ type ListenToServiceOrderMilestoneEventUnauthorized struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderMilestoneEventUnauthorizedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderMilestoneEventUnauthorized creates ListenToServiceOrderMilestoneEventUnauthorized with default headers values
 func NewListenToServiceOrderMilestoneEventUnauthorized() *ListenToServiceOrderMilestoneEventUnauthorized {
 
 	return &ListenToServiceOrderMilestoneEventUnauthorized{}
 }
 
+// NewListenToServiceOrderMilestoneEventUnauthorized creates ListenToServiceOrderMilestoneEventUnauthorizedRaw with default headers values
+func NewListenToServiceOrderMilestoneEventUnauthorizedRaw() *ListenToServiceOrderMilestoneEventUnauthorizedRaw {
+
+	return &ListenToServiceOrderMilestoneEventUnauthorizedRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order milestone event unauthorized response
 func (o *ListenToServiceOrderMilestoneEventUnauthorized) WithPayload(payload *models.Error) *ListenToServiceOrderMilestoneEventUnauthorized {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order milestone event unauthorized response
+func (o *ListenToServiceOrderMilestoneEventUnauthorizedRaw) WithPayload(payload interface{}) *ListenToServiceOrderMilestoneEventUnauthorizedRaw {
 	o.Payload = payload
 	return o
 }
@@ -148,6 +235,19 @@ func (o *ListenToServiceOrderMilestoneEventUnauthorized) WriteResponse(rw http.R
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderMilestoneEventUnauthorizedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(401)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderMilestoneEventForbiddenCode is the HTTP code returned for type ListenToServiceOrderMilestoneEventForbidden
 const ListenToServiceOrderMilestoneEventForbiddenCode int = 403
 
@@ -164,14 +264,34 @@ type ListenToServiceOrderMilestoneEventForbidden struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderMilestoneEventForbiddenRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderMilestoneEventForbidden creates ListenToServiceOrderMilestoneEventForbidden with default headers values
 func NewListenToServiceOrderMilestoneEventForbidden() *ListenToServiceOrderMilestoneEventForbidden {
 
 	return &ListenToServiceOrderMilestoneEventForbidden{}
 }
 
+// NewListenToServiceOrderMilestoneEventForbidden creates ListenToServiceOrderMilestoneEventForbiddenRaw with default headers values
+func NewListenToServiceOrderMilestoneEventForbiddenRaw() *ListenToServiceOrderMilestoneEventForbiddenRaw {
+
+	return &ListenToServiceOrderMilestoneEventForbiddenRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order milestone event forbidden response
 func (o *ListenToServiceOrderMilestoneEventForbidden) WithPayload(payload *models.Error) *ListenToServiceOrderMilestoneEventForbidden {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order milestone event forbidden response
+func (o *ListenToServiceOrderMilestoneEventForbiddenRaw) WithPayload(payload interface{}) *ListenToServiceOrderMilestoneEventForbiddenRaw {
 	o.Payload = payload
 	return o
 }
@@ -193,6 +313,19 @@ func (o *ListenToServiceOrderMilestoneEventForbidden) WriteResponse(rw http.Resp
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderMilestoneEventForbiddenRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(403)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderMilestoneEventNotFoundCode is the HTTP code returned for type ListenToServiceOrderMilestoneEventNotFound
 const ListenToServiceOrderMilestoneEventNotFoundCode int = 404
 
@@ -209,14 +342,34 @@ type ListenToServiceOrderMilestoneEventNotFound struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderMilestoneEventNotFoundRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderMilestoneEventNotFound creates ListenToServiceOrderMilestoneEventNotFound with default headers values
 func NewListenToServiceOrderMilestoneEventNotFound() *ListenToServiceOrderMilestoneEventNotFound {
 
 	return &ListenToServiceOrderMilestoneEventNotFound{}
 }
 
+// NewListenToServiceOrderMilestoneEventNotFound creates ListenToServiceOrderMilestoneEventNotFoundRaw with default headers values
+func NewListenToServiceOrderMilestoneEventNotFoundRaw() *ListenToServiceOrderMilestoneEventNotFoundRaw {
+
+	return &ListenToServiceOrderMilestoneEventNotFoundRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order milestone event not found response
 func (o *ListenToServiceOrderMilestoneEventNotFound) WithPayload(payload *models.Error) *ListenToServiceOrderMilestoneEventNotFound {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order milestone event not found response
+func (o *ListenToServiceOrderMilestoneEventNotFoundRaw) WithPayload(payload interface{}) *ListenToServiceOrderMilestoneEventNotFoundRaw {
 	o.Payload = payload
 	return o
 }
@@ -238,6 +391,19 @@ func (o *ListenToServiceOrderMilestoneEventNotFound) WriteResponse(rw http.Respo
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderMilestoneEventNotFoundRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(404)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderMilestoneEventMethodNotAllowedCode is the HTTP code returned for type ListenToServiceOrderMilestoneEventMethodNotAllowed
 const ListenToServiceOrderMilestoneEventMethodNotAllowedCode int = 405
 
@@ -254,14 +420,34 @@ type ListenToServiceOrderMilestoneEventMethodNotAllowed struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderMilestoneEventMethodNotAllowedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderMilestoneEventMethodNotAllowed creates ListenToServiceOrderMilestoneEventMethodNotAllowed with default headers values
 func NewListenToServiceOrderMilestoneEventMethodNotAllowed() *ListenToServiceOrderMilestoneEventMethodNotAllowed {
 
 	return &ListenToServiceOrderMilestoneEventMethodNotAllowed{}
 }
 
+// NewListenToServiceOrderMilestoneEventMethodNotAllowed creates ListenToServiceOrderMilestoneEventMethodNotAllowedRaw with default headers values
+func NewListenToServiceOrderMilestoneEventMethodNotAllowedRaw() *ListenToServiceOrderMilestoneEventMethodNotAllowedRaw {
+
+	return &ListenToServiceOrderMilestoneEventMethodNotAllowedRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order milestone event method not allowed response
 func (o *ListenToServiceOrderMilestoneEventMethodNotAllowed) WithPayload(payload *models.Error) *ListenToServiceOrderMilestoneEventMethodNotAllowed {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order milestone event method not allowed response
+func (o *ListenToServiceOrderMilestoneEventMethodNotAllowedRaw) WithPayload(payload interface{}) *ListenToServiceOrderMilestoneEventMethodNotAllowedRaw {
 	o.Payload = payload
 	return o
 }
@@ -283,6 +469,19 @@ func (o *ListenToServiceOrderMilestoneEventMethodNotAllowed) WriteResponse(rw ht
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderMilestoneEventMethodNotAllowedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(405)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderMilestoneEventConflictCode is the HTTP code returned for type ListenToServiceOrderMilestoneEventConflict
 const ListenToServiceOrderMilestoneEventConflictCode int = 409
 
@@ -299,14 +498,34 @@ type ListenToServiceOrderMilestoneEventConflict struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderMilestoneEventConflictRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderMilestoneEventConflict creates ListenToServiceOrderMilestoneEventConflict with default headers values
 func NewListenToServiceOrderMilestoneEventConflict() *ListenToServiceOrderMilestoneEventConflict {
 
 	return &ListenToServiceOrderMilestoneEventConflict{}
 }
 
+// NewListenToServiceOrderMilestoneEventConflict creates ListenToServiceOrderMilestoneEventConflictRaw with default headers values
+func NewListenToServiceOrderMilestoneEventConflictRaw() *ListenToServiceOrderMilestoneEventConflictRaw {
+
+	return &ListenToServiceOrderMilestoneEventConflictRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order milestone event conflict response
 func (o *ListenToServiceOrderMilestoneEventConflict) WithPayload(payload *models.Error) *ListenToServiceOrderMilestoneEventConflict {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order milestone event conflict response
+func (o *ListenToServiceOrderMilestoneEventConflictRaw) WithPayload(payload interface{}) *ListenToServiceOrderMilestoneEventConflictRaw {
 	o.Payload = payload
 	return o
 }
@@ -328,6 +547,19 @@ func (o *ListenToServiceOrderMilestoneEventConflict) WriteResponse(rw http.Respo
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderMilestoneEventConflictRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(409)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderMilestoneEventInternalServerErrorCode is the HTTP code returned for type ListenToServiceOrderMilestoneEventInternalServerError
 const ListenToServiceOrderMilestoneEventInternalServerErrorCode int = 500
 
@@ -344,14 +576,34 @@ type ListenToServiceOrderMilestoneEventInternalServerError struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderMilestoneEventInternalServerErrorRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderMilestoneEventInternalServerError creates ListenToServiceOrderMilestoneEventInternalServerError with default headers values
 func NewListenToServiceOrderMilestoneEventInternalServerError() *ListenToServiceOrderMilestoneEventInternalServerError {
 
 	return &ListenToServiceOrderMilestoneEventInternalServerError{}
 }
 
+// NewListenToServiceOrderMilestoneEventInternalServerError creates ListenToServiceOrderMilestoneEventInternalServerErrorRaw with default headers values
+func NewListenToServiceOrderMilestoneEventInternalServerErrorRaw() *ListenToServiceOrderMilestoneEventInternalServerErrorRaw {
+
+	return &ListenToServiceOrderMilestoneEventInternalServerErrorRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order milestone event internal server error response
 func (o *ListenToServiceOrderMilestoneEventInternalServerError) WithPayload(payload *models.Error) *ListenToServiceOrderMilestoneEventInternalServerError {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order milestone event internal server error response
+func (o *ListenToServiceOrderMilestoneEventInternalServerErrorRaw) WithPayload(payload interface{}) *ListenToServiceOrderMilestoneEventInternalServerErrorRaw {
 	o.Payload = payload
 	return o
 }
@@ -363,6 +615,18 @@ func (o *ListenToServiceOrderMilestoneEventInternalServerError) SetPayload(paylo
 
 // WriteResponse to the client
 func (o *ListenToServiceOrderMilestoneEventInternalServerError) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(500)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderMilestoneEventInternalServerErrorRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
 
 	rw.WriteHeader(500)
 	if o.Payload != nil {

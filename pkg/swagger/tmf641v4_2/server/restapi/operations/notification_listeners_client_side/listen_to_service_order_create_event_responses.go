@@ -13,6 +13,7 @@ import (
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 )
 
+// Alex Server response
 // ListenToServiceOrderCreateEventCreatedCode is the HTTP code returned for type ListenToServiceOrderCreateEventCreated
 const ListenToServiceOrderCreateEventCreatedCode int = 201
 
@@ -29,14 +30,34 @@ type ListenToServiceOrderCreateEventCreated struct {
 	Payload *models.EventSubscription `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderCreateEventCreatedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderCreateEventCreated creates ListenToServiceOrderCreateEventCreated with default headers values
 func NewListenToServiceOrderCreateEventCreated() *ListenToServiceOrderCreateEventCreated {
 
 	return &ListenToServiceOrderCreateEventCreated{}
 }
 
+// NewListenToServiceOrderCreateEventCreated creates ListenToServiceOrderCreateEventCreatedRaw with default headers values
+func NewListenToServiceOrderCreateEventCreatedRaw() *ListenToServiceOrderCreateEventCreatedRaw {
+
+	return &ListenToServiceOrderCreateEventCreatedRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order create event created response
 func (o *ListenToServiceOrderCreateEventCreated) WithPayload(payload *models.EventSubscription) *ListenToServiceOrderCreateEventCreated {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order create event created response
+func (o *ListenToServiceOrderCreateEventCreatedRaw) WithPayload(payload interface{}) *ListenToServiceOrderCreateEventCreatedRaw {
 	o.Payload = payload
 	return o
 }
@@ -58,6 +79,19 @@ func (o *ListenToServiceOrderCreateEventCreated) WriteResponse(rw http.ResponseW
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderCreateEventCreatedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(201)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderCreateEventBadRequestCode is the HTTP code returned for type ListenToServiceOrderCreateEventBadRequest
 const ListenToServiceOrderCreateEventBadRequestCode int = 400
 
@@ -74,14 +108,34 @@ type ListenToServiceOrderCreateEventBadRequest struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderCreateEventBadRequestRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderCreateEventBadRequest creates ListenToServiceOrderCreateEventBadRequest with default headers values
 func NewListenToServiceOrderCreateEventBadRequest() *ListenToServiceOrderCreateEventBadRequest {
 
 	return &ListenToServiceOrderCreateEventBadRequest{}
 }
 
+// NewListenToServiceOrderCreateEventBadRequest creates ListenToServiceOrderCreateEventBadRequestRaw with default headers values
+func NewListenToServiceOrderCreateEventBadRequestRaw() *ListenToServiceOrderCreateEventBadRequestRaw {
+
+	return &ListenToServiceOrderCreateEventBadRequestRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order create event bad request response
 func (o *ListenToServiceOrderCreateEventBadRequest) WithPayload(payload *models.Error) *ListenToServiceOrderCreateEventBadRequest {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order create event bad request response
+func (o *ListenToServiceOrderCreateEventBadRequestRaw) WithPayload(payload interface{}) *ListenToServiceOrderCreateEventBadRequestRaw {
 	o.Payload = payload
 	return o
 }
@@ -103,6 +157,19 @@ func (o *ListenToServiceOrderCreateEventBadRequest) WriteResponse(rw http.Respon
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderCreateEventBadRequestRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(400)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderCreateEventUnauthorizedCode is the HTTP code returned for type ListenToServiceOrderCreateEventUnauthorized
 const ListenToServiceOrderCreateEventUnauthorizedCode int = 401
 
@@ -119,14 +186,34 @@ type ListenToServiceOrderCreateEventUnauthorized struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderCreateEventUnauthorizedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderCreateEventUnauthorized creates ListenToServiceOrderCreateEventUnauthorized with default headers values
 func NewListenToServiceOrderCreateEventUnauthorized() *ListenToServiceOrderCreateEventUnauthorized {
 
 	return &ListenToServiceOrderCreateEventUnauthorized{}
 }
 
+// NewListenToServiceOrderCreateEventUnauthorized creates ListenToServiceOrderCreateEventUnauthorizedRaw with default headers values
+func NewListenToServiceOrderCreateEventUnauthorizedRaw() *ListenToServiceOrderCreateEventUnauthorizedRaw {
+
+	return &ListenToServiceOrderCreateEventUnauthorizedRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order create event unauthorized response
 func (o *ListenToServiceOrderCreateEventUnauthorized) WithPayload(payload *models.Error) *ListenToServiceOrderCreateEventUnauthorized {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order create event unauthorized response
+func (o *ListenToServiceOrderCreateEventUnauthorizedRaw) WithPayload(payload interface{}) *ListenToServiceOrderCreateEventUnauthorizedRaw {
 	o.Payload = payload
 	return o
 }
@@ -148,6 +235,19 @@ func (o *ListenToServiceOrderCreateEventUnauthorized) WriteResponse(rw http.Resp
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderCreateEventUnauthorizedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(401)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderCreateEventForbiddenCode is the HTTP code returned for type ListenToServiceOrderCreateEventForbidden
 const ListenToServiceOrderCreateEventForbiddenCode int = 403
 
@@ -164,14 +264,34 @@ type ListenToServiceOrderCreateEventForbidden struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderCreateEventForbiddenRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderCreateEventForbidden creates ListenToServiceOrderCreateEventForbidden with default headers values
 func NewListenToServiceOrderCreateEventForbidden() *ListenToServiceOrderCreateEventForbidden {
 
 	return &ListenToServiceOrderCreateEventForbidden{}
 }
 
+// NewListenToServiceOrderCreateEventForbidden creates ListenToServiceOrderCreateEventForbiddenRaw with default headers values
+func NewListenToServiceOrderCreateEventForbiddenRaw() *ListenToServiceOrderCreateEventForbiddenRaw {
+
+	return &ListenToServiceOrderCreateEventForbiddenRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order create event forbidden response
 func (o *ListenToServiceOrderCreateEventForbidden) WithPayload(payload *models.Error) *ListenToServiceOrderCreateEventForbidden {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order create event forbidden response
+func (o *ListenToServiceOrderCreateEventForbiddenRaw) WithPayload(payload interface{}) *ListenToServiceOrderCreateEventForbiddenRaw {
 	o.Payload = payload
 	return o
 }
@@ -193,6 +313,19 @@ func (o *ListenToServiceOrderCreateEventForbidden) WriteResponse(rw http.Respons
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderCreateEventForbiddenRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(403)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderCreateEventNotFoundCode is the HTTP code returned for type ListenToServiceOrderCreateEventNotFound
 const ListenToServiceOrderCreateEventNotFoundCode int = 404
 
@@ -209,14 +342,34 @@ type ListenToServiceOrderCreateEventNotFound struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderCreateEventNotFoundRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderCreateEventNotFound creates ListenToServiceOrderCreateEventNotFound with default headers values
 func NewListenToServiceOrderCreateEventNotFound() *ListenToServiceOrderCreateEventNotFound {
 
 	return &ListenToServiceOrderCreateEventNotFound{}
 }
 
+// NewListenToServiceOrderCreateEventNotFound creates ListenToServiceOrderCreateEventNotFoundRaw with default headers values
+func NewListenToServiceOrderCreateEventNotFoundRaw() *ListenToServiceOrderCreateEventNotFoundRaw {
+
+	return &ListenToServiceOrderCreateEventNotFoundRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order create event not found response
 func (o *ListenToServiceOrderCreateEventNotFound) WithPayload(payload *models.Error) *ListenToServiceOrderCreateEventNotFound {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order create event not found response
+func (o *ListenToServiceOrderCreateEventNotFoundRaw) WithPayload(payload interface{}) *ListenToServiceOrderCreateEventNotFoundRaw {
 	o.Payload = payload
 	return o
 }
@@ -238,6 +391,19 @@ func (o *ListenToServiceOrderCreateEventNotFound) WriteResponse(rw http.Response
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderCreateEventNotFoundRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(404)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderCreateEventMethodNotAllowedCode is the HTTP code returned for type ListenToServiceOrderCreateEventMethodNotAllowed
 const ListenToServiceOrderCreateEventMethodNotAllowedCode int = 405
 
@@ -254,14 +420,34 @@ type ListenToServiceOrderCreateEventMethodNotAllowed struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderCreateEventMethodNotAllowedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderCreateEventMethodNotAllowed creates ListenToServiceOrderCreateEventMethodNotAllowed with default headers values
 func NewListenToServiceOrderCreateEventMethodNotAllowed() *ListenToServiceOrderCreateEventMethodNotAllowed {
 
 	return &ListenToServiceOrderCreateEventMethodNotAllowed{}
 }
 
+// NewListenToServiceOrderCreateEventMethodNotAllowed creates ListenToServiceOrderCreateEventMethodNotAllowedRaw with default headers values
+func NewListenToServiceOrderCreateEventMethodNotAllowedRaw() *ListenToServiceOrderCreateEventMethodNotAllowedRaw {
+
+	return &ListenToServiceOrderCreateEventMethodNotAllowedRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order create event method not allowed response
 func (o *ListenToServiceOrderCreateEventMethodNotAllowed) WithPayload(payload *models.Error) *ListenToServiceOrderCreateEventMethodNotAllowed {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order create event method not allowed response
+func (o *ListenToServiceOrderCreateEventMethodNotAllowedRaw) WithPayload(payload interface{}) *ListenToServiceOrderCreateEventMethodNotAllowedRaw {
 	o.Payload = payload
 	return o
 }
@@ -283,6 +469,19 @@ func (o *ListenToServiceOrderCreateEventMethodNotAllowed) WriteResponse(rw http.
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderCreateEventMethodNotAllowedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(405)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderCreateEventConflictCode is the HTTP code returned for type ListenToServiceOrderCreateEventConflict
 const ListenToServiceOrderCreateEventConflictCode int = 409
 
@@ -299,14 +498,34 @@ type ListenToServiceOrderCreateEventConflict struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderCreateEventConflictRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderCreateEventConflict creates ListenToServiceOrderCreateEventConflict with default headers values
 func NewListenToServiceOrderCreateEventConflict() *ListenToServiceOrderCreateEventConflict {
 
 	return &ListenToServiceOrderCreateEventConflict{}
 }
 
+// NewListenToServiceOrderCreateEventConflict creates ListenToServiceOrderCreateEventConflictRaw with default headers values
+func NewListenToServiceOrderCreateEventConflictRaw() *ListenToServiceOrderCreateEventConflictRaw {
+
+	return &ListenToServiceOrderCreateEventConflictRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order create event conflict response
 func (o *ListenToServiceOrderCreateEventConflict) WithPayload(payload *models.Error) *ListenToServiceOrderCreateEventConflict {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order create event conflict response
+func (o *ListenToServiceOrderCreateEventConflictRaw) WithPayload(payload interface{}) *ListenToServiceOrderCreateEventConflictRaw {
 	o.Payload = payload
 	return o
 }
@@ -328,6 +547,19 @@ func (o *ListenToServiceOrderCreateEventConflict) WriteResponse(rw http.Response
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderCreateEventConflictRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(409)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToServiceOrderCreateEventInternalServerErrorCode is the HTTP code returned for type ListenToServiceOrderCreateEventInternalServerError
 const ListenToServiceOrderCreateEventInternalServerErrorCode int = 500
 
@@ -344,14 +576,34 @@ type ListenToServiceOrderCreateEventInternalServerError struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToServiceOrderCreateEventInternalServerErrorRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToServiceOrderCreateEventInternalServerError creates ListenToServiceOrderCreateEventInternalServerError with default headers values
 func NewListenToServiceOrderCreateEventInternalServerError() *ListenToServiceOrderCreateEventInternalServerError {
 
 	return &ListenToServiceOrderCreateEventInternalServerError{}
 }
 
+// NewListenToServiceOrderCreateEventInternalServerError creates ListenToServiceOrderCreateEventInternalServerErrorRaw with default headers values
+func NewListenToServiceOrderCreateEventInternalServerErrorRaw() *ListenToServiceOrderCreateEventInternalServerErrorRaw {
+
+	return &ListenToServiceOrderCreateEventInternalServerErrorRaw{}
+}
+
 // WithPayload adds the payload to the listen to service order create event internal server error response
 func (o *ListenToServiceOrderCreateEventInternalServerError) WithPayload(payload *models.Error) *ListenToServiceOrderCreateEventInternalServerError {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to service order create event internal server error response
+func (o *ListenToServiceOrderCreateEventInternalServerErrorRaw) WithPayload(payload interface{}) *ListenToServiceOrderCreateEventInternalServerErrorRaw {
 	o.Payload = payload
 	return o
 }
@@ -363,6 +615,18 @@ func (o *ListenToServiceOrderCreateEventInternalServerError) SetPayload(payload 
 
 // WriteResponse to the client
 func (o *ListenToServiceOrderCreateEventInternalServerError) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(500)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// WriteResponseRaw to the client
+func (o *ListenToServiceOrderCreateEventInternalServerErrorRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
 
 	rw.WriteHeader(500)
 	if o.Payload != nil {

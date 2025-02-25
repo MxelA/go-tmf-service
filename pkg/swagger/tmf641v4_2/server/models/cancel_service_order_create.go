@@ -21,27 +21,27 @@ import (
 type CancelServiceOrderCreate struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
+	AtSchemaLocation *strfmt.URI `json:"@schemaLocation,omitempty" bson:"@atSchemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
+	AtType *string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// Reason why the order is cancelled.
-	CancellationReason string `json:"cancellationReason,omitempty" bson:"cancellationReason,omitempty"`
+	CancellationReason *string `json:"cancellationReason,omitempty" bson:"cancellationReason,omitempty"`
 
 	// an optional message describing the completion of the task if it is done as expected or it is denied for a reason (like order in an state of PoNR).
-	CompletionMessage string `json:"completionMessage,omitempty" bson:"completionMessage,omitempty"`
+	CompletionMessage *string `json:"completionMessage,omitempty" bson:"completionMessage,omitempty"`
 
 	// error message
 	ErrorMessage *Error `json:"errorMessage,omitempty"`
 
 	// Date when the submitter wants the order to be cancelled
 	// Format: date-time
-	RequestedCancellationDate strfmt.DateTime `json:"requestedCancellationDate,omitempty" bson:"requestedCancellationDate,omitempty"`
+	RequestedCancellationDate *strfmt.DateTime `json:"requestedCancellationDate,omitempty" bson:"requestedCancellationDate,omitempty"`
 
 	// service order
 	// Required: true

@@ -13,6 +13,7 @@ import (
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 )
 
+// Alex Server response
 // RegisterListenerCreatedCode is the HTTP code returned for type RegisterListenerCreated
 const RegisterListenerCreatedCode int = 201
 
@@ -29,14 +30,34 @@ type RegisterListenerCreated struct {
 	Payload *models.EventSubscription `json:"body,omitempty"`
 }
 
+type RegisterListenerCreatedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRegisterListenerCreated creates RegisterListenerCreated with default headers values
 func NewRegisterListenerCreated() *RegisterListenerCreated {
 
 	return &RegisterListenerCreated{}
 }
 
+// NewRegisterListenerCreated creates RegisterListenerCreatedRaw with default headers values
+func NewRegisterListenerCreatedRaw() *RegisterListenerCreatedRaw {
+
+	return &RegisterListenerCreatedRaw{}
+}
+
 // WithPayload adds the payload to the register listener created response
 func (o *RegisterListenerCreated) WithPayload(payload *models.EventSubscription) *RegisterListenerCreated {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the register listener created response
+func (o *RegisterListenerCreatedRaw) WithPayload(payload interface{}) *RegisterListenerCreatedRaw {
 	o.Payload = payload
 	return o
 }
@@ -58,6 +79,19 @@ func (o *RegisterListenerCreated) WriteResponse(rw http.ResponseWriter, producer
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RegisterListenerCreatedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(201)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RegisterListenerBadRequestCode is the HTTP code returned for type RegisterListenerBadRequest
 const RegisterListenerBadRequestCode int = 400
 
@@ -74,14 +108,34 @@ type RegisterListenerBadRequest struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RegisterListenerBadRequestRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRegisterListenerBadRequest creates RegisterListenerBadRequest with default headers values
 func NewRegisterListenerBadRequest() *RegisterListenerBadRequest {
 
 	return &RegisterListenerBadRequest{}
 }
 
+// NewRegisterListenerBadRequest creates RegisterListenerBadRequestRaw with default headers values
+func NewRegisterListenerBadRequestRaw() *RegisterListenerBadRequestRaw {
+
+	return &RegisterListenerBadRequestRaw{}
+}
+
 // WithPayload adds the payload to the register listener bad request response
 func (o *RegisterListenerBadRequest) WithPayload(payload *models.Error) *RegisterListenerBadRequest {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the register listener bad request response
+func (o *RegisterListenerBadRequestRaw) WithPayload(payload interface{}) *RegisterListenerBadRequestRaw {
 	o.Payload = payload
 	return o
 }
@@ -103,6 +157,19 @@ func (o *RegisterListenerBadRequest) WriteResponse(rw http.ResponseWriter, produ
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RegisterListenerBadRequestRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(400)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RegisterListenerUnauthorizedCode is the HTTP code returned for type RegisterListenerUnauthorized
 const RegisterListenerUnauthorizedCode int = 401
 
@@ -119,14 +186,34 @@ type RegisterListenerUnauthorized struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RegisterListenerUnauthorizedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRegisterListenerUnauthorized creates RegisterListenerUnauthorized with default headers values
 func NewRegisterListenerUnauthorized() *RegisterListenerUnauthorized {
 
 	return &RegisterListenerUnauthorized{}
 }
 
+// NewRegisterListenerUnauthorized creates RegisterListenerUnauthorizedRaw with default headers values
+func NewRegisterListenerUnauthorizedRaw() *RegisterListenerUnauthorizedRaw {
+
+	return &RegisterListenerUnauthorizedRaw{}
+}
+
 // WithPayload adds the payload to the register listener unauthorized response
 func (o *RegisterListenerUnauthorized) WithPayload(payload *models.Error) *RegisterListenerUnauthorized {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the register listener unauthorized response
+func (o *RegisterListenerUnauthorizedRaw) WithPayload(payload interface{}) *RegisterListenerUnauthorizedRaw {
 	o.Payload = payload
 	return o
 }
@@ -148,6 +235,19 @@ func (o *RegisterListenerUnauthorized) WriteResponse(rw http.ResponseWriter, pro
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RegisterListenerUnauthorizedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(401)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RegisterListenerForbiddenCode is the HTTP code returned for type RegisterListenerForbidden
 const RegisterListenerForbiddenCode int = 403
 
@@ -164,14 +264,34 @@ type RegisterListenerForbidden struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RegisterListenerForbiddenRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRegisterListenerForbidden creates RegisterListenerForbidden with default headers values
 func NewRegisterListenerForbidden() *RegisterListenerForbidden {
 
 	return &RegisterListenerForbidden{}
 }
 
+// NewRegisterListenerForbidden creates RegisterListenerForbiddenRaw with default headers values
+func NewRegisterListenerForbiddenRaw() *RegisterListenerForbiddenRaw {
+
+	return &RegisterListenerForbiddenRaw{}
+}
+
 // WithPayload adds the payload to the register listener forbidden response
 func (o *RegisterListenerForbidden) WithPayload(payload *models.Error) *RegisterListenerForbidden {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the register listener forbidden response
+func (o *RegisterListenerForbiddenRaw) WithPayload(payload interface{}) *RegisterListenerForbiddenRaw {
 	o.Payload = payload
 	return o
 }
@@ -193,6 +313,19 @@ func (o *RegisterListenerForbidden) WriteResponse(rw http.ResponseWriter, produc
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RegisterListenerForbiddenRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(403)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RegisterListenerNotFoundCode is the HTTP code returned for type RegisterListenerNotFound
 const RegisterListenerNotFoundCode int = 404
 
@@ -209,14 +342,34 @@ type RegisterListenerNotFound struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RegisterListenerNotFoundRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRegisterListenerNotFound creates RegisterListenerNotFound with default headers values
 func NewRegisterListenerNotFound() *RegisterListenerNotFound {
 
 	return &RegisterListenerNotFound{}
 }
 
+// NewRegisterListenerNotFound creates RegisterListenerNotFoundRaw with default headers values
+func NewRegisterListenerNotFoundRaw() *RegisterListenerNotFoundRaw {
+
+	return &RegisterListenerNotFoundRaw{}
+}
+
 // WithPayload adds the payload to the register listener not found response
 func (o *RegisterListenerNotFound) WithPayload(payload *models.Error) *RegisterListenerNotFound {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the register listener not found response
+func (o *RegisterListenerNotFoundRaw) WithPayload(payload interface{}) *RegisterListenerNotFoundRaw {
 	o.Payload = payload
 	return o
 }
@@ -238,6 +391,19 @@ func (o *RegisterListenerNotFound) WriteResponse(rw http.ResponseWriter, produce
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RegisterListenerNotFoundRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(404)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RegisterListenerMethodNotAllowedCode is the HTTP code returned for type RegisterListenerMethodNotAllowed
 const RegisterListenerMethodNotAllowedCode int = 405
 
@@ -254,14 +420,34 @@ type RegisterListenerMethodNotAllowed struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RegisterListenerMethodNotAllowedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRegisterListenerMethodNotAllowed creates RegisterListenerMethodNotAllowed with default headers values
 func NewRegisterListenerMethodNotAllowed() *RegisterListenerMethodNotAllowed {
 
 	return &RegisterListenerMethodNotAllowed{}
 }
 
+// NewRegisterListenerMethodNotAllowed creates RegisterListenerMethodNotAllowedRaw with default headers values
+func NewRegisterListenerMethodNotAllowedRaw() *RegisterListenerMethodNotAllowedRaw {
+
+	return &RegisterListenerMethodNotAllowedRaw{}
+}
+
 // WithPayload adds the payload to the register listener method not allowed response
 func (o *RegisterListenerMethodNotAllowed) WithPayload(payload *models.Error) *RegisterListenerMethodNotAllowed {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the register listener method not allowed response
+func (o *RegisterListenerMethodNotAllowedRaw) WithPayload(payload interface{}) *RegisterListenerMethodNotAllowedRaw {
 	o.Payload = payload
 	return o
 }
@@ -283,6 +469,19 @@ func (o *RegisterListenerMethodNotAllowed) WriteResponse(rw http.ResponseWriter,
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RegisterListenerMethodNotAllowedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(405)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RegisterListenerConflictCode is the HTTP code returned for type RegisterListenerConflict
 const RegisterListenerConflictCode int = 409
 
@@ -299,14 +498,34 @@ type RegisterListenerConflict struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RegisterListenerConflictRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRegisterListenerConflict creates RegisterListenerConflict with default headers values
 func NewRegisterListenerConflict() *RegisterListenerConflict {
 
 	return &RegisterListenerConflict{}
 }
 
+// NewRegisterListenerConflict creates RegisterListenerConflictRaw with default headers values
+func NewRegisterListenerConflictRaw() *RegisterListenerConflictRaw {
+
+	return &RegisterListenerConflictRaw{}
+}
+
 // WithPayload adds the payload to the register listener conflict response
 func (o *RegisterListenerConflict) WithPayload(payload *models.Error) *RegisterListenerConflict {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the register listener conflict response
+func (o *RegisterListenerConflictRaw) WithPayload(payload interface{}) *RegisterListenerConflictRaw {
 	o.Payload = payload
 	return o
 }
@@ -328,6 +547,19 @@ func (o *RegisterListenerConflict) WriteResponse(rw http.ResponseWriter, produce
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *RegisterListenerConflictRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(409)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // RegisterListenerInternalServerErrorCode is the HTTP code returned for type RegisterListenerInternalServerError
 const RegisterListenerInternalServerErrorCode int = 500
 
@@ -344,14 +576,34 @@ type RegisterListenerInternalServerError struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type RegisterListenerInternalServerErrorRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewRegisterListenerInternalServerError creates RegisterListenerInternalServerError with default headers values
 func NewRegisterListenerInternalServerError() *RegisterListenerInternalServerError {
 
 	return &RegisterListenerInternalServerError{}
 }
 
+// NewRegisterListenerInternalServerError creates RegisterListenerInternalServerErrorRaw with default headers values
+func NewRegisterListenerInternalServerErrorRaw() *RegisterListenerInternalServerErrorRaw {
+
+	return &RegisterListenerInternalServerErrorRaw{}
+}
+
 // WithPayload adds the payload to the register listener internal server error response
 func (o *RegisterListenerInternalServerError) WithPayload(payload *models.Error) *RegisterListenerInternalServerError {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the register listener internal server error response
+func (o *RegisterListenerInternalServerErrorRaw) WithPayload(payload interface{}) *RegisterListenerInternalServerErrorRaw {
 	o.Payload = payload
 	return o
 }
@@ -363,6 +615,18 @@ func (o *RegisterListenerInternalServerError) SetPayload(payload *models.Error) 
 
 // WriteResponse to the client
 func (o *RegisterListenerInternalServerError) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(500)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// WriteResponseRaw to the client
+func (o *RegisterListenerInternalServerErrorRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
 
 	rw.WriteHeader(500)
 	if o.Payload != nil {

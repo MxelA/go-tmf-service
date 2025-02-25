@@ -22,61 +22,61 @@ import (
 type ServiceOrderCreate struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty"`
+	AtSchemaLocation *strfmt.URI `json:"@schemaLocation,omitempty" bson:"@schemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty"`
+	AtType *string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// Date when the order is cancelled. This is used when order is cancelled.
 	// Format: date-time
-	CancellationDate strfmt.DateTime `json:"cancellationDate,omitempty"`
+	CancellationDate *strfmt.DateTime `json:"cancellationDate,omitempty" bson:"cancellationDate,omitempty"`
 
 	// Reason why the order is cancelled. This is used when order is cancelled.
-	CancellationReason string `json:"cancellationReason,omitempty"`
+	CancellationReason *string `json:"cancellationReason,omitempty" bson:"cancellationReason,omitempty"`
 
 	// Used to categorize the order, useful for the OM system, such as: Broadband, TVOption
-	Category string `json:"category,omitempty"`
+	Category *string `json:"category,omitempty" bson:"category,omitempty"`
 
 	// A free-text description of the service order
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty" bson:"description,omitempty"`
 
 	// ID given by the consumer to facilitate searches
-	ExternalID string `json:"externalId,omitempty"`
+	ExternalID *string `json:"externalId,omitempty" bson:"externalId,omitempty"`
 
 	// external reference
-	ExternalReference []*ExternalReference `json:"externalReference"`
+	ExternalReference []*ExternalReference `json:"externalReference" bson:"externalReference,omitempty"`
 
 	// Extra-information about the order; e.g. useful to add extra delivery information that could be useful for a human process
-	Note []*Note `json:"note"`
+	Note []*Note `json:"note" bson:"note,omitempty"`
 
 	// Contact attached to the order to send back information regarding this order
-	NotificationContact string `json:"notificationContact,omitempty"`
+	NotificationContact *string `json:"notificationContact,omitempty" bson:"notificationContact,omitempty"`
 
 	// A list of service orders related to this order (e.g. prerequisite, dependent on)
-	OrderRelationship []*ServiceOrderRelationship `json:"orderRelationship"`
+	OrderRelationship []*ServiceOrderRelationship `json:"orderRelationship" bson:"orderRelationShip,omitempty"`
 
 	// Can be used by consumers to prioritize orders in a Service Order Management system
-	Priority string `json:"priority,omitempty"`
+	Priority *string `json:"priority,omitempty" bson:"priority,omitempty"`
 
 	// A list of parties which are involved in this order and the role they are playing
-	RelatedParty []*RelatedParty `json:"relatedParty"`
+	RelatedParty []*RelatedParty `json:"relatedParty" bson:"relatedParty,omitempty"`
 
 	// Requested delivery date from the requestors perspective
 	// Format: date-time
-	RequestedCompletionDate strfmt.DateTime `json:"requestedCompletionDate,omitempty"`
+	RequestedCompletionDate *strfmt.DateTime `json:"requestedCompletionDate,omitempty" bson:"requestedCompletionDate,omitempty"`
 
 	// Order start date wished by the requestor
 	// Format: date-time
-	RequestedStartDate strfmt.DateTime `json:"requestedStartDate,omitempty"`
+	RequestedStartDate *strfmt.DateTime `json:"requestedStartDate,omitempty" bson:"requestedStartDate,omitempty"`
 
 	// A list of service order items to be processed by this order
 	// Required: true
 	// Min Items: 1
-	ServiceOrderItem []*ServiceOrderItem `json:"serviceOrderItem"`
+	ServiceOrderItem []*ServiceOrderItem `json:"serviceOrderItem" bson:"serviceOrderItem"`
 }
 
 // Validate validates this service order create

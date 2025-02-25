@@ -20,23 +20,23 @@ import (
 type AppointmentRef struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// The actual type of the target instance when needed for disambiguation
-	AtReferredType string `json:"@referredType,omitempty" bson:"atReferredType,omitempty"`
+	AtReferredType *string `json:"@referredType,omitempty" bson:"@referredType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
+	AtSchemaLocation *strfmt.URI `json:"@schemaLocation,omitempty" bson:"@schemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
+	AtType *string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// An explanatory text regarding the appointment made with a party
-	Description string `json:"description,omitempty" bson:"description,omitempty"`
+	Description *string `json:"description,omitempty" bson:"description,omitempty"`
 
 	// The reference of the appointment
-	Href string `json:"href,omitempty" bson:"href,omitempty"`
+	Href *string `json:"href,omitempty" bson:"href,omitempty"`
 
 	// The identifier of the referred appointment
 	// Required: true

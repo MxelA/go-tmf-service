@@ -17,7 +17,7 @@ import (
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/restapi/operations/service_order"
 )
 
-//go:generate swagger generate server --target ../../server --name ServiceOrderingV42 --spec ../../TMF641-ServiceOrdering-v4.2.0.json --principal interface{} --exclude-main
+//go:generate swagger generate server --target ../../server --name ServiceOrderingV42 --spec ../../TMF641-ServiceOrdering-v4.2.0.json --template-dir ./templates --principal interface{} --exclude-main
 
 func configureFlags(api *operations.ServiceOrderingV42API) {
 	// api.CommandLineOptionsGroups = []swag.CommandLineOptionsGroup{ ... }

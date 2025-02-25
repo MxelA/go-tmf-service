@@ -13,6 +13,7 @@ import (
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 )
 
+// Alex Server response
 // ListenToCancelServiceOrderInformationRequiredEventCreatedCode is the HTTP code returned for type ListenToCancelServiceOrderInformationRequiredEventCreated
 const ListenToCancelServiceOrderInformationRequiredEventCreatedCode int = 201
 
@@ -29,14 +30,34 @@ type ListenToCancelServiceOrderInformationRequiredEventCreated struct {
 	Payload *models.EventSubscription `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderInformationRequiredEventCreatedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderInformationRequiredEventCreated creates ListenToCancelServiceOrderInformationRequiredEventCreated with default headers values
 func NewListenToCancelServiceOrderInformationRequiredEventCreated() *ListenToCancelServiceOrderInformationRequiredEventCreated {
 
 	return &ListenToCancelServiceOrderInformationRequiredEventCreated{}
 }
 
+// NewListenToCancelServiceOrderInformationRequiredEventCreated creates ListenToCancelServiceOrderInformationRequiredEventCreatedRaw with default headers values
+func NewListenToCancelServiceOrderInformationRequiredEventCreatedRaw() *ListenToCancelServiceOrderInformationRequiredEventCreatedRaw {
+
+	return &ListenToCancelServiceOrderInformationRequiredEventCreatedRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order information required event created response
 func (o *ListenToCancelServiceOrderInformationRequiredEventCreated) WithPayload(payload *models.EventSubscription) *ListenToCancelServiceOrderInformationRequiredEventCreated {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order information required event created response
+func (o *ListenToCancelServiceOrderInformationRequiredEventCreatedRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderInformationRequiredEventCreatedRaw {
 	o.Payload = payload
 	return o
 }
@@ -58,6 +79,19 @@ func (o *ListenToCancelServiceOrderInformationRequiredEventCreated) WriteRespons
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderInformationRequiredEventCreatedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(201)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderInformationRequiredEventBadRequestCode is the HTTP code returned for type ListenToCancelServiceOrderInformationRequiredEventBadRequest
 const ListenToCancelServiceOrderInformationRequiredEventBadRequestCode int = 400
 
@@ -74,14 +108,34 @@ type ListenToCancelServiceOrderInformationRequiredEventBadRequest struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderInformationRequiredEventBadRequestRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderInformationRequiredEventBadRequest creates ListenToCancelServiceOrderInformationRequiredEventBadRequest with default headers values
 func NewListenToCancelServiceOrderInformationRequiredEventBadRequest() *ListenToCancelServiceOrderInformationRequiredEventBadRequest {
 
 	return &ListenToCancelServiceOrderInformationRequiredEventBadRequest{}
 }
 
+// NewListenToCancelServiceOrderInformationRequiredEventBadRequest creates ListenToCancelServiceOrderInformationRequiredEventBadRequestRaw with default headers values
+func NewListenToCancelServiceOrderInformationRequiredEventBadRequestRaw() *ListenToCancelServiceOrderInformationRequiredEventBadRequestRaw {
+
+	return &ListenToCancelServiceOrderInformationRequiredEventBadRequestRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order information required event bad request response
 func (o *ListenToCancelServiceOrderInformationRequiredEventBadRequest) WithPayload(payload *models.Error) *ListenToCancelServiceOrderInformationRequiredEventBadRequest {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order information required event bad request response
+func (o *ListenToCancelServiceOrderInformationRequiredEventBadRequestRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderInformationRequiredEventBadRequestRaw {
 	o.Payload = payload
 	return o
 }
@@ -103,6 +157,19 @@ func (o *ListenToCancelServiceOrderInformationRequiredEventBadRequest) WriteResp
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderInformationRequiredEventBadRequestRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(400)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderInformationRequiredEventUnauthorizedCode is the HTTP code returned for type ListenToCancelServiceOrderInformationRequiredEventUnauthorized
 const ListenToCancelServiceOrderInformationRequiredEventUnauthorizedCode int = 401
 
@@ -119,14 +186,34 @@ type ListenToCancelServiceOrderInformationRequiredEventUnauthorized struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderInformationRequiredEventUnauthorizedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderInformationRequiredEventUnauthorized creates ListenToCancelServiceOrderInformationRequiredEventUnauthorized with default headers values
 func NewListenToCancelServiceOrderInformationRequiredEventUnauthorized() *ListenToCancelServiceOrderInformationRequiredEventUnauthorized {
 
 	return &ListenToCancelServiceOrderInformationRequiredEventUnauthorized{}
 }
 
+// NewListenToCancelServiceOrderInformationRequiredEventUnauthorized creates ListenToCancelServiceOrderInformationRequiredEventUnauthorizedRaw with default headers values
+func NewListenToCancelServiceOrderInformationRequiredEventUnauthorizedRaw() *ListenToCancelServiceOrderInformationRequiredEventUnauthorizedRaw {
+
+	return &ListenToCancelServiceOrderInformationRequiredEventUnauthorizedRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order information required event unauthorized response
 func (o *ListenToCancelServiceOrderInformationRequiredEventUnauthorized) WithPayload(payload *models.Error) *ListenToCancelServiceOrderInformationRequiredEventUnauthorized {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order information required event unauthorized response
+func (o *ListenToCancelServiceOrderInformationRequiredEventUnauthorizedRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderInformationRequiredEventUnauthorizedRaw {
 	o.Payload = payload
 	return o
 }
@@ -148,6 +235,19 @@ func (o *ListenToCancelServiceOrderInformationRequiredEventUnauthorized) WriteRe
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderInformationRequiredEventUnauthorizedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(401)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderInformationRequiredEventForbiddenCode is the HTTP code returned for type ListenToCancelServiceOrderInformationRequiredEventForbidden
 const ListenToCancelServiceOrderInformationRequiredEventForbiddenCode int = 403
 
@@ -164,14 +264,34 @@ type ListenToCancelServiceOrderInformationRequiredEventForbidden struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderInformationRequiredEventForbiddenRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderInformationRequiredEventForbidden creates ListenToCancelServiceOrderInformationRequiredEventForbidden with default headers values
 func NewListenToCancelServiceOrderInformationRequiredEventForbidden() *ListenToCancelServiceOrderInformationRequiredEventForbidden {
 
 	return &ListenToCancelServiceOrderInformationRequiredEventForbidden{}
 }
 
+// NewListenToCancelServiceOrderInformationRequiredEventForbidden creates ListenToCancelServiceOrderInformationRequiredEventForbiddenRaw with default headers values
+func NewListenToCancelServiceOrderInformationRequiredEventForbiddenRaw() *ListenToCancelServiceOrderInformationRequiredEventForbiddenRaw {
+
+	return &ListenToCancelServiceOrderInformationRequiredEventForbiddenRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order information required event forbidden response
 func (o *ListenToCancelServiceOrderInformationRequiredEventForbidden) WithPayload(payload *models.Error) *ListenToCancelServiceOrderInformationRequiredEventForbidden {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order information required event forbidden response
+func (o *ListenToCancelServiceOrderInformationRequiredEventForbiddenRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderInformationRequiredEventForbiddenRaw {
 	o.Payload = payload
 	return o
 }
@@ -193,6 +313,19 @@ func (o *ListenToCancelServiceOrderInformationRequiredEventForbidden) WriteRespo
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderInformationRequiredEventForbiddenRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(403)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderInformationRequiredEventNotFoundCode is the HTTP code returned for type ListenToCancelServiceOrderInformationRequiredEventNotFound
 const ListenToCancelServiceOrderInformationRequiredEventNotFoundCode int = 404
 
@@ -209,14 +342,34 @@ type ListenToCancelServiceOrderInformationRequiredEventNotFound struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderInformationRequiredEventNotFoundRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderInformationRequiredEventNotFound creates ListenToCancelServiceOrderInformationRequiredEventNotFound with default headers values
 func NewListenToCancelServiceOrderInformationRequiredEventNotFound() *ListenToCancelServiceOrderInformationRequiredEventNotFound {
 
 	return &ListenToCancelServiceOrderInformationRequiredEventNotFound{}
 }
 
+// NewListenToCancelServiceOrderInformationRequiredEventNotFound creates ListenToCancelServiceOrderInformationRequiredEventNotFoundRaw with default headers values
+func NewListenToCancelServiceOrderInformationRequiredEventNotFoundRaw() *ListenToCancelServiceOrderInformationRequiredEventNotFoundRaw {
+
+	return &ListenToCancelServiceOrderInformationRequiredEventNotFoundRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order information required event not found response
 func (o *ListenToCancelServiceOrderInformationRequiredEventNotFound) WithPayload(payload *models.Error) *ListenToCancelServiceOrderInformationRequiredEventNotFound {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order information required event not found response
+func (o *ListenToCancelServiceOrderInformationRequiredEventNotFoundRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderInformationRequiredEventNotFoundRaw {
 	o.Payload = payload
 	return o
 }
@@ -238,6 +391,19 @@ func (o *ListenToCancelServiceOrderInformationRequiredEventNotFound) WriteRespon
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderInformationRequiredEventNotFoundRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(404)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowedCode is the HTTP code returned for type ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowed
 const ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowedCode int = 405
 
@@ -254,14 +420,34 @@ type ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowed struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderInformationRequiredEventMethodNotAllowed creates ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowed with default headers values
 func NewListenToCancelServiceOrderInformationRequiredEventMethodNotAllowed() *ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowed {
 
 	return &ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowed{}
 }
 
+// NewListenToCancelServiceOrderInformationRequiredEventMethodNotAllowed creates ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowedRaw with default headers values
+func NewListenToCancelServiceOrderInformationRequiredEventMethodNotAllowedRaw() *ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowedRaw {
+
+	return &ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowedRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order information required event method not allowed response
 func (o *ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowed) WithPayload(payload *models.Error) *ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowed {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order information required event method not allowed response
+func (o *ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowedRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowedRaw {
 	o.Payload = payload
 	return o
 }
@@ -283,6 +469,19 @@ func (o *ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowed) Wri
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderInformationRequiredEventMethodNotAllowedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(405)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderInformationRequiredEventConflictCode is the HTTP code returned for type ListenToCancelServiceOrderInformationRequiredEventConflict
 const ListenToCancelServiceOrderInformationRequiredEventConflictCode int = 409
 
@@ -299,14 +498,34 @@ type ListenToCancelServiceOrderInformationRequiredEventConflict struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderInformationRequiredEventConflictRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderInformationRequiredEventConflict creates ListenToCancelServiceOrderInformationRequiredEventConflict with default headers values
 func NewListenToCancelServiceOrderInformationRequiredEventConflict() *ListenToCancelServiceOrderInformationRequiredEventConflict {
 
 	return &ListenToCancelServiceOrderInformationRequiredEventConflict{}
 }
 
+// NewListenToCancelServiceOrderInformationRequiredEventConflict creates ListenToCancelServiceOrderInformationRequiredEventConflictRaw with default headers values
+func NewListenToCancelServiceOrderInformationRequiredEventConflictRaw() *ListenToCancelServiceOrderInformationRequiredEventConflictRaw {
+
+	return &ListenToCancelServiceOrderInformationRequiredEventConflictRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order information required event conflict response
 func (o *ListenToCancelServiceOrderInformationRequiredEventConflict) WithPayload(payload *models.Error) *ListenToCancelServiceOrderInformationRequiredEventConflict {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order information required event conflict response
+func (o *ListenToCancelServiceOrderInformationRequiredEventConflictRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderInformationRequiredEventConflictRaw {
 	o.Payload = payload
 	return o
 }
@@ -328,6 +547,19 @@ func (o *ListenToCancelServiceOrderInformationRequiredEventConflict) WriteRespon
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderInformationRequiredEventConflictRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(409)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // ListenToCancelServiceOrderInformationRequiredEventInternalServerErrorCode is the HTTP code returned for type ListenToCancelServiceOrderInformationRequiredEventInternalServerError
 const ListenToCancelServiceOrderInformationRequiredEventInternalServerErrorCode int = 500
 
@@ -344,14 +576,34 @@ type ListenToCancelServiceOrderInformationRequiredEventInternalServerError struc
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type ListenToCancelServiceOrderInformationRequiredEventInternalServerErrorRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewListenToCancelServiceOrderInformationRequiredEventInternalServerError creates ListenToCancelServiceOrderInformationRequiredEventInternalServerError with default headers values
 func NewListenToCancelServiceOrderInformationRequiredEventInternalServerError() *ListenToCancelServiceOrderInformationRequiredEventInternalServerError {
 
 	return &ListenToCancelServiceOrderInformationRequiredEventInternalServerError{}
 }
 
+// NewListenToCancelServiceOrderInformationRequiredEventInternalServerError creates ListenToCancelServiceOrderInformationRequiredEventInternalServerErrorRaw with default headers values
+func NewListenToCancelServiceOrderInformationRequiredEventInternalServerErrorRaw() *ListenToCancelServiceOrderInformationRequiredEventInternalServerErrorRaw {
+
+	return &ListenToCancelServiceOrderInformationRequiredEventInternalServerErrorRaw{}
+}
+
 // WithPayload adds the payload to the listen to cancel service order information required event internal server error response
 func (o *ListenToCancelServiceOrderInformationRequiredEventInternalServerError) WithPayload(payload *models.Error) *ListenToCancelServiceOrderInformationRequiredEventInternalServerError {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the listen to cancel service order information required event internal server error response
+func (o *ListenToCancelServiceOrderInformationRequiredEventInternalServerErrorRaw) WithPayload(payload interface{}) *ListenToCancelServiceOrderInformationRequiredEventInternalServerErrorRaw {
 	o.Payload = payload
 	return o
 }
@@ -363,6 +615,18 @@ func (o *ListenToCancelServiceOrderInformationRequiredEventInternalServerError) 
 
 // WriteResponse to the client
 func (o *ListenToCancelServiceOrderInformationRequiredEventInternalServerError) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(500)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// WriteResponseRaw to the client
+func (o *ListenToCancelServiceOrderInformationRequiredEventInternalServerErrorRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
 
 	rw.WriteHeader(500)
 	if o.Payload != nil {

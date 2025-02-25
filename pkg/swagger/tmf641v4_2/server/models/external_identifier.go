@@ -20,22 +20,22 @@ import (
 type ExternalIdentifier struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
+	AtSchemaLocation *strfmt.URI `json:"@schemaLocation,omitempty" bson:"@schemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
+	AtType *string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// Type of the identification, typically would be the type of the entity within the external system
 	// Example: ProductOrder
-	ExternalIdentifierType string `json:"externalIdentifierType,omitempty" bson:"externalIdentifierType,omitempty"`
+	ExternalIdentifierType *string `json:"externalIdentifierType,omitempty" bson:"externalIdentifierType,omitempty"`
 
 	// Hyperlink reference
 	// Format: uri
-	Href strfmt.URI `json:"href,omitempty" bson:"href,omitempty"`
+	Href *strfmt.URI `json:"href,omitempty" bson:"href,omitempty"`
 
 	// identification of the entity within the external system.
 	// Example: MC2255771199555
@@ -44,7 +44,7 @@ type ExternalIdentifier struct {
 
 	// Name of the external system that owns the entity.
 	// Example: MagentoCommerce
-	Owner string `json:"owner,omitempty" bson:"owner,omitempty"`
+	Owner *string `json:"owner,omitempty" bson:"owner,omitempty"`
 }
 
 // Validate validates this external identifier

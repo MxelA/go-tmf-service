@@ -20,33 +20,33 @@ import (
 type JeopardyAlert struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
+	AtSchemaLocation *strfmt.URI `json:"@schemaLocation,omitempty" bson:"@schemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
+	AtType *string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// A date time( DateTime). The date that the alert issued
 	// Format: date-time
-	AlertDate strfmt.DateTime `json:"alertDate,omitempty" bson:"alertDate,omitempty"`
+	AlertDate *strfmt.DateTime `json:"alertDate,omitempty" bson:"alertDate,omitempty"`
 
 	//  The exception associated with this jeopardy alert
-	Exception string `json:"exception,omitempty" bson:"exception,omitempty"`
+	Exception *string `json:"exception,omitempty" bson:"exception,omitempty"`
 
 	// identifier of the JeopardyAlert
-	ID string `json:"id,omitempty" bson:"id,omitempty"`
+	ID *string `json:"id,omitempty" bson:"id,omitempty"`
 
 	// A string represents the type of jeopardy/risk like Normal, Hazard, Critical, ...
-	JeopardyType string `json:"jeopardyType,omitempty" bson:"jeopardyType,omitempty"`
+	JeopardyType *string `json:"jeopardyType,omitempty" bson:"jeopardyType,omitempty"`
 
 	// A string represents the message of the alert
-	Message string `json:"message,omitempty" bson:"message,omitempty"`
+	Message *string `json:"message,omitempty" bson:"message,omitempty"`
 
 	// A string used to give a name to the jeopardy alert
-	Name string `json:"name,omitempty" bson:"name,omitempty"`
+	Name *string `json:"name,omitempty" bson:"name,omitempty"`
 }
 
 // Validate validates this jeopardy alert

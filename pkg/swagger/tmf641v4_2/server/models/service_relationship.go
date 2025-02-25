@@ -21,24 +21,24 @@ import (
 type ServiceRelationship struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
+	AtSchemaLocation *strfmt.URI `json:"@schemaLocation,omitempty" bson:"@schemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
+	AtType *string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// relationship type
 	// Required: true
-	RelationshipType *string `json:"relationshipType" bson:"relationshipType"`
+	RelationshipType *string `json:"relationshipType" bson:"relationshipType,omitempty"`
 
 	// service
 	Service *ServiceRefOrValue `json:"service,omitempty"`
 
 	// service relationship characteristic
-	ServiceRelationshipCharacteristic []*Characteristic `json:"serviceRelationshipCharacteristic" bson:"serviceRelationshipCharacteristic"`
+	ServiceRelationshipCharacteristic []*Characteristic `json:"serviceRelationshipCharacteristic" bson:"serviceRelationshipCharacteristic,omitempty"`
 }
 
 // Validate validates this service relationship

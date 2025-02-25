@@ -20,20 +20,20 @@ import (
 type ServiceOrderItemRelationship struct {
 
 	// When sub-classing, this defines the super-class
-	AtBaseType string `json:"@baseType,omitempty" bson:"atBaseType,omitempty"`
+	AtBaseType *string `json:"@baseType,omitempty" bson:"@baseType,omitempty"`
 
 	// A URI to a JSON-Schema file that defines additional attributes and relationships
 	// Format: uri
-	AtSchemaLocation strfmt.URI `json:"@schemaLocation,omitempty" bson:"atSchemaLocation,omitempty"`
+	AtSchemaLocation *strfmt.URI `json:"@schemaLocation,omitempty" bson:"@schemaLocation,omitempty"`
 
 	// When sub-classing, this defines the sub-class Extensible name
-	AtType string `json:"@type,omitempty" bson:"atType,omitempty"`
+	AtType *string `json:"@type,omitempty" bson:"@type,omitempty"`
 
 	// A service order item in relationship with this order item
 	OrderItem *ServiceOrderItemRef `json:"orderItem,omitempty"`
 
 	// The type of related order item, can be: dependency if the order item needs to be not started until another order item is complete
-	RelationshipType string `json:"relationshipType,omitempty"`
+	RelationshipType *string `json:"relationshipType,omitempty" bson:"relationshipType,omitempty"`
 }
 
 // Validate validates this service order item relationship

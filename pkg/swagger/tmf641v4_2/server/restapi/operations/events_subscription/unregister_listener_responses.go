@@ -13,6 +13,7 @@ import (
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 )
 
+// Alex Server response
 // UnregisterListenerNoContentCode is the HTTP code returned for type UnregisterListenerNoContent
 const UnregisterListenerNoContentCode int = 204
 
@@ -24,10 +25,19 @@ swagger:response unregisterListenerNoContent
 type UnregisterListenerNoContent struct {
 }
 
+type UnregisterListenerNoContentRaw struct {
+}
+
 // NewUnregisterListenerNoContent creates UnregisterListenerNoContent with default headers values
 func NewUnregisterListenerNoContent() *UnregisterListenerNoContent {
 
 	return &UnregisterListenerNoContent{}
+}
+
+// NewUnregisterListenerNoContent creates UnregisterListenerNoContentRaw with default headers values
+func NewUnregisterListenerNoContentRaw() *UnregisterListenerNoContentRaw {
+
+	return &UnregisterListenerNoContentRaw{}
 }
 
 // WriteResponse to the client
@@ -38,6 +48,15 @@ func (o *UnregisterListenerNoContent) WriteResponse(rw http.ResponseWriter, prod
 	rw.WriteHeader(204)
 }
 
+// WriteResponseRaw to the client
+func (o *UnregisterListenerNoContentRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.Header().Del(runtime.HeaderContentType) //Remove Content-Type on empty responses
+
+	rw.WriteHeader(204)
+}
+
+// Alex Server response
 // UnregisterListenerBadRequestCode is the HTTP code returned for type UnregisterListenerBadRequest
 const UnregisterListenerBadRequestCode int = 400
 
@@ -54,14 +73,34 @@ type UnregisterListenerBadRequest struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type UnregisterListenerBadRequestRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewUnregisterListenerBadRequest creates UnregisterListenerBadRequest with default headers values
 func NewUnregisterListenerBadRequest() *UnregisterListenerBadRequest {
 
 	return &UnregisterListenerBadRequest{}
 }
 
+// NewUnregisterListenerBadRequest creates UnregisterListenerBadRequestRaw with default headers values
+func NewUnregisterListenerBadRequestRaw() *UnregisterListenerBadRequestRaw {
+
+	return &UnregisterListenerBadRequestRaw{}
+}
+
 // WithPayload adds the payload to the unregister listener bad request response
 func (o *UnregisterListenerBadRequest) WithPayload(payload *models.Error) *UnregisterListenerBadRequest {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the unregister listener bad request response
+func (o *UnregisterListenerBadRequestRaw) WithPayload(payload interface{}) *UnregisterListenerBadRequestRaw {
 	o.Payload = payload
 	return o
 }
@@ -83,6 +122,19 @@ func (o *UnregisterListenerBadRequest) WriteResponse(rw http.ResponseWriter, pro
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *UnregisterListenerBadRequestRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(400)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // UnregisterListenerUnauthorizedCode is the HTTP code returned for type UnregisterListenerUnauthorized
 const UnregisterListenerUnauthorizedCode int = 401
 
@@ -99,14 +151,34 @@ type UnregisterListenerUnauthorized struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type UnregisterListenerUnauthorizedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewUnregisterListenerUnauthorized creates UnregisterListenerUnauthorized with default headers values
 func NewUnregisterListenerUnauthorized() *UnregisterListenerUnauthorized {
 
 	return &UnregisterListenerUnauthorized{}
 }
 
+// NewUnregisterListenerUnauthorized creates UnregisterListenerUnauthorizedRaw with default headers values
+func NewUnregisterListenerUnauthorizedRaw() *UnregisterListenerUnauthorizedRaw {
+
+	return &UnregisterListenerUnauthorizedRaw{}
+}
+
 // WithPayload adds the payload to the unregister listener unauthorized response
 func (o *UnregisterListenerUnauthorized) WithPayload(payload *models.Error) *UnregisterListenerUnauthorized {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the unregister listener unauthorized response
+func (o *UnregisterListenerUnauthorizedRaw) WithPayload(payload interface{}) *UnregisterListenerUnauthorizedRaw {
 	o.Payload = payload
 	return o
 }
@@ -128,6 +200,19 @@ func (o *UnregisterListenerUnauthorized) WriteResponse(rw http.ResponseWriter, p
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *UnregisterListenerUnauthorizedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(401)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // UnregisterListenerForbiddenCode is the HTTP code returned for type UnregisterListenerForbidden
 const UnregisterListenerForbiddenCode int = 403
 
@@ -144,14 +229,34 @@ type UnregisterListenerForbidden struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type UnregisterListenerForbiddenRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewUnregisterListenerForbidden creates UnregisterListenerForbidden with default headers values
 func NewUnregisterListenerForbidden() *UnregisterListenerForbidden {
 
 	return &UnregisterListenerForbidden{}
 }
 
+// NewUnregisterListenerForbidden creates UnregisterListenerForbiddenRaw with default headers values
+func NewUnregisterListenerForbiddenRaw() *UnregisterListenerForbiddenRaw {
+
+	return &UnregisterListenerForbiddenRaw{}
+}
+
 // WithPayload adds the payload to the unregister listener forbidden response
 func (o *UnregisterListenerForbidden) WithPayload(payload *models.Error) *UnregisterListenerForbidden {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the unregister listener forbidden response
+func (o *UnregisterListenerForbiddenRaw) WithPayload(payload interface{}) *UnregisterListenerForbiddenRaw {
 	o.Payload = payload
 	return o
 }
@@ -173,6 +278,19 @@ func (o *UnregisterListenerForbidden) WriteResponse(rw http.ResponseWriter, prod
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *UnregisterListenerForbiddenRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(403)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // UnregisterListenerNotFoundCode is the HTTP code returned for type UnregisterListenerNotFound
 const UnregisterListenerNotFoundCode int = 404
 
@@ -189,14 +307,34 @@ type UnregisterListenerNotFound struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type UnregisterListenerNotFoundRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewUnregisterListenerNotFound creates UnregisterListenerNotFound with default headers values
 func NewUnregisterListenerNotFound() *UnregisterListenerNotFound {
 
 	return &UnregisterListenerNotFound{}
 }
 
+// NewUnregisterListenerNotFound creates UnregisterListenerNotFoundRaw with default headers values
+func NewUnregisterListenerNotFoundRaw() *UnregisterListenerNotFoundRaw {
+
+	return &UnregisterListenerNotFoundRaw{}
+}
+
 // WithPayload adds the payload to the unregister listener not found response
 func (o *UnregisterListenerNotFound) WithPayload(payload *models.Error) *UnregisterListenerNotFound {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the unregister listener not found response
+func (o *UnregisterListenerNotFoundRaw) WithPayload(payload interface{}) *UnregisterListenerNotFoundRaw {
 	o.Payload = payload
 	return o
 }
@@ -218,6 +356,19 @@ func (o *UnregisterListenerNotFound) WriteResponse(rw http.ResponseWriter, produ
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *UnregisterListenerNotFoundRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(404)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // UnregisterListenerMethodNotAllowedCode is the HTTP code returned for type UnregisterListenerMethodNotAllowed
 const UnregisterListenerMethodNotAllowedCode int = 405
 
@@ -234,14 +385,34 @@ type UnregisterListenerMethodNotAllowed struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type UnregisterListenerMethodNotAllowedRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewUnregisterListenerMethodNotAllowed creates UnregisterListenerMethodNotAllowed with default headers values
 func NewUnregisterListenerMethodNotAllowed() *UnregisterListenerMethodNotAllowed {
 
 	return &UnregisterListenerMethodNotAllowed{}
 }
 
+// NewUnregisterListenerMethodNotAllowed creates UnregisterListenerMethodNotAllowedRaw with default headers values
+func NewUnregisterListenerMethodNotAllowedRaw() *UnregisterListenerMethodNotAllowedRaw {
+
+	return &UnregisterListenerMethodNotAllowedRaw{}
+}
+
 // WithPayload adds the payload to the unregister listener method not allowed response
 func (o *UnregisterListenerMethodNotAllowed) WithPayload(payload *models.Error) *UnregisterListenerMethodNotAllowed {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the unregister listener method not allowed response
+func (o *UnregisterListenerMethodNotAllowedRaw) WithPayload(payload interface{}) *UnregisterListenerMethodNotAllowedRaw {
 	o.Payload = payload
 	return o
 }
@@ -263,6 +434,19 @@ func (o *UnregisterListenerMethodNotAllowed) WriteResponse(rw http.ResponseWrite
 	}
 }
 
+// WriteResponseRaw to the client
+func (o *UnregisterListenerMethodNotAllowedRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(405)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// Alex Server response
 // UnregisterListenerInternalServerErrorCode is the HTTP code returned for type UnregisterListenerInternalServerError
 const UnregisterListenerInternalServerErrorCode int = 500
 
@@ -279,14 +463,34 @@ type UnregisterListenerInternalServerError struct {
 	Payload *models.Error `json:"body,omitempty"`
 }
 
+type UnregisterListenerInternalServerErrorRaw struct {
+
+	/*
+	  In: Body
+	*/
+	Payload interface{} `json:"body,omitempty"`
+}
+
 // NewUnregisterListenerInternalServerError creates UnregisterListenerInternalServerError with default headers values
 func NewUnregisterListenerInternalServerError() *UnregisterListenerInternalServerError {
 
 	return &UnregisterListenerInternalServerError{}
 }
 
+// NewUnregisterListenerInternalServerError creates UnregisterListenerInternalServerErrorRaw with default headers values
+func NewUnregisterListenerInternalServerErrorRaw() *UnregisterListenerInternalServerErrorRaw {
+
+	return &UnregisterListenerInternalServerErrorRaw{}
+}
+
 // WithPayload adds the payload to the unregister listener internal server error response
 func (o *UnregisterListenerInternalServerError) WithPayload(payload *models.Error) *UnregisterListenerInternalServerError {
+	o.Payload = payload
+	return o
+}
+
+// WithPayload adds the payload to the unregister listener internal server error response
+func (o *UnregisterListenerInternalServerErrorRaw) WithPayload(payload interface{}) *UnregisterListenerInternalServerErrorRaw {
 	o.Payload = payload
 	return o
 }
@@ -298,6 +502,18 @@ func (o *UnregisterListenerInternalServerError) SetPayload(payload *models.Error
 
 // WriteResponse to the client
 func (o *UnregisterListenerInternalServerError) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+
+	rw.WriteHeader(500)
+	if o.Payload != nil {
+		payload := o.Payload
+		if err := producer.Produce(rw, payload); err != nil {
+			panic(err) // let the recovery middleware deal with this
+		}
+	}
+}
+
+// WriteResponseRaw to the client
+func (o *UnregisterListenerInternalServerErrorRaw) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
 
 	rw.WriteHeader(500)
 	if o.Payload != nil {
