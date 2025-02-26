@@ -33,20 +33,21 @@ type ServiceOrderItem struct {
 
 	// The action to be carried out on the Service. Can be: add, modify, delete, noChange
 	// Required: true
-	Action *OrderItemActionType `json:"action"`
+	// Enum: ["add","modify","delete","noChange"]
+	Action string `json:"action" bson:"action,omitempty"`
 
 	// An appointment that was set up with a related party for this order item
 	Appointment *AppointmentRef `json:"appointment,omitempty"`
 
 	// the error(s) cause an order item status change
-	ErrorMessage []*ServiceOrderItemErrorMessage `json:"errorMessage" bson:"errorMessage,omitempty"`
+	ErrorMessage []*ServiceOrderItemErrorMessage `json:"errorMessage,omitempty" bson:"errorMessage,omitempty"`
 
 	// Identifier of the individual line item
 	// Required: true
-	ID *string `json:"id" bson:"id"`
+	ID *string `json:"id" bson:"id,omitempty"`
 
 	// A list of modification items provided for the service update when serviceOrderItem action is modify
-	ModifyPath []*JSONPatch `json:"modifyPath"`
+	ModifyPath []*JSONPatch `json:"modifyPath,omitempty"`
 
 	// Quantity ordered
 	Quantity *int64 `json:"quantity,omitempty" bson:"quantity,omitempty"`
@@ -56,10 +57,10 @@ type ServiceOrderItem struct {
 	Service *ServiceRefOrValue `json:"service"`
 
 	// A list of order items embedded to this order item
-	ServiceOrderItem []*ServiceOrderItem `json:"serviceOrderItem" bson:"serviceOrderItem,omitempty"`
+	ServiceOrderItem []*ServiceOrderItem `json:"serviceOrderItem,omitempty" bson:"serviceOrderItem,omitempty"`
 
 	// A list of order items related to this order item
-	ServiceOrderItemRelationship []*ServiceOrderItemRelationship `json:"serviceOrderItemRelationship" bson:"serviceOrderItemRelationship,omitempty"`
+	ServiceOrderItemRelationship []*ServiceOrderItemRelationship `json:"serviceOrderItemRelationship,omitempty" bson:"serviceOrderItemRelationship,omitempty"`
 
 	// State of the order item: described in the state machine diagram. This is the requested state.
 	// Enum: ["acknowledged","rejected","pending","held","inProgress","cancelled","completed","failed","assessingCancellation","pendingCancellation","partial"]
@@ -128,25 +129,50 @@ func (m *ServiceOrderItem) validateAtSchemaLocation(formats strfmt.Registry) err
 	return nil
 }
 
+var serviceOrderItemTypeActionPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["add","modify","delete","noChange"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		serviceOrderItemTypeActionPropEnum = append(serviceOrderItemTypeActionPropEnum, v)
+	}
+}
+
+const (
+
+	// ServiceOrderItemActionAdd captures enum value "add"
+	ServiceOrderItemActionAdd string = "add"
+
+	// ServiceOrderItemActionModify captures enum value "modify"
+	ServiceOrderItemActionModify string = "modify"
+
+	// ServiceOrderItemActionDelete captures enum value "delete"
+	ServiceOrderItemActionDelete string = "delete"
+
+	// ServiceOrderItemActionNoChange captures enum value "noChange"
+	ServiceOrderItemActionNoChange string = "noChange"
+)
+
+// prop value enum
+func (m *ServiceOrderItem) validateActionEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, serviceOrderItemTypeActionPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *ServiceOrderItem) validateAction(formats strfmt.Registry) error {
 
-	if err := validate.Required("action", "body", m.Action); err != nil {
+	if err := validate.RequiredString("action", "body", m.Action); err != nil {
 		return err
 	}
 
-	if err := validate.Required("action", "body", m.Action); err != nil {
+	// value enum
+	if err := m.validateActionEnum("action", "body", m.Action); err != nil {
 		return err
-	}
-
-	if m.Action != nil {
-		if err := m.Action.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("action")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("action")
-			}
-			return err
-		}
 	}
 
 	return nil
@@ -377,10 +403,6 @@ func (m *ServiceOrderItem) validateState(formats strfmt.Registry) error {
 func (m *ServiceOrderItem) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateAction(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateAppointment(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -408,23 +430,6 @@ func (m *ServiceOrderItem) ContextValidate(ctx context.Context, formats strfmt.R
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *ServiceOrderItem) contextValidateAction(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Action != nil {
-
-		if err := m.Action.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("action")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("action")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 

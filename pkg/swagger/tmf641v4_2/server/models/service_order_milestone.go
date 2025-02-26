@@ -47,7 +47,7 @@ type ServiceOrderMilestone struct {
 	Name *string `json:"name,omitempty" bson:"name,omitempty"`
 
 	// A list of order items corresponded to this milestone
-	ServiceOrderItem []*ServiceOrderItemRef `json:"serviceOrderItem" bson:"serviceOrderItem"`
+	ServiceOrderItem []*ServiceOrderItemRef `json:"serviceOrderItem,omitempty" bson:"serviceOrderItem"`
 
 	// The milestone status
 	Status *string `json:"status,omitempty" bson:"status,omitempty"`

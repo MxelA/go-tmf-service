@@ -45,10 +45,10 @@ type ServiceRefOrValue struct {
 	EndDate *strfmt.DateTime `json:"endDate,omitempty" bson:"endDate,omitempty"`
 
 	// A list of external identifiers assoicated with this service
-	ExternalIdentifier []*ExternalIdentifier `json:"externalIdentifier" bson:"externalIdentifier,omitempty"`
+	ExternalIdentifier []*ExternalIdentifier `json:"externalIdentifier,omitempty" bson:"externalIdentifier,omitempty"`
 
 	// A list of feature associated with this service
-	Feature []*Feature `json:"feature" bson:"feature,omitempty"`
+	Feature []*Feature `json:"feature,omitempty" bson:"feature,omitempty"`
 
 	// If TRUE, this Service has already been started
 	HasStarted *bool `json:"hasStarted,omitempty" bson:"hasStarted,omitempty"`
@@ -72,7 +72,7 @@ type ServiceRefOrValue struct {
 	Name *string `json:"name,omitempty" bson:"name,omitempty"`
 
 	// A list of notes made on this service
-	Note []*Note `json:"note" bson:"note,omitempty"`
+	Note []*Note `json:"note,omitempty" bson:"note,omitempty"`
 
 	// Indicates how a service is currently performing or operating. It is a logical representation of the service operating behaviour and is determined/managed by the service provider.
 	// Enum: ["pending","configured","starting","running","degraded","failed","limited","stopping","stopped","unknown"]
@@ -82,25 +82,25 @@ type ServiceRefOrValue struct {
 	OperatingStatusContextUpdate *ContextUpdate `json:"operatingStatusContextUpdate,omitempty"`
 
 	// A list of places (Place [*]). Used to define a place useful for the service (for example a geographical place whre the service is installed)
-	Place []*RelatedPlaceRefOrValue `json:"place" bson:"place,omitempty"`
+	Place []*RelatedPlaceRefOrValue `json:"place,omitempty" bson:"place,omitempty"`
 
 	// A list of related  entity in relationship with this service
-	RelatedEntity []*RelatedEntityRefOrValue `json:"relatedEntity" bson:"relatedEntity,omitempty"`
+	RelatedEntity []*RelatedEntityRefOrValue `json:"relatedEntity,omitempty" bson:"relatedEntity,omitempty"`
 
 	// A list of related party references (RelatedParty [*]). A related party defines party or party role linked to a specific entity
-	RelatedParty []*RelatedParty `json:"relatedParty" bson:"relatedParty,omitempty"`
+	RelatedParty []*RelatedParty `json:"relatedParty,omitempty" bson:"relatedParty,omitempty"`
 
 	// A list of characteristics that characterize this service (ServiceCharacteristic [*])
-	ServiceCharacteristic []*Characteristic `json:"serviceCharacteristic" bson:"serviceCharacteristic,omitempty"`
+	ServiceCharacteristic []*Characteristic `json:"serviceCharacteristic,omitempty" bson:"serviceCharacteristic,omitempty"`
 
 	// Date when the service was created (whatever its status).
 	ServiceDate *string `json:"serviceDate,omitempty" bson:"serviceDate,omitempty"`
 
 	// A list of service order items related to this service
-	ServiceOrderItem []*RelatedServiceOrderItem `json:"serviceOrderItem" bson:"serviceOrderItem,omitempty"`
+	ServiceOrderItem []*RelatedServiceOrderItem `json:"serviceOrderItem,omitempty" bson:"serviceOrderItem,omitempty"`
 
 	// A list of service relationships (ServiceRelationship [*]). Describes links with other service(s) in the inventory.
-	ServiceRelationship []*ServiceRelationship `json:"serviceRelationship" bson:"serviceRelationship,omitempty"`
+	ServiceRelationship []*ServiceRelationship `json:"serviceRelationship,omitempty" bson:"serviceRelationship,omitempty"`
 
 	// The specification from which this service was instantiated
 	ServiceSpecification *ServiceSpecificationRef `json:"serviceSpecification,omitempty"`
@@ -120,10 +120,10 @@ type ServiceRefOrValue struct {
 	State *string `json:"state,omitempty" bson:"state,omitempty"`
 
 	// A list of supporting resources (SupportingResource [*]).Note: only Service of type RFS can be associated with Resources
-	SupportingResource []*ResourceRef `json:"supportingResource" bson:"supportingResource,omitempty"`
+	SupportingResource []*ResourceRef `json:"supportingResource,omitempty" bson:"supportingResource,omitempty"`
 
 	// A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)
-	SupportingService []*ServiceRefOrValue `json:"supportingService" bson:"supportingService,omitempty"`
+	SupportingService []*ServiceRefOrValue `json:"supportingService,omitempty" bson:"supportingService,omitempty"`
 }
 
 // Validate validates this service ref or value

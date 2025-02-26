@@ -3436,7 +3436,8 @@
           "$ref": "#/definitions/ServiceOrderErrorMessage",
           "description": "the error message if the order closed by an error",
           "x-go-custom-tag": "bson:\"errorMessage,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "externalReference": {
           "type": "array",
@@ -3444,7 +3445,8 @@
             "$ref": "#/definitions/ExternalReference"
           },
           "x-go-custom-tag": "bson:\"externalReference,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "jeopardyAlert": {
           "type": "array",
@@ -3453,7 +3455,8 @@
           },
           "description": "A list of jeopardy alerts related to this order",
           "x-go-custom-tag": "bson:\"jeopardyAlert,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "milestone": {
           "type": "array",
@@ -3462,7 +3465,8 @@
           },
           "description": "A list of milestones related to this order",
           "x-go-custom-tag": "bson:\"milestone,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "note": {
           "type": "array",
@@ -3471,7 +3475,8 @@
           },
           "description": "Extra-information about the order; e.g. useful to add extra delivery information that could be useful for a human process",
           "x-go-custom-tag": "bson:\"note,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "orderRelationship": {
           "type": "array",
@@ -3480,7 +3485,8 @@
           },
           "description": "A list of service orders related to this order (e.g. prerequisite, dependent on)",
           "x-go-custom-tag": "bson:\"orderRelationship,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "relatedParty": {
           "type": "array",
@@ -3489,8 +3495,8 @@
           },
           "description": "A list of parties which are involved in this order and the role they are playing",
           "x-go-custom-tag": "bson:\"relatedParty,omitempty\"",
-          "x-nullable": true
-
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "serviceOrderItem": {
           "type": "array",
@@ -3846,25 +3852,36 @@
         "id": {
           "type": "string",
           "description": "Identifier of the individual line item",
-          "x-go-custom-tag": "bson:\"id\""
+          "x-go-custom-tag": "bson:\"id,omitempty\"",
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "quantity": {
           "type": "integer",
           "description": "Quantity ordered",
           "x-go-custom-tag": "bson:\"quantity,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "action": {
-          "$ref": "#/definitions/OrderItemActionType",
+          "type": "string",
           "description": "The action to be carried out on the Service. Can be: add, modify, delete, noChange",
           "x-go-custom-tag": "bson:\"action,omitempty\"",
-          "x-nullable": false
+          "x-nullable": true,
+          "x-omitempty": true,
+          "enum": [
+            "add",
+            "modify",
+            "delete",
+            "noChange"
+          ]
         },
         "appointment": {
           "$ref": "#/definitions/AppointmentRef",
           "description": "An appointment that was set up with a related party for this order item",
           "x-go-custom-tag": "bson:\"appointment,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "errorMessage": {
           "type": "array",
@@ -3873,14 +3890,16 @@
           },
           "description": "the error(s) cause an order item status change",
           "x-go-custom-tag": "bson:\"errorMessage,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "modifyPath": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/JsonPatch"
           },
-          "description": "A list of modification items provided for the service update when serviceOrderItem action is modify"
+          "description": "A list of modification items provided for the service update when serviceOrderItem action is modify",
+          "x-omitempty": true
         },
         "service": {
           "$ref": "#/definitions/ServiceRefOrValue",
@@ -3894,7 +3913,8 @@
           },
           "description": "A list of order items embedded to this order item",
           "x-go-custom-tag": "bson:\"serviceOrderItem,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "serviceOrderItemRelationship": {
           "type": "array",
@@ -3903,7 +3923,8 @@
           },
           "description": "A list of order items related to this order item",
           "x-go-custom-tag": "bson:\"serviceOrderItemRelationship,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "state": {
           "type": "string",
@@ -4053,7 +4074,8 @@
           "$ref": "#/definitions/ServiceOrderItemRef",
           "description": "A service order item in relationship with this order item",
           "x-go-custom-tag": "bson:\"orderItem,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "@baseType": {
           "type": "string",
@@ -4141,7 +4163,8 @@
           },
           "description": "A list of order items corresponded to this alert",
           "x-go-custom-tag": "bson:\"serviceOrderItem\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "@baseType": {
           "type": "string",
@@ -4212,7 +4235,8 @@
           },
           "description": "A list of order items corresponded to this milestone",
           "x-go-custom-tag": "bson:\"serviceOrderItem\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "@baseType": {
           "type": "string",
@@ -4505,7 +4529,8 @@
           },
           "description": "A list of external identifiers assoicated with this service",
           "x-go-custom-tag": "bson:\"externalIdentifier,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "feature": {
           "type": "array",
@@ -4514,7 +4539,8 @@
           },
           "description": "A list of feature associated with this service ",
           "x-go-custom-tag": "bson:\"feature,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "note": {
           "type": "array",
@@ -4523,7 +4549,8 @@
           },
           "description": "A list of notes made on this service",
           "x-go-custom-tag": "bson:\"note,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "operatingStatus": {
           "type": "string",
@@ -4547,7 +4574,8 @@
           "$ref": "#/definitions/ContextUpdate",
           "description": "Additional information describing the context of operatingStatus and is determined/managed by the service provider.",
           "x-go-custom-tag": "bson:\"operatingStatusContextUpdate,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "place": {
           "type": "array",
@@ -4556,7 +4584,8 @@
           },
           "description": "A list of places (Place [*]). Used to define a place useful for the service (for example a geographical place whre the service is installed)",
           "x-go-custom-tag": "bson:\"place,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "relatedEntity": {
           "type": "array",
@@ -4565,7 +4594,8 @@
           },
           "description": "A list of related  entity in relationship with this service ",
           "x-go-custom-tag": "bson:\"relatedEntity,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "relatedParty": {
           "type": "array",
@@ -4574,7 +4604,8 @@
           },
           "description": "A list of related party references (RelatedParty [*]). A related party defines party or party role linked to a specific entity",
           "x-go-custom-tag": "bson:\"relatedParty,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "serviceCharacteristic": {
           "type": "array",
@@ -4583,7 +4614,8 @@
           },
           "description": "A list of characteristics that characterize this service (ServiceCharacteristic [*]) ",
           "x-go-custom-tag": "bson:\"serviceCharacteristic,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "serviceOrderItem": {
           "type": "array",
@@ -4592,7 +4624,8 @@
           },
           "description": "A list of service order items related to this service",
           "x-go-custom-tag": "bson:\"serviceOrderItem,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "serviceRelationship": {
           "type": "array",
@@ -4601,13 +4634,15 @@
           },
           "description": "A list of service relationships (ServiceRelationship [*]). Describes links with other service(s) in the inventory.",
           "x-go-custom-tag": "bson:\"serviceRelationship,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "serviceSpecification": {
           "$ref": "#/definitions/ServiceSpecificationRef",
           "description": "The specification from which this service was instantiated",
           "x-go-custom-tag": "bson:\"serviceSpecification,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "state": {
           "type": "string",
@@ -4631,7 +4666,8 @@
           },
           "description": "A list of supporting resources (SupportingResource [*]).Note: only Service of type RFS can be associated with Resources",
           "x-go-custom-tag": "bson:\"supportingResource,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "supportingService": {
           "type": "array",
@@ -4640,7 +4676,8 @@
           },
           "description": "A list of supporting services (SupportingService [*]). A collection of services that support this service (bundling, link CFS to RFS)",
           "x-go-custom-tag": "bson:\"supportingService,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "@baseType": {
           "type": "string",
@@ -4683,7 +4720,8 @@
         "service": {
           "$ref": "#/definitions/ServiceRefOrValue",
           "x-go-custom-tag": "bson:\"service,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "serviceRelationshipCharacteristic": {
           "type": "array",
@@ -4691,7 +4729,8 @@
             "$ref": "#/definitions/Characteristic"
           },
           "x-go-custom-tag": "bson:\"serviceRelationshipCharacteristic,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "@baseType": {
           "type": "string",
@@ -4871,7 +4910,8 @@
           "description": "The event payload linked to the involved resource object",
           "$ref": "#/definitions/ServiceOrderCreateEventPayload",
           "x-go-custom-tag": "bson:\"event,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "eventId": {
           "type": "string",
@@ -4939,7 +4979,8 @@
           "description": "The involved resource data for the event",
           "$ref": "#/definitions/ServiceOrder",
           "x-go-custom-tag": "bson:\"serviceOrder,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         }
       }
     },
@@ -5013,7 +5054,8 @@
           "description": "The event payload linked to the involved resource object",
           "$ref": "#/definitions/ServiceOrderAttributeValueChangeEventPayload",
           "x-go-custom-tag": "bson:\"event,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         }
       }
     },
@@ -5025,7 +5067,8 @@
           "description": "The involved resource data for the event",
           "$ref": "#/definitions/ServiceOrder",
           "x-go-custom-tag": "bson:\"serviceOrder,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         }
       }
     },
@@ -5037,7 +5080,8 @@
           "description": "The event payload linked to the involved resource object",
           "$ref": "#/definitions/ServiceOrderStateChangeEventPayload",
           "x-go-custom-tag": "bson:\"event,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "eventId": {
           "type": "string",
@@ -5105,7 +5149,8 @@
           "description": "The involved resource data for the event",
           "$ref": "#/definitions/ServiceOrder",
           "x-go-custom-tag": "bson:\"serviceOrder,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         }
       }
     },
@@ -5117,7 +5162,8 @@
           "description": "The event payload linked to the involved resource object",
           "$ref": "#/definitions/ServiceOrderDeleteEventPayload",
           "x-go-custom-tag": "bson:\"event,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "eventId": {
           "type": "string",
@@ -5185,7 +5231,8 @@
           "description": "The involved resource data for the event",
           "$ref": "#/definitions/ServiceOrder",
           "x-go-custom-tag": "bson:\"serviceOrder\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         }
       }
     },
@@ -5259,7 +5306,8 @@
           "description": "The event payload linked to the involved resource object",
           "$ref": "#/definitions/ServiceOrderInformationRequiredEventPayload",
           "x-go-custom-tag": "bson:\"event,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         }
       }
     },
@@ -5271,7 +5319,8 @@
           "description": "The involved resource data for the event",
           "$ref": "#/definitions/ServiceOrder",
           "x-go-custom-tag": "bson:\"serviceOrder,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         }
       }
     },
@@ -5283,7 +5332,8 @@
           "description": "The event payload linked to the involved resource object",
           "$ref": "#/definitions/ServiceOrderMilestoneEventPayload",
           "x-go-custom-tag": "bson:\"event,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "eventId": {
           "type": "string",
@@ -5351,7 +5401,8 @@
           "description": "The involved resource data for the event",
           "$ref": "#/definitions/ServiceOrder",
           "x-go-custom-tag": "bson:\"serviceOrder,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         }
       }
     },
@@ -5363,7 +5414,8 @@
           "description": "The event payload linked to the involved resource object",
           "$ref": "#/definitions/ServiceOrderJeopardyEventPayload",
           "x-go-custom-tag": "bson:\"event,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "eventId": {
           "type": "string",
@@ -5431,7 +5483,8 @@
           "description": "The involved resource data for the event",
           "$ref": "#/definitions/ServiceOrder",
           "x-go-custom-tag": "bson:\"serviceOrder,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         }
       }
     },
@@ -5443,44 +5496,51 @@
           "description": "The event payload linked to the involved resource object",
           "$ref": "#/definitions/CancelServiceOrderCreateEventPayload",
           "x-go-custom-tag": "bson:\"event\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "eventId": {
           "type": "string",
           "description": "The identifier of the notification.",
           "x-go-custom-tag": "bson:\"eventId,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "eventTime": {
           "type": "string",
           "format": "date-time",
           "description": "Time of the event occurrence.",
           "x-go-custom-tag": "bson:\"eventTime,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "eventType": {
           "type": "string",
           "description": "The type of the notification.",
           "x-go-custom-tag": "bson:\"eventType,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "correlationId": {
           "type": "string",
           "description": "The correlation id for this event.",
           "x-go-custom-tag": "bson:\"correlationId,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "domain": {
           "type": "string",
           "description": "The domain of the event.",
           "x-go-custom-tag": "bson:\"domain,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "title": {
           "type": "string",
           "description": "The title of the event.",
           "x-go-custom-tag": "bson:\"title,omitempty\"",
-          "x-nullable": true
+          "x-nullable": true,
+          "x-omitempty": true
         },
         "description": {
           "type": "string",

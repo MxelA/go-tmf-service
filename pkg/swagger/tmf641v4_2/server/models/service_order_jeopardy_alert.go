@@ -50,7 +50,7 @@ type ServiceOrderJeopardyAlert struct {
 	Name *string `json:"name,omitempty" bson:"name,omitempty"`
 
 	// A list of order items corresponded to this alert
-	ServiceOrderItem []*ServiceOrderItemRef `json:"serviceOrderItem" bson:"serviceOrderItem"`
+	ServiceOrderItem []*ServiceOrderItemRef `json:"serviceOrderItem,omitempty" bson:"serviceOrderItem"`
 }
 
 // Validate validates this service order jeopardy alert

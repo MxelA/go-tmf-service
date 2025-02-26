@@ -59,7 +59,7 @@ type ServiceOrder struct {
 	ExternalID *string `json:"externalId,omitempty" bson:"externalId,omitempty"`
 
 	// external reference
-	ExternalReference []*ExternalReference `json:"externalReference" bson:"externalReference,omitempty"`
+	ExternalReference []*ExternalReference `json:"externalReference,omitempty" bson:"externalReference,omitempty"`
 
 	// Hyperlink to access the order
 	Href *string `json:"href,omitempty" bson:"href,omitempty"`
@@ -68,13 +68,13 @@ type ServiceOrder struct {
 	ID string `json:"id,omitempty" bson:"_id,omitempty"`
 
 	// A list of jeopardy alerts related to this order
-	JeopardyAlert []*ServiceOrderJeopardyAlert `json:"jeopardyAlert" bson:"jeopardyAlert,omitempty"`
+	JeopardyAlert []*ServiceOrderJeopardyAlert `json:"jeopardyAlert,omitempty" bson:"jeopardyAlert,omitempty"`
 
 	// A list of milestones related to this order
-	Milestone []*ServiceOrderMilestone `json:"milestone" bson:"milestone,omitempty"`
+	Milestone []*ServiceOrderMilestone `json:"milestone,omitempty" bson:"milestone,omitempty"`
 
 	// Extra-information about the order; e.g. useful to add extra delivery information that could be useful for a human process
-	Note []*Note `json:"note" bson:"note,omitempty"`
+	Note []*Note `json:"note,omitempty" bson:"note,omitempty"`
 
 	// Contact attached to the order to send back information regarding this order
 	NotificationContact *string `json:"notificationContact,omitempty" bson:"notificationContact,omitempty"`
@@ -84,13 +84,13 @@ type ServiceOrder struct {
 	OrderDate *strfmt.DateTime `json:"orderDate,omitempty" bson:"orderDate,omitempty"`
 
 	// A list of service orders related to this order (e.g. prerequisite, dependent on)
-	OrderRelationship []*ServiceOrderRelationship `json:"orderRelationship" bson:"orderRelationship,omitempty"`
+	OrderRelationship []*ServiceOrderRelationship `json:"orderRelationship,omitempty" bson:"orderRelationship,omitempty"`
 
 	// Can be used by consumers to prioritize orders in a Service Order Management system
 	Priority *string `json:"priority,omitempty" bson:"priority,omitempty"`
 
 	// A list of parties which are involved in this order and the role they are playing
-	RelatedParty []*RelatedParty `json:"relatedParty" bson:"relatedParty,omitempty"`
+	RelatedParty []*RelatedParty `json:"relatedParty,omitempty" bson:"relatedParty,omitempty"`
 
 	// Requested delivery date from the requestors perspective
 	// Format: date-time

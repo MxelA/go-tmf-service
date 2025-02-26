@@ -42,31 +42,13 @@ func RetrieveServiceOrderHandler(req service_order.RetrieveServiceOrderParams) m
 
 	record := collection.FindOne(req.HTTPRequest.Context(), filter, findOptions)
 
-	// Decode into bson.M first
-	response, err := utils.ConvertBsonMToMinimalJSONResponse(*record)
-
-	if err != nil {
-		errCode := "500"
-		reason := err.Error()
-		errModel := models.Error{
-			Reason:  &reason,
-			Code:    &errCode,
-			Message: "Internal server error",
-		}
-		log.Println(err)
-		return service_order.NewRetrieveServiceOrderInternalServerError().WithPayload(&errModel)
-	}
-
-	// Return structured response
-	return service_order.NewRetrieveServiceOrderOKRaw().WithPayload(response)
-
-	// Map record from mongoDB to Response model
-	//retrieveServiceOrder := models.ServiceOrder{}
-	//err = record.Decode(&retrieveServiceOrder)
+	//// Decode into bson.M first
+	//response, err := utils.ConvertBsonMToMinimalJSONResponse(*record)
+	//
 	//if err != nil {
 	//	errCode := "500"
 	//	reason := err.Error()
-	//	var errModel = models.Error{
+	//	errModel := models.Error{
 	//		Reason:  &reason,
 	//		Code:    &errCode,
 	//		Message: "Internal server error",
@@ -75,5 +57,23 @@ func RetrieveServiceOrderHandler(req service_order.RetrieveServiceOrderParams) m
 	//	return service_order.NewRetrieveServiceOrderInternalServerError().WithPayload(&errModel)
 	//}
 	//
-	//return service_order.NewCreateServiceOrderCreated().WithPayload(&retrieveServiceOrder)
+	//// Return structured response
+	//return service_order.NewRetrieveServiceOrderOKRaw().WithPayload(response)
+
+	// Map record from mongoDB to Response model
+	retrieveServiceOrder := models.ServiceOrder{}
+	err = record.Decode(&retrieveServiceOrder)
+	if err != nil {
+		errCode := "500"
+		reason := err.Error()
+		var errModel = models.Error{
+			Reason:  &reason,
+			Code:    &errCode,
+			Message: "Internal server error",
+		}
+		log.Println(err)
+		return service_order.NewRetrieveServiceOrderInternalServerError().WithPayload(&errModel)
+	}
+
+	return service_order.NewCreateServiceOrderCreated().WithPayload(&retrieveServiceOrder)
 }
