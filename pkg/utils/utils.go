@@ -80,6 +80,7 @@ func ValidatePaginationParams(offset *int64, limit *int64) (*int64, *int64) {
 }
 
 func BuildMongoFilter(queryParams map[string][]string) bson.M {
+	// Exclude pagination & projection params
 	delete(queryParams, "fields")
 	delete(queryParams, "limit")
 	delete(queryParams, "offset")
@@ -91,43 +92,49 @@ func BuildMongoFilter(queryParams map[string][]string) bson.M {
 			continue
 		}
 
-		// Extract operator (e.g., "completionDate.gt" -> field: "completionDate", operator: "$gt")
-		parts := strings.SplitN(key, ".", 2)
-		field := parts[0]
+		// Extract field name and operator (e.g., "serviceOrderItem.action.eq")
+		parts := strings.Split(key, ".") // Split into field and operator
+		filterOperator := parts[len(parts)-1]
+		filterField := key
 		operator := "$eq" // Default to equality
 
 		if len(parts) > 1 {
-			switch parts[1] {
-			case "gt":
-				operator = "$gt"
-			case "gte":
-				operator = "$gte"
-			case "lt":
-				operator = "$lt"
-			case "lte":
-				operator = "$lte"
-			case "ne":
-				operator = "$ne"
-			case "in":
-				operator = "$in"
-			case "nin":
-				operator = "$nin"
+			opMap := map[string]string{
+				"eq":  "$eq",
+				"gt":  "$gt",
+				"gte": "$gte",
+				"lt":  "$lt",
+				"lte": "$lte",
+				"ne":  "$ne",
+				"in":  "$in",
+				"nin": "$nin",
+			}
+			if op, exists := opMap[filterOperator]; exists {
+				operator = op
+				filterField = strings.Join(parts[:len(parts)-1], ".")
 			}
 		}
 
-		// Convert values
-		value := values[0] // Always take the first value
+		// Convert value to correct type
+		value := values[0]
+		var parsedValue interface{} = value
 
-		// Try converting to int, float, or date automatically
 		if intValue, err := strconv.Atoi(value); err == nil {
-			filter[field] = bson.M{operator: intValue}
+			parsedValue = intValue
 		} else if floatValue, err := strconv.ParseFloat(value, 64); err == nil {
-			filter[field] = bson.M{operator: floatValue}
+			parsedValue = floatValue
 		} else if dateValue, err := time.Parse(time.RFC3339, value); err == nil {
-			filter[field] = bson.M{operator: dateValue}
+			parsedValue = dateValue
+		}
+
+		// If the field already exists, merge the conditions
+		if existing, exists := filter[filterField]; exists {
+			if existingMap, ok := existing.(bson.M); ok {
+				existingMap[operator] = parsedValue
+				filter[filterField] = existingMap
+			}
 		} else {
-			// Default to string
-			filter[field] = bson.M{operator: value}
+			filter[filterField] = bson.M{operator: parsedValue}
 		}
 	}
 
