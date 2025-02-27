@@ -43,38 +43,6 @@ func DeleteServiceOrderHandler(req service_order.DeleteServiceOrderParams) middl
 		log.Println(err)
 		return service_order.NewRetrieveServiceOrderInternalServerError().WithPayload(&errModel)
 	}
-	//// Decode into bson.M first
-	//response, err := utils.ConvertBsonMToMinimalJSONResponse(*record)
-	//
-	//if err != nil {
-	//	errCode := "500"
-	//	reason := err.Error()
-	//	errModel := models.Error{
-	//		Reason:  &reason,
-	//		Code:    &errCode,
-	//		Message: "Internal server error",
-	//	}
-	//	log.Println(err)
-	//	return service_order.NewRetrieveServiceOrderInternalServerError().WithPayload(&errModel)
-	//}
-	//
-	//// Return structured response
-	//return service_order.NewRetrieveServiceOrderOKRaw().WithPayload(response)
-
-	// Map record from mongoDB to Response model
-	//retrieveServiceOrder := models.ServiceOrder{}
-	//err = record.Decode(&retrieveServiceOrder)
-	//if err != nil {
-	//	errCode := "500"
-	//	reason := err.Error()
-	//	var errModel = models.Error{
-	//		Reason:  &reason,
-	//		Code:    &errCode,
-	//		Message: "Internal server error",
-	//	}
-	//	log.Println(err)
-	//	return service_order.NewRetrieveServiceOrderInternalServerError().WithPayload(&errModel)
-	//}
 
 	if record.DeletedCount == 0 {
 		return service_order.NewDeleteServiceOrderBadRequest()
