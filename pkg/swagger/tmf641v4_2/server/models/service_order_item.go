@@ -34,7 +34,7 @@ type ServiceOrderItem struct {
 	// The action to be carried out on the Service. Can be: add, modify, delete, noChange
 	// Required: true
 	// Enum: ["add","modify","delete","noChange"]
-	Action string `json:"action" bson:"action,omitempty"`
+	Action *string `json:"action" bson:"action,omitempty"`
 
 	// An appointment that was set up with a related party for this order item
 	Appointment *AppointmentRef `json:"appointment,omitempty"`
@@ -166,12 +166,12 @@ func (m *ServiceOrderItem) validateActionEnum(path, location string, value strin
 
 func (m *ServiceOrderItem) validateAction(formats strfmt.Registry) error {
 
-	if err := validate.RequiredString("action", "body", m.Action); err != nil {
+	if err := validate.Required("action", "body", m.Action); err != nil {
 		return err
 	}
 
 	// value enum
-	if err := m.validateActionEnum("action", "body", m.Action); err != nil {
+	if err := m.validateActionEnum("action", "body", *m.Action); err != nil {
 		return err
 	}
 

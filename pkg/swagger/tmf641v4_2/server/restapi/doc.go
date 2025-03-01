@@ -40,6 +40,8 @@
 //
 //	Consumes:
 //	  - application/json
+//	  - application/json-patch+json
+//	  - application/merge-patch+json
 //
 //	Produces:
 //	  - application/json

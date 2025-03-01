@@ -1404,6 +1404,10 @@ func init() {
       },
       "patch": {
         "description": "This operation updates partially a ServiceOrder entity.",
+        "consumes": [
+          "application/merge-patch+json",
+          "application/json-patch+json"
+        ],
         "tags": [
           "serviceOrder"
         ],
@@ -4266,7 +4270,7 @@ func init() {
             "noChange"
           ],
           "x-go-custom-tag": "bson:\"action,omitempty\"",
-          "x-nullable": false,
+          "x-nullable": true,
           "x-omitempty": true
         },
         "appointment": {
@@ -7136,6 +7140,10 @@ func init() {
       },
       "patch": {
         "description": "This operation updates partially a ServiceOrder entity.",
+        "consumes": [
+          "application/merge-patch+json",
+          "application/json-patch+json"
+        ],
         "tags": [
           "serviceOrder"
         ],
@@ -9998,7 +10006,7 @@ func init() {
             "noChange"
           ],
           "x-go-custom-tag": "bson:\"action,omitempty\"",
-          "x-nullable": false,
+          "x-nullable": true,
           "x-omitempty": true
         },
         "appointment": {

@@ -272,6 +272,10 @@
         "tags": [
           "serviceOrder"
         ],
+        "consumes": [
+          "application/merge-patch+json",
+          "application/json-patch+json"
+        ],
         "parameters": [
           {
             "name": "id",

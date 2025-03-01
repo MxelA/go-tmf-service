@@ -11,4 +11,5 @@ var RegisterTmfServiceV4_2Routes = func(api *operations.ServiceOrderingV42API) {
 	api.ServiceOrderRetrieveServiceOrderHandler = service_order.RetrieveServiceOrderHandlerFunc(handler_v4_2.RetrieveServiceOrderHandler)
 	api.ServiceOrderListServiceOrderHandler = service_order.ListServiceOrderHandlerFunc(handler_v4_2.ListServiceOrderHandler)
 	api.ServiceOrderDeleteServiceOrderHandler = service_order.DeleteServiceOrderHandlerFunc(handler_v4_2.DeleteServiceOrderHandler)
+	api.ServiceOrderPatchServiceOrderHandler = service_order.PatchServiceOrderHandlerFunc(handler_v4_2.PatchServiceOrderHandler)
 }
