@@ -1,0 +1,56 @@
+package repository
+
+import (
+	"context"
+	database "github.com/MxelA/tmf-service-go/pkg/config"
+	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
+	"github.com/MxelA/tmf-service-go/pkg/utils"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo/options"
+)
+
+type ServiceOrderRepository interface {
+	GetByID(id string) (*models.ServiceOrder, error)
+	GetAll() ([]*models.ServiceOrder, error)
+	Create(user *models.ServiceOrder) error
+	Update(user *models.ServiceOrder) error
+	Delete(id string) error
+}
+
+type MongoServiceOrderRepository struct {
+	SelectFields  string
+	MongoInstance database.MongoInstance
+	Context       context.Context
+}
+
+func (repo *MongoServiceOrderRepository) GetByID(id string) (*models.ServiceOrder, error) {
+
+	serviceOrderId, err := primitive.ObjectIDFromHex(id)
+
+	if err != nil {
+		return nil, err
+	}
+
+	collection := repo.MongoInstance.Db.Collection("serviceOrder")
+	filter := bson.D{{Key: "_id", Value: serviceOrderId}}
+
+	// Apply projection if set
+	findOptions := options.FindOne()
+
+	fieldProjection := utils.GerFieldsProjection(&repo.SelectFields)
+	if len(fieldProjection) > 0 { // Only set projection if fields are provided
+		findOptions.SetProjection(fieldProjection)
+	}
+
+	record := collection.FindOne(repo.Context, filter, findOptions)
+
+	retrieveServiceOrder := models.ServiceOrder{}
+	err = record.Decode(&retrieveServiceOrder)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &retrieveServiceOrder, nil
+}
