@@ -2,9 +2,11 @@ package database
 
 import (
 	"context"
+	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
+	"os"
 	"time"
 	//"go.mongodb.org/mongo-driver/bson"
 	//"go.mongodb.org/mongo-driver/bson/primitive"
@@ -19,10 +21,21 @@ var (
 	mg MongoInstance
 )
 
-const dbName = "service-order"
-const mongoURL = "mongodb://admin:password@127.0.0.1:27017/" + dbName + "?authMechanism=SCRAM-SHA-256&authSource=admin"
-
 func DbConnect() error {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+		return err
+	}
+
+	dbName := os.Getenv("MONGO_DB_DATABASE")
+	username := os.Getenv("MONGO_DB_USERNAME")
+	password := os.Getenv("MONGO_DB_PASSWORD")
+	port := os.Getenv("MONGO_DB_PORT")
+	host := os.Getenv("MONGO_DB_HOST")
+
+	var mongoURL = "mongodb://" + username + ":" + password + "@" + host + ":" + port + "/" + dbName + "?authMechanism=SCRAM-SHA-256&authSource=admin"
+
 	client, err := mongo.NewClient(options.Client().ApplyURI(mongoURL))
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 
