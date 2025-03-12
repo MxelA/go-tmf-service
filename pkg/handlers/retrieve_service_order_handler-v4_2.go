@@ -2,49 +2,22 @@ package handler_v4_2
 
 import (
 	database "github.com/MxelA/tmf-service-go/pkg/config"
+	"github.com/MxelA/tmf-service-go/pkg/repository"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/restapi/operations/service_order"
-	"github.com/MxelA/tmf-service-go/pkg/utils"
 	"github.com/go-openapi/runtime/middleware"
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/bson/primitive"
-	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
 )
 
 func RetrieveServiceOrderHandler(req service_order.RetrieveServiceOrderParams) middleware.Responder {
 
-	serviceOrderId, err := primitive.ObjectIDFromHex(req.ID)
-
-	if err != nil {
-		errCode := "500"
-		reason := err.Error()
-		var errModel = models.Error{
-			Reason:  &reason,
-			Code:    &errCode,
-			Message: "Internal server error",
-		}
-		return service_order.NewCreateServiceOrderInternalServerError().WithPayload(&errModel)
+	mongoServiceOrderRepo := repository.MongoServiceOrderRepository{
+		MongoInstance: database.GetMongoInstance(),
+		Context:       req.HTTPRequest.Context(),
 	}
 
-	// Get mongoDB instance
-	mg := database.GetMongoInstance()
-	collection := mg.Db.Collection("serviceOrder")
-	filter := bson.D{{Key: "_id", Value: serviceOrderId}}
+	retrieveServiceOrder, err := mongoServiceOrderRepo.GetByID(req.ID, req.Fields)
 
-	// Apply projection if set
-	findOptions := options.FindOne()
-
-	fieldProjection := utils.GerFieldsProjection(req.Fields)
-	if len(fieldProjection) > 0 { // Only set projection if fields are provided
-		findOptions.SetProjection(fieldProjection)
-	}
-
-	record := collection.FindOne(req.HTTPRequest.Context(), filter, findOptions)
-
-	// Map record from mongoDB to Response model
-	retrieveServiceOrder := models.ServiceOrder{}
-	err = record.Decode(&retrieveServiceOrder)
 	if err != nil {
 		errCode := "500"
 		reason := err.Error()
@@ -57,5 +30,5 @@ func RetrieveServiceOrderHandler(req service_order.RetrieveServiceOrderParams) m
 		return service_order.NewRetrieveServiceOrderInternalServerError().WithPayload(&errModel)
 	}
 
-	return service_order.NewRetrieveServiceOrderOK().WithPayload(&retrieveServiceOrder)
+	return service_order.NewRetrieveServiceOrderOK().WithPayload(retrieveServiceOrder)
 }

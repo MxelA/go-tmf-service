@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"errors"
 	database "github.com/MxelA/tmf-service-go/pkg/config"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 	"github.com/MxelA/tmf-service-go/pkg/utils"
@@ -19,17 +20,16 @@ type ServiceOrderRepository interface {
 }
 
 type MongoServiceOrderRepository struct {
-	SelectFields  string
 	MongoInstance database.MongoInstance
 	Context       context.Context
 }
 
-func (repo *MongoServiceOrderRepository) GetByID(id string) (*models.ServiceOrder, error) {
+func (repo *MongoServiceOrderRepository) GetByID(id string, selectFields *string) (*models.ServiceOrder, error) {
 
 	serviceOrderId, err := primitive.ObjectIDFromHex(id)
 
 	if err != nil {
-		return nil, err
+		return nil, errors.New("Id is not valid")
 	}
 
 	collection := repo.MongoInstance.Db.Collection("serviceOrder")
@@ -38,7 +38,7 @@ func (repo *MongoServiceOrderRepository) GetByID(id string) (*models.ServiceOrde
 	// Apply projection if set
 	findOptions := options.FindOne()
 
-	fieldProjection := utils.GerFieldsProjection(&repo.SelectFields)
+	fieldProjection := utils.GerFieldsProjection(selectFields)
 	if len(fieldProjection) > 0 { // Only set projection if fields are provided
 		findOptions.SetProjection(fieldProjection)
 	}
