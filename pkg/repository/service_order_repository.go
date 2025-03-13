@@ -9,10 +9,12 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	"log"
 )
 
 type ServiceOrderRepository interface {
 	GetByID(id string) (*models.ServiceOrder, error)
+	GetAllPaginate(queryParams bson.M, selectFields *string, offset *int64, limit *int64) ([]*models.ServiceOrder, int64, error)
 	GetAll() ([]*models.ServiceOrder, error)
 	Create(user *models.ServiceOrder) error
 	Update(user *models.ServiceOrder) error
@@ -53,4 +55,46 @@ func (repo *MongoServiceOrderRepository) GetByID(id string, selectFields *string
 	}
 
 	return &retrieveServiceOrder, nil
+}
+
+func (repo *MongoServiceOrderRepository) GetAllPaginate(queryParams bson.M, selectFields *string, offset *int64, limit *int64) ([]*models.ServiceOrder, *int64, error) {
+
+	offset, limit = utils.ValidatePaginationParams(offset, limit)
+	collection := repo.MongoInstance.Db.Collection("serviceOrder")
+
+	findOptions := &options.FindOptions{ // Find options
+		Skip:  offset,
+		Limit: limit,
+	}
+
+	// Fields Projection
+	fieldProjection := utils.GerFieldsProjection(selectFields)
+	if len(fieldProjection) > 0 { // Only set projection if fields are provided
+		findOptions.SetProjection(fieldProjection)
+	}
+
+	// Get list of service orders
+
+	records, err := collection.Find(repo.Context, queryParams, findOptions)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	retrieveServiceOrders := []*models.ServiceOrder{}
+	for records.Next(repo.Context) {
+		var serviceOrder = models.ServiceOrder{}
+		if err := records.Decode(&serviceOrder); err != nil {
+			log.Println("Error decoding document:", err)
+			continue
+		}
+		retrieveServiceOrders = append(retrieveServiceOrders, &serviceOrder) // Append pointer
+	}
+
+	totalCount, err := collection.CountDocuments(repo.Context, queryParams)
+
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return retrieveServiceOrders, &totalCount, nil
 }
