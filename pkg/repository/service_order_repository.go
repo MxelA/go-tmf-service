@@ -8,15 +8,16 @@ import (
 	"github.com/MxelA/tmf-service-go/pkg/utils"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
 )
 
 type ServiceOrderRepository interface {
-	GetByID(id string) (*models.ServiceOrder, error)
+	GetByID(id string, selectFields *string) (*models.ServiceOrder, error)
 	GetAllPaginate(queryParams bson.M, selectFields *string, offset *int64, limit *int64) ([]*models.ServiceOrder, int64, error)
 	GetAll() ([]*models.ServiceOrder, error)
-	Create(user *models.ServiceOrder) error
+	Create(serviceOrder *models.ServiceOrderCreate) (*mongo.InsertOneResult, error)
 	Update(user *models.ServiceOrder) error
 	Delete(id string) error
 }
@@ -97,4 +98,17 @@ func (repo *MongoServiceOrderRepository) GetAllPaginate(queryParams bson.M, sele
 	}
 
 	return retrieveServiceOrders, &totalCount, nil
+}
+
+func (repo *MongoServiceOrderRepository) Create(serviceOrder *models.ServiceOrderCreate) (*mongo.InsertOneResult, error) {
+	mg := repo.MongoInstance
+	collection := mg.Db.Collection("serviceOrder")
+
+	insertResult, err := collection.InsertOne(repo.Context, serviceOrder)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return insertResult, nil
 }
