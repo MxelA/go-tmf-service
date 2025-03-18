@@ -112,3 +112,24 @@ func (repo *MongoServiceOrderRepository) Create(serviceOrder *models.ServiceOrde
 
 	return insertResult, nil
 }
+
+func (repo MongoServiceOrderRepository) Delete(id string) (bool, error) {
+	serviceOrderId, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return false, err
+	}
+
+	collection := repo.MongoInstance.Db.Collection("serviceOrder")
+	filter := bson.D{{Key: "_id", Value: serviceOrderId}}
+	deleteRecord, err := collection.DeleteOne(repo.Context, filter)
+
+	if err != nil {
+		return false, err
+	}
+
+	if deleteRecord.DeletedCount == 0 {
+		return false, errors.New("Delete record with ID:" + id + " not success")
+	}
+
+	return true, nil
+}
