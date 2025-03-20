@@ -18,7 +18,7 @@ type ServiceOrderRepository interface {
 	GetAllPaginate(queryParams bson.M, selectFields *string, offset *int64, limit *int64) ([]*models.ServiceOrder, int64, error)
 	GetAll() ([]*models.ServiceOrder, error)
 	Create(serviceOrder *models.ServiceOrderCreate) (*mongo.InsertOneResult, error)
-	Update(user *models.ServiceOrder) error
+	MergePatch(user *models.ServiceOrder) error
 	Delete(id string) error
 }
 
@@ -113,7 +113,7 @@ func (repo *MongoServiceOrderRepository) Create(serviceOrder *models.ServiceOrde
 	return insertResult, nil
 }
 
-func (repo MongoServiceOrderRepository) Delete(id string) (bool, error) {
+func (repo *MongoServiceOrderRepository) Delete(id string) (bool, error) {
 	serviceOrderId, err := primitive.ObjectIDFromHex(id)
 	if err != nil {
 		return false, err
@@ -129,6 +129,27 @@ func (repo MongoServiceOrderRepository) Delete(id string) (bool, error) {
 
 	if deleteRecord.DeletedCount == 0 {
 		return false, errors.New("Delete record with ID:" + id + " not success")
+	}
+
+	return true, nil
+}
+
+func (repo *MongoServiceOrderRepository) MergePatch(id string, serviceOrder *models.ServiceOrderUpdate) (bool, error) {
+	serviceOrderId, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return false, err
+	}
+
+	collection := repo.MongoInstance.Db.Collection("serviceOrder")
+
+	filter := bson.M{"_id": serviceOrderId}
+	update := bson.M{"$set": serviceOrder}
+	record := collection.FindOneAndUpdate(repo.Context, filter, update)
+
+	updateServiceOrder := models.ServiceOrder{}
+	err = record.Decode(&updateServiceOrder)
+	if err != nil {
+		return false, err
 	}
 
 	return true, nil
