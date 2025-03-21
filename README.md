@@ -1,4 +1,4 @@
-# Go TMF Service application
+# Golang TMF Service application
 - Application is in developing stage
 
 ## Application contains:
