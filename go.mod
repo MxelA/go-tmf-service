@@ -11,6 +11,7 @@ require (
 	github.com/go-openapi/swag v0.19.13
 	github.com/go-openapi/validate v0.20.1
 	github.com/jessevdk/go-flags v1.5.0
+	github.com/joho/godotenv v1.5.1
 	github.com/stretchr/testify v1.10.0
 	go.mongodb.org/mongo-driver v1.4.6
 	golang.org/x/net v0.0.0-20210119194325-5f4716e94777
@@ -30,7 +31,6 @@ require (
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
-	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/klauspost/compress v1.9.5 // indirect
 	github.com/mailru/easyjson v0.7.6 // indirect
