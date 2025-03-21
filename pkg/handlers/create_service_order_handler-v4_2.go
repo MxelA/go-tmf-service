@@ -1,8 +1,6 @@
 package handler_v4_2
 
 import (
-	database "github.com/MxelA/tmf-service-go/pkg/config"
-	"github.com/MxelA/tmf-service-go/pkg/repository"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/restapi/operations/service_order"
 	"github.com/go-openapi/runtime/middleware"
@@ -10,14 +8,9 @@ import (
 	"log"
 )
 
-func CreateServiceOrderHandler(req service_order.CreateServiceOrderParams) middleware.Responder {
+func (h *ServiceOrderHandler) CreateServiceOrderHandler(req service_order.CreateServiceOrderParams) middleware.Responder {
 
-	mongoServiceOrderRepo := repository.MongoServiceOrderRepository{
-		MongoInstance: database.GetMongoInstance(),
-		Context:       req.HTTPRequest.Context(),
-	}
-
-	insertResult, err := mongoServiceOrderRepo.Create(req.ServiceOrder)
+	insertResult, err := h.repo.Create(req.HTTPRequest.Context(), req.ServiceOrder)
 	if err != nil {
 		errCode := "500"
 		reason := err.Error()
@@ -32,7 +25,7 @@ func CreateServiceOrderHandler(req service_order.CreateServiceOrderParams) middl
 
 	// Get mongo document
 	id := insertResult.InsertedID.(primitive.ObjectID).Hex()
-	retrieveServiceOrder, err := mongoServiceOrderRepo.GetByID(id, nil)
+	retrieveServiceOrder, err := h.repo.GetByID(req.HTTPRequest.Context(), id, nil)
 
 	if err != nil {
 		errCode := "500"

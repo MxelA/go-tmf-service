@@ -14,20 +14,18 @@ import (
 )
 
 type ServiceOrderRepository interface {
-	GetByID(id string, selectFields *string) (*models.ServiceOrder, error)
-	GetAllPaginate(queryParams bson.M, selectFields *string, offset *int64, limit *int64) ([]*models.ServiceOrder, int64, error)
-	GetAll() ([]*models.ServiceOrder, error)
-	Create(serviceOrder *models.ServiceOrderCreate) (*mongo.InsertOneResult, error)
-	MergePatch(user *models.ServiceOrder) error
-	Delete(id string) error
+	GetByID(context context.Context, id string, selectFields *string) (*models.ServiceOrder, error)
+	GetAllPaginate(context context.Context, queryParams bson.M, selectFields *string, offset *int64, limit *int64) ([]*models.ServiceOrder, *int64, error)
+	Create(context context.Context, serviceOrder *models.ServiceOrderCreate) (*mongo.InsertOneResult, error)
+	MergePatch(context context.Context, id string, serviceOrder *models.ServiceOrderUpdate) (bool, error)
+	Delete(context context.Context, id string) (bool, error)
 }
 
 type MongoServiceOrderRepository struct {
 	MongoInstance database.MongoInstance
-	Context       context.Context
 }
 
-func (repo *MongoServiceOrderRepository) GetByID(id string, selectFields *string) (*models.ServiceOrder, error) {
+func (repo *MongoServiceOrderRepository) GetByID(context context.Context, id string, selectFields *string) (*models.ServiceOrder, error) {
 
 	serviceOrderId, err := primitive.ObjectIDFromHex(id)
 
@@ -46,7 +44,7 @@ func (repo *MongoServiceOrderRepository) GetByID(id string, selectFields *string
 		findOptions.SetProjection(fieldProjection)
 	}
 
-	record := collection.FindOne(repo.Context, filter, findOptions)
+	record := collection.FindOne(context, filter, findOptions)
 
 	retrieveServiceOrder := models.ServiceOrder{}
 	err = record.Decode(&retrieveServiceOrder)
@@ -58,7 +56,7 @@ func (repo *MongoServiceOrderRepository) GetByID(id string, selectFields *string
 	return &retrieveServiceOrder, nil
 }
 
-func (repo *MongoServiceOrderRepository) GetAllPaginate(queryParams bson.M, selectFields *string, offset *int64, limit *int64) ([]*models.ServiceOrder, *int64, error) {
+func (repo *MongoServiceOrderRepository) GetAllPaginate(context context.Context, queryParams bson.M, selectFields *string, offset *int64, limit *int64) ([]*models.ServiceOrder, *int64, error) {
 
 	offset, limit = utils.ValidatePaginationParams(offset, limit)
 	collection := repo.MongoInstance.Db.Collection("serviceOrder")
@@ -76,13 +74,13 @@ func (repo *MongoServiceOrderRepository) GetAllPaginate(queryParams bson.M, sele
 
 	// Get list of service orders
 
-	records, err := collection.Find(repo.Context, queryParams, findOptions)
+	records, err := collection.Find(context, queryParams, findOptions)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	retrieveServiceOrders := []*models.ServiceOrder{}
-	for records.Next(repo.Context) {
+	for records.Next(context) {
 		var serviceOrder = models.ServiceOrder{}
 		if err := records.Decode(&serviceOrder); err != nil {
 			log.Println("Error decoding document:", err)
@@ -91,7 +89,7 @@ func (repo *MongoServiceOrderRepository) GetAllPaginate(queryParams bson.M, sele
 		retrieveServiceOrders = append(retrieveServiceOrders, &serviceOrder) // Append pointer
 	}
 
-	totalCount, err := collection.CountDocuments(repo.Context, queryParams)
+	totalCount, err := collection.CountDocuments(context, queryParams)
 
 	if err != nil {
 		return nil, nil, err
@@ -100,11 +98,11 @@ func (repo *MongoServiceOrderRepository) GetAllPaginate(queryParams bson.M, sele
 	return retrieveServiceOrders, &totalCount, nil
 }
 
-func (repo *MongoServiceOrderRepository) Create(serviceOrder *models.ServiceOrderCreate) (*mongo.InsertOneResult, error) {
+func (repo *MongoServiceOrderRepository) Create(context context.Context, serviceOrder *models.ServiceOrderCreate) (*mongo.InsertOneResult, error) {
 	mg := repo.MongoInstance
 	collection := mg.Db.Collection("serviceOrder")
 
-	insertResult, err := collection.InsertOne(repo.Context, serviceOrder)
+	insertResult, err := collection.InsertOne(context, serviceOrder)
 
 	if err != nil {
 		return nil, err
@@ -113,7 +111,7 @@ func (repo *MongoServiceOrderRepository) Create(serviceOrder *models.ServiceOrde
 	return insertResult, nil
 }
 
-func (repo *MongoServiceOrderRepository) Delete(id string) (bool, error) {
+func (repo *MongoServiceOrderRepository) Delete(context context.Context, id string) (bool, error) {
 	serviceOrderId, err := primitive.ObjectIDFromHex(id)
 	if err != nil {
 		return false, err
@@ -121,7 +119,7 @@ func (repo *MongoServiceOrderRepository) Delete(id string) (bool, error) {
 
 	collection := repo.MongoInstance.Db.Collection("serviceOrder")
 	filter := bson.D{{Key: "_id", Value: serviceOrderId}}
-	deleteRecord, err := collection.DeleteOne(repo.Context, filter)
+	deleteRecord, err := collection.DeleteOne(context, filter)
 
 	if err != nil {
 		return false, err
@@ -134,7 +132,7 @@ func (repo *MongoServiceOrderRepository) Delete(id string) (bool, error) {
 	return true, nil
 }
 
-func (repo *MongoServiceOrderRepository) MergePatch(id string, serviceOrder *models.ServiceOrderUpdate) (bool, error) {
+func (repo *MongoServiceOrderRepository) MergePatch(context context.Context, id string, serviceOrder *models.ServiceOrderUpdate) (bool, error) {
 	serviceOrderId, err := primitive.ObjectIDFromHex(id)
 	if err != nil {
 		return false, err
@@ -144,7 +142,7 @@ func (repo *MongoServiceOrderRepository) MergePatch(id string, serviceOrder *mod
 
 	filter := bson.M{"_id": serviceOrderId}
 	update := bson.M{"$set": serviceOrder}
-	record := collection.FindOneAndUpdate(repo.Context, filter, update)
+	record := collection.FindOneAndUpdate(context, filter, update)
 
 	updateServiceOrder := models.ServiceOrder{}
 	err = record.Decode(&updateServiceOrder)

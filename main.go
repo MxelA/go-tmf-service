@@ -45,6 +45,7 @@ func main() {
 	server.TLSCertificateKey = serverConfig.TLSCertificateKey
 	server.TLSPort = serverConfig.TLSPort
 
+	//
 	// Register routes
 	route_tmf641_v4_2.RegisterTmfServiceV4_2Routes(api)
 

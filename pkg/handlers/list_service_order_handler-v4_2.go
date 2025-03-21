@@ -1,8 +1,6 @@
 package handler_v4_2
 
 import (
-	database "github.com/MxelA/tmf-service-go/pkg/config"
-	"github.com/MxelA/tmf-service-go/pkg/repository"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/restapi/operations/service_order"
 	"github.com/MxelA/tmf-service-go/pkg/utils"
@@ -10,15 +8,10 @@ import (
 	"log"
 )
 
-func ListServiceOrderHandler(req service_order.ListServiceOrderParams) middleware.Responder {
-
-	mongoServiceOrderRepo := repository.MongoServiceOrderRepository{
-		MongoInstance: database.GetMongoInstance(),
-		Context:       req.HTTPRequest.Context(),
-	}
+func (h *ServiceOrderHandler) ListServiceOrderHandler(req service_order.ListServiceOrderParams) middleware.Responder {
 
 	queryParams := utils.BuildMongoFilter(req.HTTPRequest.URL.Query())
-	retrieveServiceOrders, retrieveServiceOrdersTotalCount, err := mongoServiceOrderRepo.GetAllPaginate(queryParams, req.Fields, req.Offset, req.Limit)
+	retrieveServiceOrders, retrieveServiceOrdersTotalCount, err := h.repo.GetAllPaginate(req.HTTPRequest.Context(), queryParams, req.Fields, req.Offset, req.Limit)
 	if err != nil {
 		errCode := "500"
 		reason := err.Error()

@@ -1,8 +1,6 @@
 package handler_v4_2
 
 import (
-	database "github.com/MxelA/tmf-service-go/pkg/config"
-	"github.com/MxelA/tmf-service-go/pkg/repository"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/restapi/operations/service_order"
 	"github.com/go-openapi/runtime/middleware"
@@ -10,13 +8,13 @@ import (
 	"strings"
 )
 
-func PatchServiceOrderHandler(req service_order.PatchServiceOrderParams) middleware.Responder {
+func (h *ServiceOrderHandler) PatchServiceOrderHandler(req service_order.PatchServiceOrderParams) middleware.Responder {
 	contentType := req.HTTPRequest.Header["Content-Type"][0]
 
 	if strings.Contains(contentType, "application/json-patch+json") {
-		return processJsonPatch(req)
+		return processJsonPatch(h, req)
 	} else if strings.Contains(contentType, "application/merge-patch+json") {
-		return processMergePatch(req)
+		return processMergePatch(h, req)
 	}
 
 	errCode := "422"
@@ -30,7 +28,7 @@ func PatchServiceOrderHandler(req service_order.PatchServiceOrderParams) middlew
 	return service_order.NewPatchServiceOrderInternalServerError().WithPayload(&errModel)
 }
 
-func processJsonPatch(req service_order.PatchServiceOrderParams) middleware.Responder {
+func processJsonPatch(h *ServiceOrderHandler, req service_order.PatchServiceOrderParams) middleware.Responder {
 	//TO DO: Add JSON Patch support
 	errCode := "422"
 	reason := "Unsupported media type "
@@ -42,14 +40,9 @@ func processJsonPatch(req service_order.PatchServiceOrderParams) middleware.Resp
 	return service_order.NewPatchServiceOrderInternalServerError().WithPayload(&errModel)
 }
 
-func processMergePatch(req service_order.PatchServiceOrderParams) middleware.Responder {
+func processMergePatch(h *ServiceOrderHandler, req service_order.PatchServiceOrderParams) middleware.Responder {
 
-	mongoServiceOrderRepo := repository.MongoServiceOrderRepository{
-		MongoInstance: database.GetMongoInstance(),
-		Context:       req.HTTPRequest.Context(),
-	}
-
-	_, err := mongoServiceOrderRepo.MergePatch(req.ID, req.ServiceOrder)
+	_, err := h.repo.MergePatch(req.HTTPRequest.Context(), req.ID, req.ServiceOrder)
 	if err != nil {
 		errCode := "500"
 		reason := err.Error()
@@ -62,7 +55,7 @@ func processMergePatch(req service_order.PatchServiceOrderParams) middleware.Res
 		return service_order.NewPatchServiceOrderInternalServerError().WithPayload(&errModel)
 	}
 
-	retrieveServiceOrder, err := mongoServiceOrderRepo.GetByID(req.ID, nil)
+	retrieveServiceOrder, err := h.repo.GetByID(req.HTTPRequest.Context(), req.ID, nil)
 
 	return service_order.NewPatchServiceOrderOK().WithPayload(retrieveServiceOrder)
 }
