@@ -2,6 +2,7 @@ package handler_v4_2
 
 import (
 	"context"
+	"errors"
 	"github.com/MxelA/tmf-service-go/pkg/mocks"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/models"
 	"github.com/MxelA/tmf-service-go/pkg/swagger/tmf641v4_2/server/restapi/operations/service_order"
@@ -55,4 +56,27 @@ func TestListServiceOrderHandler_Success(t *testing.T) {
 	filter := bson.M{}
 	filter["state"] = bson.M{"$eq": "pending"}
 	assert.Equal(t, expectedFilter, filter)
+}
+
+func TestListServiceOrderHandler_RepositoryError(t *testing.T) {
+	mockRepo := &mocks.MockServiceOrderRepository{
+		GetAllPaginateFunc: func(ctx context.Context, queryParams bson.M, selectFields *string, offset *int64, limit *int64) ([]*models.ServiceOrder, *int64, error) {
+			return nil, nil, errors.New("database failure")
+		},
+	}
+
+	handler := &ServiceOrderHandler{repo: mockRepo}
+
+	req := service_order.ListServiceOrderParams{
+		HTTPRequest: &http.Request{URL: &url.URL{}},
+	}
+
+	resp := handler.ListServiceOrderHandler(req)
+
+	// Assert error response
+	assert.IsType(t, &service_order.ListServiceOrderInternalServerError{}, resp)
+	iseResp := resp.(*service_order.ListServiceOrderInternalServerError)
+	assert.Equal(t, "500", *iseResp.Payload.Code)
+	assert.Equal(t, "Internal server error", iseResp.Payload.Message)
+	assert.Equal(t, "database failure", *iseResp.Payload.Reason)
 }
