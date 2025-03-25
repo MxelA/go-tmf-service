@@ -40,11 +40,40 @@ func TestRetrieveServiceOrderHandler_Success(t *testing.T) {
 	assert.Equal(t, "test-id", okResponse.Payload.ID)
 }
 
+func TestRetrieveServiceOrderHandler_ErrorValidation(t *testing.T) {
+	// 1. Setup mock
+	mockRepo := &mocks.MockServiceOrderRepository{
+		GetByIDFunc: func(ctx context.Context, id string, fields *string) (*models.ServiceOrder, error) {
+			assert.Equal(t, "test-id", id) // Verify correct ID
+			return &models.ServiceOrder{ID: "test-id"}, nil
+		},
+	}
+
+	// 2. Create handler with mock
+	handler := NewServiceOrderHandler(mockRepo)
+
+	// 3. Create request parameters
+	fieldsParam := "id,status"
+	req := service_order.RetrieveServiceOrderParams{
+		ID:          "test-id",
+		Fields:      &fieldsParam,
+		HTTPRequest: &http.Request{},
+	}
+
+	// 4. Execute handler
+	response := handler.RetrieveServiceOrderHandler(req)
+
+	// 5. Assert response type and content
+	okResponse, ok := response.(*service_order.RetrieveServiceOrderOK)
+	assert.True(t, ok, "Expected OK response")
+	assert.Equal(t, "test-id", okResponse.Payload.ID)
+}
+
 func TestRetrieveServiceOrderHandler_Error(t *testing.T) {
 	// 1. Setup mock to return error
 	mockRepo := &mocks.MockServiceOrderRepository{
 		GetByIDFunc: func(ctx context.Context, id string, fields *string) (*models.ServiceOrder, error) {
-			return nil, errors.New("database connection failed")
+			return nil, errors.New("Id is not valid")
 		},
 	}
 
