@@ -140,12 +140,31 @@ func (repo *MongoServiceOrderRepository) MergePatch(context context.Context, id 
 
 	collection := repo.MongoInstance.Db.Collection("serviceOrder")
 
-	filter := bson.M{"_id": serviceOrderId}
-	update := bson.M{"$set": serviceOrder}
-	record := collection.FindOneAndUpdate(context, filter, update)
+	// Start a new session
+	session, err := repo.MongoInstance.Client.StartSession()
+	if err != nil {
+		return false, err
+	}
+	defer session.EndSession(context)
 
-	updateServiceOrder := models.ServiceOrder{}
-	err = record.Decode(&updateServiceOrder)
+	_, err = session.WithTransaction(context, func(sessCtx mongo.SessionContext) (interface{}, error) {
+		filter := bson.M{"_id": serviceOrderId}
+		update := bson.M{"$set": serviceOrder}
+		result := collection.FindOneAndUpdate(context, filter, update)
+
+		if err = result.Err(); err != nil {
+			return nil, err
+		}
+
+		// Decode the result
+		updatedServiceOrder := models.ServiceOrder{}
+		if err = result.Decode(&updatedServiceOrder); err != nil {
+			return nil, err
+		}
+
+		return true, nil
+	})
+
 	if err != nil {
 		return false, err
 	}
