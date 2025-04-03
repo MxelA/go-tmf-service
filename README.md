@@ -91,8 +91,17 @@ openssl x509 -req -in tls.csr -signkey tls.key -out tls.crt -days 365
 ```aiignore
 cp .env.example .env
 ```
-Set configuration parameters for mongo DB.
-### Run server
+
+### Run application 
+#### Run application local
 ```aiignore
 go run main.go --tls-certificate=tls.crt --tls-key=tls.key  --tls-port=34191
+```
+or
+```aiignore
+task run
+```
+#### Run application over docker
+```aiignore
+docker-compose up --build -d
 ```

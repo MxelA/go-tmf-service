@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "34191:34191"
+    env_file: .env
+    environment:
+      - MONGO_DB_HOST=mongodb  # Override host to use service name
+    depends_on:
+      - mongodb
+    networks:
+      - go-tmf-network
+    volumes:
+      - ./tls.crt:/app/tls.crt:ro
+      - ./tls.key:/app/tls.key:ro
+
+  mongodb:
+    image: mongo:6-jammy
+    ports:
+      - "27017:27017"
+    env_file: .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_DB_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_DB_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_DB_DATABASE}
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d
+    networks:
+      - go-tmf-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  go-tmf-network:
+    driver: bridge

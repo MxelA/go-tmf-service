@@ -22,8 +22,7 @@ var (
 func DbConnect() error {
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error loading .env file")
-		return err
+		log.Println("Warning: .env file not found (this is fine in production)")
 	}
 
 	dbName := os.Getenv("MONGO_DB_DATABASE")
