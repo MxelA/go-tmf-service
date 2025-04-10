@@ -20,7 +20,6 @@ WORKDIR /app
 
 # Copy binary from builder
 COPY --from=builder /app/main .
-COPY tls.crt tls.key ./
 
 # Expose the TLS port
 EXPOSE 34191
