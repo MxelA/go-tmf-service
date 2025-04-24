@@ -20,16 +20,32 @@ var (
 )
 
 func DbConnect() error {
-	err := godotenv.Load()
-	if err != nil {
-		log.Println("Warning: .env file not found (this is fine in production)")
+	_ = godotenv.Load()
+
+	dbName, ok := os.LookupEnv("MONGO_DB_DATABASE")
+	if !ok {
+		log.Fatalf(".env property MONGO_DB_DATABASE not found")
 	}
 
-	dbName := os.Getenv("MONGO_DB_DATABASE")
-	username := os.Getenv("MONGO_DB_USERNAME")
-	password := os.Getenv("MONGO_DB_PASSWORD")
-	port := os.Getenv("MONGO_DB_PORT")
-	host := os.Getenv("MONGO_DB_HOST")
+	username, ok := os.LookupEnv("MONGO_DB_USERNAME")
+	if !ok {
+		log.Fatalf(".env property MONGO_DB_USERNAME not found")
+	}
+
+	password, ok := os.LookupEnv("MONGO_DB_PASSWORD")
+	if !ok {
+		log.Fatalf(".env property MONGO_DB_PASSWORD not found")
+	}
+
+	port, ok := os.LookupEnv("MONGO_DB_PORT")
+	if !ok {
+		log.Fatalf(".env property MONGO_DB_PORT not found")
+	}
+
+	host, ok := os.LookupEnv("MONGO_DB_HOST")
+	if !ok {
+		log.Fatalf(".env property MONGO_DB_HOST not found")
+	}
 
 	var mongoURL = "mongodb://" + username + ":" + password + "@" + host + ":" + port + "/" + dbName + "?authMechanism=SCRAM-SHA-256&authSource=admin"
 
